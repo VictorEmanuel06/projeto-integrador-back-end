@@ -1,28 +1,46 @@
 import './Menu.css';
 import logo_page from '../assets/logo_page.png'
+import { useState } from 'react';
 
-const Menu = () => {
-
+function Menu () {
+  const [active, setActive] = useState(false);
 
   return (
-    <nav>
-        <div className='menu'>
-            <img src= {logo_page} className='logo-menu' alt='Logo' />
+      <nav className='menu'>
+              <img src= {logo_page} className='logo-menu' alt='Logo' />
 
-            <div className='mobile-menu'>
-                <div class='line1'></div>
-                <div class='line2'></div>
-                <div class='line3'></div>
-            </div>
+            {/* Menu Hamburguer */}
+              <div
+                className={`mobile-menu ${active ? "active" : ""}`}
+                onClick={() => setActive(!active)}
+              >
+                  <div className='line1'></div>
+                  <div className='line2'></div>
+                  <div className='line3'></div>
+              </div>
 
-            <ul className='nav-list'>
-                <li><a href='./home.html'>Home</a></li>
-                <li><a href='./sobremim.html'>Sobre Mim </a></li>
-                <li><a href='./servicos.html'>Serviços</a></li> 
-                <li><a href='./telacontato.html'>Contatos</a></li>
-            </ul>
-       </div>
-    </nav> 
+              {/* LINKS */}
+
+              <ul className={`nav-list ${active ? "active" : ""}`}>
+
+                  <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.3s` : "",}}>
+                      <a href='/'>Home</a>
+                  </li>
+
+                  <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.4s` : "",}}>
+                    <a href='/'>Sobre Mim </a>
+                  </li>
+
+                  <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.5s` : "",}}>
+                    <a href='/'>Serviços</a>
+                  </li> 
+
+                  <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "",}}>
+                    <a href='/'>Contatos</a>
+                  </li>
+
+              </ul>
+      </nav> 
   )
 }
 

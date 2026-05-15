@@ -20,6 +20,7 @@
   .nav-list li {
     margin-left: 32px;
     letter-spacing: 3px;
+    
   }
   
   .nav-list a {
@@ -28,6 +29,8 @@
     transition: 0.3s;
   }
   
+/* HAMBURGUER */
+
   .mobile-menu {
     display: none;
     cursor: pointer;
@@ -41,7 +44,19 @@
     transition: 0.3s;
   }
   
-  @media (max-width: 999px) {
+  .nav-list.active {
+    transform: translateX(0);
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+
+
+    .mobile-menu {
+      display: block;
+      z-index: 999;
+    }
+
     .nav-list {
       position: absolute;
       top: 8vh;
@@ -53,7 +68,7 @@
       align-items: center;
       justify-content: space-around;
       transform: translateX(100%);
-      transition: transform 0.3s ease-in;
+      z-index: 998;
     }
   
     .nav-list li {
@@ -71,6 +86,8 @@
   
   .nav-list.active {
     transform: translateX(0);
+    display: flex;
+    transition: transform 0.5s ease;
   }
   
   @keyframes navLinkFade {
