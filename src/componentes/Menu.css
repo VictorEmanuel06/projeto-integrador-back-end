@@ -47,6 +47,7 @@
   .nav-list.active {
     transform: translateX(0);
     display: none;
+    transition: transform 0.5s ease-in;
   }
 
   @media (max-width: 768px) {
@@ -87,7 +88,7 @@
   .nav-list.active {
     transform: translateX(0);
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in;
   }
   
   @keyframes navLinkFade {
