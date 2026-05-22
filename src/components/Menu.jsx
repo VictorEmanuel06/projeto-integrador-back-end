@@ -24,19 +24,19 @@ function Menu () {
               <ul className={`nav-list ${active ? "active" : ""}`}>
 
                   <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.3s` : "",}}>
-                      <a href='/'>Home</a>
+                      <a href='#'>Home</a>
                   </li>
 
                   <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.4s` : "",}}>
-                    <a href='/'>Sobre Mim </a>
+                    <a href='#'>Sobre Mim </a>
                   </li>
 
                   <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.5s` : "",}}>
-                    <a href='/'>Serviços</a>
+                    <a href='#'>Serviços</a>
                   </li> 
 
                   <li style={{animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "",}}>
-                    <a href='/'>Contatos</a>
+                    <a href='#'>Contatos</a>
                   </li>
 
               </ul>

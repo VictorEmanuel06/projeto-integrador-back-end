@@ -1,5 +1,5 @@
 import './App.css'
-import Menu from './componentes/Menu'
+import Menu from './components/Menu'
 
 function App() {
 
