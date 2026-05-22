@@ -1,0 +1,170 @@
+footer * {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 100;
+}
+
+p, li, a, span {
+    font-weight: 400;
+}
+
+small {
+    font-weight: 300;
+}
+
+.footer {
+    padding: 50px 60px;
+    background: linear-gradient(to right, #170502, #571406, #7d1c09);
+    color: #fff;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#footer_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
+    position: relative;
+}
+
+.footer_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_left img {
+    margin-right: 10px;
+}
+
+
+.footer-center {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.footer-center ul {
+    list-style: none;
+    margin-top: 75px;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.footer-center li {
+    margin-bottom: 10px;
+}
+
+.footer-center a {
+    text-decoration: none;
+    color: #ffffffc9;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.footer-center a:hover {
+    color: #fff;
+}
+
+/* BLOCO DIREITO */
+.footer_right h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.footer_right p {
+    font-size: 14px;
+    margin: 5px 0 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.footer_right i {
+    margin-right: 8px;
+}
+
+.outline {
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+
+}
+
+
+#footer_content::before {
+    content: "";
+    width: 2px;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.35);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+@media (max-width: 950px) {
+
+    #footer{
+        margin-left: 40px;
+    }
+
+    #footer_content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        position: relative;
+    }
+
+    #footer_content::before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 65px;
+        background: rgba(255, 255, 255, 0.35);
+        left: 50%;
+        top: 195px;
+        transform: translate(-50%, -50%);
+    }
+
+    .footer-center {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+        margin-left: 15px;
+        margin-top: -10px;
+
+    }
+
+    .footer-center ul {
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .footer_right p {
+        justify-content: center;
+    }
+
+    .footer_left img {
+        max-width: 150px;
+        margin-bottom: -10px;
+    }
+}
+
+
+
+
+
+
+
+
+
