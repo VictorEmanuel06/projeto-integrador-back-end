@@ -1,12 +1,9 @@
- /* body{
-  overflow-x: hidden;
- } */
- 
  .menu{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 8vh;
+    height: 70px;
+    min-height: 70px;
     background-image: linear-gradient(to right, #170502, #571406, #7D1C09);
     position: relative;
     z-index: 1000;
