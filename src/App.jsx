@@ -1,15 +1,16 @@
 import './App.css';
 import Footer from '../src/components/footer/Footer';
 import Menu from '../src/components/menu/Menu';
-import Home from '../src/routes/Home';
 
+// importando outlet
+import { Outlet } from 'react-router-dom';
 
 function App() {
 
   return (
-    <div>
+    <div className='App'>
       <Menu />
-      <Home />
+      <Outlet />
       <Footer />
     </div>
   )
