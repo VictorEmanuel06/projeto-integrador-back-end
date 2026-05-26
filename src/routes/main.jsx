@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import App from "./App.jsx";
+import App from "../App.jsx";
 
 import {
   createBrowserRouter,
@@ -11,22 +11,22 @@ import {
 } from "react-router-dom";
 
 /* ROTAS */
-import Home from "./routes/Home";
-import SobreMim from "./routes/SobreMim";
-import Servicos from "./routes/Servicos";
-import Contatos from "./routes/Contatos";
+import Home from "../pages/Home/Home.jsx";
+import SobreMim from "../pages/sobremim/SobreMim.jsx";
+import Servicos from "../pages/servicos/Servicos.jsx";
+import Contatos from "../pages/contats/Contatos.jsx";
 
 // importando usuario
-import LoginUsuario from "./routes/LoginUsuario.jsx";
-import CadastroUsuario from "./routes/CadastroUsuario.jsx";
-import RecuperarSenhaUsuario from "./routes/RecuperarSenhaUsuario.jsx";
-import AlterarSenhaUsuario from "./routes/AlterarSenhaUsuario.jsx";
+import LoginUsuario from "../pages/loginUsuario/LoginUsuario.jsx";
+import CadastroUsuario from "../pages/cadastrousuario/CadastroUsuario.jsx";
+import RecuperarSenhaUsuario from "../pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.jsx";
+import AlterarSenhaUsuario from "../pages/alterarSenhaUsuario/AlterarSenhaUsuario.jsx";
 
 // importando ADM
-import LoginAdm from "./routes/LoginAdm.jsx";
-import CadastroAdm from "./routes/CadastroAdm.jsx";
-import RecuperarSenhaAdm from "./routes/RecuperarSenhaAdm.jsx";
-import AlterarSenhaAdm from "./routes/AlterarSenhaAdm.jsx";
+import LoginAdm from "../pages/loginAdm/LoginAdm.jsx";
+import CadastroAdm from "../pages/cadastroAdm/CadastroAdm.jsx";
+import RecuperarSenhaAdm from "../pages/recuperarSenhaAdm/RecuperarSenhaAdm.jsx";
+import AlterarSenhaAdm from "../pages/alterarSenhaAdm/AlterarSenhaAdm.jsx";
 
 
 /* ROUTER */
