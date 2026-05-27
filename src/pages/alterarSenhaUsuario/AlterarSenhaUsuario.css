@@ -1,0 +1,84 @@
+
+
+main{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding: 20px;
+}
+
+
+.card{
+    width:420px;
+    background:#d9d9d9;
+    padding:40px;
+    border-radius:30px;
+    text-align:center;
+}
+
+
+.card h1{
+    color:#183a8d;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.descricao{
+    color:#3e4a5a;
+    margin-bottom:35px;
+}
+
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+
+label{
+    text-align:left;
+    margin-bottom:8px;
+    font-size:13px;
+    color:#444;
+}
+
+
+input{
+    height:40px;
+    border:none;
+    border-radius:8px;
+    margin-bottom:20px;
+    padding-left:10px;
+}
+
+
+.alerta{
+    background:#c8d4df;
+    padding:18px;
+    border-radius:10px;
+    color:#1d3567;
+    font-size:12px;
+    margin:10px 0 30px;
+}
+
+
+button{
+    width:180px;
+    height:45px;
+    border:none;
+    border-radius:25px;
+    background:#183a8d;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+
+    margin:auto;
+}
+
+
+.cancelar{
+    margin-top:20px;
+    color:#444;
+    text-decoration:none;
+}
