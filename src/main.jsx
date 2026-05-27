@@ -3,30 +3,27 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import App from "../App.jsx";
+import App from "./App.jsx";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Route, Navigate} from "react-router-dom";
 
 /* ROTAS */
-import Home from "../pages/Home/Home.jsx";
-import SobreMim from "../pages/sobremim/SobreMim.jsx";
-import Servicos from "../pages/servicos/Servicos.jsx";
-import Contatos from "../pages/contats/Contatos.jsx";
+import Home from "./pages/home/Home.jsx";
+import SobreMim from "./pages/sobremim/SobreMim.jsx";
+import Servicos from "./pages/servicos/Servicos.jsx";
+import Contatos from "./pages/contats/Contatos.jsx";
 
 // importando usuario
-import LoginUsuario from "../pages/loginUsuario/LoginUsuario.jsx";
-import CadastroUsuario from "../pages/cadastrousuario/CadastroUsuario.jsx";
-import RecuperarSenhaUsuario from "../pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.jsx";
-import AlterarSenhaUsuario from "../pages/alterarSenhaUsuario/AlterarSenhaUsuario.jsx";
+import LoginUsuario from "./pages/loginUsuario/LoginUsuario.jsx";
+import CadastroUsuario from "./pages/cadastrousuario/CadastroUsuario.jsx";
+import RecuperarSenhaUsuario from "./pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.jsx";
+import AlterarSenhaUsuario from "./pages/alterarSenhaUsuario/AlterarSenhaUsuario.jsx";
 
 // importando ADM
-import LoginAdm from "../pages/loginAdm/LoginAdm.jsx";
-import CadastroAdm from "../pages/cadastroAdm/CadastroAdm.jsx";
-import RecuperarSenhaAdm from "../pages/recuperarSenhaAdm/RecuperarSenhaAdm.jsx";
-import AlterarSenhaAdm from "../pages/alterarSenhaAdm/AlterarSenhaAdm.jsx";
+import LoginAdm from "./pages/loginAdm/LoginAdm.jsx";
+import CadastroAdm from "./pages/cadastroAdm/CadastroAdm.jsx";
+import RecuperarSenhaAdm from "./pages/recuperarSenhaAdm/RecuperarSenhaAdm.jsx";
+import AlterarSenhaAdm from "./pages/alterarSenhaAdm/AlterarSenhaAdm.jsx";
 
 
 /* ROUTER */
@@ -36,7 +33,10 @@ const router = createBrowserRouter([
     element: <App />,
 
     children: [
-      { index: true, element: <Home /> },
+      { 
+      path: "/", 
+      element: <Home />
+      },
 
       {
         path: "/SobreMim",

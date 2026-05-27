@@ -1,12 +1,12 @@
-import '../../src/routes/Home.css';
-import cuidado from '../assets/img_cuidado.png';
-import acolhimento from '../assets/img_acolhimento.png';
-import autoconhecimento from '../assets/img_autoconhecimento.png';
-import terapia from '../assets/icon_terapia.png';
-import icon_auto from '../assets/img_autoconhecimento.png';
-import relacionamento from '../assets/icon_relacionamentos.png';
-import equilibrio from '../assets/icon_equilibrio.png';
-import emocoes from '../assets/icon_emocoes.png';
+import "../home/Home.css";
+import cuidado from '../../assets/img_cuidado.png';
+import acolhimento from '../../assets/img_acolhimento.png';
+import autoconhecimento from '../../assets/img_autoconhecimento.png';
+import terapia from '../../assets/icon_terapia.png';
+import icon_auto from '../../assets/img_autoconhecimento.png';
+import relacionamento from '../../assets/icon_relacionamentos.png';
+import equilibrio from '../../assets/icon_equilibrio.png';
+import emocoes from '../../assets/icon_emocoes.png';
 
 
 const Home = () => {

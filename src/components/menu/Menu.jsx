@@ -1,7 +1,7 @@
 import "../menu/Menu.css";
 import logo_page from '../../assets/logo_page.png';
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Menu() {
   const [active, setActive] = useState(false);
@@ -25,21 +25,23 @@ function Menu() {
       <ul className={`nav-list ${active ? "active" : ""}`}>
 
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.3s` : "", }}>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
 
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.4s` : "", }}>
-          <Link to="/SobreMim">Sobre Mim</Link>
+          <NavLink to="/SobreMim">Sobre Mim</NavLink>
         </li>
 
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.5s` : "", }}>
-          <Link to="/Servicos">Serviços</Link>
+          <NavLink to="/Servicos">Serviços</NavLink>
         </li>
 
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
-          <Link to="/Contatos">Contatos</Link>
+          <NavLink to="/Contatos">Contatos</NavLink>
         </li>
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.7s` : "", }}>
+
+
+        {/* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.7s` : "", }}>
           <Link to="/loginusuario">Login Usuário</Link>
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.8s` : "", }}>
@@ -50,7 +52,7 @@ function Menu() {
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.10s` : "", }}>
           <Link to="/Alterarsenhausuario">Alterar Senha Usuário</Link>
-        </li>
+        </li> */}
 
         
         { // Linhas ADM comentadas por ter aparecido no menu, deixei por precaução
