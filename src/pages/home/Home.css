@@ -2,7 +2,6 @@
 .caixa-bem-vindo {
     display: flex;
     justify-content: center;
-/* arrumar essa parte */
     max-width: 1000px;
     margin: 70px auto 60px;
     padding: 0 20px;

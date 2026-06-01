@@ -1,9 +1,9 @@
+import React from 'react'
+
 const AlterarSenhaUsuario = () => {
-    return (
-        <div>
-          <h1>Alterar Senha Usuario</h1>
-        </div>
-    )
+  return (
+    <div>AlterarSenhaUsuario</div>
+  )
 }
 
-export default AlterarSenhaUsuario;
+export default AlterarSenhaUsuario
