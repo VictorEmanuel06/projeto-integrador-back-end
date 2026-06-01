@@ -1,4 +1,3 @@
-import './App.css';
 import Footer from '../src/components/footer/Footer';
 import Menu from '../src/components/menu/Menu';
 

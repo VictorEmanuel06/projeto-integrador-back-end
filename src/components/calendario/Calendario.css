@@ -1,8 +1,116 @@
-.calendar-container {
-  height: 100vh;
-  padding: 20px;
+
+
+.calendar-wrapper {
+    width: 100%;
+    height: 650px;
 }
 
-.calendar {
-  height: 100%;
+.rbc-calendar {
+    height: 100% !important;
+}
+
+/* TOOLBAR */
+
+.rbc-toolbar {
+  margin-bottom: 20px;
+}
+
+.rbc-toolbar-label {
+  font-size: 28px;
+
+  font-weight: 400;
+
+  color: #3c4043;
+}
+
+/* BOTÕES */
+
+.rbc-btn-group button {
+  background: white !important;
+
+  border: 1px solid #dadce0 !important;
+
+  color: #3c4043 !important;
+
+  padding: 8px 16px !important;
+
+  border-radius: 20px !important;
+
+  transition: 0.2s;
+}
+
+.rbc-btn-group button:hover {
+  background: #f1f3f4 !important;
+}
+
+/* BOTÃO ATIVO */
+
+.rbc-btn-group button.rbc-active {
+  background: #1a73e8 !important;
+
+  color: white !important;
+
+  border-color: #1a73e8 !important;
+}
+
+/* DIA ATUAL */
+
+.rbc-today {
+  background: #e8f0fe !important;
+}
+
+/* EVENTOS */
+
+.rbc-event {
+  background: #1a73e8 !important;
+
+  border: none !important;
+
+  border-radius: 6px !important;
+
+  font-size: 12px;
+
+  padding: 2px 6px !important;
+}
+
+/* CABEÇALHO */
+
+.rbc-header {
+  border: none !important;
+
+  padding: 12px;
+
+  color: #5f6368;
+
+  font-weight: 500;
+}
+
+/* GRID */
+
+/* .rbc-month-view {
+  border: 1px solid #e8eaed !important;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+} */
+
+/* LINHAS */
+
+.rbc-month-row {
+  border-top: 1px solid #f1f3f4 !important;
+}
+
+/* CÉLULAS */
+
+.rbc-day-bg:hover {
+  background: #f8f9fa;
+}
+
+/* DATAS */
+
+.rbc-date-cell {
+  padding: 6px;
+  color: black !important;
+  font-weight: bold;
 }

@@ -12,6 +12,7 @@ import Home from "./pages/home/Home.jsx";
 import SobreMim from "./pages/sobremim/SobreMim.jsx";
 import Servicos from "./pages/servicos/Servicos.jsx";
 import Contatos from "./pages/contats/Contatos.jsx";
+import Agendamento from "./pages/agendamento/Agendamento.jsx";
 
 // importando usuario
 import LoginUsuario from "./pages/loginUsuario/LoginUsuario.jsx";
@@ -24,6 +25,9 @@ import LoginAdm from "./pages/loginAdm/LoginAdm.jsx";
 import CadastroAdm from "./pages/cadastroAdm/CadastroAdm.jsx";
 import RecuperarSenhaAdm from "./pages/recuperarSenhaAdm/RecuperarSenhaAdm.jsx";
 import AlterarSenhaAdm from "./pages/alterarSenhaAdm/AlterarSenhaAdm.jsx";
+
+//Calendario para teste
+import Calendario from "./components/calendario/Calendario.jsx";
 
 
 /* ROUTER */
@@ -50,8 +54,12 @@ const router = createBrowserRouter([
         path: "/contatos",
         element: <Contatos />
       },
+      {
+        path: "/agendamento",
+        element: <Agendamento />
+      },
 
-      // Usuario
+      // // Usuario
       {
         path: "/loginusuario",
         element: <LoginUsuario />
@@ -94,6 +102,10 @@ const router = createBrowserRouter([
         path: "/alterarsenhaadm",
         element: <AlterarSenhaAdm />
 
+      },
+      {
+        path: "/calendario",
+        element: <Calendario />
       }
 
 
