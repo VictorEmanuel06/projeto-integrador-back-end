@@ -42,32 +42,32 @@ function Menu() {
 
 
         {/* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.7s` : "", }}>
-          <Link to="/loginusuario">Login Usuário</Link>
+          <NavLink to="/loginusuario">Login Usuário</NavLink>
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.8s` : "", }}>
-          <Link to="/Cadastrousuario">Cadastro Usuário</Link>
+          <NavLink to="/Cadastrousuario">Cadastro Usuário</NavLink>
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.9s` : "", }}>
-          <Link to="/Recuperarsenhausuario">Recuperar senha Usuário</Link>
+          <NavLink to="/Recuperarsenhausuario">Recuperar senha Usuário</NavLink>
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.10s` : "", }}>
-          <Link to="/Alterarsenhausuario">Alterar Senha Usuário</Link>
+          <NavLink to="/Alterarsenhausuario">Alterar Senha Usuário</NavLink>
         </li> */}
 
         
         { // Linhas ADM comentadas por ter aparecido no menu, deixei por precaução
         
         /* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.11s` : "", }}>
-          <Link to="/LoginAdm">Login Adm</Link>
+          <NavLink to="/LoginAdm">Login Adm</NavLink>
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.12s` : "", }}>
-          <Link to="/CadastroAdm">Cadastro Adm</Link>
+          <NavLink to="/CadastroAdm">Cadastro Adm</NavLink>
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.13` : "", }}>
-          <Link to="/RecuperarSenhaAdm">Recuperar Senha Adm</Link>
+          <NavLink to="/RecuperarSenhaAdm">Recuperar Senha Adm</NavLink>
         </li>
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.14s` : "", }}>
-          <Link to="/AlterarSenhaadm">Alterar senha Adm</Link>
+          <NavLink to="/AlterarSenhaadm">Alterar senha Adm</NavLink>
         </li> */}
 
       </ul>
