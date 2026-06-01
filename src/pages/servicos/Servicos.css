@@ -1,0 +1,80 @@
+
+.servicos{
+    text-align: center;
+}
+
+h1{
+    margin-top: 80px;
+    font-weight: 300;
+    font-size: 40px;
+    color: #0b3c8a;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px; /* Espaço para a imagem não cortar no topo da página */
+    margin-bottom: 50px;
+    gap: 100px;
+}
+
+/* A Bolha Azul */
+.bubble {
+    background-color: #0b4a8d; /* Azul escuro forçado */
+    color: white;
+    width: 320px; /* Largura fixa para manter o formato */
+    height: 450px; /* Altura para permitir o efeito de gota */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    border-radius: 0px 180px 180px 180px; 
+    border: 3px solid #402722;
+    position: relative; /* Essencial para posicionar a imagem em relação ao balão */
+    padding: 40px 25px 25px 25px;
+    margin-top: 30px;
+    
+
+    
+}
+
+.bubble-img {
+    position: absolute;
+    top: -65px; /* Move a imagem para cima, para fora do balão */
+    left: 15px;  /* Ajuste a posição lateral conforme desejar */
+    width: 100px; /* Ajuste o tamanho da imagem */
+    height: auto;
+
+}
+
+.bubble p {
+    margin: 0;
+    font-size: large;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .bubble {
+        width: 300px;
+        height: 480px;
+        border-radius: 0px 140px 140px 140px; /* Mantém a proporção no mobile */
+        padding: 40px 25px;
+    }
+
+    h1 {
+        font-size: 2.7em;
+    }
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
