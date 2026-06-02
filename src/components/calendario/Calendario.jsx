@@ -1,61 +1,41 @@
-import { useState } from 'react';
-import moment from 'moment';
+import { useState } from "react";
+import moment from "moment";
+import "moment/locale/pt-br";
 
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+moment.locale("pt-br");
+console.log(moment.locale());
+
+import { Calendar, momentLocalizer } from "react-big-calendar";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 
-import './Calendario.css';
+import "./Calendario.css";
 
-const DragAndDropCalendar = withDragAndDrop.default(Calendar);
+moment.locale("pt-br");
+
 const localizer = momentLocalizer(moment);
 
 const Calendario = () => {
-
-
   const [date, setDate] = useState(new Date());
-  const [view, setView] = useState('month');
-
-  const [events, setEvents] = useState([
-    {
-      id: 1,
-      title: 'Evento teste',
-      start: new Date(2026, 5, 2, 10, 0),
-      end: new Date(2026, 5, 2, 10, 0),
-    },
-  ]);
-
-  const moveEvent = ({ event, start, end }) => {
-
-    const updatedEvents = events.map((item) =>
-      item.id === event.id
-      ? { ...item, start, end}
-      : item
-    );
-    
-    setEvents(updatedEvents);
-  };
-
-
 
   return (
-      <DragAndDropCalendar
-      localizer={localizer}
-      events={events}
-      startAccessor="start"
-      endAccessor="end"
-      selectable
-      resizable
-      onEventDrop={moveEvent}
-      date={date}
-      view={view}
-      onNavigate={setDate}
-      onView={setView}
-      style={{ height: 500 }}
-    />
-  )
-}
+    <div className="calendar-wrapper">
+      <Calendar
+        localizer={localizer}
+        culture="pt-BR"
+        selectable
+        date={date}
+        view="month"
+        views={["month"]}
+        onNavigate={setDate}
+        messages={{
+          today: "Hoje",
+          previous: "Anterior",
+          next: "Próximo",
+        }}
+      />
+    </div>
+  );
+};
 
 export default Calendario;

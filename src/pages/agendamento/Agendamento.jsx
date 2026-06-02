@@ -1,5 +1,6 @@
-import Calendario from "../../components/calendario/Calendario";
+import { useState } from "react";
 import "./Agendamento.css";
+import Calendario from "../../components/calendario/Calendario";
 
 
 const Agendamento = () => {
