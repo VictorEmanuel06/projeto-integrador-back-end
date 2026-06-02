@@ -18,6 +18,16 @@ const localizer = momentLocalizer(moment);
 const Calendario = () => {
   const [date, setDate] = useState(new Date());
 
+  const meses = [
+  "Janeiro", "Fevereiro", "Março", "Abril",
+  "Maio", "Junho", "Julho", "Agosto",
+  "Setembro", "Outubro", "Novembro", "Dezembro"
+];
+
+const dias = [
+  "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"
+];
+
   return (
     <div className="calendar-wrapper">
       <Calendar
@@ -32,6 +42,13 @@ const Calendario = () => {
           today: "Hoje",
           previous: "Anterior",
           next: "Próximo",
+        }}
+        formats={{
+          monthHeaderFormat: (date) =>
+            `${meses[date.getMonth()]} ${date.getFullYear()}`,
+
+          weekdayFormat: (date) =>
+            dias[date.getDay()],
         }}
       />
     </div>

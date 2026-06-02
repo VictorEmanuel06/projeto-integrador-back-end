@@ -16,7 +16,7 @@ import Agendamento from "./pages/agendamento/Agendamento.jsx";
 
 // importando usuario
 import LoginUsuario from "./pages/loginUsuario/LoginUsuario.jsx";
-import CadastroUsuario from "./pages/cadastrousuario/CadastroUsuario.jsx";
+import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario.jsx";
 import RecuperarSenhaUsuario from "./pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.jsx";
 import AlterarSenhaUsuario from "./pages/alterarSenhaUsuario/AlterarSenhaUsuario.jsx";
 

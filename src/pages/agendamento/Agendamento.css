@@ -1,0 +1,8 @@
+.container-agendamento {
+  margin: 20px auto;
+
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: 120px auto;
+  gap: 15px;
+}

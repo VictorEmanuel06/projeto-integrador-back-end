@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Agendamento.css";
 import Calendario from "../../components/calendario/Calendario";
 
@@ -8,25 +7,46 @@ const Agendamento = () => {
     <section className="container-agendamento">
       <div className="infopsi">
         <h1>Dr. Romulo</h1>
-
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Labore sint quae possimus consequatur.
         </p>
       </div>
 
-      <div className="calendario">
-        <Calendario />
-      </div>
-
       <div className="horario-disponivel">
         <h2>Horários Disponíveis</h2>
+        <div className="periodo_manha">
+          <h3>Manhã</h3>
+              <button>09:00H</button>
+              <button>10:00H</button>
+              <button>11:00H</button>
+              <button>12:00H</button>
+        </div>
+        {/* <div className="periodo_tarde">      
+            <h3>Tarde</h3>
+              <button>09:00H</button>
+              <button>10:00H</button>
+              <button>11:00H</button>
+              <button>12:00H</button>
+        </div>
+        <div className="periodo_noite">
+            <h3>Noite</h3>
+              <button>09:00H</button>
+              <button>10:00H</button>
+              <button>11:00H</button>
+              <button>12:00H</button>
+          </div> */}
+          <div className="btn_agendamento">
+          <button>Confirmar Agendamento</button>
+          </div>
+        </div>
 
-        <p>Selecione uma data no calendário.</p>
-
-        <button>Confirmar Agendamento</button>
+      <div className="calendario">
+        {/* <Calendario /> */}
       </div>
+
     </section>
+    
   );
 };
 
