@@ -8,15 +8,15 @@
 
 /* BOTÃO */
 
-.btn {
+.btn{
     display: inline-block;
     background: #0b3c8a;
+    max-width: 350px;
     color: #fff;
     padding: 15px 25px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    margin: 30px;
    }
 
 

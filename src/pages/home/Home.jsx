@@ -70,11 +70,11 @@ const Home = () => {
                 {/* <!-- Círculo --> */}
                 <div className='circulo'>
                     <ul className='letras'>
-                        <li className='p'>P</li>
-                        <li className='e'>E</li>
+                        <li className='p'>T</li>
+                        <li className='e'>A</li>
                         <li className='r'>R</li>
-                        <li className='m'>M</li>
-                        <li className='a'>A</li>
+                        <li className='m'>E</li>
+                        <li className='a'>E</li>
                     </ul>
                 </div>
         

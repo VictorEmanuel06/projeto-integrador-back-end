@@ -1,5 +1,6 @@
 import "./SobreMim.css";
 import doutor from '../../assets/doutor.jpg';
+import { NavLink } from "react-router-dom";
 
 const SobreMim = () => {
   return (
@@ -14,7 +15,7 @@ const SobreMim = () => {
                 construir novas possibilidades.
             </p>    
         </div>
-            <a href="#" class="btn">📅 Agende sua sessão!</a>
+            <NavLink to="/agendamento" href="#" className="btn">📅 Agende sua sessão!</NavLink>
 
     </section>
 
