@@ -15,27 +15,27 @@ const Agendamento = () => {
 
       <div className="horario-disponivel">
         <h2>Horários Disponíveis</h2>
-        <div className="periodo_manha">
-          <h3>Manhã</h3>
+        <h3>Manhã</h3>
+        <div className="periodo-grid">
               <button>09:00H</button>
               <button>10:00H</button>
               <button>11:00H</button>
               <button>12:00H</button>
         </div>
-        {/* <div className="periodo_tarde">      
-            <h3>Tarde</h3>
+        <h3>Tarde</h3>
+        <div className="periodo-grid">
               <button>09:00H</button>
               <button>10:00H</button>
               <button>11:00H</button>
               <button>12:00H</button>
         </div>
-        <div className="periodo_noite">
-            <h3>Noite</h3>
+        <h3>Noite</h3>
+        <div className="periodo-grid">
               <button>09:00H</button>
               <button>10:00H</button>
               <button>11:00H</button>
               <button>12:00H</button>
-          </div> */}
+          </div>
           <div className="btn_agendamento">
           <button>Confirmar Agendamento</button>
           </div>

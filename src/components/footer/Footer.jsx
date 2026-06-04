@@ -1,5 +1,6 @@
 import './Footer.css'
 import logo_page from '../../assets/logo_page.png';
+import { NavLink } from "react-router-dom";
 
 const footer = () => {
 
@@ -14,13 +15,21 @@ const footer = () => {
 
         <div className="footer_block footer-center">
             <ul>
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./servicos.html">Serviços</a></li>
+                <li>
+                    <NavLink to= "/">Home</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/Servicos">Serviços</NavLink>
+                </li>
             </ul>
 
             <ul>
-                <li><a href="./telacontato.html">Contatos</a></li>
-                <li><a href="./sobremim.html">Sobre Mim</a></li>
+                <li>
+                    <NavLink to="/Contatos">Contatos</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/Sobremim">Sobre Mim</NavLink>
+                </li>
             </ul>
         </div>
 
