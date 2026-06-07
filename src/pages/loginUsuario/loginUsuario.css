@@ -17,7 +17,7 @@ main{
 }
 
 
-.card h1{
+.card_login_h1{
     color:#183a8d;
     font-size:40px;
     margin-bottom:10px;
@@ -62,7 +62,7 @@ input{
 }
 
 
-button{
+.entrar{
     width:180px;
     height:45px;
     border:none;

@@ -9,7 +9,7 @@ const AlterarSenhaUsuario = () => {
 
                 <div className="card">
 
-                    <h1>Alterar senha</h1>
+                    <h1 className="card_h1">Alterar senha</h1>
 
                     <p className="descricao">
                         Atualize suas credenciais de acesso com segurança.
@@ -34,10 +34,11 @@ const AlterarSenhaUsuario = () => {
                             dados de acesso e sua privacidade é nossa prioridade absoluta.
                         </div>
 
-
-                        <button>
-                            SALVAR NOVA SENHA
-                        </button>
+                        
+                            <button className="salvar">
+                                SALVAR NOVA SENHA
+                            </button>
+                        
 
                         <a href="#" className="cancelar">
                             Cancelar

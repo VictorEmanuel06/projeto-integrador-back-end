@@ -5,7 +5,7 @@ function LoginUsuario() {
   return (
     <main>
       <div className="card">
-        <h1>Login</h1>
+        <h1 className="card_login_h1">Login</h1>
 
         <p className="descricao">
           Realize o Login para acessar a agenda
@@ -24,7 +24,7 @@ function LoginUsuario() {
             dados de acesso e sua privacidade é nossa prioridade absoluta.
           </div>
 
-          <button type="submit">
+          <button className="entrar" type="submit">
             ENTRAR
           </button>
 

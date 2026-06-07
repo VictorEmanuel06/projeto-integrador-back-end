@@ -6,7 +6,7 @@ const Servicos = () => {
   return (
     <>
       <div className="container">
-        <h1>Serviços</h1>
+        <h1 className="servicos_h1">Serviços</h1>
 
       <div className="services-grid">
         <div className="bubble">
