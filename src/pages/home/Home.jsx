@@ -13,21 +13,7 @@ const Home = () => {
   return (
 <>
     <main className='container'>
-            {/* <!-- CUIDADO --> */}
-
-            <section className='caixa-cuidado'>
-                <div className='texto'>
-                    <h1>Você Merece <br />Cuidado.</h1>
-                    <p>Psicoterapia para adultos <br />
-                    com acolhimento e etica </p>
-                </div>
-
-                <div className='img-1'>
-                    <img src={cuidado} alt='Ilustração sobre cuidado emocional' />
-                </div>
-            </section>
-
-            {/* <!-- Bem Vindo --> */}
+       {/* <!-- Bem Vindo --> */}
         
         <section className='caixa-bem-vindo'>
             <div className='texto'>
@@ -43,6 +29,20 @@ const Home = () => {
                     <img src={acolhimento} alt='Ilustração de acolhimento' />
                 </div>
         </section>
+
+       {/* <!-- CUIDADO --> */}
+
+            <section className='caixa-cuidado'>
+                <div className='texto'>
+                    <h1>Você Merece <br />Cuidado.</h1>
+                    <p>Psicoterapia para adultos <br />
+                    com acolhimento e etica </p>
+                </div>
+
+                <div className='img-1'>
+                    <img src={cuidado} alt='Ilustração sobre cuidado emocional' />
+                </div>
+            </section>
 
         {/* <!-- AUTOCONHECIMENTO  --> */}
 

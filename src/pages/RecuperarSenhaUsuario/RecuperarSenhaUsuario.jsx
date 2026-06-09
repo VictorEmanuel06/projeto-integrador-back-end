@@ -1,44 +1,43 @@
 import "./RecuperarSenhaUsuario.css";
+import { NavLink } from "react-router-dom";
 
 const RecuperarSenhaUsuario = () => {
 
     return (
-        <div class="container">
+        <div className="container">
 
-            <div class="card">
+            <div className="card">
 
-                <div class="icon">↺</div>
+                <div className="icon">↺</div>
 
-                <h1 class="title">Recuperar senha</h1>
+                <h1 className="title">Recuperar senha</h1>
 
-                <p class="description">
+                <p className="description">
                     Para sua segurança, informe o e-mail cadastrado.
                     Enviaremos um link seguro para a criação de uma nova senha.
                 </p>
 
-                <div class="form-group">
+                <div className="form-group">
                     <label>E-mail</label>
                     <input type="email" placeholder="exemplo@email.com">
                     </input>
                 </div>
 
-                <button class="btn">
+                <button className="btn">
                     Enviar instruções →
                 </button>
 
-                <div class="divider"></div>
+                <div className="divider"></div>
 
-                <a href="#" class="back-login">
-                    ← Voltar ao login
-                </a>
+                <NavLink to="/loginusuario"  href="#" className="back-login" > ← Voltar ao login </NavLink>
 
             </div>
 
-            <div class="security-badge">
+            <div className="security-badge">
                 Ambiente Seguro
             </div>
 
-            <div class="info">
+            <div className="info">
                 <h2>Privacidade e cuidado</h2>
 
                 <p>

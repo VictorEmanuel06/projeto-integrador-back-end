@@ -6,13 +6,14 @@ import doutor from '../../assets/doutor.jpg';
 const Agendamento = () => {
   return (
     <section className="container-agendamento">
+
       <div className="infopsi">
-        <img src={doutor} className="foto_agendamento"/>
+        <img src={doutor} className="foto_agendamento" />
         <h1>Dr. Romulo</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Labore sint quae possimus consequatur.
-        </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Labore sint quae possimus consequatur.
+          </p>
       </div>
 
       <div className="horarios">
@@ -20,42 +21,42 @@ const Agendamento = () => {
         <div className="periodo">
           <h2>Manhã</h2>
           <div className="botoes">
-              <button>09:00H</button>
-              <button>10:00H</button>
-              <button>11:00H</button>
-              <button>12:00H</button>
+            <button>09:00H</button>
+            <button>10:00H</button>
+            <button>11:00H</button>
+            <button>12:00H</button>
           </div>
         </div>
         <div className="periodo">
           <h2>Tarde</h2>
           <div className="botoes">
-              <button>09:00H</button>
-              <button>10:00H</button>
-              <button>11:00H</button>
-              <button>12:00H</button>
+            <button>09:00H</button>
+            <button>10:00H</button>
+            <button>11:00H</button>
+            <button>12:00H</button>
           </div>
         </div>
         <div className="periodo">
           <h2>Noite</h2>
           <div className="botoes">
-              <button>09:00H</button>
-              <button>10:00H</button>
-              <button>11:00H</button>
-              <button>12:00H</button>
+            <button>09:00H</button>
+            <button>10:00H</button>
+            <button>11:00H</button>
+            <button>12:00H</button>
           </div>
         </div>
 
-          <div className="btn_agendamento">
-            <button>Confirmar Agendamento</button>
-          </div>
+        <div className="btn_agendamento">
+          <button>Confirmar Agendamento</button>
         </div>
+      </div>
 
       <div className="calendario">
         {/* <Calendario /> */}
       </div>
 
     </section>
-    
+
   );
 };
 

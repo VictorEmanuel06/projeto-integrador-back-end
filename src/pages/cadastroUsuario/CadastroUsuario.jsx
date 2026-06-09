@@ -3,44 +3,44 @@ import "./CadastroUsuario.css"
 const CadastroUsuario = () => {
   return (
     <div>
-        <div class="card">
+        <div className="card">
 
-        <h1 class="title">Cadastro</h1>
+        <h1 className="title">Cadastro</h1>
 
-        <p class="subtitle">
+        <p className="subtitle">
             Cadastre-se para acessar o site.
         </p>
 
-        <div class="form-group">
+        <div className="form-group">
             <label>Nome Completo</label>
             <input type="text"></input>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
             <label>E-mail</label>
-            <input type="email"></input>
+            <input type="mail"></input>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
             <label>Senha</label>
             <input type="password"></input>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
             <label>Confirmar senha</label>
             <input type="password"></input>
         </div>
 
-        <div class="info">
+        <div className="info">
             Seus dados são protegidos por protocolos de segurança.
             Não compartilhamos informações pessoais com terceiros.
         </div>
 
-        <button class="btn">
+        <button className="btn">
             Cadastrar conta →
         </button>
 
-        <div class="login">
+        <div className="login">
             Já possui uma conta?
             <a href="#">Clique para fazer login</a>
         </div>

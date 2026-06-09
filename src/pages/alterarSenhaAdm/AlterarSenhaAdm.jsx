@@ -6,4 +6,4 @@ const AlterarSenhaAdm = () => {
   )
 }
 
-export default AlterarSenhaAdm
+export default AlterarSenhaAdm;

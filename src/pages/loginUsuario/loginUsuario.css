@@ -1,19 +1,11 @@
 
-main{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding: 20px;
-    
-}
-
 .card{
     width:420px;
     background:#d9d9d9;
     padding:40px;
     border-radius:30px;
     text-align:center;
+    margin: 30px;
 }
 
 
