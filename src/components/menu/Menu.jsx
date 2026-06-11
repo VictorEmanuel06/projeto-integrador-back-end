@@ -26,6 +26,12 @@ function Menu() {
 
       <ul className={`nav-list ${active ? "active" : ""}`}>
 
+        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : ""}}>
+          <NavLink to="/loginusuario" className="login-icon">
+            <FaUser />
+          </NavLink>
+        </li>
+
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.3s` : "", }}>
           <NavLink to="/">Home</NavLink>
         </li>
@@ -41,12 +47,7 @@ function Menu() {
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
           <NavLink to="/Contatos">Contatos</NavLink>
         </li>
-        <li>
-          <NavLink to="/loginusuario" className="login-icon">
-            <FaUser />
-          </NavLink>
-
-        </li>
+        
 
 
         {/* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.7s` : "", }}>

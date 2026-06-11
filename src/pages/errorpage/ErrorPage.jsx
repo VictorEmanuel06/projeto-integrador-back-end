@@ -8,8 +8,8 @@ const ErrorPage = () => {
 
   return (
     <div>
-        <h1>Página não encontrada!</h1><br/>
-        <p>Temos um problema</p>
+        <h1 className="error_page">Página não encontrada!</h1><br/>
+        <p className="p_error_page">Temos um problema</p>
     </div>
   )
 }

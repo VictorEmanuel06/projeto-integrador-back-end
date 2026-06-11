@@ -7,7 +7,7 @@ const AlterarSenhaUsuario = () => {
        
             <main>
 
-                <div className="card">
+                <div className="card_senha">
 
                     <h1 className="card_h1">Alterar senha</h1>
 
@@ -40,7 +40,7 @@ const AlterarSenhaUsuario = () => {
                             </button>
                         
 
-                        <a href="#" className="cancelar">
+                        <a href="#" className="cancelar_senha">
                             Cancelar
                         </a>
 

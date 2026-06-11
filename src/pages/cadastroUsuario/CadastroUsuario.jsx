@@ -1,9 +1,10 @@
+import { NavLink } from "react-router-dom";
 import "./CadastroUsuario.css"
 
 const CadastroUsuario = () => {
   return (
-    <div>
-        <div className="card">
+    <main>
+        <div className="card_cadastro">
 
         <h1 className="title">Cadastro</h1>
 
@@ -31,22 +32,19 @@ const CadastroUsuario = () => {
             <input type="password"></input>
         </div>
 
-        <div className="info">
+        <div className="info_cadastro">
             Seus dados são protegidos por protocolos de segurança.
             Não compartilhamos informações pessoais com terceiros.
         </div>
 
-        <button className="btn">
+        <button className="btn-cadastro">
             Cadastrar conta →
         </button>
-
-        <div className="login">
-            Já possui uma conta?
-            <a href="#">Clique para fazer login</a>
-        </div>
+            
+            <NavLink to="/loginusuario" className="voltar_login" >Já possui uma conta? Clique para fazer login</NavLink>
 
     </div>
-    </div>
+    </main>
   )
 }
 

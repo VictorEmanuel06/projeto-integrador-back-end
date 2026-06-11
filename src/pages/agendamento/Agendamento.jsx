@@ -11,8 +11,6 @@ const Agendamento = () => {
         <img src={doutor} className="foto_agendamento" />
         <h1>Dr. Romulo</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Labore sint quae possimus consequatur.
           </p>
       </div>
 

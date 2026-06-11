@@ -23,7 +23,7 @@ const RecuperarSenhaUsuario = () => {
                     </input>
                 </div>
 
-                <button className="btn">
+                <button className="btn-instrucoes">
                     Enviar instruções →
                 </button>
 

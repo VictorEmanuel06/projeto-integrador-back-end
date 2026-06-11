@@ -11,10 +11,12 @@ const Servicos = () => {
       <div className="services-grid">
         <div className="bubble">
           <img src={img}alt="Suporte emocional" className="bubble-img" />
-          <p>Oferecer suporte emocional e orientação para ajudar no processo a lidar com desafios pessoais,
-            profissionais e sociais. Auxiliar no autoconhecimento dos pensamentos, sentimentos e comportamentos,
-            promovendo o autoconhecimento e bem-estar, sempre respeitando a ética e a individualidade de cada
-            pessoa.</p>
+            <p className="services_p">
+              Oferecer suporte emocional e orientação para ajudar no processo a lidar com desafios pessoais,
+              profissionais e sociais. Auxiliar no autoconhecimento dos pensamentos, sentimentos e comportamentos,
+              promovendo o autoconhecimento e bem-estar, sempre respeitando a ética e a individualidade de cada
+              pessoa.
+            </p>
         </div>
 
         <div className="bubble">

@@ -1,5 +1,6 @@
 import React from "react";
 import "./loginUsuario.css";
+import { NavLink } from "react-router-dom";
 
 function LoginUsuario() {
   return (
@@ -28,9 +29,12 @@ function LoginUsuario() {
             ENTRAR
           </button>
 
-          <a href="#" className="cancelar">
+          <NavLink to="/" className="cancelar">
             Cancelar
-          </a>
+          </NavLink>
+
+          <NavLink to="/cadastrousuario"  className="btn_cadastro">Ainda não tem cadastro? Click aqui</NavLink>
+
         </form>
       </div>
     </main>
