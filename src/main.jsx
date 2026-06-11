@@ -6,6 +6,8 @@ import "./index.css";
 
 import App from "./App.jsx";
 
+import ErrorPage from "./pages/errorpage/ErrorPage.jsx";
+
 import { createBrowserRouter, RouterProvider, Route, Navigate} from "react-router-dom";
 
 /* ROTAS */
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-
+    errorElement: <ErrorPage />,
     children: [
       { 
       path: "/", 
@@ -107,8 +109,8 @@ const router = createBrowserRouter([
       {
         path: "/calendario",
         element: <Calendario />
-      }
-
+      },
+      
 
     ]
   }

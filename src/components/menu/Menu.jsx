@@ -2,6 +2,8 @@ import "../menu/Menu.css";
 import logo_page from '../../assets/logo_page.png';
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
+
 
 function Menu() {
   const [active, setActive] = useState(false);
@@ -39,6 +41,12 @@ function Menu() {
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
           <NavLink to="/Contatos">Contatos</NavLink>
         </li>
+        <li>
+          <NavLink to="/loginusuario" className="login-icon">
+            <FaUser />
+          </NavLink>
+
+        </li>
 
 
         {/* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.7s` : "", }}>
@@ -54,9 +62,9 @@ function Menu() {
           <NavLink to="/Alterarsenhausuario">Alterar Senha Usuário</NavLink>
         </li> */}
 
-        
+
         { // Linhas ADM comentadas por ter aparecido no menu, deixei por precaução
-        
+
         /* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.11s` : "", }}>
           <NavLink to="/LoginAdm">Login Adm</NavLink>
         </li>

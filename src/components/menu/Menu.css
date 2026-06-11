@@ -8,6 +8,12 @@
     position: relative;
     z-index: 1000;
   }
+
+  .login-icon svg {
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
   
   .logo-menu {
     max-width: 160px;
