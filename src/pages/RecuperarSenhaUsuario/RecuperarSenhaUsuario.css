@@ -11,7 +11,7 @@
   padding: 20px;
 }
 
-.card{
+.card-recuperar-usuario{
   width: 100%;
   max-width: 380px;
 
@@ -20,7 +20,7 @@
   padding: 22px;
 }
 
-.icon {
+.icon-usuario {
   width: 26px;
   height: 26px;
   background: #ffffff;
@@ -33,7 +33,7 @@
   margin-bottom: 10px;
 }
 
-.title {
+.title-recuperar-usuario {
   color: #0b4aa6;
   font-size: 2rem;
   margin-bottom: 12px;

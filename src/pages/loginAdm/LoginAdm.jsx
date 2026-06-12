@@ -11,12 +11,12 @@ const LoginAdm = () => {
         Faça o login para acessar o site.
       </p>
  
-      <div class="form-group">
+      <div class="form-adm">
         <label>E-mail</label>
         <input type="email"></input>
       </div>
  
-      <div class="form-group">
+      <div class="form-adm">
         <label>Senha</label>
         <input type="password"></input>
       </div>

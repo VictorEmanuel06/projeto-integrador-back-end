@@ -6,11 +6,11 @@ const RecuperarSenhaUsuario = () => {
     return (
         <div className="container">
 
-            <div className="card">
+            <div className="card-recuperar-usuario">
 
-                <div className="icon">↺</div>
+                <div className="icon-usuario">↺</div>
 
-                <h1 className="title">Recuperar senha</h1>
+                <h1 className="title-recuperar-usuario">Recuperar senha</h1>
 
                 <p className="description">
                     Para sua segurança, informe o e-mail cadastrado.

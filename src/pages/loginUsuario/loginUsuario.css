@@ -1,48 +1,53 @@
 
-.card{
-    width:420px;
-    background:#d9d9d9;
-    padding:40px;
-    border-radius:30px;
-    text-align:center;
+.card-usuario{
+    width: 420px;
+    background: #d9d9d9;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
     margin: 30px;
+    font-family: "Montserrat", sans-serif;
 }
 
-
-.card_login_h1{
-    color:#183a8d;
-    font-size:40px;
-    margin-bottom:10px;
+.card-login-h1{
+    color: #000;
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
-.descricao{
-    color:#3e4a5a;
-    margin-bottom:35px;
+.descricao-usuario{
+    color: #3e4a5a;
+    margin-bottom: 35px;
 }
 
-
-form{
+.form-usuario{
     display:flex;
     flex-direction:column;
 }
 
 
-label{
-    text-align:left;
-    margin-bottom:8px;
-    font-size:13px;
-    color:#444;
+.label-usuario{
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #000;
 }
 
 
-input{
-    height:40px;
-    border:none;
-    border-radius:8px;
-    margin-bottom:20px;
-    padding-left:10px;
+.password-usuario{
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding-left: 10px;
 }
 
+.esqueci-senha-usuario{
+    margin-right: 160px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #000;
+}
 
 .alerta{
     background:#c8d4df;
@@ -52,7 +57,6 @@ input{
     font-size:12px;
     margin:10px 0 30px;
 }
-
 
 .entrar{
     width:180px;

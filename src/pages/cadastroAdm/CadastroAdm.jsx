@@ -3,7 +3,7 @@ import "./CadastroAdm.css";
 const CadastroAdm = () => {
   return (
  
-    <div class="card">
+    <div class="caixa-adm">
  
         <h1 class="title">Cadastro</h1>
  
@@ -11,22 +11,22 @@ const CadastroAdm = () => {
             Cadastre-se para acessar o site.
         </p>
  
-        <div class="form-group">
+        <div class="form-adm">
             <label>Nome Completo</label>
             <input type="text"></input>
         </div>
  
-        <div class="form-group">
+        <div class="form-adm">
             <label>E-mail</label>
             <input type="email"></input>
         </div>
  
-        <div class="form-group">
+        <div class="form-adm">
             <label>Senha</label>
             <input type="password"></input>
         </div>
  
-        <div class="form-group">
+        <div class="form-adm">
             <label>Confirmar senha</label>
             <input type="password"></input>
         </div>

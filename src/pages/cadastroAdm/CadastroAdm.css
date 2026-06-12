@@ -1,4 +1,4 @@
-.card {
+.caixa-adm {
     width: 100%;
     margin-inline: auto;
     max-width: 380px;
@@ -24,18 +24,18 @@
     width: 100%;
 }
  
-.form-group {
+.form-adm {
     margin-bottom: 10px;
 }
  
-.form-group label {
+.form-adm label {
     display: block;
     font-size: 14px;
     color: #fff;
     margin-bottom: 6px;
 }
  
-.form-group input {
+.form-adm input {
     width: 100%;
     height: 36px;
     border: none;

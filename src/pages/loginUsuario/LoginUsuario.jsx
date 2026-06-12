@@ -5,19 +5,20 @@ import { NavLink } from "react-router-dom";
 function LoginUsuario() {
   return (
     <main>
-      <div className="card">
-        <h1 className="card_login_h1">Login</h1>
+      <div className="card-usuario">
+        <h1 className="card-login-h1">Login</h1>
 
-        <p className="descricao">
+        <p className="descricao-usuario">
           Realize o Login para acessar a agenda
         </p>
 
-        <form>
-          <label>Login atual</label>
-          <input type="text" />
+        <form className="form-usuario">
+          <label className="label-usuario">Login atual</label>
+          <input type="text" placeholder="exemplo@email.com"/>
 
-          <label>Senha</label>
-          <input type="password" />
+          <label className="label-usuario">Senha</label>
+          <input className="password-usuario" type="password" />
+          <NavLink to="/recuperarsenhausuario" className="esqueci-senha-usuario">Esqueci minha senha!</NavLink>
 
           <div className="alerta">
             Certifique-se de que sua senha contenha letras,
