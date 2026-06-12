@@ -32,7 +32,7 @@ const CadastroUsuario = () => {
             <input type="password"></input>
         </div>
 
-        <div className="info_cadastro">
+        <div className="info-cadastro">
             Seus dados são protegidos por protocolos de segurança.
             Não compartilhamos informações pessoais com terceiros.
         </div>

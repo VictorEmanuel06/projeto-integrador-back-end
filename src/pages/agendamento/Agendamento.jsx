@@ -7,51 +7,66 @@ const Agendamento = () => {
   return (
     <section className="container-agendamento">
 
-      <div className="infopsi">
+    <div className="conteudo-agendamento">
+
+      <div className="coluna-esquerda">
+      <div className="caixa-psi">
         <img src={doutor} className="foto_agendamento" />
+
+        <div className="info-psi">
         <h1>Dr. Romulo</h1>
+
           <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Eaque nihil iusto a voluptatem? Accusantium reprehenderit
           </p>
+        </div>
       </div>
 
+
+    
+
+        <div className="calendario">
+          <Calendario />
+        </div>
+      </div>
+
+      
       <div className="horarios">
         <h1>Horários Disponíveis</h1>
-        <div className="periodo">
-          <h2>Manhã</h2>
-          <div className="botoes">
-            <button>09:00H</button>
-            <button>10:00H</button>
-            <button>11:00H</button>
-            <button>12:00H</button>
+
+        <p>Segunda feira, 19 de junho, 2026</p>
+
+
+        <h2>Manhã</h2>
+          <div className="caixa-botoes">
+            <button className="botoes">09:00H</button>
+            <button className="botoes">10:00H</button>
+            <button className="botoes">11:00H</button>
+            <button className="botoes">12:00H</button>
           </div>
-        </div>
-        <div className="periodo">
-          <h2>Tarde</h2>
-          <div className="botoes">
-            <button>09:00H</button>
-            <button>10:00H</button>
-            <button>11:00H</button>
-            <button>12:00H</button>
-          </div>
-        </div>
-        <div className="periodo">
-          <h2>Noite</h2>
-          <div className="botoes">
-            <button>09:00H</button>
-            <button>10:00H</button>
-            <button>11:00H</button>
-            <button>12:00H</button>
-          </div>
+
+        <h2>Tarde</h2>
+          <div className="caixa-botoes">
+            <button className="botoes">09:00H</button>
+            <button className="botoes">10:00H</button>
+            <button className="botoes">11:00H</button>
+            <button className="botoes">12:00H</button>
         </div>
 
-        <div className="btn_agendamento">
-          <button>Confirmar Agendamento</button>
-        </div>
-      </div>
+        <h2>Noite</h2>
+          <div className="caixa-botoes">
+            <button className="botoes">09:00H</button>
+            <button className="botoes">10:00H</button>
+            <button className="botoes">11:00H</button>
+            <button className="botoes">12:00H</button>
+          </div>
 
-      <div className="calendario">
-        {/* <Calendario /> */}
+          <button className="btn-agendamento">Confirmar Agendamento →</button>
+
       </div>
+    </div>
+
 
     </section>
 
