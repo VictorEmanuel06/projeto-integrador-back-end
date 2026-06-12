@@ -4,7 +4,7 @@ import "./CadastroUsuario.css"
 const CadastroUsuario = () => {
   return (
     <main>
-        <div className="card_cadastro">
+        <div className="caixa-cadastro">
 
         <h1 className="title">Cadastro</h1>
 

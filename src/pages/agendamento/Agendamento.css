@@ -53,7 +53,7 @@
   padding: 20px;
   gap: 20px;
   max-width: 700px;
-  height: 557px;
+  /* height: 557px; */
 
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@
 
 
 .botoes {
-  width: 140px;
+  min-width: 120px;
   height: 40px;
   border: none;
   border-radius: 20px;
@@ -90,7 +90,7 @@
   border-radius: 20px;
   background: #0b4aa6;
   color: #fff;
-  font-size: 100;
+  font-size: 14px;
   cursor: pointer;
   transition: 0.3s;
 
@@ -103,4 +103,35 @@
 .calendario{
   background: #D9D9D9;
   border-radius: 20px;
+}
+
+@media (max-width: 1220px) {
+    
+  
+  
+  
+  
+  
+  
+  
+  .horarios{
+      display: flex;
+      flex-wrap: wrap;
+      width: 400px;
+
+    }
+
+    .caixa-botoes{
+      justify-content: center;
+    }
+
+    .botoes{
+      width: 100px;
+      height: 40px;
+    }
+
+    .btn-agendamento{
+      margin-left: 60px;
+    }
+
 }
