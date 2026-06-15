@@ -12,16 +12,25 @@ app.get("/", (req, res) => {
 });
 
 app.post("/cadastrousuario", (req, res) => {
-    const { nome, email, senha } = req.body;
+    console.log("BODY:", req.body);
 
-    const sql = "INSERT INTO cadastro_cliente (nome, email, password) VALUES(?)";
+    const sql = "INSERT INTO cadastro_cliente(nomecompleto, email, senha) VALUES(?)";
 
-    db.query(sql, [nome, email, senha], (err, result) => {
+    const valores = [
+        req.body.name,
+        req.body.email,
+        req.body.password
+    ];
+
+    console.log("VALORES:", valores);
+
+    db.query(sql, [valores], (err, data) => {
         if (err) {
-            return res.status(500).json(err);
+            console.log("ERRO MYSQL:", err);
+            return res.status(500).json({ error: "Erro ao cadastrar" });
         }
 
-        res.json({ message: "Usuário cadastrado com sucesso!" });
+        return res.json(data);
     });
 });
 

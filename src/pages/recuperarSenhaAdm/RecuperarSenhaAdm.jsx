@@ -1,5 +1,5 @@
 import React from 'react'
-import "RecuperarSenhaAdm.css";
+import "./RecuperarSenhaAdm.css";
 
 const RecuperarSenhaAdm = () => {
   return (
@@ -16,7 +16,7 @@ const RecuperarSenhaAdm = () => {
                 Enviaremos um link seguro para a criação de uma nova senha.
             </p>
 
-            <div class="form-group">
+            <div class="form-group-adm">
                 <label>E-mail</label>
                 <input type="email" placeholder="exemplo@email.com">
                 </input>

@@ -1,6 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./CadastroUsuario.css"
 import axios from "axios";
+import ValidacaodeCadastro from "../../services/ValidacaodeCadastro";
 
 const CadastroUsuario = () => {
     const [valores, setValores] = useState({
@@ -11,7 +13,7 @@ const CadastroUsuario = () => {
 
 const navegacao = useNavigate();
 
-const [errors, setErrors] = useState({})
+const [validationErrors, setValidationErrors] = useState({})
 
 
 const handleInput = async (event) => {
@@ -20,10 +22,14 @@ const handleInput = async (event) => {
 
 const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrors(ValidacaodeCadastro(valores));
+    setValidationErrors(ValidacaodeCadastro(valores));
 
-    if(errors.name === "" && errors.email === "" && errors.password === ""){
-        axios.post('http://localhost;7006/cadastrousuario', valores)
+    if(
+      validationErrors.name === "" && 
+      validationErrors.email === "" && 
+      validationErrors.password === ""
+    ) {
+        axios.post('http://localhost:7006/cadastrousuario', valores)
         .then(res => {
             console.log(res);
             navegacao("/loginusuario");
@@ -31,10 +37,6 @@ const handleSubmit = async (event) => {
         .catch(err => console.log(err));
     }
 }
-
-
-
-
 
 
   return (
@@ -48,37 +50,37 @@ const handleSubmit = async (event) => {
         </p>
 
         <div className="form-usuario">
-            <label>Nome Completo</label>
+            <label htmlFor="name">Nome Completo</label>
             <input type="text" placeholder="Digite seu nome completo" name="name"
-                onChange={handleInput} 
-            />
+                onChange={handleInput} />
+            <span> {validationErrors.name} </span>
         </div>
 
         <div className="form-usuario">
-            <label>E-mail</label>
-            <input type="mail" name="email"
-                onChange={handleInput} 
-            />
+            <label htmlFor="email">E-mail</label>
+            <input type="email" name="email"
+                onChange={handleInput} />
+            <span> {validationErrors.email} </span>
         </div>
 
         <div className="form-usuario">
-            <label>Senha</label>
+            <label htmlFor="password">Senha</label>
             <input type="password" name="password"
-                onChange={handleInput}
-            />
+                onChange={handleInput} />
+            <span> {validationErrors.password} </span>
         </div>
 
-        <div className="form-usuario">
+        {/* <div className="form-usuario">
             <label>Confirmar senha</label>
             <input type="password"></input>
-        </div>
+        </div> */}
 
         <div className="info-usuario">
             Seus dados são protegidos por protocolos de segurança.
             Não compartilhamos informações pessoais com terceiros.
         </div>
 
-        <button className="btn-usuario">
+        <button type="submit" className="btn-usuario">
             Cadastrar conta →
         </button>
             

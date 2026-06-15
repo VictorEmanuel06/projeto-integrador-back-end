@@ -1,5 +1,5 @@
 import React from 'react'
-import "AlterarSenhaAdm.jsx";
+import "./AlterarSenhaAdm.jsx";
  
  
 const AlterarSenhaAdm = () => {

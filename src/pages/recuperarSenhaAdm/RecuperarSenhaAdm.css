@@ -38,18 +38,18 @@
         margin-bottom: 22px;
     }
 
-    .form-group {
+    .form-group-adm {
         margin-bottom: 20px;
     }
 
-    .form-group label {
+    .form-group-adm label {
         display: block;
         margin-bottom: 8px;
         color: #fff;
         font-size: 1rem;
     }
 
-    .form-group input {
+    .form-group-adm input {
         width: 100%;
         height: 48px;
         border: none;

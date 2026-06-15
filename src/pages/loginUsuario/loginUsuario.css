@@ -17,7 +17,7 @@
 
 .descricao-usuario{
     color: #3e4a5a;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 .form-usuario{
@@ -27,10 +27,13 @@
 
 
 .label-usuario{
-    text-align: left;
+    margin-right: 210px;
     margin-bottom: 8px;
     font-size: 15px;
     color: #000;
+}
+.label-usuario-senha{
+    margin-right: 240px;
 }
 
 
@@ -45,7 +48,7 @@
 .esqueci-senha-usuario{
     margin-right: 160px;
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 14px;
     color: #000;
 }
 
@@ -90,7 +93,7 @@
     border: none;
     cursor: pointer;
 
-    margin: 15px 10px 10px 70px;
+    margin: 15px 10px 10px 20px;
 
 }
 

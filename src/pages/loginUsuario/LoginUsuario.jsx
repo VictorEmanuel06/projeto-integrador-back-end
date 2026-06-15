@@ -16,13 +16,12 @@ function LoginUsuario() {
           <label className="label-usuario">Login atual</label>
           <input type="text" placeholder="exemplo@email.com"/>
 
-          <label className="label-usuario">Senha</label>
+          <label className="label-usuario-senha">Senha</label>
           <input className="password-usuario" type="password" />
           <NavLink to="/recuperarsenhausuario" className="esqueci-senha-usuario">Esqueci minha senha!</NavLink>
 
           <div className="alerta">
-            Certifique-se de que sua senha contenha letras,
-            números e símbolos. Nunca compartilhamos seus
+            Nunca compartilhamos seus
             dados de acesso e sua privacidade é nossa prioridade absoluta.
           </div>
 
