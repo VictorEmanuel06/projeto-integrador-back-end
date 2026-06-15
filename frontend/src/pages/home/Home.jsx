@@ -1,4 +1,4 @@
-import "../home/Home.css";
+import "./Home.css";
 import cuidado from '../../assets/img_cuidado.png';
 import acolhimento from '../../assets/img_acolhimento.png';
 import autoconhecimento from '../../assets/img_autoconhecimento.png';

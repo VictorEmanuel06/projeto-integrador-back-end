@@ -1,4 +1,4 @@
-import "../menu/Menu.css";
+import "./Menu.css";
 import logo_page from '../../assets/logo_page.png';
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
