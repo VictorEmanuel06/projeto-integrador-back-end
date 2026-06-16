@@ -40,7 +40,7 @@ const handleSubmit = async (event) => {
 
 
   return (
-    <form action="" onSubmit={handleSubmit}>
+    <form action="" onSubmit={handleSubmit} className="form-cad-user">
         <div className="caixa-usuario">
 
         <h1 className="title-usuario">Cadastro</h1>

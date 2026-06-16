@@ -32,12 +32,26 @@ function LoginUsuario() {
   })
 
   const handleSubimt = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    setErrors(ValidacaoDeLogin)((valores));
 
+    if(errors.email === "" && errors.password === ""){
+      axios.post('http://localhost:7006/loginusuario', valores)
+      .then(res => {
+        if(res.data === "Login realizado com sucesso"){
+          console.log(res);
+          navegacao("/");
+        } else {
+          alert("Registro inexistente");
+          console.log(res);
+        }
+      })
+      .catch(err => console.log(err));
+    }
   }
 
   return (
-    <main>
+    
       <div className="card-usuario">
         <h1 className="card-login-h1">Login</h1>
 
@@ -57,7 +71,7 @@ function LoginUsuario() {
           <div>
             <label htmlFor="password" className="label-usuario-senha">Senha</label>
             <input className="password-usuario" type="password" onChange={handleInput}/>
-            <span> {erros.email} </span>
+            <span> {errors.email} </span>
             <NavLink to="/recuperarsenhausuario" className="esqueci-senha-usuario">Esqueci minha senha!</NavLink>
           </div>
 
@@ -78,7 +92,7 @@ function LoginUsuario() {
 
         </form>
       </div>
-    </main>
+      
   );
 }
 

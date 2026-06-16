@@ -13,6 +13,11 @@
   font-size: 20px;
   color: #fff;
   cursor: pointer;
+  order: 999;
+}
+
+.item-login{
+  order: 999;
 }
   
   .logo-menu {
@@ -65,6 +70,10 @@
 
     .mobile-menu {
       display: block;
+    }
+
+    .item-login{
+      order: -1;
     }
 
     .nav-list {

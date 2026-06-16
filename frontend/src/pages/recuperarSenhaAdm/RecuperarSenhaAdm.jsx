@@ -3,15 +3,15 @@ import "./RecuperarSenhaAdm.css";
 
 const RecuperarSenhaAdm = () => {
   return (
-    <div class="container">
+    <div class="container-rec">
 
-        <div class="card">
+        <div class="card-rec">
 
             <div class="icon">↺</div>
 
-            <h1 class="title">Recuperar senha</h1>
+            <h1 class="title-rec">Recuperar senha</h1>
 
-            <p class="description">
+            <p class="description-rec">
                 Para sua segurança, informe o e-mail cadastrado.
                 Enviaremos um link seguro para a criação de uma nova senha.
             </p>

@@ -26,7 +26,7 @@ function Menu() {
 
       <ul className={`nav-list ${active ? "active" : ""}`}>
 
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : ""}}>
+        <li className="item-login" style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : ""}}>
           <NavLink to="/loginusuario" className="login-icon">
             <FaUser />
           </NavLink>

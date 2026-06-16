@@ -1,4 +1,6 @@
 import React from 'react'
+import "./LoginAdm.css";
+import { NavLink } from "react-router-dom";
  
 const LoginAdm = () => {
   return (
@@ -7,7 +9,7 @@ const LoginAdm = () => {
  
       <h1 class="title-loginAdm">Login</h1>
  
-      <p class="subtitle">
+      <p class="subtitle-adm">
         Faça o login para acessar o site.
       </p>
  
@@ -19,13 +21,11 @@ const LoginAdm = () => {
       <div class="form-adm">
         <label>Senha</label>
         <input type="password"></input>
+        <NavLink to="/recuperarsenhaadm" className="esquecisenhaadm">Esqueci minha senha</NavLink>
       </div>
+
  
-      <div className="esquecisenha">
-        <a href="/alterar"></a>
-      </div>
- 
-      <div class="info">
+      <div class="info-adm">
         Seus dados são protegidos por protocolos de segurança.
         Não compartilhamos informações pessoais com terceiros.
       </div>
@@ -34,9 +34,9 @@ const LoginAdm = () => {
         Logar →
       </button>
  
-      <div class="login">
+      <div class="login-adm">
         Não possui uma conta?
-        <a href="/cadastroadm"> Clique para fazer o cadastro</a>
+        <NavLink to="/cadastroadm" className="redi-cad-adm"> Clique para fazer o cadastro</NavLink>
       </div>
  
     </div>

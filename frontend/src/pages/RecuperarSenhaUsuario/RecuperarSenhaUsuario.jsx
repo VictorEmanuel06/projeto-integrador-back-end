@@ -17,7 +17,7 @@ const RecuperarSenhaUsuario = () => {
                     Enviaremos um link seguro para a criação de uma nova senha.
                 </p>
 
-                <div className="form-group">
+                <div className="form-group-user">
                     <label>E-mail</label>
                     <input type="email" placeholder="exemplo@email.com">
                     </input>
@@ -33,11 +33,11 @@ const RecuperarSenhaUsuario = () => {
 
             </div>
 
-            <div className="security-badge">
+            <div className="security-badge-user">
                 Ambiente Seguro
             </div>
 
-            <div className="info">
+            <div className="info-user">
                 <h2>Privacidade e cuidado</h2>
 
                 <p>
