@@ -8,12 +8,15 @@ import axios from "axios";
 function LoginUsuario() {
   const [valores, setValores] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const navegacao = useNavigate();
 
-  const [errors, setErrors] = useState ({});
+  const [errors, setErrors] = useState ({
+    email: "",
+    password: ""
+  });
 
   const handleInput = (event) => {
     setValores(prev => ({...prev, [event.target.name]: event.target.value}))
@@ -29,21 +32,22 @@ function LoginUsuario() {
       }
     })
     .catch(err => console.log(err))
-  })
+  }, []);
 
   const handleSubimt = async (event) => {
     event.preventDefault();
-    setErrors(ValidacaoDeLogin)((valores));
+    setErrors(ValidacaoDeLogin(valores));
 
     if(errors.email === "" && errors.password === ""){
-      axios.post('http://localhost:7006/loginusuario', valores)
+      axios.post('http://localhost:7006/loginusuario', valores, {withCredentials: true})
       .then(res => {
-        if(res.data === "Login realizado com sucesso"){
-          console.log(res);
+        console.log("RESPOSTA:", res.data);
+
+        if(res.data.success ) {
+          console.log(res.data);
           navegacao("/");
         } else {
           alert("Registro inexistente");
-          console.log(res);
         }
       })
       .catch(err => console.log(err));
@@ -52,6 +56,7 @@ function LoginUsuario() {
 
   return (
     
+    <div className="container-login-user">
       <div className="card-usuario">
         <h1 className="card-login-h1">Login</h1>
 
@@ -65,13 +70,14 @@ function LoginUsuario() {
             <label htmlFor="email" className="label-usuario">Login atual</label>
             <input type="text" placeholder="exemplo@email.com" name="email"
             onChange={handleInput} />
-            <span> {errors.email} </span>
+            <span>{errors.email}</span>
           </div>
 
           <div>
             <label htmlFor="password" className="label-usuario-senha">Senha</label>
-            <input className="password-usuario" type="password" onChange={handleInput}/>
-            <span> {errors.email} </span>
+            <input className="password-usuario" type="password" name="password"
+            onChange={handleInput}/>
+            <span>{errors.password}</span>
             <NavLink to="/recuperarsenhausuario" className="esqueci-senha-usuario">Esqueci minha senha!</NavLink>
           </div>
 
@@ -80,7 +86,7 @@ function LoginUsuario() {
             dados de acesso e sua privacidade é nossa prioridade absoluta.
           </div>
 
-          <button className="entrar" type="submit">
+          <button to="/agendamento" className="entrar" type="submit">
             ENTRAR
           </button>
 
@@ -92,6 +98,7 @@ function LoginUsuario() {
 
         </form>
       </div>
+    </div>
       
   );
 }

@@ -1,3 +1,9 @@
+.container-login-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
 .card-usuario{
     width: 420px;
@@ -5,7 +11,6 @@
     padding: 40px;
     border-radius: 30px;
     text-align: center;
-    margin: 30px;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -46,8 +51,9 @@
 }
 
 .esqueci-senha-usuario{
-    margin-right: 160px;
-    margin-bottom: 10px;
+    /* margin-right: 160px;
+    margin-bottom: 40px;
+    margin-top: 40px; */
     font-size: 14px;
     color: #000;
 }
@@ -62,14 +68,14 @@
 }
 
 .entrar{
-    width:180px;
-    height:45px;
-    border:none;
-    border-radius:25px;
-    background:#183a8d;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
+    width: 180px;
+    height: 45px;
+    border: none;
+    border-radius: 25px;
+    background: #183a8d;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 
     margin:auto;
 }

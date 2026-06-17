@@ -1,15 +1,27 @@
 import express from "express";
 import cors from "cors";
 import db from "./db.js";
+import session from "express-session";
+
 
 const app = express();
-
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ["POST", "GET"],
+    credentials: true
+}));
 app.use(express.json());
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        httpOnly: true
+    }
+}));
 
-app.get("/", (req, res) => {
-    res.send("Servidor funcionando!");
-});
+
 
 app.post("/cadastrousuario", (req, res) => {
     console.log("BODY:", req.body);
@@ -35,9 +47,63 @@ app.post("/cadastrousuario", (req, res) => {
 });
 
 
+//READ
+app.post("/loginusuario", (req, res) => {
+    const sql =
+       "SELECT * FROM cadastro_cliente WHERE email = ? AND senha = ?";
+
+    db.query(sql, [req.body.email, req.body.password], (err, data) => {
+        if(err) {
+            console.log(err);
+            return res.status(500).json({ 
+                error: "Erro no login"
+            });
+            
+        }
+        console.log(req.body);
+        console.log(data);
+
+        if(data.length > 0) {
+
+            req.session.username = 
+              data[0].nomecompleto;
+
+            return res.json({
+                success: true,
+                name: data[0].nomecompleto
+            });
+        } 
+            return res.json({
+                success: false
+         });
+        }
+    );
+});
+
+
+app.get("/", (req, res) => {
+    console.log(req.session);
+
+    if (req.session?.username) {
+        return res.json({
+            valid: true,
+            name: req.session.username
+        });
+    }
+
+        return res.json({
+            valid: false
+        });
+});
+
+
+
+
+
+
 
 
 app.listen(7006, () => {
     console.log("Servidor rodando na porta 7006");
-})
+});
 
