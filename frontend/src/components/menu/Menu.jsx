@@ -10,7 +10,7 @@ import { FaUser } from "react-icons/fa";
 function Menu() {
   const [active, setActive] = useState(false);
 
-  const usuarioLogado = false;
+  const usuarioLogado = true;
 
   return (
     <nav className='menu'>

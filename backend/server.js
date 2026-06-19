@@ -103,7 +103,7 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(7006, () => {
-    console.log("Servidor rodando na porta 7006");
-});
+app.listen(process.env.PORT, () => {
+    console.log(`Servidor rodando na porta ${process.env.PORT}`);
+})
 
