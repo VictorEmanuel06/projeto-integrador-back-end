@@ -1,5 +1,7 @@
 import "./Menu.css";
 import logo_page from '../../assets/logo_page.png';
+import icon_sair from '../../assets/icon_sair.png';
+import user from '../../assets/user.png';
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
@@ -7,6 +9,8 @@ import { FaUser } from "react-icons/fa";
 
 function Menu() {
   const [active, setActive] = useState(false);
+
+  const usuarioLogado = false;
 
   return (
     <nav className='menu'>
@@ -27,8 +31,12 @@ function Menu() {
       <ul className={`nav-list ${active ? "active" : ""}`}>
 
         <li className="item-login" style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : ""}}>
-          <NavLink to="/loginusuario" className="login-icon">
-            <FaUser />
+          <NavLink to="/loginusuario" className="login-icon" >
+            {usuarioLogado ? (
+              <img src={icon_sair} alt="Sair" className="icon_sair" />
+            ) : (
+              <FaUser />
+            )}
           </NavLink>
         </li>
 
@@ -47,37 +55,6 @@ function Menu() {
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
           <NavLink to="/Contatos">Contatos</NavLink>
         </li>
-        
-
-
-        {/* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.7s` : "", }}>
-          <NavLink to="/loginusuario">Login Usuário</NavLink>
-        </li>
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.8s` : "", }}>
-          <NavLink to="/Cadastrousuario">Cadastro Usuário</NavLink>
-        </li>
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.9s` : "", }}>
-          <NavLink to="/Recuperarsenhausuario">Recuperar senha Usuário</NavLink>
-        </li>
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.10s` : "", }}>
-          <NavLink to="/Alterarsenhausuario">Alterar Senha Usuário</NavLink>
-        </li> */}
-
-
-        { // Linhas ADM comentadas por ter aparecido no menu, deixei por precaução
-
-        /* <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.11s` : "", }}>
-          <NavLink to="/LoginAdm">Login Adm</NavLink>
-        </li>
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.12s` : "", }}>
-          <NavLink to="/CadastroAdm">Cadastro Adm</NavLink>
-        </li>
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.13` : "", }}>
-          <NavLink to="/RecuperarSenhaAdm">Recuperar Senha Adm</NavLink>
-        </li>
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.14s` : "", }}>
-          <NavLink to="/AlterarSenhaadm">Alterar senha Adm</NavLink>
-        </li> */}
 
       </ul>
     </nav>

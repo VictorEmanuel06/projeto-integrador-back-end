@@ -20,6 +20,10 @@
   order: 999;
 }
   
+.icon_sair{
+  height: 20px;
+}
+
   .logo-menu {
     max-width: 160px;
   }
