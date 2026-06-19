@@ -86,3 +86,12 @@
     text-decoration: none;
     font-weight: 600;
 }
+
+ 
+.erro {
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+}
+ 

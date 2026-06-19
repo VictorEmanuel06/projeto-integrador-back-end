@@ -24,8 +24,6 @@ const Agendamento = () => {
       </div>
 
 
-    
-
         <div className="calendario">
           <Calendario />
         </div>
@@ -62,7 +60,7 @@ const Agendamento = () => {
             <button className="botoes">12:00H</button>
           </div>
 
-          <button className="btn-agendamento">Confirmar Agendamento →</button>
+          <button className="agendamento">Confirmar Agendamento →</button>
 
       </div>
     </div>
