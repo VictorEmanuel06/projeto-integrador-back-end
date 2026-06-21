@@ -109,8 +109,9 @@
   .horarios{
       display: flex;
       flex-wrap: wrap;
-      width: 400px;
+      width: 100%;
       margin-right: 60px;
+
 
     }
 
@@ -124,12 +125,12 @@
     }
 
     .agendamento{
-      margin-left: 60px;
+      margin: 90px;
     }
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 840px) {
   .container-agendamento{
     margin: 20px;
     margin-left: 20px;
@@ -143,8 +144,8 @@
   .horarios{
     display: flex;
     flex-wrap: wrap;
-    width: 450px;
-    height: 850px;
+    width: 100%;
+    min-width: 320px;
     margin-left: 20px;
     margin-right: 10px;
     }
@@ -165,14 +166,64 @@
     margin-left: 10px;
   }
   .agendamento{
-    margin-left: 80px;
+    margin: auto;
   }
 
 }
 
 @media (max-width: 500px) {
-  .horarios{
-    height: 350px;
-    height: 850px;
+  .container-agendamento{
+    margin-left: 10px;
+  }
+
+  .conteudo-agendamento {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .caixa-psi {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .foto_agendamento {
+    width: 90px;
+    height: 90px;
+    margin: 0;
+  }
+
+  .info-psi h1 {
+    font-size: 24px;
+  }
+
+  .info-psi p {
+    font-size: 12px;
+  }
+
+  .horarios {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  .caixa-botoes {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .botoes {
+    min-width: 90px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  .agendamento {
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto 0;
+    display: block;
   }
 }

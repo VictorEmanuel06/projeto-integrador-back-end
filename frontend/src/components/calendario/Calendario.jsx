@@ -16,10 +16,6 @@ const Calendario = () => {
       <DateCalendar
         value={data}
         onChange={(newDate) => setData(newDate)}
-        localeText={{
-          previousMonth: "Mês anterior",
-          nextMonth: "Próximo mês",
-        }}
       />
     </LocalizationProvider>
   );
