@@ -1,6 +1,8 @@
-import "./CadastroAdm.css";
+import { NavLink, useNavigate } from "react-router-dom";
 import ValidacaodeCadastroAdm from "../../services/ValidacaodeCadastroAdm";
 import { useState } from "react";
+import "./CadastroAdm.css";
+import axios from "axios";
  
 const CadastroAdm = () => {
   const [valores, setValores] = useState({
@@ -8,41 +10,32 @@ const CadastroAdm = () => {
     email: "",
     password: "",
   });
+
+  const navegacao = useNavigate();
  
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [errors, setErrors] = useState({})
  
   const handleInput = (event) => {
-    setValores((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
+    setValores((prev) => ({...prev, [event.target.name]: event.target.value,}));
+  }
  
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors(ValidacaodeCadastroAdm(valores));
  
-    // 1. Executa a validação passando os dados atuais
-    const validationErrors = ValidacaodeCadastroAdm(valores);
-    setErrors(validationErrors);
- 
-    // 2. Debug para você ver exatamente o que está acontecendo no console (F12)
-    console.log("Valores digitados:", valores);
-    console.log("Erros encontrados:", validationErrors);
- 
-    // 3. Verifica se TODOS os campos retornaram sem nenhuma mensagem de erro (string vazia)
-    const semErros = Object.values(validationErrors).every((erro) => erro === "");
- 
-    if (semErros) {
-      alert("Cadastro realizado com sucesso!");
-      console.log("Enviando para o servidor:", valores);
-     
-      // Aqui você coloca o seu axios.post(...)
+    if(
+      errors.name === "" &&
+      errors.email === "" &&
+      errors.password === ""
+    ) {
+       axios.post('http://localhost:7006/cadastroadm', valores)
+       .then(res => {
+        console.log(res);
+        navegacao("/loginadm");
+       })
+       .catch(err => console.log(err));
     }
-  };
+}
  
   return (
     <div className="card-cadAdm">
@@ -65,7 +58,7 @@ const CadastroAdm = () => {
         </div>
  
         <div className="form-group">
-          <label>E-mail</label>
+          <label htmlFor="email">E-mail</label>
           <input
             type="email"
             name="email"
@@ -76,7 +69,7 @@ const CadastroAdm = () => {
         </div>
  
         <div className="form-group">
-          <label>Senha</label>
+          <label htmlFor="password">Senha</label>
           <input
             type="password"
             name="password"
@@ -103,8 +96,8 @@ const CadastroAdm = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
  
 export default CadastroAdm;
  

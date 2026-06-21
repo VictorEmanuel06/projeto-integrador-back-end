@@ -25,7 +25,7 @@ app.use(session({
 }));
 
 
-
+// rota cadastro usuario
 app.post("/cadastrousuario", (req, res) => {
     console.log("BODY:", req.body);
 
@@ -49,11 +49,71 @@ app.post("/cadastrousuario", (req, res) => {
     });
 });
 
+// rota cadastro adm
+app.post("/cadastroadm", (req, res) => {
+    console.log("BODY:", req.body);
 
-//READ
+    const sql = "INSERT INTO cadastro_adm(nomecompletoadm, emailadm, senhaadm) VALUES(?)";
+
+    const valores = [
+        req.body.name,
+        req.body.email,
+        req.body.password
+    ];
+
+    console.log("VALORES:", valores);
+
+    db.query(sql, [valores], (err, data) => {
+        if (err) {
+            console.log("ERRO MYSQL:", err);
+            return res.status(500).json({ error: "Erro ao cadastrar" });
+        }
+
+        return res.json(data);
+    });
+});
+
+
+
+
+
+//READ LOGIN USUARIO
 app.post("/loginusuario", (req, res) => {
     const sql =
        "SELECT * FROM cadastro_cliente WHERE email = ? AND senha = ?";
+
+    db.query(sql, [req.body.email, req.body.password], (err, data) => {
+        if(err) {
+            console.log(err);
+            return res.status(500).json({ 
+                error: "Erro no login"
+            });
+            
+        }
+        console.log(req.body);
+        console.log(data);
+
+        if(data.length > 0) {
+
+            req.session.username = 
+              data[0].nomecompleto;
+
+            return res.json({
+                success: true,
+                name: data[0].nomecompleto
+            });
+        } 
+            return res.json({
+                success: false
+         });
+        }
+    );
+});
+
+// READ LOGIN ADM
+app.post("/loginadm", (req, res) => {
+    const sql =
+       "SELECT * FROM cadastro_adm WHERE emailadm = ? AND senhaadm = ?";
 
     db.query(sql, [req.body.email, req.body.password], (err, data) => {
         if(err) {
@@ -98,11 +158,6 @@ app.get("/", (req, res) => {
             valid: false
         });
 });
-
-
-
-
-
 
 
 

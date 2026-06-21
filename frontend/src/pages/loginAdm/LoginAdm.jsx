@@ -1,6 +1,7 @@
-import React, { useState } from "react";
 import "./LoginAdm.css";
-import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import ValidacaodeLoginAdm from "../../services/ValidacaodeLoginAdm";
  
 const LoginAdm = () => {
@@ -8,6 +9,8 @@ const LoginAdm = () => {
     email: "",
     password: "",
   });
+
+  const navegacao = useNavigate();
  
   const [errors, setErrors] = useState({
     email: "",
@@ -15,26 +18,41 @@ const LoginAdm = () => {
   });
  
   const handleInput = (event) => {
-    setValores({
-      ...valores,
-      [event.target.name]: event.target.value,
-    });
-  };
- 
-  const handleSubmit = (event) => {
+    setValores(prev => ({...prev, [event.target.name]: event.target.value,}))
+  }
+
+  axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('http://localhost:7006')
+    .then( res => {
+      if(res.data.valid){
+        navegacao('/')
+      }
+    })
+    .catch(err => console.log(err))
+  }, []);
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors(ValidacaodeLoginAdm(valores));
  
-    const validationErrors = ValidacaodeLoginAdm(valores);
-    setErrors(validationErrors);
- 
-    const semErros = Object.values(validationErrors).every((erro) => erro === "");
- 
-    if (semErros) {
-      alert("Login realizado com sucesso!");
-      console.log(valores);
-      // axios.post() aqui
+    if(errors.email === "" && errors.password === ""){
+      axios.post('http://localhost:7006/loginadm', valores)
+      .then(res => {
+        console.log("RESPOSTA:", res.data);
+
+        if(res.data.success ) {
+          console.log(res.data);
+          navegacao("/");
+        } else {
+          alert("Registro inexistente");
+        }
+      })
+      .catch(err => console.log(err));
     }
-  };
+  }
  
   return (
     <div className="card-loginAdm">
@@ -104,7 +122,8 @@ const LoginAdm = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
+
  
 export default LoginAdm;
