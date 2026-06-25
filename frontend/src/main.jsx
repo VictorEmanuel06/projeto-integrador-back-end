@@ -16,6 +16,7 @@ import SobreMim from "./pages/sobremim/SobreMim.jsx";
 import Servicos from "./pages/servicos/Servicos.jsx";
 import Contatos from "./pages/contats/Contatos.jsx";
 import Agendamento from "./pages/agendamento/Agendamento.jsx";
+import usuariosCadastrados from "./pages/usuariosCadastrad/usuariosCadastrados.jsx";
 
 // importando usuario
 import LoginUsuario from "./pages/loginUsuario/LoginUsuario.jsx";
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
       {
         path: "/agendamento",
         element: <Agendamento />
+      },
+
+      {
+        path: "/usuarioscadastrados",
+        element: <usuariosCadastrados />
       },
 
       // // Usuario

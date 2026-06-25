@@ -1,9 +1,68 @@
 import "./Agendamento.css";
 import Calendario from "../../components/calendario/Calendario";
 import doutor from '../../assets/doutor.jpg';
+import { useState } from "react";
+import axios from "axios";
 
 
 const Agendamento = () => {
+
+
+const [horarioSelecionado, setHorarioSelecionado] = useState("");
+
+const selecionarHorario = (horario) => {
+  setHorarioSelecionado(horario);
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefalut();
+
+  try {
+    await axios.post(
+      "http://localhost:7006/agendamentos",
+      {
+        id_clientee: 1,
+        id_adm: 1,
+        data_consulta: dataSelecionada,
+        horario_consulta: horarioSelecionado,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
+    alert("Agendamento realizado!");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+  // Ajustar ainda
+  const gerarHorarios = (inicio, fim, intervalo) => {
+    const horarios = [];
+
+    for (let hora = inicio; hora <= fim; hora++) {
+      horarios.push(`${hora.toString().padStart(2, "0")}:00H`);
+    }
+    return horarios;
+  };
+
+  const manha = ["08:30H", "09:30H", "10:30H", "11:30H"];
+  const tarde = gerarHorarios(13, 16);
+  const noite = ["19:00H", "19:30H", "20:00H", "20:30H"];
+
+
+  const [dataSelecionada, setDataSelecionada] = useState(new Date());
+
+  const dataFormatada = dataSelecionada.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
   return (
     <section className="container-agendamento">
 
@@ -24,8 +83,16 @@ const Agendamento = () => {
       </div>
 
 
+        {/* Calendario */}
         <div className="calendario">
-          <Calendario />
+          <Calendario 
+          value={dataSelecionada}
+          onChange={(novaData) => {
+            if (novaData) {
+          setDataSelecionada(novaData);
+          }
+        }}
+          />
         </div>
       </div>
 
@@ -33,31 +100,43 @@ const Agendamento = () => {
       <div className="horarios">
         <h1>Horários Disponíveis</h1>
 
-        <p>Segunda feira, 19 de junho, 2026</p>
+        <p>
+          {dataFormatada.charAt(0).toUpperCase() + 
+          dataFormatada.slice(1)}
+        </p>
 
 
         <h2>Manhã</h2>
           <div className="caixa-botoes">
-            <button className="botoes">09:00H</button>
-            <button className="botoes">10:00H</button>
-            <button className="botoes">11:00H</button>
-            <button className="botoes">12:00H</button>
+
+            {manha.map((horario) => (
+              <button 
+              key={horario} 
+              onClick={() => selecionarHorario(horario)}
+              className="botoes"
+              >
+                {horario}
+              </button>
+            ))}
+          
           </div>
 
         <h2>Tarde</h2>
+
           <div className="caixa-botoes">
-            <button className="botoes">13:00H</button>
-            <button className="botoes">14:00H</button>
-            <button className="botoes">15:00H</button>
-            <button className="botoes">16:00H</button>
+            {tarde.map((horario) => (
+              <button key={horario} className="botoes">{horario}</button>
+            ))}
+            
         </div>
 
         <h2>Noite</h2>
+
           <div className="caixa-botoes">
-            <button className="botoes">19:00H</button>
-            <button className="botoes">19:30H</button>
-            <button className="botoes">20:00H</button>
-            <button className="botoes">20:30H</button>
+            {noite.map((horario) =>(
+              <button key={horario} className="botoes">{horario}</button>
+            ))}
+            
           </div>
 
           <button className="agendamento">Confirmar Agendamento →</button>
