@@ -46,18 +46,18 @@ const Agendamento = () => {
 
         <h2>Tarde</h2>
           <div className="caixa-botoes">
-            <button className="botoes">09:00H</button>
-            <button className="botoes">10:00H</button>
-            <button className="botoes">11:00H</button>
-            <button className="botoes">12:00H</button>
+            <button className="botoes">13:00H</button>
+            <button className="botoes">14:00H</button>
+            <button className="botoes">15:00H</button>
+            <button className="botoes">16:00H</button>
         </div>
 
         <h2>Noite</h2>
           <div className="caixa-botoes">
-            <button className="botoes">09:00H</button>
-            <button className="botoes">10:00H</button>
-            <button className="botoes">11:00H</button>
-            <button className="botoes">12:00H</button>
+            <button className="botoes">19:00H</button>
+            <button className="botoes">19:30H</button>
+            <button className="botoes">20:00H</button>
+            <button className="botoes">20:30H</button>
           </div>
 
           <button className="agendamento">Confirmar Agendamento →</button>
