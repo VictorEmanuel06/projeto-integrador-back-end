@@ -1,29 +1,41 @@
 import "./Agendamento.css";
 import Calendario from "../../components/calendario/Calendario";
 import doutor from '../../assets/doutor.jpg';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { alertTitleClasses } from "@mui/material/AlertTitle";
 
 
 const Agendamento = () => {
 
-
 const [horarioSelecionado, setHorarioSelecionado] = useState("");
+const [horariosOcupados, setHorariosOcupados] = useState([]);
+
 
 const selecionarHorario = (horario) => {
   setHorarioSelecionado(horario);
 };
 
 const handleSubmit = async (e) => {
-  e.preventDefalut();
+  e.preventDefault();
+
+  if (!horarioSelecionado) {
+    return alert("Escolha um horário antes de continuar.");
+  }
+
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+  if (!usuario) {
+    return alert("Você precisa estar logado!");
+  }
 
   try {
     await axios.post(
       "http://localhost:7006/agendamentos",
       {
-        id_clientee: 1,
+        id_cliente: usuario.id,
         id_adm: 1,
-        data_consulta: dataSelecionada,
+        data_consulta: dataSelecionada.toISOString().split("T")[0],
         horario_consulta: horarioSelecionado,
       },
       {
@@ -35,7 +47,7 @@ const handleSubmit = async (e) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 
 
@@ -62,6 +74,33 @@ const handleSubmit = async (e) => {
     month: "long",
     year: "numeric",
   });
+
+
+  useEffect(() => {
+
+    const buscarHorarios = async () => {
+      try {
+        const data = dataSelecionada.toISOString().split("T")[0];
+
+        const res = await axios.get(
+          `http://localhost:7006/agendamentos/${data}`
+        );
+
+        setHorariosOcupados(res.data);
+
+      } catch (err) {
+        console.log(err);
+      }
+
+    };
+
+    buscarHorarios();
+
+  }, [dataSelecionada]);
+
+
+
+
 
   return (
     <section className="container-agendamento">
@@ -109,37 +148,84 @@ const handleSubmit = async (e) => {
         <h2>Manhã</h2>
           <div className="caixa-botoes">
 
-            {manha.map((horario) => (
+            {manha.map((horario) => {
+
+              const ocupado = horariosOcupados.some(
+                item => item.horario_consulta.slice(0,5) === horario.slice(0,5)
+              );
+
+              return (
+
               <button 
               key={horario} 
+              disabled={ocupado}
               onClick={() => selecionarHorario(horario)}
-              className="botoes"
+              className={`botoes ${ocupado ? "ocupado" : ""}`}
               >
                 {horario}
               </button>
-            ))}
+
+              );
+
+            })}
           
           </div>
 
         <h2>Tarde</h2>
 
           <div className="caixa-botoes">
-            {tarde.map((horario) => (
-              <button key={horario} className="botoes">{horario}</button>
-            ))}
+
+            {tarde.map((horario) => {
+
+              const ocupado = horariosOcupados.some(
+                item => item.horario_consulta.slice(0,5) === horario.slice(0,5)
+              );
+
+              return (
+
+              <button 
+              key={horario} 
+              disabled={ocupado}
+              onClick={() => selecionarHorario(horario)}
+              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              >
+                {horario}
+              </button>
+
+              );
+
+            })}
             
         </div>
 
         <h2>Noite</h2>
 
           <div className="caixa-botoes">
-            {noite.map((horario) =>(
-              <button key={horario} className="botoes">{horario}</button>
-            ))}
+
+            {noite.map((horario) => {
+
+              const ocupado = horariosOcupados.some(
+                item => item.horario_consulta.slice(0,5) === horario.slice(0,5)
+              );
+
+              return (
+
+              <button 
+              key={horario} 
+              disabled={ocupado}
+              onClick={() => selecionarHorario(horario)}
+              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              >
+                {horario}
+              </button>
+
+              );
+
+            })}
             
           </div>
 
-          <button className="agendamento">Confirmar Agendamento →</button>
+          <button onClick={handleSubmit}  className="agendamento">Confirmar Agendamento →</button>
 
       </div>
     </div>

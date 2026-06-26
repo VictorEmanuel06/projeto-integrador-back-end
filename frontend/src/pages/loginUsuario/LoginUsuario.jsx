@@ -36,23 +36,31 @@ function LoginUsuario() {
 
   const handleSubimt = async (event) => {
     event.preventDefault();
-    setErrors(ValidacaoDeLogin(valores));
+     
+   const errosValidos = ValidacaoDeLogin(valores);
+   setErrors(errosValidos);
 
-    if(errors.email === "" && errors.password === ""){
+
+    if(errosValidos.email === "" && errosValidos.password === ""){
       axios.post('http://localhost:7006/loginusuario', valores, {withCredentials: true})
       .then(res => {
         console.log("RESPOSTA:", res.data);
 
-        if(res.data.success ) {
+        if (res.data.success ) {
+
+          localStorage.setItem("usuario", JSON.stringify(res.data.user));
+          
           console.log(res.data);
+          
           navegacao("/");
+        
         } else {
           alert("Registro inexistente");
         }
       })
       .catch(err => console.log(err));
     }
-  }
+  };
 
   return (
     
@@ -86,7 +94,7 @@ function LoginUsuario() {
             dados de acesso e sua privacidade é nossa prioridade absoluta.
           </div>
 
-          <button to="/agendamento" className="entrar" type="submit">
+          <button className="entrar" type="submit">
             ENTRAR
           </button>
 

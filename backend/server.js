@@ -49,6 +49,7 @@ app.post("/cadastrousuario", (req, res) => {
     });
 });
 
+
 // rota cadastro adm
 app.post("/cadastroadm", (req, res) => {
     console.log("BODY:", req.body);
@@ -76,7 +77,6 @@ app.post("/cadastroadm", (req, res) => {
 
 
 
-
 //READ LOGIN USUARIO
 app.post("/loginusuario", (req, res) => {
     const sql =
@@ -93,19 +93,18 @@ app.post("/loginusuario", (req, res) => {
         console.log(req.body);
         console.log(data);
 
-        if(data.length > 0) {
+        if (data.length > 0) {
 
-            req.session.username = 
-              data[0].nomecompleto;
+    req.session.username = data[0].nomecompleto;
 
-            return res.json({
-                success: true,
-                name: data[0].nomecompleto
-            });
-        } 
-            return res.json({
-                success: false
-         });
+    return res.json({
+        success: true,
+        user: {
+            id: data[0].id_cliente,
+            nome: data[0].nomecompleto
+        }
+        });
+    }
         }
     );
 });
@@ -142,6 +141,59 @@ app.post("/loginadm", (req, res) => {
         }
     );
 });
+
+// rota de agendamento
+app.post("/agendamentos", (req, res) => {
+    const {
+        id_cliente,
+        id_adm,
+        data_consulta,
+        horario_consulta
+    } = req.body;
+    console.log(req.body);
+
+    const sql = `INSERT INTO agendamento (id_cliente, id_adm, data_consulta, horario_consulta) VALUES (?, ?, ?, ?)`;
+
+    db.query(
+        sql,
+        [id_cliente, id_adm, data_consulta, horario_consulta],
+        (err, result) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+
+            res.status(201).json({
+                message: "Agendamento criado com sucesso"
+            });
+        }
+    );
+});
+
+
+app.get("/agendamentos/:data", (req, res) => {
+
+    const { data } = req.params;
+
+    const sql = `
+        SELECT horario_consulta
+        FROM agendamento
+        WHERE data_consulta = ?
+        AND status_agendamento = 'AGENDADO'
+    `;
+
+    db.query(sql, [data], (err, result) => {
+
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+
+    });
+
+});
+
+
 
 
 app.get("/", (req, res) => {

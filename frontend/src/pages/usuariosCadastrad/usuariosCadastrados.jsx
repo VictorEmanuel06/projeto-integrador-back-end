@@ -1,7 +1,7 @@
-// import "./usuarioCadastrado.css";
-// import { NavLink } from "react-router-dom";
+import "./UsuariosCadastrados.css";
+import { NavLink } from "react-router-dom";
 
-const usuarioCadastrado = () => {
+const UsuariosCadastrado = () => {
   return (
   <div className="container">
 
@@ -28,4 +28,4 @@ const usuarioCadastrado = () => {
   )
 }
 
-export default usuarioCadastrado;
+export default UsuariosCadastrado;

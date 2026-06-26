@@ -4,7 +4,7 @@ import icon_sair from '../../assets/icon_sair.png';
 import user from '../../assets/user.png';
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
+import { FaHome, FaUser } from "react-icons/fa";
 
 
 function Menu() {
@@ -14,7 +14,9 @@ function Menu() {
 
   return (
     <nav className='menu'>
-      <img src={logo_page} className='logo-menu' alt='Logo' />
+      {/* <NavLink to="/"> */}
+       <img src={logo_page} className='logo-menu' alt='Logo' />
+      {/* </NavLink> */}
 
       {/* Menu Hamburguer */}
       <div
