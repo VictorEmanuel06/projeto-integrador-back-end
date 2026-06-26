@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 app.use(cors({
     origin: 'http://localhost:5173',
-    methods: ["POST", "GET"],
+    methods: ["POST", "GET", "PUT"],
     credentials: true
 }));
 app.use(express.json());
@@ -25,8 +25,17 @@ app.use(session({
 }));
 
 
+//middleware de autenticação
+const verificarLogin = (req, res, next) => {
+    if (req.session.username) {
+        next();
+    } else {
+        return res.status(401).json({ error: "Usuário não autenticado" });
+    }
+}
+
 // rota cadastro usuario
-app.post("/cadastrousuario", (req, res) => {
+app.post("/cadastrousuario", verificarLogin, (req, res) => {
     console.log("BODY:", req.body);
 
     const sql = "INSERT INTO cadastro_cliente(nomecompleto, email, senha) VALUES(?)";
@@ -51,7 +60,7 @@ app.post("/cadastrousuario", (req, res) => {
 
 
 // rota cadastro adm
-app.post("/cadastroadm", (req, res) => {
+app.post("/cadastroadm", verificarLogin, (req, res) => {
     console.log("BODY:", req.body);
 
     const sql = "INSERT INTO cadastro_adm(nomecompletoadm, emailadm, senhaadm) VALUES(?)";
@@ -76,41 +85,36 @@ app.post("/cadastroadm", (req, res) => {
 
 
 
-
 //READ LOGIN USUARIO
-app.post("/loginusuario", (req, res) => {
-    const sql =
-       "SELECT * FROM cadastro_cliente WHERE email = ? AND senha = ?";
+app.post("/loginusuario", verificarLogin, (req, res) => {
 
-    db.query(sql, [req.body.email, req.body.password], (err, data) => {
-        if(err) {
-            console.log(err);
-            return res.status(500).json({ 
-                error: "Erro no login"
-            });
-            
+    const email = req.body.email.toLowerCase().trim();
+    const password = req.body.password.trim();
+
+
+    const sql ="SELECT * FROM cadastro_cliente WHERE email = ?";
+
+    db.query(sql, [email], async (err, data) => {
+        if (err) return res.status(500).json({ error: "Erro no login" }); 
+
+        if (data.length === 0) {
+            return res.status(401).json({ error: "Email ou senha inválidos" })
         }
-        console.log(req.body);
-        console.log(data);
 
-        if (data.length > 0) {
+        
 
-    req.session.username = data[0].nomecompleto;
+       req.session.username = data[0].name;
 
-    return res.json({
-        success: true,
-        user: {
-            id: data[0].id_cliente,
-            nome: data[0].nomecompleto
-        }
+        return res.json({
+            message: "Login realizado com sucesso",
+            name: data[0].name
         });
-    }
-        }
-    );
+    });
 });
 
+
 // READ LOGIN ADM
-app.post("/loginadm", (req, res) => {
+app.post("/loginadm", verificarLogin, (req, res) => {
     const sql =
        "SELECT * FROM cadastro_adm WHERE emailadm = ? AND senhaadm = ?";
 
@@ -143,7 +147,7 @@ app.post("/loginadm", (req, res) => {
 });
 
 // rota de agendamento
-app.post("/agendamentos", (req, res) => {
+app.post("/agendamentos", verificarLogin, (req, res) => {
     const {
         id_cliente,
         id_adm,
@@ -194,21 +198,18 @@ app.get("/agendamentos/:data", (req, res) => {
 });
 
 
-
-
+// verifica sessão - via get
 app.get("/", (req, res) => {
-    console.log(req.session);
-
-    if (req.session?.username) {
+    if (req.session.username) {
         return res.json({
             valid: true,
             name: req.session.username
         });
-    }
-
+    } else {
         return res.json({
             valid: false
         });
+    }
 });
 
 

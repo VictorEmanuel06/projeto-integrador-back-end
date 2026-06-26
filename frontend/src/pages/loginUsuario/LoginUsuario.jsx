@@ -5,7 +5,7 @@ import ValidacaoDeLogin from "../../services/ValidacaodeLogin";
 import axios from "axios";
 
 
-function LoginUsuario() {
+const LoginUsuario = () => {
   const [valores, setValores] = useState({
     email: "",
     password: ""
@@ -25,42 +25,35 @@ function LoginUsuario() {
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get('http://localhost:7006')
+    axios.get('http://localhost:7006', { withCredentials: true })
     .then( res => {
       if(res.data.valid){
         navegacao('/')
       }
     })
     .catch(err => console.log(err))
-  }, []);
+  }, [navegacao]);
 
   const handleSubimt = async (event) => {
     event.preventDefault();
      
-   const errosValidos = ValidacaoDeLogin(valores);
-   setErrors(errosValidos);
+   const Validacao = ValidacaoDeLogin(valores);
+   setErrors(Validacao);
 
-
-    if(errosValidos.email === "" && errosValidos.password === ""){
+    if(Validacao.email === "" && Validacao.password === ""){
       axios.post('http://localhost:7006/loginusuario', valores, {withCredentials: true})
       .then(res => {
-        console.log("RESPOSTA:", res.data);
-
-        if (res.data.success ) {
-
-          localStorage.setItem("usuario", JSON.stringify(res.data.user));
-          
-          console.log(res.data);
-          
-          navegacao("/");
-        
-        } else {
-          alert("Registro inexistente");
-        }
+        navegacao("/");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (err.response && err.response.status === 401) {
+            alert("Email ou senha inválidos");
+        } else {
+          console.log(err);
+        }
+      });
     }
-  };
+  }
 
   return (
     
