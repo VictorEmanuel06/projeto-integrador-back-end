@@ -27,7 +27,7 @@ app.use(session({
 
 //middleware de autenticação
 const verificarLogin = (req, res, next) => {
-    if (req.session.username) {
+    if (req.session.userId) {
         next();
     } else {
         return res.status(401).json({ error: "Usuário não autenticado" });
@@ -35,7 +35,7 @@ const verificarLogin = (req, res, next) => {
 }
 
 // rota cadastro usuario
-app.post("/cadastrousuario", verificarLogin, (req, res) => {
+app.post("/cadastrousuario", (req, res) => {
     console.log("BODY:", req.body);
 
     const sql = "INSERT INTO cadastro_cliente(nomecompleto, email, senha) VALUES(?)";
@@ -60,7 +60,7 @@ app.post("/cadastrousuario", verificarLogin, (req, res) => {
 
 
 // rota cadastro adm
-app.post("/cadastroadm", verificarLogin, (req, res) => {
+app.post("/cadastroadm", (req, res) => {
     console.log("BODY:", req.body);
 
     const sql = "INSERT INTO cadastro_adm(nomecompletoadm, emailadm, senhaadm) VALUES(?)";
@@ -86,35 +86,41 @@ app.post("/cadastroadm", verificarLogin, (req, res) => {
 
 
 //READ LOGIN USUARIO
-app.post("/loginusuario", verificarLogin, (req, res) => {
+app.post("/loginusuario", (req, res) => {
 
     const email = req.body.email.toLowerCase().trim();
-    const password = req.body.password.trim();
+    const senha = req.body.password.trim();
 
 
-    const sql ="SELECT * FROM cadastro_cliente WHERE email = ?";
+    const sql ="SELECT * FROM cadastro_cliente WHERE email = ? AND senha = ?";
+    console.log(email);
+    console.log(senha);
 
-    db.query(sql, [email], async (err, data) => {
+    db.query(sql, [email, senha], async (err, data) => {
+      
+        console.log("Resultado:", data)
+
         if (err) return res.status(500).json({ error: "Erro no login" }); 
+        
 
         if (data.length === 0) {
             return res.status(401).json({ error: "Email ou senha inválidos" })
         }
-
+        console.log(data[0]);
         
 
-       req.session.username = data[0].name;
+       req.session.username = data[0].nomecompleto;
 
         return res.json({
             message: "Login realizado com sucesso",
-            name: data[0].name
+            nomecompleto: data[0].nomecompleto
         });
     });
 });
 
 
 // READ LOGIN ADM
-app.post("/loginadm", verificarLogin, (req, res) => {
+app.post("/loginadm", (req, res) => {
     const sql =
        "SELECT * FROM cadastro_adm WHERE emailadm = ? AND senhaadm = ?";
 
@@ -174,7 +180,7 @@ app.post("/agendamentos", verificarLogin, (req, res) => {
 });
 
 
-app.get("/agendamentos/:data", (req, res) => {
+app.get("/agendamentos/:data", verificarLogin, (req, res) => {
 
     const { data } = req.params;
 
