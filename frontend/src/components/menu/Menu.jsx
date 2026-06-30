@@ -14,9 +14,9 @@ function Menu() {
 
   return (
     <nav className='menu'>
-      {/* <NavLink to="/"> */}
+      <NavLink to="/" className="logo-link">
        <img src={logo_page} className='logo-menu' alt='Logo' />
-      {/* </NavLink> */}
+      </NavLink>
 
       {/* Menu Hamburguer */}
       <div

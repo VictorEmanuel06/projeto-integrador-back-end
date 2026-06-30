@@ -33,6 +33,9 @@
   font-weight: 300;
   padding-bottom: 10px;
 }
+.info-psi p{
+  font-size: small;
+}
 
 .foto_agendamento{
   height: 120px;

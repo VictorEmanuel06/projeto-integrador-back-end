@@ -115,8 +115,9 @@ const handleSubmit = async (e) => {
         <h1>Dr. Romulo</h1>
 
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Eaque nihil iusto a voluptatem? Accusantium reprehenderit
+                Sou psicólogo especializado em ajudar pessoas a lidarem com ansiedade, autoestima e conflitos
+                emocionais. Meu objetivo é oferecer um espaço seguro para você se expressar, compreender suas emoções e
+                construir novas possibilidades.
           </p>
         </div>
       </div>
