@@ -27,7 +27,7 @@ function UsuariosCadastrados() {
               <th>Nome</th>
               <th>Email</th>
               <th>Telefone</th>
-              <th>Ações</th>
+              <th className="acoes">Ações</th>
             </tr>
  
           </thead>

@@ -27,6 +27,9 @@ app.use(session({
 
 //middleware de autenticação
 const verificarLogin = (req, res, next) => {
+
+    console.log("Sessão no middleware:", req.session);
+
     if (req.session.userId) {
         next();
     } else {
@@ -109,7 +112,11 @@ app.post("/loginusuario", (req, res) => {
         console.log(data[0]);
         
 
+       req.session.userId = data[0].id_cliente;
        req.session.username = data[0].nomecompleto;
+       req.session.email = data[0].email;
+
+       console.log(req.session);
 
         return res.json({
             message: "Login realizado com sucesso",
@@ -154,20 +161,28 @@ app.post("/loginadm", (req, res) => {
 
 // rota de agendamento
 app.post("/agendamentos", verificarLogin, (req, res) => {
+
+    const id_cliente = req.session.userId;
+
     const {
-        id_cliente,
         id_adm,
         data_consulta,
         horario_consulta
     } = req.body;
-    console.log(req.body);
 
-    const sql = `INSERT INTO agendamento (id_cliente, id_adm, data_consulta, horario_consulta) VALUES (?, ?, ?, ?)`;
+    console.log("Usuário logado:", id_cliente);
+
+    const sql = `
+        INSERT INTO agendamento
+        (id_cliente, id_adm, data_consulta, horario_consulta)
+        VALUES (?, ?, ?, ?)
+    `;
 
     db.query(
         sql,
         [id_cliente, id_adm, data_consulta, horario_consulta],
         (err, result) => {
+
             if (err) {
                 return res.status(500).json(err);
             }
@@ -175,8 +190,10 @@ app.post("/agendamentos", verificarLogin, (req, res) => {
             res.status(201).json({
                 message: "Agendamento criado com sucesso"
             });
+
         }
     );
+
 });
 
 

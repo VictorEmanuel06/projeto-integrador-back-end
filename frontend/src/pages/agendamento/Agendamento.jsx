@@ -3,7 +3,7 @@ import Calendario from "../../components/calendario/Calendario";
 import doutor from '../../assets/doutor.jpg';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { alertTitleClasses } from "@mui/material/AlertTitle";
+// import { alertTitleClasses } from "@mui/material/AlertTitle";
 
 
 const Agendamento = () => {
@@ -83,7 +83,9 @@ const handleSubmit = async (e) => {
         const data = dataSelecionada.toISOString().split("T")[0];
 
         const res = await axios.get(
-          `http://localhost:7006/agendamentos/${data}`
+          `http://localhost:7006/agendamentos/${data}`, {
+            withCredentials: true
+          }
         );
 
         setHorariosOcupados(res.data);
@@ -161,7 +163,7 @@ const handleSubmit = async (e) => {
               key={horario} 
               disabled={ocupado}
               onClick={() => selecionarHorario(horario)}
-              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
               >
                 {horario}
               </button>
@@ -188,7 +190,7 @@ const handleSubmit = async (e) => {
               key={horario} 
               disabled={ocupado}
               onClick={() => selecionarHorario(horario)}
-              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
               >
                 {horario}
               </button>
@@ -215,7 +217,7 @@ const handleSubmit = async (e) => {
               key={horario} 
               disabled={ocupado}
               onClick={() => selecionarHorario(horario)}
-              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
               >
                 {horario}
               </button>

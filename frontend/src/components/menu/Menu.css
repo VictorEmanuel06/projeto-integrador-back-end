@@ -20,20 +20,26 @@
   order: 999;
 }
   
-.icon_sair{
+.icon-sair{
   height: 20px;
 }
 
   .logo-menu {
     max-width: 160px;
   }
+
+.logo-link {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+}
   
   .nav-list {
     list-style: none;
     display: flex;
   }
 
-  .active{
+  .menu-link{
     background-color: #402722;
     color: #fff;
     border-radius: 30px 10px;
