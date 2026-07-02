@@ -8,7 +8,7 @@ import { FaHome, FaUser } from "react-icons/fa";
 
 
 function Menu() {
-  const [active, setActive] = useState(false);
+  const [active_list, setActive] = useState(false);
 
   const usuarioLogado = true;
 
@@ -20,8 +20,8 @@ function Menu() {
 
       {/* Menu Hamburguer */}
       <div
-        className={`mobile-menu ${active ? "active" : ""}`}
-        onClick={() => setActive(!active)}
+        className={`mobile-menu ${active_list ? "active_list" : ""}`}
+        onClick={() => setActive(!active_list)}
       >
         <div className='line1'></div>
         <div className='line2'></div>
@@ -30,9 +30,9 @@ function Menu() {
 
       {/* LINKS */}
 
-      <ul className={`nav-list ${active ? "active" : ""}`}>
+      <ul className={`nav-list ${active_list ? "active_list" : ""}`}>
 
-        <li className="item-login" style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : ""}}>
+        <li className="item-login" style={{ animation: active_list ? `navLinkFade 0.5s ease forwards 0.6s` : ""}}>
           <NavLink to="/loginusuario" className="login-icon" >
             {usuarioLogado ? (
               <img src={icon_sair} alt="Sair" className="icon-sair" />
@@ -42,19 +42,19 @@ function Menu() {
           </NavLink>
         </li>
 
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.3s` : "", }}>
+        <li style={{ animation: active_list ? `navLinkFade 0.5s ease forwards 0.3s` : "", }}>
           <NavLink to="/">Home</NavLink>
         </li>
 
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.4s` : "", }}>
+        <li style={{ animation: active_list ? `navLinkFade 0.5s ease forwards 0.4s` : "", }}>
           <NavLink to="/SobreMim">Sobre Mim</NavLink>
         </li>
 
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.5s` : "", }}>
+        <li style={{ animation: active_list ? `navLinkFade 0.5s ease forwards 0.5s` : "", }}>
           <NavLink to="/Servicos">Serviços</NavLink>
         </li>
 
-        <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
+        <li style={{ animation: active_list ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
           <NavLink to="/Contatos">Contatos</NavLink>
         </li>
 
