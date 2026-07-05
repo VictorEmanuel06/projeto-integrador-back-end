@@ -76,7 +76,6 @@ const handleSubmit = async (e) => {
   console.log("Dados enviados:", dados);
 
   try {
-<<<<<<< HEAD
     const res = await axios.post(
       "http://localhost:7006/agendamentos",
       dados,
@@ -84,18 +83,6 @@ const handleSubmit = async (e) => {
         withCredentials: true // 🔥 ESSENCIAL PRA SESSÃO
       }
     );
-=======
-    await axios.post(
-  "http://localhost:7006/agendamentos",
-  {
-    data_consulta: dataSelecionada.toISOString().split("T")[0],
-    horario_consulta: horarioSelecionado,
-  },
-  {
-    withCredentials: true,
-  }
-);
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
 
     console.log("Resposta:", res.data);
     alert("Agendamento feito com sucesso!");
@@ -140,7 +127,6 @@ const handleSubmit = async (e) => {
   
     const buscarHorarios = async () => {
       try {
-<<<<<<< HEAD
         const data = dataSelecionada.toISOString().split("T")[0];
   
         const res = await axios.get(
@@ -157,30 +143,6 @@ const handleSubmit = async (e) => {
       }
     };
   
-=======
-  const data = dataSelecionada.toISOString().split("T")[0];
-
-  const res = await axios.get(
-    `http://localhost:7006/agendamentos/${data}`,
-    {
-      withCredentials: true
-    }
-  );
-
-  setHorariosOcupados(res.data);
-
-} catch (err) {
-
-  if (err.response?.status === 401) {
-    console.log("Usuário não autenticado.");
-    return;
-  }
-
-  console.log(err);
-
-}}
-
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
     buscarHorarios();
   
   }, [dataSelecionada]);

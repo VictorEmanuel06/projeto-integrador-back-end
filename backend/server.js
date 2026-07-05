@@ -31,19 +31,9 @@ app.use(session({
 
 const verificarLogin = (req, res, next) => {
 
-<<<<<<< HEAD
     console.log("Sessão recebida:", req.session);
 
     if (req.session.usuario) {
-=======
-    console.log("==============");
-    console.log("SessionID:", req.sessionID);
-    console.log("Cookies:", req.headers.cookie);
-    console.log("Sessão:", req.session);
-    console.log("==============");
-
-    if (req.session.userId) {
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
         return next();
     }
 
@@ -51,11 +41,6 @@ const verificarLogin = (req, res, next) => {
         error: "Usuário não autenticado"
     });
 };
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
 
 // rota cadastro usuario
 app.post("/cadastrousuario", async (req, res) => {
@@ -138,17 +123,9 @@ app.post("/cadastroadm", async (req, res) => {
 
 
 
-<<<<<<< HEAD
-=======
-
-//READ LOGIN USUARIO
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
 // READ LOGIN USUARIO
 app.post("/loginusuario", (req, res) => {
 
-    const sql = "SELECT * FROM cadastro_cliente WHERE email = ?";
-
-<<<<<<< HEAD
     const sql = "SELECT * FROM cadastro_cliente WHERE email = ? AND senha = ?";
 
     console.log(email);
@@ -189,49 +166,6 @@ app.post("/loginusuario", (req, res) => {
                 nomecompleto: data[0].nomecompleto
             });
 
-=======
-    db.query(sql, [req.body.email], async (err, data) => {
-
-        if (err) {
-            console.log(err);
-            return res.status(500).json({
-                error: "Erro no login"
-            });
-        }
-
-        if (data.length === 0) {
-            return res.status(401).json({
-                success: false,
-                message: "Email ou senha inválidos"
-            });
-        }
-
-        const usuario = data[0];
-
-        const senhaCorreta = await bcrypt.compare(
-            req.body.password,
-            usuario.senha
-        );
-
-        if (!senhaCorreta) {
-            return res.status(401).json({
-                success: false,
-                message: "Email ou senha inválidos"
-            });
-        }
-
-        // Salva os dados na sessão
-        req.session.userId = usuario.id_cliente;
-        req.session.username = usuario.nomecompleto;
-
-        // Apenas para teste
-        console.log("Usuário:", usuario);
-        console.log("Sessão criada:", req.session);
-
-        return res.json({
-            success: true,
-            name: usuario.nomecompleto
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
         });
 
     });
@@ -272,19 +206,14 @@ app.post("/loginadm", (req, res) => {
 // rota de agendamento
 app.post("/agendamentos", verificarLogin, (req, res) => {
 
-<<<<<<< HEAD
     console.log("============ POST AGENDAMENTO ===========");
     console.log("SESSION:", req.session);
     console.log("COOKIE:", req.headers.cookie);
-=======
-    const id_cliente = req.session.userId;
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
 
     const {
     data_consulta,
     horario_consulta
     } = req.body;
-<<<<<<< HEAD
 
     console.log({
         id_cliente,
@@ -298,17 +227,6 @@ app.post("/agendamentos", verificarLogin, (req, res) => {
         (id_cliente, id_adm, data_consulta, horario_consulta)
         VALUES (?, ?, ?, ?)
     `;
-=======
-
-    console.log("Usuário logado:", id_cliente);
-    console.log(req.body);
-
-    const sql = `
-    INSERT INTO agendamento
-    (id_cliente, data_consulta, horario_consulta)
-    VALUES (?, ?, ?)
-`;
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
 
     db.query(
         sql,
@@ -316,12 +234,7 @@ app.post("/agendamentos", verificarLogin, (req, res) => {
         (err, result) => {
 
             if (err) {
-<<<<<<< HEAD
                 console.log("Erro MySQL:", err);
-=======
-                console.log("ERRO DO MYSQL:");
-                console.log(err);
->>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
                 return res.status(500).json(err);
             }
 
