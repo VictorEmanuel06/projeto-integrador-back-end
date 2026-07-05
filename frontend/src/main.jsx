@@ -10,6 +10,9 @@ import ErrorPage from "./pages/errorpage/ErrorPage.jsx";
 
 import { createBrowserRouter, RouterProvider, Route, Navigate} from "react-router-dom";
 
+// Proteção da rota
+// import ProtectedRoute from "./components/protectedrouter/ProtectedRoute.jsx";
+
 /* ROTAS */
 import Home from "./pages/home/Home.jsx";
 import SobreMim from "./pages/sobremim/SobreMim.jsx";
@@ -60,7 +63,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/agendamento",
-        element: <Agendamento />
+        element: 
+          // <ProtectedRoute>
+            <Agendamento />
+          //</ProtectedRoute>
       },
 
       {

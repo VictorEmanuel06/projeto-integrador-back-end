@@ -1,72 +1,113 @@
-
-/* Container geral */
-.container {
-  padding: 40px;
-  min-height: 100vh;
+.main-container {
+ 
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
 }
-
-/* Pesquisa */
-.search-bar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 25px;
+.search-container {
+ 
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
-
-.search-bar input {
-  width: 250px;
-  height: 40px;
-  border: none;
-  border-radius: 8px;
-  padding: 0 12px;
-  outline: none;
+.search-box {
+ 
+    width: 280px;
+    height: 42px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 0 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
 }
-
-/* Card branco */
-.card {
-  background: #fff;
-  border-radius: 10px;
-  min-height: 350px;
-  padding: 20px;
+ 
+.search-icon {
+ 
+    color: #777;
+    margin-right: 10px;
 }
-
-/* Botões */
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 20px;
+ 
+.search-box input {
+ 
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
 }
-
-.btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  font-size: 14px;
+ 
+ 
+.table-card {
+ 
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
 }
-
-/* Editar */
-.edit {
-  background: #777;
+ 
+table {
+ 
+    width: 100%;
+    border-collapse: collapse;
 }
-
-.edit:hover {
-  background: #5f5f5f;
+ 
+thead {
+ 
+    background: #f5f5f5;
+ 
 }
-
-/* Excluir */
-.delete {
-  background: #ff4d4d;
+ 
+th {
+ 
+    padding: 15px;
+    color: #555;
 }
-
-.delete:hover {
-  background: #e63b3b;
+.acoes{
+    margin-left: 20px;
 }
-
-/* Área vazia */
-.content {
-  height: 250px;
+ 
+td {
+ 
+    height: 65px;
+    padding: 12px;
+    border-bottom: 1px solid #e3e3e3;
+}
+ 
+.btn-editar {
+ 
+    background: #8b8b8b;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+ 
+.btn-editar:hover {
+ 
+    background: #6c6c6c;
+}
+ 
+.btn-excluir {
+ 
+    background: #e74c3c;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    margin: 10px;
+}
+ 
+.btn-excluir:hover {
+ 
+    background: #c0392b;
+}
+ 
+.btn-editar, .btn-excluir {
+     margin-left:250px;
+    margin-right: 6px;
 }

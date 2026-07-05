@@ -2,14 +2,46 @@ import "./Agendamento.css";
 import Calendario from "../../components/calendario/Calendario";
 import doutor from '../../assets/doutor.jpg';
 import { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { alertTitleClasses } from "@mui/material/AlertTitle";
+// import { alertTitleClasses } from "@mui/material/AlertTitle";
 
 
 const Agendamento = () => {
 
 const [horarioSelecionado, setHorarioSelecionado] = useState("");
 const [horariosOcupados, setHorariosOcupados] = useState([]);
+const [logado, setLogado] = useState(false);
+
+const navigate = useNavigate();
+
+useEffect(() => {
+
+    axios.get("http://localhost:7006", {
+        withCredentials: true
+    })
+    .then(res => {
+
+        if (!res.data.valid) {
+            alert("Você precisa estar logado para realizar um agendamento.");
+            navigate("/loginusuario");
+        }
+
+    })
+    .catch(console.log);
+
+}, []);
+
+useEffect(() => {
+  axios.get("http://localhost:7006", {
+    withCredentials: true
+  })
+  .then(res => {
+    setLogado(res.data.valid);
+  })
+  .catch(err => console.log(err));
+}, []);
+
 
 
 const selecionarHorario = (horario) => {
@@ -18,6 +50,10 @@ const selecionarHorario = (horario) => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+
+  if (!logado) {
+    return alert("Você precisa estar logado para realizar um agendamento.");
+  }
 
   if (!horarioSelecionado) {
     return alert("Escolha um horário antes de continuar.");
@@ -40,6 +76,7 @@ const handleSubmit = async (e) => {
   console.log("Dados enviados:", dados);
 
   try {
+<<<<<<< HEAD
     const res = await axios.post(
       "http://localhost:7006/agendamentos",
       dados,
@@ -47,6 +84,18 @@ const handleSubmit = async (e) => {
         withCredentials: true // 🔥 ESSENCIAL PRA SESSÃO
       }
     );
+=======
+    await axios.post(
+  "http://localhost:7006/agendamentos",
+  {
+    data_consulta: dataSelecionada.toISOString().split("T")[0],
+    horario_consulta: horarioSelecionado,
+  },
+  {
+    withCredentials: true,
+  }
+);
+>>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
 
     console.log("Resposta:", res.data);
     alert("Agendamento feito com sucesso!");
@@ -91,6 +140,7 @@ const handleSubmit = async (e) => {
   
     const buscarHorarios = async () => {
       try {
+<<<<<<< HEAD
         const data = dataSelecionada.toISOString().split("T")[0];
   
         const res = await axios.get(
@@ -107,6 +157,30 @@ const handleSubmit = async (e) => {
       }
     };
   
+=======
+  const data = dataSelecionada.toISOString().split("T")[0];
+
+  const res = await axios.get(
+    `http://localhost:7006/agendamentos/${data}`,
+    {
+      withCredentials: true
+    }
+  );
+
+  setHorariosOcupados(res.data);
+
+} catch (err) {
+
+  if (err.response?.status === 401) {
+    console.log("Usuário não autenticado.");
+    return;
+  }
+
+  console.log(err);
+
+}}
+
+>>>>>>> c187ec6171bad7aad79aeac55051170053c437e8
     buscarHorarios();
   
   }, [dataSelecionada]);
@@ -128,8 +202,9 @@ const handleSubmit = async (e) => {
         <h1>Dr. Romulo</h1>
 
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Eaque nihil iusto a voluptatem? Accusantium reprehenderit
+                Sou psicólogo especializado em ajudar pessoas a lidarem com ansiedade, autoestima e conflitos
+                emocionais. Meu objetivo é oferecer um espaço seguro para você se expressar, compreender suas emoções e
+                construir novas possibilidades.
           </p>
         </div>
       </div>
@@ -173,7 +248,7 @@ const handleSubmit = async (e) => {
               key={horario} 
               disabled={ocupado}
               onClick={() => selecionarHorario(horario)}
-              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
               >
                 {horario}
               </button>
@@ -200,7 +275,7 @@ const handleSubmit = async (e) => {
               key={horario} 
               disabled={ocupado}
               onClick={() => selecionarHorario(horario)}
-              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
               >
                 {horario}
               </button>
@@ -227,7 +302,7 @@ const handleSubmit = async (e) => {
               key={horario} 
               disabled={ocupado}
               onClick={() => selecionarHorario(horario)}
-              className={`botoes ${ocupado ? "ocupado" : ""}`}
+              className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
               >
                 {horario}
               </button>
@@ -238,7 +313,15 @@ const handleSubmit = async (e) => {
             
           </div>
 
-          <button onClick={handleSubmit}  className="agendamento">Confirmar Agendamento →</button>
+          {!logado && (
+            <span className="erro-login">
+              Você precisa estar logado para realizar um agendamento.
+              <br />
+              <NavLink to="/loginusuario">Clique aqui para fazer login.</NavLink>
+            </span>
+            )}
+
+          <button onClick={handleSubmit} disabled={!logado} className="agendamento">Confirmar Agendamento →</button>
 
       </div>
     </div>

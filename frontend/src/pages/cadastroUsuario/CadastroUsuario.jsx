@@ -51,21 +51,21 @@ const handleSubmit = async (event) => {
 
         <div className="form-usuario">
             <label htmlFor="name">Nome Completo</label>
-            <input type="text" placeholder="Digite seu nome completo" name="name"
+            <input type="text" placeholder="Digite seu nome completo" name="name" id="name" autoComplete="name"
                 onChange={handleInput} />
             <span> {validationErrors.name} </span>
         </div>
 
         <div className="form-usuario">
             <label htmlFor="email">E-mail</label>
-            <input type="email" name="email"
+            <input type="email" name="email" id="email" autoComplete="email"
                 onChange={handleInput} />
             <span> {validationErrors.email} </span>
         </div>
 
         <div className="form-usuario">
             <label htmlFor="password">Senha</label>
-            <input type="password" name="password"
+            <input type="password" name="password" id="password" autoComplete="new-password"
                 onChange={handleInput} />
             <span> {validationErrors.password} </span>
         </div>

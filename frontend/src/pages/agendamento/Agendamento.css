@@ -33,6 +33,9 @@
   font-weight: 300;
   padding-bottom: 10px;
 }
+.info-psi p{
+  font-size: small;
+}
 
 .foto_agendamento{
   height: 120px;
@@ -77,9 +80,16 @@
   border-radius: 20px;
   background: #0b4aa6;
   color: #fff;
-  font-size: 100;
+  font-size: 14px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+
+.selecionado{
+  background: #ffffff;
+  border: 1px solid #fff;
+  color: black;
 }
 
 .ocupado{
@@ -111,6 +121,15 @@
   border-radius: 20px;
 }
 
+.erro-login{
+    display: block;
+    margin: 15px 0;
+    color: #c62828;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
 @media (max-width: 1220px) {
   
   .horarios{
@@ -118,8 +137,6 @@
       flex-wrap: wrap;
       width: 100%;
       margin-right: 60px;
-
-
     }
 
     .caixa-botoes{

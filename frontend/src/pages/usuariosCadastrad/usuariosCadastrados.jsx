@@ -1,31 +1,74 @@
 import "./UsuariosCadastrados.css";
-import { NavLink } from "react-router-dom";
-
-const UsuariosCadastrado = () => {
+ 
+function UsuariosCadastrados() {
   return (
-  <div className="container">
-
-    <div className="search-bar">
-      <span className="icon">🔍</span>
-      <input type="text" placeholder="Pesquisar" />
-    </div>
-
-    
-    <div className="card">
-
-      <div className="actions">
-        <button className="btn edit">Editar</button>
-        <button className="btn delete">Excluir</button>
+    <main className="main-container">
+      <div className="search-container">
+ 
+        <div className="search-box">
+          <i className="fa-solid fa-magnifying-glass search-icon"></i>
+ 
+          <input
+            type="text"
+            placeholder="Pesquisar"
+          />
+        </div>
+ 
       </div>
-
-      <div className="content">
-    
+ 
+      <div className="table-card">
+ 
+        <table>
+ 
+          <thead>
+ 
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th className="acoes">Ações</th>
+            </tr>
+ 
+          </thead>
+         
+          <tbody>
+ 
+            {[1, 2, 3, 4].map((item) => (
+ 
+              <tr key={item}>
+ 
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+ 
+                <td>
+ 
+                  <button className="btn-editar">
+                    <i className="fa-solid fa-pen"></i>
+                    Editar
+                  </button>
+ 
+                  <button className="btn-excluir">
+                    <i className="fa-solid fa-trash"></i>
+                    Excluir
+                  </button>
+ 
+                </td>
+ 
+              </tr>
+ 
+            ))}
+ 
+          </tbody>
+ 
+        </table>
+ 
       </div>
-
-    </div>
-
-  </div>
-  )
+ 
+    </main>
+  );
 }
-
-export default UsuariosCadastrado;
+ 
+export default UsuariosCadastrados;
