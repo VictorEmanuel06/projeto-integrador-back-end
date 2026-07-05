@@ -47,10 +47,11 @@ const CadastroAdm = () => {
  
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Nome Completo</label>
+          <label htmlFor="name">Nome Completo</label>
           <input
             type="text"
             name="name"
+            id="name"
             value={valores.name} // <-- ADICIONADO: Controla o input
             onChange={handleInput}
           />
@@ -62,6 +63,7 @@ const CadastroAdm = () => {
           <input
             type="email"
             name="email"
+            id="email"
             value={valores.email} // <-- ADICIONADO: Controla o input
             onChange={handleInput}
           />
@@ -73,6 +75,7 @@ const CadastroAdm = () => {
           <input
             type="password"
             name="password"
+            id="password"
             value={valores.password} // <-- ADICIONADO: Controla o input
             onChange={handleInput}
           />
