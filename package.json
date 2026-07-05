@@ -1,13 +1,13 @@
 {
-  "name": "projeto-integrador-back-end",
-  "version": "1.0.0",
+  "name": "projeto-integrador",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\""
+    "start": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "concurrently": "^10.0.3",
-    "express-session": "^1.19.0"
+    "bcrypt": "^6.0.0"
   }
 }
