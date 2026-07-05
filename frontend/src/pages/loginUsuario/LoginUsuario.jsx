@@ -43,8 +43,24 @@ const LoginUsuario = () => {
     if(Validacao.email === "" && Validacao.password === ""){
       axios.post('http://localhost:7006/loginusuario', valores, {withCredentials: true})
       .then(res => {
+
+        console.log("LOGIN:", res.data);
+    
+        localStorage.setItem(
+          "usuario",
+          JSON.stringify({
+            id: res.data.id,
+            nomecompleto: res.data.nomecompleto
+          })
+        );
+    
+        console.log(
+          "SALVO:",
+          JSON.parse(localStorage.getItem("usuario"))
+        );
+    
         navegacao("/");
-      })
+    })
       .catch(err => {
         if (err.response && err.response.status === 401) {
             alert("Email ou senha inválidos");

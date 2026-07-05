@@ -29,23 +29,30 @@ const handleSubmit = async (e) => {
     return alert("Você precisa estar logado!");
   }
 
+  const dados = {
+    id_cliente: usuario.id,
+    id_adm: 1,
+    data_consulta: dataSelecionada.toISOString().split("T")[0],
+    horario_consulta: horarioSelecionado,
+  };
+
+  console.log("Usuário:", usuario);
+  console.log("Dados enviados:", dados);
+
   try {
-    await axios.post(
+    const res = await axios.post(
       "http://localhost:7006/agendamentos",
+      dados,
       {
-        id_cliente: usuario.id,
-        id_adm: 1,
-        data_consulta: dataSelecionada.toISOString().split("T")[0],
-        horario_consulta: horarioSelecionado,
-      },
-      {
-        withCredentials: true,
+        withCredentials: true // 🔥 ESSENCIAL PRA SESSÃO
       }
     );
 
-    alert("Agendamento realizado!");
+    console.log("Resposta:", res.data);
+    alert("Agendamento feito com sucesso!");
   } catch (err) {
-    console.log(err);
+    console.log("Erro Axios:", err);
+    alert("Erro ao agendar");
   }
 };
 
@@ -78,24 +85,30 @@ const handleSubmit = async (e) => {
 
   useEffect(() => {
 
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+  
+    if (!usuario) return;
+  
     const buscarHorarios = async () => {
       try {
         const data = dataSelecionada.toISOString().split("T")[0];
-
+  
         const res = await axios.get(
-          `http://localhost:7006/agendamentos/${data}`
+          `http://localhost:7006/agendamentos/${data}`,
+          {
+            withCredentials: true,
+          }
         );
-
+  
         setHorariosOcupados(res.data);
-
+  
       } catch (err) {
         console.log(err);
       }
-
     };
-
+  
     buscarHorarios();
-
+  
   }, [dataSelecionada]);
 
 

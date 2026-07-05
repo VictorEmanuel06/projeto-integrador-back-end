@@ -14,25 +14,33 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+
+
 app.use(session({
-    secret: 'secret',
+    secret: process.env.SESSION_SECRET || "secret",
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: false,
-        httpOnly: true
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax" // 🔥 ESSENCIAL pro localhost
     }
 }));
 
 
 //middleware de autenticação
 const verificarLogin = (req, res, next) => {
-    if (req.session.userId) {
-        next();
-    } else {
-        return res.status(401).json({ error: "Usuário não autenticado" });
+
+    console.log("Sessão recebida:", req.session);
+
+    if (req.session.usuario) {
+        return next();
     }
-}
+
+    return res.status(401).json({
+        error: "Usuário não autenticado"
+    });
+};
 
 // rota cadastro usuario
 app.post("/cadastrousuario", (req, res) => {
@@ -85,38 +93,58 @@ app.post("/cadastroadm", (req, res) => {
 
 
 
-//READ LOGIN USUARIO
+// READ LOGIN USUARIO
 app.post("/loginusuario", (req, res) => {
 
     const email = req.body.email.toLowerCase().trim();
     const senha = req.body.password.trim();
 
+    const sql = "SELECT * FROM cadastro_cliente WHERE email = ? AND senha = ?";
 
-    const sql ="SELECT * FROM cadastro_cliente WHERE email = ? AND senha = ?";
     console.log(email);
     console.log(senha);
 
-    db.query(sql, [email, senha], async (err, data) => {
-      
-        console.log("Resultado:", data)
+    db.query(sql, [email, senha], (err, data) => {
 
-        if (err) return res.status(500).json({ error: "Erro no login" }); 
-        
+        console.log("Resultado:", data);
+
+        if (err) {
+            return res.status(500).json({ error: "Erro no login" });
+        }
 
         if (data.length === 0) {
-            return res.status(401).json({ error: "Email ou senha inválidos" })
+            return res.status(401).json({ error: "Email ou senha inválidos" });
         }
+
         console.log(data[0]);
-        
 
-       req.session.username = data[0].nomecompleto;
-
-        return res.json({
-            message: "Login realizado com sucesso",
+        // Salva os dados do usuário na sessão
+        req.session.usuario = {
+            id: data[0].id_cliente,
             nomecompleto: data[0].nomecompleto
+        };
+
+        // Salva a sessão antes de responder
+        req.session.save((err) => {
+
+            if (err) {
+                return res.status(500).json({
+                    error: "Erro ao salvar sessão"
+                });
+            }
+
+            return res.json({
+                message: "Login realizado com sucesso",
+                id: data[0].id_cliente,
+                nomecompleto: data[0].nomecompleto
+            });
+
         });
+
     });
+
 });
+
 
 
 // READ LOGIN ADM
@@ -154,21 +182,38 @@ app.post("/loginadm", (req, res) => {
 
 // rota de agendamento
 app.post("/agendamentos", verificarLogin, (req, res) => {
+
+    console.log("============ POST AGENDAMENTO ===========");
+    console.log("SESSION:", req.session);
+    console.log("COOKIE:", req.headers.cookie);
+
     const {
         id_cliente,
         id_adm,
         data_consulta,
         horario_consulta
     } = req.body;
-    console.log(req.body);
 
-    const sql = `INSERT INTO agendamento (id_cliente, id_adm, data_consulta, horario_consulta) VALUES (?, ?, ?, ?)`;
+    console.log({
+        id_cliente,
+        id_adm,
+        data_consulta,
+        horario_consulta
+    });
+
+    const sql = `
+        INSERT INTO agendamento
+        (id_cliente, id_adm, data_consulta, horario_consulta)
+        VALUES (?, ?, ?, ?)
+    `;
 
     db.query(
         sql,
         [id_cliente, id_adm, data_consulta, horario_consulta],
         (err, result) => {
+
             if (err) {
+                console.log("Erro MySQL:", err);
                 return res.status(500).json(err);
             }
 
@@ -180,9 +225,13 @@ app.post("/agendamentos", verificarLogin, (req, res) => {
 });
 
 
+
+// Rota get agendamentos
 app.get("/agendamentos/:data", verificarLogin, (req, res) => {
 
     const { data } = req.params;
+    console.log("SESSION GET:", req.session);
+   console.log("COOKIE GET:", req.headers.cookie);
 
     const sql = `
         SELECT horario_consulta
@@ -206,16 +255,19 @@ app.get("/agendamentos/:data", verificarLogin, (req, res) => {
 
 // verifica sessão - via get
 app.get("/", (req, res) => {
+
+    console.log("Sessão na rota /:", req.session);
+
     if (req.session.username) {
         return res.json({
             valid: true,
             name: req.session.username
         });
-    } else {
-        return res.json({
-            valid: false
-        });
     }
+
+    return res.json({
+        valid: false
+    });
 });
 
 
