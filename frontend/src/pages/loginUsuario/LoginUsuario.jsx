@@ -85,14 +85,14 @@ const LoginUsuario = () => {
 
           <div>
             <label htmlFor="email" className="label-usuario">Login atual</label>
-            <input type="text" placeholder="exemplo@email.com" name="email"
+            <input type="text" placeholder="exemplo@email.com" name="email" id="email" autoComplete="email"
             onChange={handleInput} />
             <span>{errors.email}</span>
           </div>
 
           <div>
             <label htmlFor="password" className="label-usuario-senha">Senha</label>
-            <input className="password-usuario" type="password" name="password"
+            <input className="password-usuario" type="password" name="password" id="password" autoComplete="current-password"
             onChange={handleInput}/>
             <span>{errors.password}</span>
             <NavLink to="/recuperarsenhausuario" className="esqueci-senha-usuario">Esqueci minha senha!</NavLink>

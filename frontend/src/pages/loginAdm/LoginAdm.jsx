@@ -65,11 +65,13 @@ const LoginAdm = () => {
       {/* noValidate impede o navegador de mostrar aquele balão flutuante */}
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-adm">
-          <label>E-mail</label>
+          <label htmlFor="email">E-mail</label>
  
           <input
             type="email"
             name="email"
+            id="email"
+            autoComplete="email"
             value={valores.email}
             onChange={handleInput}
           />
@@ -81,11 +83,13 @@ const LoginAdm = () => {
         </div>
  
         <div className="form-adm">
-          <label>Senha</label>
+          <label htmlFor="password">Senha</label>
  
           <input
             type="password"
             name="password"
+            id="password"
+            autoComplete="current-password"
             value={valores.password}
             onChange={handleInput}
           />

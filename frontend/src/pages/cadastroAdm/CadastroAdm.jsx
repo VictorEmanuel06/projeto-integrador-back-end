@@ -76,6 +76,7 @@ const CadastroAdm = () => {
             type="password"
             name="password"
             id="password"
+            autoComplete="new-password"
             value={valores.password} // <-- ADICIONADO: Controla o input
             onChange={handleInput}
           />
