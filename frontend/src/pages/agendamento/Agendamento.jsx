@@ -4,16 +4,22 @@ import doutor from '../../assets/doutor.jpg';
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { alertTitleClasses } from "@mui/material/AlertTitle";
-
 
 const Agendamento = () => {
 const [horarioSelecionado, setHorarioSelecionado] = useState("");
 const [horariosOcupados, setHorariosOcupados] = useState([]);
 const [logado, setLogado] = useState(false);
 const [dataSelecionada, setDataSelecionada] = useState(new Date());
+const [tipoAcaoAdm, setTipoAcaoAdm] = useState("agendar"); 
 
 const navigate = useNavigate();
+
+// Recupera os dados do localStorage
+const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
+const isAdmin = usuarioLogado?.role === "ADMIN";
+
+// CORREÇÃO: O sistema estará liberado se o backend disser que sim OU se for um Admin com Token válido
+const isAuthenticated = logado || (isAdmin && !!usuarioLogado?.token);
 
 useEffect(() => {
     axios.get("http://localhost:7006", { withCredentials: true })
@@ -24,9 +30,7 @@ useEffect(() => {
       console.log("Erro ao checar login:", err);
       setLogado(false);
     });
-
 }, []);
-
 
 const selecionarHorario = (horario) => {
   setHorarioSelecionado(horario);
@@ -35,35 +39,41 @@ const selecionarHorario = (horario) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  // 1. Busca o usuário e valida o login de forma unificada
   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-  if (!logado || !usuario) {
-    alert("Você precisa estar logado para realizar um agendamento.");
+  // CORREÇÃO: Usa a nova validação unificada para o bloqueio
+  if (!isAuthenticated || !usuario || !usuario.token) {
+    alert("Você precisa estar logado para realizar uma ação.");
     navigate("/loginusuario");
     return;
   }
 
-  // 2. Valida se o horário foi preenchido
   if (!horarioSelecionado) {
     return alert("Escolha um horário antes de continuar.");
   }
 
-  // 3. Monta o objeto formatando a data de forma segura
   const dados = {
     data_consulta: dataSelecionada.toISOString().split("T")[0],
     horario_consulta: horarioSelecionado,
+    tipo: isAdmin && tipoAcaoAdm === "bloquear" ? "bloqueio" : "agendamento",
+    id_adm: isAdmin ? usuario.id : null,
+    id_cliente: isAdmin ? null : usuario.id
   };
 
   try {
     const res = await axios.post(
       "http://localhost:7006/agendamentos",
       dados,
-      { withCredentials: true }
+      { 
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${usuario.token}`
+        }
+      }
     );
 
     console.log("Resposta do servidor:", res.data);
-    alert("Agendamento feito com sucesso!");
+    alert(isAdmin && tipoAcaoAdm === "bloquear" ? "Horário bloqueado com sucesso!" : "Agendamento feito com sucesso!");
     
     setHorarioSelecionado("");
     buscarHorariosDaData();
@@ -74,7 +84,6 @@ const handleSubmit = async (e) => {
     alert(mensagemErro);
   }
 };
-
 
   const gerarHorarios = (inicio, fim) => {
     const horarios = [];
@@ -88,7 +97,6 @@ const handleSubmit = async (e) => {
   const tarde = gerarHorarios(13, 16);
   const noite = ["19:00H", "19:30H", "20:00H", "20:30H"];
 
-
   const dataFormatada = dataSelecionada.toLocaleDateString("pt-BR", {
     weekday: "long",
     day: "numeric",
@@ -96,25 +104,27 @@ const handleSubmit = async (e) => {
     year: "numeric",
   });
 
-
-// Isolamos a função para podermos chamá-la após um agendamento com sucesso
 const buscarHorariosDaData = async () => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
-  if (!usuario) return;
+  if (!usuario || !usuario.token) return;
 
   try {
     const data = dataSelecionada.toISOString().split("T")[0];
     const res = await axios.get(
       `http://localhost:7006/agendamentos/${data}`,
-      { withCredentials: true }
+      { 
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${usuario.token}`
+        }
+       }
     );
 
-    // Garante que salvamos uma Array com os horários ocupados vinda do banco
     setHorariosOcupados(Array.isArray(res.data) ? res.data : []);
 
   } catch (err) {
     if (err.response && err.response.status === 401) {
-      return; // Silencia o erro 401 no console se deslogado
+      return;
     }
     console.error("Erro ao buscar horários:", err);
   }
@@ -124,16 +134,12 @@ useEffect(() => {
   buscarHorariosDaData();
 }, [dataSelecionada]);
 
-
 const verificarSeOcupado = (horario) => {
   return horariosOcupados.some(item => {
     if (!item.horario_consulta) return false;
-    // Normaliza as strings (remove espaços e corta nos 5 primeiros caracteres '09:30')
     return item.horario_consulta.trim().substring(0, 5) === horario.trim().substring(0, 5);
   });
 };
-
-
 
 return (
   <section className="container-agendamento">
@@ -157,7 +163,7 @@ return (
             onChange={(novaData) => {
               if (novaData) {
                 setDataSelecionada(novaData);
-                setHorarioSelecionado(""); // Limpa seleção ao mudar de dia
+                setHorarioSelecionado("");
               }
             }}
           />
@@ -167,6 +173,28 @@ return (
       <div className="horarios">
         <h1>Horários Disponíveis</h1>
         <p>{dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1)}</p>
+
+        {isAdmin && (
+          <div className="painel-adm-botoes" style={{ margin: "10px 0", padding: "10px", background: "#f0f0f0", borderRadius: "5px" }}>
+            <span style={{ fontWeight: "bold", display: "block", marginBottom: "5px" }}>Modo Admin:</span>
+            <label style={{ marginRight: "15px", cursor: "pointer" }}>
+              <input 
+                type="radio" 
+                name="acaoAdm" 
+                checked={tipoAcaoAdm === "agendar"} 
+                onChange={() => setTipoAcaoAdm("agendar")} 
+              /> Agendar Livre
+            </label>
+            <label style={{ cursor: "pointer" }}>
+              <input 
+                type="radio" 
+                name="acaoAdm" 
+                checked={tipoAcaoAdm === "bloquear"} 
+                onChange={() => setTipoAcaoAdm("bloquear")} 
+              /> Apenas Bloquear Horário
+            </label>
+          </div>
+        )}
 
         <h2>Manhã</h2>
         <div className="caixa-botoes">
@@ -219,7 +247,8 @@ return (
           })}
         </div>
 
-        {!logado && (
+        {/* CORREÇÃO: A mensagem de erro agora some se o Admin estiver autenticado via localStorage */}
+        {!isAuthenticated && (
           <span className="erro-login">
             Você precisa estar logado para realizar um agendamento.
             <br />
@@ -227,8 +256,9 @@ return (
           </span>
         )}
 
-        <button onClick={handleSubmit} disabled={!logado} className="agendamento">
-          Confirmar Agendamento →
+        {/* CORREÇÃO: O botão fica ativo se for Admin válido */}
+        <button onClick={handleSubmit} disabled={!isAuthenticated} className="agendamento">
+          {isAdmin && tipoAcaoAdm === "bloquear" ? "Confirmar Bloqueio do Horário →" : "Confirmar Agendamento →"}
         </button>
       </div>
     </div>

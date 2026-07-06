@@ -3,13 +3,13 @@ import db from "../../db.js";
 // Criar novo compromisso
 export const criarAgendamento = (req, res) => {
     // 1. Pega os dados enviados pelo formulário React
-    const { data_consulta, horario_consulta } = req.body;
+    const { id_adm, data_consulta, horario_consulta } = req.body;
     
     // 2. Pega o ID do cliente logado direto da sessão do middleware
     const id_cliente = req.session.usuario.id; 
 
     // Validação simples antes de ir para o banco
-    if (!data_consulta || !horario_consulta) {
+    if ( !id_cliente || !id_adm || !data_consulta || !horario_consulta) {
         return res.status(400).json({ error: "Data e horário são obrigatórios." });
     }
 
