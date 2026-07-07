@@ -2,32 +2,76 @@ import db from "../../db.js";
 
 // Criar novo compromisso
 export const criarAgendamento = (req, res) => {
-    // 1. Pega os dados enviados pelo formulário React
-    const { id_adm, data_consulta, horario_consulta } = req.body;
-    
-    // 2. Pega o ID do cliente logado direto da sessão do middleware
-    const id_cliente = req.session.usuario.id; 
 
-    // Validação simples antes de ir para o banco
-    if ( !id_cliente || !id_adm || !data_consulta || !horario_consulta) {
-        return res.status(400).json({ error: "Data e horário são obrigatórios." });
+    const {
+        data_consulta,
+        horario_consulta,
+        tipo
+    } = req.body;
+
+    let id_cliente = null;
+    let id_adm = null;
+
+    if (req.session.usuario.regra === "user") {
+        id_cliente = req.session.usuario.id;
     }
 
-    // 3. Nova query SQL SEM a coluna id_adm
+    if (req.session.usuario.regra === "adm") {
+        id_adm = req.session.usuario.id;
+    }
+
+    if (!data_consulta || !horario_consulta) {
+        return res.status(400).json({
+            error: "Data e horário são obrigatórios."
+        });
+    }
+
+    const status =
+        tipo === "bloqueio"
+            ? "BLOQUEADO"
+            : "AGENDADO";
+
     const sql = `
-        INSERT INTO agendamento (id_cliente, data_consulta, horario_consulta)
-        VALUES (?, ?, ?)
+        INSERT INTO agendamento
+        (
+            id_cliente,
+            id_adm,
+            data_consulta,
+            horario_consulta,
+            status_agendamento
+        )
+        VALUES (?, ?, ?, ?, ?)
     `;
 
-    db.query(sql, [id_cliente, data_consulta, horario_consulta], (err, result) => {
-        if (err) {
-            console.error("Erro MySQL ao agendar:", err);
-            return res.status(500).json({ error: "Erro interno do servidor ao salvar agendamento." });
+    db.query(
+        sql,
+        [
+            id_cliente,
+            id_adm,
+            data_consulta,
+            horario_consulta,
+            status
+        ],
+        (err) => {
+
+            if (err) {
+                console.log(err);
+                return res.status(500).json(err);
+            }
+
+            return res.status(201).json({
+                message: "Agendamento salvo com sucesso."
+            });
+
         }
-        
-        return res.status(201).json({ message: "Agendamento realizado com sucesso!" });
-    });
+    );
+
 };
+
+
+
+
+
 
 
 // Listar horários ocupados por data
@@ -38,7 +82,7 @@ export const listarAgendamentosPorData = (req, res) => {
         SELECT horario_consulta
         FROM agendamento
         WHERE data_consulta = ?
-        AND status_agendamento = 'AGENDADO'
+        AND status_agendamento IN ('AGENDADO', 'BLOQUEADO')
     `;
 
     db.query(sql, [data], (err, result) => {

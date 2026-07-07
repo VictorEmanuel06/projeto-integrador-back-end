@@ -39,10 +39,9 @@ const selecionarHorario = (horario) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const usuario = JSON.parse(localStorage.getItem("usuario"));
 
   // CORREÇÃO: Usa a nova validação unificada para o bloqueio
-  if (!isAuthenticated || !usuario || !usuario.token) {
+  if (!isAuthenticated) {
     alert("Você precisa estar logado para realizar uma ação.");
     navigate("/loginusuario");
     return;
@@ -56,8 +55,6 @@ const handleSubmit = async (e) => {
     data_consulta: dataSelecionada.toISOString().split("T")[0],
     horario_consulta: horarioSelecionado,
     tipo: isAdmin && tipoAcaoAdm === "bloquear" ? "bloqueio" : "agendamento",
-    id_adm: isAdmin ? usuario.id : null,
-    id_cliente: isAdmin ? null : usuario.id
   };
 
   try {
@@ -65,10 +62,7 @@ const handleSubmit = async (e) => {
       "http://localhost:7006/agendamentos",
       dados,
       { 
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${usuario.token}`
-        }
+        withCredentials: true
       }
     );
 
@@ -105,19 +99,14 @@ const handleSubmit = async (e) => {
   });
 
 const buscarHorariosDaData = async () => {
-  const usuario = JSON.parse(localStorage.getItem("usuario"));
-  if (!usuario || !usuario.token) return;
 
   try {
     const data = dataSelecionada.toISOString().split("T")[0];
     const res = await axios.get(
       `http://localhost:7006/agendamentos/${data}`,
       { 
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${usuario.token}`
-        }
-       }
+        withCredentials: true
+      }
     );
 
     setHorariosOcupados(Array.isArray(res.data) ? res.data : []);

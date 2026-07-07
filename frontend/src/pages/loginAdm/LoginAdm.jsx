@@ -39,7 +39,7 @@ const LoginAdm = () => {
     setErrors(ValidacaodeLoginAdm(valores));
  
     if(errors.email === "" && errors.password === ""){
-      axios.post('http://localhost:7006/loginadm', valores)
+      axios.post('http://localhost:7006/loginadm', valores, { withCredentials: true })
       .then(res => {
         console.log("RESPOSTA:", res.data);
 

@@ -97,6 +97,7 @@ export const loginAdm = (req, res) => {
         req.session.save((err) => {
             if (err) return res.status(500).json({ error: "Erro ao salvar sessão" });
             return res.json({
+                success: true,
                 message: "Login realizado com sucesso",
                 name: adm.nomecompletoadm
             });
