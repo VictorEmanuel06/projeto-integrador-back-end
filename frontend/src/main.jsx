@@ -63,6 +63,10 @@ const router = createBrowserRouter([
         element: <Contatos />
       },
       {
+        path: "/agendamento/:id",
+        element: <Agendamento />
+      },
+      {
         path: "/agendamento",
         element: <Agendamento />
       },

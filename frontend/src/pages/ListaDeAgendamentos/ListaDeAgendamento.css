@@ -1,0 +1,415 @@
+/* ==============================
+   CONTAINER PRINCIPAL
+============================== */
+
+
+.consultas {
+    width: 100%;
+    padding: 30px;
+}
+
+
+
+/* ==============================
+   TÍTULO
+============================== */
+
+
+.consultas-titulo {
+
+    font-size: 32px;
+
+    font-weight: 600;
+
+    color: black;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+/* ==============================
+   TOPO - PESQUISA + BOTÃO
+============================== */
+
+
+.consultas-topo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    gap: 20px;
+
+}
+
+
+
+/* ==============================
+   CAMPO DE PESQUISA
+============================== */
+
+
+.campo-pesquisa {
+
+    position: relative;
+
+    width: 350px;
+
+}
+
+
+
+.consultas-input {
+
+    width: 100%;
+
+    height: 45px;
+
+    padding-left: 45px;
+
+    padding-right: 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid #dcdcdc;
+
+    background-color: #ffffff;
+
+    font-size: 15px;
+
+    color: #333;
+
+    outline: none;
+
+    transition: 0.3s;
+
+}
+
+
+
+.consultas-input::placeholder {
+
+    color: #999;
+
+}
+
+
+
+.consultas-input:focus {
+
+    border-color: #4a6fa5;
+
+    box-shadow: 0 0 5px rgba(74,111,165,0.25);
+
+}
+
+
+
+/* Ícone */
+
+.icone-pesquisa {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 17px;
+
+    color: #777;
+
+}
+
+
+
+/* ==============================
+   BOTÃO NOVA CONSULTA
+============================== */
+
+
+.botao-nova-consulta {
+
+    background-color: grey;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+
+}
+
+
+
+.botao-nova-consulta:hover {
+
+    background-color: rgb(87, 86, 86);
+
+}
+
+
+
+/* ==============================
+   TABELA
+============================== */
+
+
+.consultas-tabela {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+
+}
+
+
+
+/* Cabeçalho */
+
+.consultas-cabecalho {
+    background-color: rgb(0, 63, 136);
+    color: white;
+}
+
+
+
+.consultas-cabecalho th {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+
+
+/* Linhas */
+
+
+.linha-consulta {
+
+    transition: 0.2s;
+
+}
+
+
+
+.linha-consulta:hover {
+
+    background-color: #f1f5fb;
+
+}
+
+
+
+.linha-consulta td {
+
+    padding: 15px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #ddd;
+
+    color: #444;
+
+}
+
+
+
+/* ==============================
+   STATUS
+============================== */
+
+
+.status-agendado {
+
+    color: #0066cc;
+
+    font-weight: bold;
+
+}
+
+
+
+.status-confirmado {
+
+    color: #198754;
+
+    font-weight: bold;
+
+}
+
+
+
+.status-cancelado {
+
+    color: #dc3545;
+
+    font-weight: bold;
+
+}
+
+
+
+/* ==============================
+   AÇÕES
+============================== */
+
+
+.acoes {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+
+
+/* Botão Reagendar */
+
+
+.botao-reagendar {
+
+    background-color: #d39e00;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+.botao-reagendar:hover {
+    background-color: #b88600;
+}
+
+/* Botão Confirmar */
+
+.botao-confirmar {
+    background-color: #198754;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-confirmar:hover {
+    background-color: #0f5836;
+}
+
+
+/* Botão Cancelar */
+
+
+.botao-cancelar {
+
+    background-color: #dc3545;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.botao-cancelar:hover {
+
+    background-color: #b02a37;
+
+}
+
+
+
+/* ==============================
+   RESPONSIVIDADE
+============================== */
+
+
+@media(max-width: 768px) {
+
+
+    .consultas {
+
+        padding: 15px;
+
+    }
+
+
+
+    .consultas-topo {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+
+    .consultas-input {
+
+        width: 100%;
+
+    }
+
+
+
+    .consultas-tabela {
+
+        font-size: 14px;
+
+        overflow-x: auto;
+
+    }
+
+
+
+    .acoes {
+
+        flex-direction: column;
+
+    }
+
+
+
+}
