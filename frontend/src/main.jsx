@@ -19,6 +19,7 @@ import SobreMim from "./pages/sobremim/SobreMim.jsx";
 import Servicos from "./pages/servicos/Servicos.jsx";
 import Contatos from "./pages/contats/Contatos.jsx";
 import Agendamento from "./pages/agendamento/Agendamento.jsx";
+import ListadeAgendamento from "./pages/ListaDeAgendamentos/ListadeAgendamento.jsx";
 
 // importando usuario
 import LoginUsuario from "./pages/loginUsuario/LoginUsuario.jsx";
@@ -63,10 +64,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/agendamento",
-        element: 
-          // <ProtectedRoute>
-            <Agendamento />
-          //</ProtectedRoute>
+        element: <Agendamento />
+      },
+      {
+        path: "listadeagendamento",
+        element: <ListadeAgendamento />
       },
 
       {
