@@ -98,8 +98,7 @@ const consultasFiltradas = consultas.filter((consulta) =>
 
     </div>
 
-
-
+<div className="tabela-container">
     <table className="consultas-tabela">
 
         <thead className="consultas-cabecalho">
@@ -224,6 +223,57 @@ const consultasFiltradas = consultas.filter((consulta) =>
 
 
     </table>
+</div>
+<div className="consultas-cards">
+
+{consultasFiltradas.map((consulta) => (
+
+    <div className="consulta-card" key={consulta.id}>
+
+        <h3>{consulta.nomeCliente}</h3>
+
+        <p>
+            <strong>ID:</strong> {consulta.id}
+        </p>
+
+        <p>
+            <strong>Data:</strong> {consulta.dataConsulta}
+        </p>
+
+        <p>
+            <strong>Horário:</strong> {consulta.horarioConsulta}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+
+            <span className={`status-${consulta.status.toLowerCase()}`}>
+                {" "}{consulta.status}
+            </span>
+
+        </p>
+
+        <div className="acoes-card">
+
+            <button className="botao-reagendar">
+                Reagendar
+            </button>
+
+            <button className="botao-cancelar">
+                Cancelar
+            </button>
+
+            <button className="botao-confirmar">
+                Confirmar
+            </button>
+
+        </div>
+
+    </div>
+
+))}
+
+</div>
 
 
 </div>
