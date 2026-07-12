@@ -2,8 +2,9 @@ import "./Agendamento.css";
 import Calendario from "../../components/calendario/Calendario";
 import doutor from '../../assets/doutor.jpg';
 import { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+
 
 const Agendamento = () => {
 const [horarioSelecionado, setHorarioSelecionado] = useState("");
@@ -13,6 +14,7 @@ const [dataSelecionada, setDataSelecionada] = useState(new Date());
 const [tipoAcaoAdm, setTipoAcaoAdm] = useState("agendar"); 
 
 const navigate = useNavigate();
+const {id} = useParams();
 
 // Recupera os dados do localStorage
 const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
@@ -98,6 +100,34 @@ const handleSubmit = async (e) => {
     year: "numeric",
   });
 
+  const carregarAgendamento = async () => {
+
+    try {
+
+        const res = await axios.get(
+            `http://localhost:7006/agendamentos/${id}`,
+            {
+                withCredentials: true
+            }
+        );
+
+        setDataSelecionada(new Date(res.data.data_consulta));
+
+        setHorarioSelecionado(
+            res.data.horario_consulta.substring(0,5) + "H"
+        );
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
+
+};
+
+
+
+
 const buscarHorariosDaData = async () => {
 
   try {
@@ -129,6 +159,16 @@ const verificarSeOcupado = (horario) => {
     return item.horario_consulta.trim().substring(0, 5) === horario.trim().substring(0, 5);
   });
 };
+
+useEffect(() => {
+
+  if (id) {
+      carregarAgendamento();
+  }
+
+}, [id]);
+
+
 
 return (
   <section className="container-agendamento">

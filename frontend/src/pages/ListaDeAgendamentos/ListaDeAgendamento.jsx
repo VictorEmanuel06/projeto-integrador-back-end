@@ -38,17 +38,42 @@ const consultasFiltradas = consultas.filter((consulta) =>
             .includes(pesquisa.toLowerCase())
     );
 
-    const alterarStatus = (id, novoStatus) => {
+//     const alterarStatus = (id, novoStatus) => {
 
-    setConsultas((consultasAtuais) =>
-        consultasAtuais.map((consulta) =>
-            consulta.id === id
-                ? { ...consulta, status: novoStatus }
-                : consulta
-        )
-    );
+//     setConsultas((consultasAtuais) =>
+//         consultasAtuais.map((consulta) =>
+//             consulta.id === id
+//                 ? { ...consulta, status: novoStatus }
+//                 : consulta
+//         )
+//     );
+
+// };
+
+const alterarStatus = async (id, status) => {
+
+    try {
+
+        await axios.put(
+            `http://localhost:7006/agendamentos/${id}/status`,
+            { status },
+            {
+                withCredentials: true
+            }
+        );
+
+        carregarConsultas();
+
+    } catch (erro) {
+
+        console.log(erro);
+
+    }
 
 };
+
+
+
 
 
   return (

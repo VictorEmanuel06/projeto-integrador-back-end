@@ -116,3 +116,64 @@ export const listarAgendamentos = (req, res) => {
     });
 
 };
+
+
+export const alterarStatusAgendamento = (req, res) => {
+
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const sql = `
+        UPDATE agendamento
+        SET status_agendamento = ?
+        WHERE id_agendamento = ?
+    `;
+
+    db.query(sql, [status, id], (err, result) => {
+
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        return res.status(200).json({
+            message: "Status atualizado com sucesso."
+        });
+
+    });
+
+};
+
+
+export const buscarAgendamentoPorId = (req, res) => {
+
+    const { id } = req.params;
+
+    const sql = `
+        SELECT
+            id_agendamento,
+            data_consulta,
+            horario_consulta,
+            status_agendamento
+        FROM agendamento
+        WHERE id_agendamento = ?
+    `;
+
+    db.query(sql, [id], (err, result) => {
+
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        if (result.length === 0) {
+            return res.status(404).json({
+                message: "Agendamento não encontrado."
+            });
+        }
+
+        return res.json(result[0]);
+
+    });
+
+};

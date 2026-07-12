@@ -2,7 +2,9 @@ import { Router } from "express";
 import {
     criarAgendamento,
     listarAgendamentosPorData,
-    listarAgendamentos
+    listarAgendamentos,
+    alterarStatusAgendamento,
+    buscarAgendamentoPorId
 } from "../controllers/agendamentoController.js";
 import { verificarLogin } from "../middlewares/auth.js";
 
@@ -16,5 +18,9 @@ router.get("/:data", verificarLogin, listarAgendamentosPorData);
 
 // Cria um agendamento
 router.post("/", verificarLogin, criarAgendamento);
+
+router.put("/:id/status", verificarLogin, alterarStatusAgendamento);
+
+router.get("/data/:data", verificarLogin, buscarAgendamentoPorId);
 
 export default router;
