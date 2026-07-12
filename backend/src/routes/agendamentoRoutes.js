@@ -1,11 +1,20 @@
 import { Router } from "express";
-import { criarAgendamento, listarAgendamentosPorData } from "../controllers/agendamentoController.js";
+import {
+    criarAgendamento,
+    listarAgendamentosPorData,
+    listarAgendamentos
+} from "../controllers/agendamentoController.js";
 import { verificarLogin } from "../middlewares/auth.js";
 
 const router = Router();
 
-// Ambas as rotas exigem validação de login antes de executar a lógica
-router.post("/", verificarLogin, criarAgendamento);
+// Lista todos os agendamentos
+router.get("/", verificarLogin, listarAgendamentos);
+
+// Lista horários ocupados por data
 router.get("/:data", verificarLogin, listarAgendamentosPorData);
+
+// Cria um agendamento
+router.post("/", verificarLogin, criarAgendamento);
 
 export default router;

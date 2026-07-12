@@ -1,55 +1,39 @@
 import "./ListaDeAgendamento.css";
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ListadeAgendamento = () => {
 
     const [pesquisa, setPesquisa] = useState("");
     const navigate = useNavigate();
 
+    const [consultas, setConsultas] = useState([]);
 
-   const [consultas, setConsultas] = useState([
+   useEffect(() => {
+    carregarConsultas();
+   }, []);
 
-    {
-        id: 1,
-        nomeCliente: "João Silva",
-        dataConsulta: "07/07/2026",
-        horarioConsulta: "14:00",
-        status: "CONFIRMADO"
-    },
+   async function carregarConsultas() {
+    try {
 
+        const resposta = await axios.get(
+            "http://localhost:7006/agendamentos",
+            {
+                withCredentials: true
+            }
+        );
 
-    {
-        id: 2,
-        nomeCliente: "Maria Oliveira",
-        dataConsulta: "08/07/2026",
-        horarioConsulta: "15:30",
-        status: "AGENDADO"
-    },
-
-
-    {
-        id: 3,
-        nomeCliente: "Pedro Santos",
-        dataConsulta: "09/07/2026",
-        horarioConsulta: "09:00",
-        status: "CANCELADO"
-    },
-
-    {
-        id: 4,
-        nomeCliente: "Ricardo Junior",
-        dataConsulta: "10/07/2026",
-        horarioConsulta: "09:00",
-        status: "CONFIRMADO"
+        setConsultas(resposta.data);
+    } catch (erro) {
+        console.log(erro);
     }
-
-]);
+   }
 
 
 const consultasFiltradas = consultas.filter((consulta) =>
-        consulta.nomeCliente
+        (consulta.nomeCliente || "")
             .toLowerCase()
             .includes(pesquisa.toLowerCase())
     );
@@ -255,15 +239,25 @@ const consultasFiltradas = consultas.filter((consulta) =>
 
         <div className="acoes-card">
 
-            <button className="botao-reagendar">
+            <button
+             className="botao-reagendar"
+             onClick={() => navigate(`/agendamento/${consulta.id}`)}
+             >
                 Reagendar
             </button>
 
-            <button className="botao-cancelar">
+            <button
+             className="botao-cancelar"
+             onClick={() => alterarStatus(consulta.id, "CANCELADO" )}
+             >
                 Cancelar
             </button>
 
-            <button className="botao-confirmar">
+            <button 
+            className="botao-confirmar"
+            onClick={() => alterarStatus(consulta.id, "CONFIRMADO" )}
+            
+            >
                 Confirmar
             </button>
 

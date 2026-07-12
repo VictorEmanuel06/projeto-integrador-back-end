@@ -71,9 +71,6 @@ export const criarAgendamento = (req, res) => {
 
 
 
-
-
-
 // Listar horários ocupados por data
 export const listarAgendamentosPorData = (req, res) => {
     const { data } = req.params;
@@ -89,4 +86,33 @@ export const listarAgendamentosPorData = (req, res) => {
         if (err) return res.status(500).json(err);
         return res.json(result);
     });
+};
+
+// Listar todos os agendamentos
+export const listarAgendamentos = (req, res) => {
+
+    const sql = `
+        SELECT
+            a.id_agendamento AS id,
+            COALESCE(c.nomecompleto, 'Horário Bloqueado') AS nomeCliente,
+            DATE_FORMAT(a.data_consulta, '%d/%m/%Y') AS dataConsulta,
+            TIME_FORMAT(a.horario_consulta, '%H:%i') AS horarioConsulta,
+            a.status_agendamento AS status
+        FROM agendamento a
+        LEFT JOIN cadastro_cliente c
+            ON a.id_cliente = c.id_cliente
+        ORDER BY a.data_consulta, a.horario_consulta
+    `;
+
+    db.query(sql, (err, result) => {
+
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        return res.status(200).json(result);
+
+    });
+
 };
