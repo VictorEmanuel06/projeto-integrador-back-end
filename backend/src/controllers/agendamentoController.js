@@ -177,3 +177,37 @@ export const buscarAgendamentoPorId = (req, res) => {
     });
 
 };
+
+
+export const atualizarAgendamento = (req, res) => {
+
+    const { id } = req.params;
+    const { data_consulta, horario_consulta } = req.body;
+
+    const sql = `
+        UPDATE agendamento
+        SET
+            data_consulta = ?,
+            horario_consulta = ?
+            status_agendamento = 'AGENDADO'
+        WHERE id_agendamento = ?
+    `;
+
+    db.query(
+        sql,
+        [data_consulta, horario_consulta, id],
+        (err) => {
+
+            if (err) {
+                console.log(err);
+                return res.status(500).json(err);
+            }
+
+            return res.status(200).json({
+                message: "Agendamento atualizado com sucesso."
+            });
+
+        }
+    );
+
+};

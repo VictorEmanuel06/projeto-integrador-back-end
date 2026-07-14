@@ -41,8 +41,6 @@ const selecionarHorario = (horario) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-
-  // CORREÇÃO: Usa a nova validação unificada para o bloqueio
   if (!isAuthenticated) {
     alert("Você precisa estar logado para realizar uma ação.");
     navigate("/loginusuario");
@@ -50,34 +48,67 @@ const handleSubmit = async (e) => {
   }
 
   if (!horarioSelecionado) {
-    return alert("Escolha um horário antes de continuar.");
+    alert("Escolha um horário antes de continuar.");
+    return;
   }
 
   const dados = {
     data_consulta: dataSelecionada.toISOString().split("T")[0],
     horario_consulta: horarioSelecionado,
-    tipo: isAdmin && tipoAcaoAdm === "bloquear" ? "bloqueio" : "agendamento",
+    tipo: isAdmin && tipoAcaoAdm === "bloquear"
+      ? "bloqueio"
+      : "agendamento",
   };
 
   try {
-    const res = await axios.post(
-      "http://localhost:7006/agendamentos",
-      dados,
-      { 
-        withCredentials: true
-      }
-    );
+
+    let res;
+
+    if (id) {
+
+      res = await axios.put(
+        `http://localhost:7006/agendamentos/${id}`,
+        dados,
+        {
+          withCredentials: true,
+        }
+      );
+
+    } else {
+
+      res = await axios.post(
+        "http://localhost:7006/agendamentos",
+        dados,
+        {
+          withCredentials: true,
+        }
+      );
+
+    }
 
     console.log("Resposta do servidor:", res.data);
-    alert(isAdmin && tipoAcaoAdm === "bloquear" ? "Horário bloqueado com sucesso!" : "Agendamento feito com sucesso!");
-    
+
+    alert(
+      id
+        ? "Agendamento reagendado com sucesso!"
+        : isAdmin && tipoAcaoAdm === "bloquear"
+        ? "Horário bloqueado com sucesso!"
+        : "Agendamento feito com sucesso!"
+    );
+
     setHorarioSelecionado("");
     buscarHorariosDaData();
 
   } catch (err) {
+
     console.error("Erro Axios:", err);
-    const mensagemErro = err.response?.data?.error || "Erro ao agendar. Tente novamente mais tarde.";
+
+    const mensagemErro =
+      err.response?.data?.error ||
+      "Erro ao agendar. Tente novamente mais tarde.";
+
     alert(mensagemErro);
+
   }
 };
 
@@ -103,27 +134,29 @@ const handleSubmit = async (e) => {
   const carregarAgendamento = async () => {
 
     try {
+  
+      const res = await axios.get(
+        `http://localhost:7006/agendamentos/${id}`,
+        {
+          withCredentials: true
+        }
+      );
 
-        const res = await axios.get(
-            `http://localhost:7006/agendamentos/${id}`,
-            {
-                withCredentials: true
-            }
-        );
-
-        setDataSelecionada(new Date(res.data.data_consulta));
-
-        setHorarioSelecionado(
-            res.data.horario_consulta.substring(0,5) + "H"
-        );
-
+      console.log(res.data);
+  
+      setDataSelecionada(new Date(res.data.data_consulta));
+  
+      setHorarioSelecionado(
+        res.data.horario_consulta.substring(0, 5) + "H"
+      );
+  
     } catch (err) {
-
-        console.log(err);
-
+  
+      console.log("Erro ao carregar agendamento:", err);
+  
     }
-
-};
+  
+  };
 
 
 
@@ -133,7 +166,7 @@ const buscarHorariosDaData = async () => {
   try {
     const data = dataSelecionada.toISOString().split("T")[0];
     const res = await axios.get(
-      `http://localhost:7006/agendamentos/${data}`,
+      `http://localhost:7006/agendamentos/data/${data}`,
       { 
         withCredentials: true
       }

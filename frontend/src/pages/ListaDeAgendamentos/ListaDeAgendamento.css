@@ -231,7 +231,6 @@
 
     margin-bottom:15px;
 
-    color:#003f88;
 
 }
 
@@ -269,6 +268,14 @@
 
         padding:20px 15px;
 
+    }
+
+    .consulta-card p{
+        font-weight: 600;
+    }
+
+    .consulta-card h3{
+        font-weight: 700;
     }
 
     .consultas-topo{
