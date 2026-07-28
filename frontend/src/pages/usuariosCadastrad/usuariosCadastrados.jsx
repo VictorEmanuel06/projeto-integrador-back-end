@@ -1,26 +1,42 @@
 import "./UsuariosCadastrados.css";
-import axios from 'axios';
 import { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
- 
+import axios from 'axios';
+
 function UsuariosCadastrados() {
  
+  const [pesquisa, setPesquisa] = useState("");
+
   const [lista, setLista] = useState([]);
   const navegacao = useNavigate();
  
   useEffect(() => {
     carregarUsuarios();
-   
   }, []);
+
+
+  const usuariosFiltrados = lista.filter((item) =>
+        (item.nome || "")
+            .toLowerCase()
+            .includes(pesquisa.toLowerCase())
+    );
  
   //CARREAGR USUARIOS
-  const carregarUsuarios = () => {
-    axios.get('http://localhost:7006/usuarioscadastrados', {withCredentials: true})
-    .then(res => {
-      setLista(res.data);
-    })
+  async function carregarUsuarios() {
+    try {
+      const resposta = await axios.get(
+        "http://localhost:7006/usuarioscadastrados",
+        { withCredentials: true }
+      );
+
+      setLista(Array.isArray(resposta.data) ? resposta.data : []);
+    } catch (erro) {
+      console.log(erro);
+      setLista([]);
+    }
   }
- 
+
+
   return (
     <main className="main-container">
       <div className="search-container">
@@ -31,6 +47,8 @@ function UsuariosCadastrados() {
           <input
             type="text"
             placeholder="Pesquisar"
+            value={pesquisa}
+            onChange={(e) => setPesquisa(e.target.value)}
           />
         </div>
  
@@ -54,15 +72,22 @@ function UsuariosCadastrados() {
          
           <tbody>
  
-            {[1, 2, 3, 4].map((item) => (
+            {usuariosFiltrados.map((item) => (
  
-              <tr key={item}>
+              <tr key={item.id_cliente}>
  
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
- 
+                <td>
+                  {item.id_cliente}
+                </td>
+
+                <td>
+                  {item.nomecompleto}
+                </td>
+
+                <td>
+                  {item.email}
+                </td>
+
                 <td>
  
                   <button className="btn-editar">

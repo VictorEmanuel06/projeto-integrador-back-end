@@ -4,6 +4,7 @@ import session from "express-session";
 import dotenv from 'dotenv';
 import authRoutes from "./src/routes/authRoutes.js";
 import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
+import usuarioRoutes from "./src/routes/usuarioRoutes.js";
 
 dotenv.config();
 
@@ -55,6 +56,7 @@ app.get("/logout", (req, res) => {
 // Vinculação de Grupos de Rotas
 app.use("/", authRoutes);
 app.use("/agendamentos", agendamentoRoutes);
+app.use(usuarioRoutes);
 
 // Inicialização do Servidor
 const PORT = process.env.PORT || 3000;

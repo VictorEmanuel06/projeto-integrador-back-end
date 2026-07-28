@@ -4,7 +4,7 @@ import {
     cadastrarAdm, 
     loginUsuario, 
     loginAdm, 
-    verificarSessaoRaiz 
+    verificarSessaoRaiz
 } from "../controllers/authController.js";
 
 const router = Router();
