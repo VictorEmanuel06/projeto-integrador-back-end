@@ -107,7 +107,11 @@ td {
     background: #c0392b;
 }
  
-.btn-editar, .btn-excluir {
-     margin-left:250px;
+button i {
+ 
     margin-right: 6px;
+}
+ 
+button{
+    margin-left:250px;
 }

@@ -1,6 +1,26 @@
 import "./UsuariosCadastrados.css";
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import {useNavigate} from 'react-router-dom';
  
 function UsuariosCadastrados() {
+ 
+  const [lista, setLista] = useState([]);
+  const navegacao = useNavigate();
+ 
+  useEffect(() => {
+    carregarUsuarios();
+   
+  }, []);
+ 
+  //CARREAGR USUARIOS
+  const carregarUsuarios = () => {
+    axios.get('http://localhost:7006/usuarioscadastrados', {withCredentials: true})
+    .then(res => {
+      setLista(res.data);
+    })
+  }
+ 
   return (
     <main className="main-container">
       <div className="search-container">
