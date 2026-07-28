@@ -1,78 +1,68 @@
-.main-container {
- 
-    width: 90%;
-    max-width: 1200px;
-    margin: 60px auto;
+.listas-usuarios{
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
 }
+
 .search-container {
- 
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
 }
 .search-box {
  
-    width: 280px;
-    height: 42px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    padding: 0 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+    position: relative;
+    width: 350px;
+    max-width: 100%;
 }
  
-.search-icon {
- 
+
+.icone-pesquisa {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #777;
-    margin-right: 10px;
+    font-size: 17px;
 }
- 
-.search-box input {
- 
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    font-size: 15px;
-}
- 
  
 .table-card {
- 
+    width: 100%;
+    border-collapse: collapse;
+
     background: #fff;
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
 }
  
-table {
+
+    
  
-    width: 100%;
-    border-collapse: collapse;
-}
- 
-thead {
+.barra {
  
     background: #f5f5f5;
  
 }
  
-th {
+/* th {
  
     padding: 15px;
     color: #555;
-}
-.acoes{
-    margin-left: 20px;
-}
+} */
  
-td {
+/* .acoes{
+    margin-left: 20px;
+} */
+ 
+/* td {
  
     height: 65px;
     padding: 12px;
     border-bottom: 1px solid #e3e3e3;
-}
+} */
  
 .btn-editar {
  
@@ -107,11 +97,11 @@ td {
     background: #c0392b;
 }
  
-button i {
+.btn-editar i {
  
     margin-right: 6px;
 }
  
-button{
+.btn-editar{
     margin-left:250px;
 }

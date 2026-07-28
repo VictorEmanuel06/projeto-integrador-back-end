@@ -2,6 +2,7 @@ import "./UsuariosCadastrados.css";
 import { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { FaSearch } from "react-icons/fa";
 
 function UsuariosCadastrados() {
  
@@ -38,13 +39,21 @@ function UsuariosCadastrados() {
 
 
   return (
-    <main className="main-container">
+    <>
+    <div className="listas-usuarios">
+
+        <h1 className="consultas-titulo">
+          Usuarios Cadastrados
+        </h1>
+
       <div className="search-container">
  
-        <div className="search-box">
-          <i className="fa-solid fa-magnifying-glass search-icon"></i>
+        <div className="campo-pesquisa">
+
+          <FaSearch className="icone-pesquisa"/>
  
           <input
+            className="consultas-input"
             type="text"
             placeholder="Pesquisar"
             value={pesquisa}
@@ -54,18 +63,16 @@ function UsuariosCadastrados() {
  
       </div>
  
-      <div className="table-card">
- 
-        <table>
- 
-          <thead>
+      <div className="table-container">
+        <table className="consultas-tabela">
+          <thead className="consultas-cabecalho">
  
             <tr>
-              <th>Id</th>
+              <th className="coluna-id">ID</th>
               <th>Nome</th>
               <th>Email</th>
               <th>Telefone</th>
-              <th className="acoes">Ações</th>
+              <th>Ações</th>
             </tr>
  
           </thead>
@@ -74,7 +81,9 @@ function UsuariosCadastrados() {
  
             {usuariosFiltrados.map((item) => (
  
-              <tr key={item.id_cliente}>
+              <tr 
+              className="linha-consulta"
+              key={item.id_cliente}>
  
                 <td>
                   {item.id_cliente}
@@ -88,7 +97,7 @@ function UsuariosCadastrados() {
                   {item.email}
                 </td>
 
-                <td>
+                <td className="acoes">
  
                   <button className="btn-editar">
                     <i className="fa-solid fa-pen"></i>
@@ -111,8 +120,8 @@ function UsuariosCadastrados() {
         </table>
  
       </div>
- 
-    </main>
+ </div>
+    </>
   );
 }
  
