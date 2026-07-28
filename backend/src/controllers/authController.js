@@ -75,6 +75,7 @@ export const loginUsuario = (req, res) => {
     });
 };
 
+
 // Login de Administrador
 export const loginAdm = (req, res) => {
     const sql = "SELECT * FROM cadastro_adm WHERE emailadm = ?";

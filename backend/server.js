@@ -28,6 +28,30 @@ app.use(session({
     }
 }));
 
+
+
+app.get("/verificar-login", (req, res) => {
+  if (req.session.username) {
+    return res.json({ logado: true });
+  }
+  return res.json({ logado: false });
+});
+ 
+ 
+//rota de logout
+app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ error: "Erro ao encerrar sessão"});
+        }
+        res.clearCookie("connect.sid"); //nome padrão do cookie do express-session
+        return res.json({ message: "Logout realizado com sucesso" });
+    });
+});
+
+
+
+
 // Vinculação de Grupos de Rotas
 app.use("/", authRoutes);
 app.use("/agendamentos", agendamentoRoutes);
