@@ -26,6 +26,8 @@ function UsuariosCadastrados() {
     
 
   //CARREAGR USUARIOS
+ 
+  //CARREAGAR USUARIOS
   async function carregarUsuarios() {
     try {
       const resposta = await axios.get(
@@ -40,6 +42,29 @@ function UsuariosCadastrados() {
     }
   }
 
+  // EXCLUIR USUARIO
+
+async function excluirUsuario(id) {
+
+  const confirmar = window.confirm("Tem certeza que deseja excluir este usuário?");
+  if (!confirmar) return;
+
+  const url = `http://localhost:7006/usuarioscadastrados/${id}`;
+  console.log("URL montada:", url); // <-- novo log
+
+  try {
+    await axios.delete(url, {
+      withCredentials: true,
+    });
+
+    setLista((listaAtual) =>
+      listaAtual.filter((item) => item.id_cliente !== id)
+    );
+  } catch (erro) {
+    console.log(erro);
+    alert("Erro ao excluir usuário.");
+  }
+}
 
   return (
     <>
@@ -107,7 +132,9 @@ function UsuariosCadastrados() {
                     Editar
                   </button>
  
-                  <button className="btn-excluir">
+                  <button className="btn-excluir"
+                  onClick={()=> excluirUsuario(item.id_cliente)}
+                  >
                     <i className="fa-solid fa-trash"></i>
                     Excluir
                   </button>
