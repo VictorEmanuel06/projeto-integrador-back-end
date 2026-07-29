@@ -188,7 +188,7 @@ export const atualizarAgendamento = (req, res) => {
         UPDATE agendamento
         SET
             data_consulta = ?,
-            horario_consulta = ?
+            horario_consulta = ?,
             status_agendamento = 'AGENDADO'
         WHERE id_agendamento = ?
     `;
