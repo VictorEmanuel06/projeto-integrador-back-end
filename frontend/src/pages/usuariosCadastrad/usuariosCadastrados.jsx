@@ -17,11 +17,14 @@ function UsuariosCadastrados() {
 
 
   const usuariosFiltrados = lista.filter((item) =>
-        (item.nome || "")
+        (item.nomecompleto || "")
+  
             .toLowerCase()
             .includes(pesquisa.toLowerCase())
     );
- 
+
+    
+
   //CARREAGR USUARIOS
   async function carregarUsuarios() {
     try {
@@ -55,7 +58,7 @@ function UsuariosCadastrados() {
           <input
             className="consultas-input"
             type="text"
-            placeholder="Pesquisar"
+            placeholder="Pesquisar paciente..."
             value={pesquisa}
             onChange={(e) => setPesquisa(e.target.value)}
           />
@@ -71,7 +74,6 @@ function UsuariosCadastrados() {
               <th className="coluna-id">ID</th>
               <th>Nome</th>
               <th>Email</th>
-              <th>Telefone</th>
               <th>Ações</th>
             </tr>
  
@@ -80,6 +82,7 @@ function UsuariosCadastrados() {
           <tbody>
  
             {usuariosFiltrados.map((item) => (
+              
  
               <tr 
               className="linha-consulta"
