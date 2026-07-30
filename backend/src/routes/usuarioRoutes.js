@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { usuarios } from "../controllers/usuariosController.js";
 import { verificarLogin } from "../middlewares/auth.js";
-import { excluirUsuario, usuarios } from "../controllers/usuariosController.js";
+import { excluirUsuario} from "../controllers/usuariosController.js";
 
 
 const router = Router();

@@ -64,7 +64,7 @@ const Home = () => {
         {/* <!-- PILARES --> */}
 
         <section className='caixa-pilares'>
-            <h1>Os 5 Pilares da Psicologia</h1>
+            <h1 className="os-cinco-pilares">Os 5 Pilares da Psicologia</h1>
         
             <div className='pilares-wrapper'>
                 {/* <!-- Círculo --> */}
