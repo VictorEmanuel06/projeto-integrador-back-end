@@ -22,11 +22,8 @@ function UsuariosCadastrados() {
             .toLowerCase()
             .includes(pesquisa.toLowerCase())
     );
-
     
-
-  //CARREAGR USUARIOS
- 
+    
   //CARREAGAR USUARIOS
   async function carregarUsuarios() {
     try {
