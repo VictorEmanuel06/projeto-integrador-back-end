@@ -26,6 +26,7 @@ import LoginUsuario from "./pages/loginUsuario/LoginUsuario.jsx";
 import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario.jsx";
 import RecuperarSenhaUsuario from "./pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.jsx";
 import AlterarSenhaUsuario from "./pages/alterarSenhaUsuario/AlterarSenhaUsuario.jsx";
+import VerificarCodigo from "./verificarCodigo/VerificarCodigo.jsx";
 import UsuariosCadastrados from "./pages/usuariosCadastrad/usuariosCadastrados.jsx";
 import EditarUsuario from "./pages/editarUsuario/EditarUsuario.jsx";
 
@@ -132,6 +133,13 @@ const router = createBrowserRouter([
       {
         path: "/calendario",
         element: <Calendario />
+      },
+
+      // verificar codigo
+
+      {
+        path: "/verificar-codigo",
+        element:<VerificarCodigo />
       },
       
 

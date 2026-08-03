@@ -1,38 +1,46 @@
 import { useState } from "react";
-import "./RecuperarSenhaUsuario.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import "./VerificarCodigo.css";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 
-const RecuperarSenhaUsuario = () => {
-    const [email, setEmail] = useState("");
+const VerificarCodigo = () => {
+    const [codigo, setCodigo] = useState("");
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const handleEnviar = async () => {
+    // recebe o e-mail que veio da tela anterior
+    const email = location.state?.email;
+
+    const handleVerificar = async () => {
         setErro("");
 
+        if (!codigo) {
+            setErro("Informe o código recebido por e-mail.");
+            return;
+        }
+
         if (!email) {
-            setErro("Informe um e-mail válido.");
+            setErro("E-mail não encontrado. Volte e tente novamente.");
             return;
         }
 
         setCarregando(true);
 
         try {
-            const res = await fetch("http://localhost:7006/api/recuperar-senha", {
+            const res = await fetch("http://localhost:7006/api/verificar-codigo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email, codigo }),
             });
 
             const data = await res.json();
 
             if (!res.ok) {
-                throw new Error(data.message || "Erro ao enviar e-mail");
+                throw new Error(data.message || "Código inválido");
             }
 
-            // leva para a tela de digitar o código, passando o e-mail
-            navigate("/verificar-codigo", { state: { email } });
+            navigate("/AlterarSenhaUsuario", { state: { email } });
         } catch (err) {
             setErro(err.message);
         } finally {
@@ -45,22 +53,23 @@ const RecuperarSenhaUsuario = () => {
 
             <div className="card-recuperar-usuario">
 
-                <div className="icon-usuario">↺</div>
+                <div className="icon-usuario">✉</div>
 
-                <h1 className="title-recuperar-usuario">Recuperar senha</h1>
+                <h1 className="title-recuperar-usuario">Verificar código</h1>
 
                 <p className="description">
-                    Para sua segurança, informe o e-mail cadastrado.
-                    Enviaremos um link seguro para a criação de uma nova senha.
+                    Enviamos um código de 6 dígitos para <strong>{email}</strong>.
+                    Digite abaixo para continuar.
                 </p>
 
                 <div className="form-group-user">
-                    <label>E-mail</label>
+                    <label>Código</label>
                     <input
-                        type="email"
-                        placeholder="exemplo@email.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="text"
+                        placeholder="000000"
+                        maxLength={6}
+                        value={codigo}
+                        onChange={(e) => setCodigo(e.target.value)}
                     />
                 </div>
 
@@ -68,10 +77,10 @@ const RecuperarSenhaUsuario = () => {
 
                 <button
                     className="btn-instrucoes"
-                    onClick={handleEnviar}
+                    onClick={handleVerificar}
                     disabled={carregando}
                 >
-                    {carregando ? "Enviando..." : "Enviar instruções →"}
+                    {carregando ? "Verificando..." : "Verificar código →"}
                 </button>
 
                 <div className="divider"></div>
@@ -96,4 +105,4 @@ const RecuperarSenhaUsuario = () => {
     )
 }
 
-export default RecuperarSenhaUsuario;
+export default VerificarCodigo;
