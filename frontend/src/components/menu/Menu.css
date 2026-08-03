@@ -9,9 +9,7 @@
     z-index: 1000;
   }
  
-  .login-icon svg {
-  font-size: 20px;
-  color: #fff;
+  .login-icon{
   cursor: pointer;
   order: 999;
 }
@@ -30,6 +28,7 @@
  
   .logo-menu {
     max-width: 160px;
+    background: none;
   }
  
   .nav-list {
@@ -37,23 +36,22 @@
     display: flex;
   }
  
-  .active{
-    background-color: #402722;
-    color: #fff;
-    border-radius: 30px 10px;
-    padding: 9px;
-  }
  
   .nav-list li {
     margin-left: 32px;
     letter-spacing: 3px;
   }
  
-  .nav-list a {
+  .nav-list a.active {
     color: #fff;
+    background-color: #402722;
+    border-radius: 30px 10px;
+    padding: 9px;
     text-decoration: none;
     transition: 0.3s;
   }
+
+
  
 /* HAMBURGUER */
  
@@ -86,7 +84,7 @@
  
     .nav-list {
       position: absolute;
-      top: 8vh;
+      top: 7vh;
       right: 0;
       width: 50vw;
       height: 92vh;

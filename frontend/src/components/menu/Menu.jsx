@@ -28,7 +28,7 @@ function Menu() {
  
   return (
     <nav className='menu'>
-      <img src={logo_page} className='logo-menu' alt='Logo' />
+      <NavLink to="/" className="logo-menu"> <img src={logo_page} className='logo-menu' alt='Logo' /> </NavLink>
  
       {/* Menu Hamburguer */}
       <div
@@ -72,19 +72,19 @@ function Menu() {
 </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.3s` : "", }}>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" className="menu-link">Home</NavLink>
         </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.4s` : "", }}>
-          <NavLink to="/SobreMim">Sobre Mim</NavLink>
+          <NavLink to="/SobreMim" className="menu-link">Sobre Mim</NavLink>
         </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.5s` : "", }}>
-          <NavLink to="/Servicos">Serviços</NavLink>
+          <NavLink to="/Servicos" className="menu-link">Serviços</NavLink>
         </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
-          <NavLink to="/Contatos">Contatos</NavLink>
+          <NavLink to="/Contatos" className="menu-link  ">Contatos</NavLink>
         </li>
  
       </ul>
