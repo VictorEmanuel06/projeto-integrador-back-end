@@ -72,19 +72,19 @@ function Menu() {
 </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.3s` : "", }}>
-          <NavLink to="/" className="menu-link">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
         </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.4s` : "", }}>
-          <NavLink to="/SobreMim" className="menu-link">Sobre Mim</NavLink>
+          <NavLink to="/SobreMim">Sobre Mim</NavLink>
         </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.5s` : "", }}>
-          <NavLink to="/Servicos" className="menu-link">Serviços</NavLink>
+          <NavLink to="/Servicos">Serviços</NavLink>
         </li>
  
         <li style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.6s` : "", }}>
-          <NavLink to="/Contatos" className="menu-link  ">Contatos</NavLink>
+          <NavLink to="/Contatos">Contatos</NavLink>
         </li>
  
       </ul>

@@ -41,6 +41,21 @@
     margin-left: 32px;
     letter-spacing: 3px;
   }
+
+  .nav-list a {
+    color: #fff;
+    text-decoration: none;
+    padding: 9px;
+    transition: 0.3s;
+}
+
+.nav-list a:hover {
+    color: #f5d6c8;
+}
+
+.nav-list a:visited {
+    color: #fff;
+}
  
   .nav-list a.active {
     color: #fff;
@@ -50,7 +65,6 @@
     text-decoration: none;
     transition: 0.3s;
   }
-
 
  
 /* HAMBURGUER */

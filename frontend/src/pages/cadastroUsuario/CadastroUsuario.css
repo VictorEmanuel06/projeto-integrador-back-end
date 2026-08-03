@@ -51,11 +51,6 @@
     font-size: 14px;
 }
 
-.info-usuario{
-    text-align: center;
-    margin: 20px;
-}
-
 .btn-usuario{
   width: 100%;
   height: 52px;
@@ -73,4 +68,11 @@
 .voltar_login{
     margin-top: 40px;
     color: #000;
+    text-decoration: none;
+    font-size: 15px;
+}
+.voltar-link{
+    text-decoration: none;
+    color: #0b4aa6;
+    font-size: 15px;
 }

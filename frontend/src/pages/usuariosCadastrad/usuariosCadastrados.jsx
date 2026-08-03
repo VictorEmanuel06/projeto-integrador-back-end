@@ -22,11 +22,8 @@ function UsuariosCadastrados() {
             .toLowerCase()
             .includes(pesquisa.toLowerCase())
     );
-
     
-
-  //CARREAGR USUARIOS
- 
+    
   //CARREAGAR USUARIOS
   async function carregarUsuarios() {
     try {
@@ -150,6 +147,36 @@ async function excluirUsuario(id) {
         </table>
  
       </div>
+      <div className="usuarios-cards">
+        {usuariosFiltrados.map((item) => (
+    <div className="usuario-card" key={item.id_cliente}>
+      <h3>{item.nomecompleto}</h3>
+
+      <p>
+        <strong>ID:</strong> {item.id_cliente}
+      </p>
+
+      <p>
+        <strong>Email:</strong> {item.email}
+      </p>
+
+      <div className="acoes-card">
+        <button className="btn-editar">
+          <i className="fa-solid fa-pen"></i>
+          Editar
+        </button>
+
+        <button
+          className="btn-excluir"
+          onClick={() => excluirUsuario(item.id_cliente)}
+        >
+          <i className="fa-solid fa-trash"></i>
+          Excluir
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
  </div>
     </>
   );

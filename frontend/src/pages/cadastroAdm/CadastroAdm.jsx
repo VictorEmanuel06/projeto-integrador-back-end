@@ -52,6 +52,7 @@ const CadastroAdm = () => {
             type="text"
             name="name"
             id="name"
+            placeholder="Digite seu nome"
             value={valores.name} // <-- ADICIONADO: Controla o input
             onChange={handleInput}
           />
@@ -64,6 +65,7 @@ const CadastroAdm = () => {
             type="email"
             name="email"
             id="email"
+            placeholder="Digite seu email"
             value={valores.email} // <-- ADICIONADO: Controla o input
             onChange={handleInput}
           />
@@ -76,6 +78,7 @@ const CadastroAdm = () => {
             type="password"
             name="password"
             id="password"
+            placeholder="Digite sua senha"
             autoComplete="new-password"
             value={valores.password} // <-- ADICIONADO: Controla o input
             onChange={handleInput}
@@ -85,7 +88,7 @@ const CadastroAdm = () => {
           )}
         </div>
  
-        <div className="info-cadAdm">
+        <div className="info-adm">
           Seus dados são protegidos por protocolos de segurança.
           Não compartilhamos informações pessoais com terceiros.
         </div>

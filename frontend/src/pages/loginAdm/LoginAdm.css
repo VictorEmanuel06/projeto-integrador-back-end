@@ -9,7 +9,7 @@
 .title-loginAdm {
     color: #fff;
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -45,9 +45,12 @@
 }
  
 .info-adm {
-    font-size: 12px;
-    color: #fff;
-    margin: 22px 0 10px;
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #0f3f97;
+    margin: 10px 0 30px;
 }
  
 .btn-loginAdm {
@@ -63,7 +66,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin: 0 auto;
+    margin-bottom: 15px;
     transition: 0.2s;
 }
  
@@ -73,6 +76,7 @@
  
 .esquecisenhaadm {
     color: skyblue;
+    text-decoration: none;
 }
  
 .login-adm {
@@ -87,6 +91,18 @@
     text-decoration: none;
     font-weight: 600;
 }
+
+.cancelar-adm{
+    margin-top: 40px;
+    margin-left: 140px; 
+    color: #fff;
+    text-decoration: none;
+}
+
+/* .btn-voltar-login{
+    text-decoration: none;
+    font-weight: 600;
+} */
  
 .erro {
   color: red;

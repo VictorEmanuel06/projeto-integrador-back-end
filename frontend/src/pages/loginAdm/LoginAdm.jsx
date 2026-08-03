@@ -71,6 +71,7 @@ const LoginAdm = () => {
             type="email"
             name="email"
             id="email"
+            placeholder="email@email.com"
             autoComplete="email"
             value={valores.email}
             onChange={handleInput}
@@ -89,6 +90,7 @@ const LoginAdm = () => {
             type="password"
             name="password"
             id="password"
+            placeholder="*************"
             autoComplete="current-password"
             value={valores.password}
             onChange={handleInput}
@@ -114,6 +116,10 @@ const LoginAdm = () => {
         <button type="submit" className="btn-loginAdm">
           Logar →
         </button>
+
+          <NavLink to="/" className="cancelar-adm"> 
+            Cancelar
+          </NavLink>
  
         <div className="login-adm">
           Não possui uma conta?
@@ -121,8 +127,10 @@ const LoginAdm = () => {
             to="/cadastroadm"
             className="redi-cad-adm"
           >
-            Clique para fazer o cadastro
+            Clique aqui para fazer o cadastro
           </NavLink>
+
+          {/* <NavLink className="btn-voltar-login" to="/loginusuario">Voltar para Login usuario</NavLink> */}
         </div>
       </form>
     </div>
