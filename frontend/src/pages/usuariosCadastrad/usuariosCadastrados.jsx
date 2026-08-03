@@ -1,6 +1,6 @@
 import "./UsuariosCadastrados.css";
 import { useEffect, useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { FaSearch } from "react-icons/fa";
 
@@ -126,7 +126,7 @@ async function excluirUsuario(id) {
  
                   <button className="btn-editar">
                     <i className="fa-solid fa-pen"></i>
-                    Editar
+                    <NavLink to="/editarusuario" className="button-editar">Editar</NavLink>
                   </button>
  
                   <button className="btn-excluir"

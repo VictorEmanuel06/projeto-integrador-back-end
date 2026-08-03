@@ -47,6 +47,10 @@
  
 }
  
+.button-editar{
+    text-decoration: none;
+    color: #000;
+}
  
 .btn-editar {
     background: #8b8b8b;

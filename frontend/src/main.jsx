@@ -27,6 +27,7 @@ import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario.jsx";
 import RecuperarSenhaUsuario from "./pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.jsx";
 import AlterarSenhaUsuario from "./pages/alterarSenhaUsuario/AlterarSenhaUsuario.jsx";
 import UsuariosCadastrados from "./pages/usuariosCadastrad/usuariosCadastrados.jsx";
+import EditarUsuario from "./pages/editarUsuario/EditarUsuario.jsx";
 
 // importando ADM
 import LoginAdm from "./pages/loginAdm/LoginAdm.jsx";
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
         path: "/alterarsenhausuario",
         element: <AlterarSenhaUsuario />
 
+      },
+      {
+        path: "/editarusuario",
+        element: <EditarUsuario/>
       },
 
       // ADM

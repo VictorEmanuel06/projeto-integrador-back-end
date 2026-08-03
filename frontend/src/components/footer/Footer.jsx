@@ -36,10 +36,20 @@ const footer = () => {
         <div className="footer_block footer_right">
             <h4>Contato</h4>
             <p>
+                
+             <a className="whatsapp-link"
+                href="https://wa.me/5511992678813"
+                target="_blank"
+                rel="noreferrer">  
                 <i className="fa-brands fa-whatsapp"></i>(11) 99267-8813
+                </a>
             </p>
             <p>
-                <i className="fa-solid fa-envelope"></i> neves.romulo@yahoo.com</p>
+                <a className="email-link"
+                href="mailto:neves.romulo@yahoo.com">
+                    <i className="fa-solid fa-envelope"></i> neves.romulo@yahoo.com
+                </a>
+            </p>
 
             <h4>Endereço</h4>
             <p><i className="fa-solid fa-location-dot outline"></i>Rua Salvador Iacona, 27<br/>Vila Santa Catarina</p>

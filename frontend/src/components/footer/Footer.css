@@ -87,6 +87,52 @@ small {
     margin-right: 8px;
 }
 
+/* Redirecionamento footer WhatsApp */
+
+.footer_right a.whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer_right a.whatsapp-link i {
+    margin-right: 4px;
+    color: #fff; /* ou #25D366 se quiser o ícone verde */
+}
+
+.footer_right a.whatsapp-link:hover {
+    opacity: 0.85;
+}
+
+.footer_block.footer_right{
+    min-width: 200px;
+    flex-shrink: 0;
+}
+
+/* Redirecionamento footer EMAIL */
+.footer_right a.email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer_right a.email-link i {
+    margin-right: 4px;
+    color: #fff;
+}
+
+.footer_right a.email-link:hover {
+    opacity: 0.85;
+}
+
 .outline {
     color: transparent;
     -webkit-text-stroke: 1px #fff;
@@ -158,6 +204,16 @@ small {
         max-width: 150px;
         margin-bottom: -10px;
     }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer_right a.fa-whatsapp {
+    font-size: 0.85rem;
+  }
 }
 
 
