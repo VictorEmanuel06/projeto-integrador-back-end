@@ -69,27 +69,40 @@ function LoginUsuario() {
   };
 
   return (
-    <div className="container-login-user">
-      <div className="card-usuario">
-        <h1 className="card-login-h1">Login</h1>
+      <div className="card-loginusuario">
+        <h1 className="title-loginusuario">Login</h1>
 
-        <p className="descricao-usuario">
+        <p className="subtitle-usuario">
           Realize o Login para acessar a agenda
         </p>
 
-        <form action="" onSubmit={handleSubimt} className="form-usuario">
+        <form onSubmit={handleSubimt} noValidate>
 
-          <div>
-            <label htmlFor="email" className="label-usuario">Login atual</label>
-            <input type="text" placeholder="exemplo@email.com" name="email" id="email" autoComplete="email"
-              onChange={handleInput} />
+          <div className="form-usuario">
+            <label htmlFor="email">Email</label>
+
+            <input 
+            type="text"
+            placeholder="exemplo@email.com"
+            name="email"
+            id="email"
+            autoComplete="email"
+            onChange={handleInput} />
+
             <span>{errors.email}</span>
           </div>
 
-          <div>
-            <label htmlFor="password" className="label-usuario-senha">Senha</label>
-            <input className="password-usuario" type="password" name="password" id="password" autoComplete="current-password"
-              onChange={handleInput} />
+          <div className="form-usuario">
+            <label htmlFor="password">Senha</label>
+
+            <input
+            className="password-usuario"
+            type="password" name="password"
+            id="password"
+             placeholder="***********"
+            autoComplete="current-password"
+            onChange={handleInput} />
+            
             <span>{errors.password}</span>
             <NavLink to="/recuperarsenhausuario" className="esqueci-senha-usuario">Esqueci minha senha!</NavLink>
           </div>
@@ -99,19 +112,28 @@ function LoginUsuario() {
             dados de acesso e sua privacidade é nossa prioridade absoluta.
           </div>
 
-          <button className="entrar" type="submit">
-            ENTRAR
+          <button className="btn-loginusuario" type="submit">
+            Logar →
           </button>
 
-          <NavLink to="/" className="cancelar">
+          <NavLink to="/" className="cancelar"> 
             Cancelar
           </NavLink>
 
-          <NavLink to="/cadastrousuario" className="btn_cadastro">Ainda não tem cadastro? Click aqui</NavLink>
+          <div className="login-usuario">
+            Não possui uma conta?
+            <NavLink
+              to="/cadastrousuario"
+              className="redi-cad-usuario"
+              >
+                Clique aqui para fazer o cadastro
+              </NavLink>
+          </div>
+
+          {/* <NavLink to="/loginadm" className="btn-login-adm">Login Adiministrativo</NavLink> */}
 
         </form>
       </div>
-    </div>
   );
 }
 

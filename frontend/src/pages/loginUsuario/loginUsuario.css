@@ -1,61 +1,57 @@
-.container-login-user{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.card-usuario{
+.card-loginusuario{
     width: 420px;
     background: #d9d9d9;
-    padding: 40px;
-    border-radius: 30px;
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
+    border-radius: 14px;
+    padding: 30px 28px;
+    margin: 80px auto;
 }
 
-.card-login-h1{
+.title-loginusuario{
     color: #000;
-    font-size: 40px;
+    font-size: 36px;
+    font-weight: 400;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.descricao-usuario{
+.subtitle-usuario{
+    font-size: 14px;
     color: #3e4a5a;
+    line-height: 1.5;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .form-usuario{
-    display:flex;
-    flex-direction:column;
+    margin-bottom: 16px;
 }
 
-
-.label-usuario{
-    margin-right: 210px;
-    margin-bottom: 8px;
-    font-size: 15px;
-    color: #000;
-}
-.label-usuario-senha{
-    margin-right: 240px;
+.form-usuario label {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 6px;
 }
 
-
-.password-usuario{
+.form-adm input {
+    width: 100%;
     height: 40px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
+    background: #dddddd;
+    padding: 0 12px;
+    outline: none;
+    font-size: 14px;
+}
+
+.password-usuario{
     margin-bottom: 10px;
-    padding-left: 10px;
 }
 
 .esqueci-senha-usuario{
-    /* margin-right: 160px;
-    margin-bottom: 40px;
-    margin-top: 40px; */
     font-size: 14px;
     color: #000;
+    text-decoration: none;
 }
 
 .alerta{
@@ -64,34 +60,60 @@
     border-radius:10px;
     color:#1d3567;
     font-size:12px;
-    margin:10px 0 30px;
+    margin:20px 0 30px;
 }
 
-.entrar{
-    width: 180px;
-    height: 45px;
+.login-usuario{
+    text-align: center;
+    margin-top: 18px;
+    font-size: 12px;
+    color: #000;
+}
+
+.btn-loginusuario{
+    width: 100%;
+    height: 48px;
     border: none;
-    border-radius: 25px;
+    border-radius: 24px;
     background: #183a8d;
     color: white;
-    font-weight: bold;
+    font-size: 16px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    transition: 0.2s;
+    
+}
 
-    margin:auto;
+.redi-cad-usuario{
+    color: #0b4aa6;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+
+.login-usuario {
+    color: #000;
+    font-size: 15px;
 }
 
 
 .cancelar{
-    margin-top:20px;
+    margin-top: 40px;
+    margin-left: 140px; 
     color:#444;
     text-decoration:none;
 }
 
-.btn_cadastro{
+/* .btn_cadastro{
     margin: 10px;
     background: #183a8d;
     color: white;
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 10px;
     padding-top: 5px;
     width: 200px;
     height: 50px;
@@ -101,5 +123,4 @@
 
     margin: 15px 10px 10px 70px;
 
-}
-
+} */

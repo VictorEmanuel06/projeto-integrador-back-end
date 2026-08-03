@@ -58,14 +58,14 @@ const handleSubmit = async (event) => {
 
         <div className="form-usuario">
             <label htmlFor="email">E-mail</label>
-            <input type="email" name="email" id="email" autoComplete="email"
+            <input type="email" name="email" id="email" autoComplete="email" placeholder="Digite seu email"
                 onChange={handleInput} />
             <span> {validationErrors.email} </span>
         </div>
 
         <div className="form-usuario">
             <label htmlFor="password">Senha</label>
-            <input type="password" name="password" id="password" autoComplete="new-password"
+            <input type="password" name="password" id="password" autoComplete="new-password" placeholder="Digite sua senha"
                 onChange={handleInput} />
             <span> {validationErrors.password} </span>
         </div>
@@ -75,7 +75,7 @@ const handleSubmit = async (event) => {
             <input type="password"></input>
         </div> */}
 
-        <div className="info-usuario">
+        <div className="alerta">
             Seus dados são protegidos por protocolos de segurança.
             Não compartilhamos informações pessoais com terceiros.
         </div>
@@ -84,7 +84,12 @@ const handleSubmit = async (event) => {
             Cadastrar conta →
         </button>
             
-            <NavLink to="/loginusuario" className="voltar_login" >Já possui uma conta? Clique para fazer login</NavLink>
+            <div className="voltar-login">
+                Já possui uma conta?
+                <NavLink to="/loginusuario" className="voltar-link" >
+                    Clique para fazer login
+                </NavLink>
+            </div>
 
     </div>
     </form>
