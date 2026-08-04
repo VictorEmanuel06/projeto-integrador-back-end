@@ -3,7 +3,10 @@ import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ValidacaodeLoginAdm from "../../services/ValidacaodeLoginAdm";
- 
+
+// 1. Importe o AuthContext
+import { useAuth } from "../../context/AuthContext";
+
 const LoginAdm = () => {
   const [valores, setValores] = useState({
     email: "",
@@ -11,12 +14,15 @@ const LoginAdm = () => {
   });
 
   const navegacao = useNavigate();
- 
+
+  // 2. Extraia o setUsuarioLogado do contexto
+  const { setUsuarioLogado } = useAuth();
+
   const [errors, setErrors] = useState({
     email: "",
     password: "",
   });
- 
+
   const handleInput = (event) => {
     setValores(prev => ({...prev, [event.target.name]: event.target.value,}))
   }
@@ -33,18 +39,30 @@ const LoginAdm = () => {
     .catch(err => console.log(err))
   }, []);
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrors(ValidacaodeLoginAdm(valores));
- 
-    if(errors.email === "" && errors.password === ""){
+    const validationErrors = ValidacaodeLoginAdm(valores);
+    setErrors(validationErrors);
+
+    if(validationErrors.email === "" && validationErrors.password === ""){
       axios.post('http://localhost:7006/loginadm', valores, { withCredentials: true })
       .then(res => {
         console.log("RESPOSTA:", res.data);
 
         if(res.data.success ) {
-          console.log(res.data);
+          // 3. Salva no localStorage como tipo "adm"
+          localStorage.setItem(
+            "usuario",
+            JSON.stringify({
+              id: res.data.id || res.data.user?.id,
+              nomecompleto: res.data.nomecompleto || res.data.user?.nomecompleto,
+              tipo: "adm" // Identifica que é Admin
+            })
+          );
+
+          // 4. ATUALIZA O ESTADO DO CONTEXTO PARA TROCAR O ÍCONE NO MENU
+          setUsuarioLogado(true);
+
           navegacao("/");
         } else {
           alert("Registro inexistente");
@@ -53,20 +71,19 @@ const LoginAdm = () => {
       .catch(err => console.log(err));
     }
   }
- 
+
   return (
     <div className="card-loginAdm">
       <h1 className="title-loginAdm">Login</h1>
- 
+
       <p className="subtitle-adm">
         Faça o login para acessar o site.
       </p>
- 
-      {/* noValidate impede o navegador de mostrar aquele balão flutuante */}
+
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-adm">
           <label htmlFor="email">E-mail</label>
- 
+
           <input
             type="email"
             name="email"
@@ -76,16 +93,15 @@ const LoginAdm = () => {
             value={valores.email}
             onChange={handleInput}
           />
- 
-          {/* O erro agora aparece fixo aqui embaixo, igual ao da senha */}
+
           {errors.email && (
             <span className="erro">{errors.email}</span>
           )}
         </div>
- 
+
         <div className="form-adm">
           <label htmlFor="password">Senha</label>
- 
+
           <input
             type="password"
             name="password"
@@ -95,11 +111,11 @@ const LoginAdm = () => {
             value={valores.password}
             onChange={handleInput}
           />
- 
+
           {errors.password && (
             <span className="erro">{errors.password}</span>
           )}
- 
+
           <NavLink
             to="/recuperarsenhaadm"
             className="esquecisenhaadm"
@@ -107,20 +123,20 @@ const LoginAdm = () => {
             Esqueci minha senha
           </NavLink>
         </div>
- 
+
         <div className="info-adm">
           Seus dados são protegidos por protocolos de segurança.
           Não compartilhamos informações pessoais com terceiros.
         </div>
- 
+
         <button type="submit" className="btn-loginAdm">
           Logar →
         </button>
 
-          <NavLink to="/" className="cancelar-adm"> 
-            Cancelar
-          </NavLink>
- 
+        <NavLink to="/" className="cancelar-adm"> 
+          Cancelar
+        </NavLink>
+
         <div className="login-adm">
           Não possui uma conta?
           <NavLink
@@ -129,13 +145,31 @@ const LoginAdm = () => {
           >
             Clique aqui para fazer o cadastro
           </NavLink>
-
-          {/* <NavLink className="btn-voltar-login" to="/loginusuario">Voltar para Login usuario</NavLink> */}
+        </div>
+        {/* Coloque no final do form no LoginAdm.jsx */}
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
+          <NavLink 
+            to="/loginusuario" 
+            style={{
+              padding: "8px 16px",
+              borderRadius: "20px",
+              border: "1px solid #cbd5e1",
+              backgroundColor: "#f8fafc",
+              color: "#475569",
+              fontSize: "0.85rem",
+              fontWeight: "500",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px"
+            }}
+          >
+            <i className="fa-solid fa-user"></i> Voltar para Login de Cliente
+          </NavLink>
         </div>
       </form>
     </div>
   )
 }
 
- 
 export default LoginAdm;

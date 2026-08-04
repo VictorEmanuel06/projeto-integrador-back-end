@@ -129,6 +129,27 @@ function LoginUsuario() {
                 Clique aqui para fazer o cadastro
               </NavLink>
           </div>
+          {/* Coloque logo abaixo do link de cadastro ou antes de fechar a tag </form> */}
+          <div style={{ marginTop: "20px", textAlign: "center" }}>
+            <NavLink 
+              to="/loginadm" 
+              style={{
+                padding: "8px 16px",
+                borderRadius: "20px",
+                border: "1px solid #cbd5e1",
+                backgroundColor: "#f8fafc",
+                color: "#475569",
+                fontSize: "0.85rem",
+                fontWeight: "500",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px"
+              }}
+            >
+              <i className="fa-solid fa-shield-halved"></i> Acesso da Equipe / ADM
+            </NavLink>
+          </div>
 
           {/* <NavLink to="/loginadm" className="btn-login-adm">Login Adiministrativo</NavLink> */}
 
