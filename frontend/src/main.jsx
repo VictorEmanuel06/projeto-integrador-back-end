@@ -32,6 +32,8 @@ import AlterarSenhaUsuario from "./pages/alterarSenhaUsuario/AlterarSenhaUsuario
 import VerificarCodigo from "./verificarCodigo/VerificarCodigo.jsx";
 import UsuariosCadastrados from "./pages/usuariosCadastrad/usuariosCadastrados.jsx";
 import EditarUsuario from "./pages/editarUsuario/EditarUsuario.jsx";
+import PainelDoUsuario from "./pages/Paineldousuario/PainelDoUsuario.jsx";
+
 
 // importando ADM
 import LoginAdm from "./pages/loginAdm/LoginAdm.jsx";
@@ -98,6 +100,10 @@ const router = createBrowserRouter([
         path: "/loginusuario",
         element: <LoginUsuario />
 
+      },
+      {
+        path: "/paineldousuario",
+        element: <PainelDoUsuario />
       },
       {
         path: "/cadastrousuario",
