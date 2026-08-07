@@ -5,8 +5,6 @@ import dotenv from 'dotenv';
 import authRoutes from "./src/routes/authRoutes.js";
 import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
 import usuarioRoutes from "./src/routes/usuarioRoutes.js";
-import recuperarSenhaRoutes from "./src/routes/recuperarSenhaRoutes.js"; 
-
 
 
 dotenv.config();
@@ -60,7 +58,7 @@ app.get("/logout", (req, res) => {
 app.use("/", authRoutes);
 app.use("/agendamentos", agendamentoRoutes);
 app.use(usuarioRoutes);
-app.use(recuperarSenhaRoutes);
+app.use("/", contatoRoutes);
 
 // Inicialização do Servidor
 const PORT = process.env.PORT || 3000;
