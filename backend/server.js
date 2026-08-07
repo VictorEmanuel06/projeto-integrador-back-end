@@ -5,7 +5,12 @@ import dotenv from 'dotenv';
 import authRoutes from "./src/routes/authRoutes.js";
 import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
 import usuarioRoutes from "./src/routes/usuarioRoutes.js";
+<<<<<<< Updated upstream
 import contatoRoutes from "./src/routes/contatoRoutes.js";
+=======
+import recuperarSenhaRoutes from "./src/routes/recuperarSenhaRoutes.js";
+
+>>>>>>> Stashed changes
 
 
 dotenv.config();
@@ -32,10 +37,14 @@ app.use(session({
 }));
 
 
-
+// Verificar Login 
 app.get("/verificar-login", (req, res) => {
   if (req.session.username) {
-    return res.json({ logado: true });
+    return res.json({ 
+      logado: true,
+      id: req.session.usuario.id,
+      regra: req.session.usuario.regra
+     });
   }
   return res.json({ logado: false });
 });
