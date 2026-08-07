@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Contatos.css";
+import { toast} from 'react-toastify';
 
 const API_URL = "http://localhost:7006/contato"; // porta do seu backend (do .env: PORT=7006)
 
@@ -32,39 +33,36 @@ function Contatos() {
     }
     return "";
   }
+async function handleSubmit(evento) {
+  evento.preventDefault();
 
-  async function handleSubmit(evento) {
-    evento.preventDefault();
-
-    const mensagemErro = validar();
-    if (mensagemErro) {
-      document.getElementById("erro").textContent = mensagemErro;
-      return;
-    }
-    document.getElementById("erro").textContent = "";
-
-    setStatus("enviando");
-
-    try {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dadosContato),
-      });
-
-      if (!response.ok) throw new Error("Falha ao enviar");
-
-      setStatus("sucesso");
-      document.getElementById("erro").textContent = "";
-      setDadosContato({ nome: "", email: "", telefone: "", mensagem: "" });
-    } catch (erro) {
-      console.error(erro);
-      setStatus("erro");
-      document.getElementById("erro").textContent =
-        "Não foi possível enviar sua mensagem. Tente novamente.";
-    }
+  const mensagemErro = validar();
+  if (mensagemErro) {
+    toast.error(mensagemErro);
+    return;
   }
 
+  setStatus("enviando");
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dadosContato),
+    });
+
+    if (!response.ok) throw new Error("Falha ao enviar");
+
+    setStatus("sucesso");
+    setDadosContato({ nome: "", email: "", telefone: "", mensagem: "" });
+    toast.success("Mensagem enviada com sucesso!");
+  } catch (erro) {
+    console.error(erro);
+    setStatus("erro");
+    toast.error("Não foi possível enviar sua mensagem. Tente novamente.");
+  }
+}
+ 
   return (
     <main>
       <section id="contatos" className="contact-section">
@@ -102,7 +100,7 @@ function Contatos() {
 
               <input
                 id="number"
-                type="tel"
+                type="number"
                 name="telefone"
                 placeholder="Seu telefone"
                 value={dadosContato.telefone}
@@ -117,17 +115,11 @@ function Contatos() {
                 onChange={handleChange}
               ></textarea>
 
-              <p id="erro"></p>
 
               <button type="submit" disabled={status === "enviando"}>
                 {status === "enviando" ? "Enviando..." : "Enviar"}
               </button>
 
-              {status === "sucesso" && (
-                <p className="sucesso-envio">
-                  Mensagem enviada com sucesso! Em breve entraremos em contato.
-                </p>
-              )}
 
               <div className="horario-atendimento">
                 <p>
