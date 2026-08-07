@@ -12,9 +12,28 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Configuração de qual tabela/coluna usar por tipo
+const config = {
+  cliente: {
+    tabela: "cadastro_cliente",
+    colunaEmail: "email",
+    colunaSenha: "senha",
+    colunaId: "id_cliente",
+  },
+  adm: {
+    tabela: "cadastro_adm",
+    colunaEmail: "emailadm",
+    colunaSenha: "senhaadm",
+    colunaId: "id_adm",
+  },
+};
+
 export const solicitarRecuperacao = (req, res) => {
   const email = req.body.email?.toLowerCase().trim();
-  const sql = `SELECT id_cliente FROM cadastro_cliente WHERE email = ?`;
+  const tipo = req.body.tipo === "adm" ? "adm" : "cliente"; // padrão: cliente
+  const { tabela, colunaEmail, colunaId } = config[tipo];
+
+  const sql = `SELECT ${colunaId} FROM ${tabela} WHERE ${colunaEmail} = ?`;
 
   db.query(sql, [email], async (err, result) => {
     if (err) {
@@ -29,7 +48,9 @@ export const solicitarRecuperacao = (req, res) => {
     }
 
     const codigo = Math.floor(100000 + Math.random() * 900000).toString();
-    codigosPendentes[email] = {
+    const chave = `${tipo}:${email}`; // separa cliente e adm mesmo se usarem o mesmo e-mail
+
+    codigosPendentes[chave] = {
       codigo,
       expira: Date.now() + 15 * 60 * 1000,
       verificado: false,
@@ -55,8 +76,10 @@ export const solicitarRecuperacao = (req, res) => {
 
 export const verificarCodigo = (req, res) => {
   const email = req.body.email?.toLowerCase().trim();
+  const tipo = req.body.tipo === "adm" ? "adm" : "cliente";
   const { codigo } = req.body;
-  const registro = codigosPendentes[email];
+  const chave = `${tipo}:${email}`;
+  const registro = codigosPendentes[chave];
 
   if (!registro || registro.codigo !== codigo || Date.now() > registro.expira) {
     return res.status(400).json({ message: "Código inválido ou expirado" });
@@ -68,8 +91,10 @@ export const verificarCodigo = (req, res) => {
 
 export const alterarSenha = async (req, res) => {
   const email = req.body.email?.toLowerCase().trim();
+  const tipo = req.body.tipo === "adm" ? "adm" : "cliente";
   const { novaSenha } = req.body;
-  const registro = codigosPendentes[email];
+  const chave = `${tipo}:${email}`;
+  const registro = codigosPendentes[chave];
 
   if (!registro || !registro.verificado) {
     return res.status(403).json({ message: "Verifique o código antes de alterar a senha" });
@@ -79,16 +104,18 @@ export const alterarSenha = async (req, res) => {
     return res.status(400).json({ message: "Senha deve ter no mínimo 6 caracteres" });
   }
 
+  const { tabela, colunaEmail, colunaSenha } = config[tipo];
+
   try {
     const hash = await bcrypt.hash(novaSenha, 10);
-    const sql = `UPDATE cadastro_cliente SET senha = ? WHERE email = ?`;
+    const sql = `UPDATE ${tabela} SET ${colunaSenha} = ? WHERE ${colunaEmail} = ?`;
 
     db.query(sql, [hash, email], (err) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ message: "Erro ao atualizar senha" });
       }
-      delete codigosPendentes[email];
+      delete codigosPendentes[chave];
       res.status(200).json({ message: "Senha alterada com sucesso" });
     });
   } catch (error) {
