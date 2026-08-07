@@ -11,7 +11,10 @@ import ErrorPage from "./pages/errorpage/ErrorPage.jsx";
 import { createBrowserRouter, RouterProvider, Route, Navigate} from "react-router-dom";
 
 // Proteção da rota
-// import ProtectedRoute from "./components/protectedrouter/ProtectedRoute.jsx";
+import ProtectedRoute from "./components/protectedrouter/ProtectedRoute.jsx";
+
+// Proteção de rota apenas para administradores
+import ProtectedAdminRoute from "./components/protectedrouter/ProtectedAdmRoute.jsx";
 
 /* ROTAS */
 import Home from "./pages/home/Home.jsx";
@@ -29,6 +32,8 @@ import AlterarSenhaUsuario from "./pages/alterarSenhaUsuario/AlterarSenhaUsuario
 import VerificarCodigo from "./verificarCodigo/VerificarCodigo.jsx";
 import UsuariosCadastrados from "./pages/usuariosCadastrad/usuariosCadastrados.jsx";
 import EditarUsuario from "./pages/editarUsuario/EditarUsuario.jsx";
+import PainelDoUsuario from "./pages/Paineldousuario/PainelDoUsuario.jsx";
+
 
 // importando ADM
 import LoginAdm from "./pages/loginAdm/LoginAdm.jsx";
@@ -73,13 +78,21 @@ const router = createBrowserRouter([
         element: <Agendamento />
       },
       {
-        path: "listadeagendamento",
-        element: <ListadeAgendamento />
+        path: "/listadeagendamento",
+        element: (
+          <ProtectedRoute apenasAdmin={true}>
+            <ListadeAgendamento />
+          </ProtectedRoute>
+        )
       },
 
       {
         path: "/usuarioscadastrados",
-        element: <UsuariosCadastrados />
+        element: (
+          <ProtectedRoute apenasAdmin={true}>
+            <UsuariosCadastrados />
+          </ProtectedRoute>
+        )
       },
 
       // // Usuario
@@ -87,6 +100,10 @@ const router = createBrowserRouter([
         path: "/loginusuario",
         element: <LoginUsuario />
 
+      },
+      {
+        path: "/paineldousuario",
+        element: <PainelDoUsuario />
       },
       {
         path: "/cadastrousuario",
@@ -104,8 +121,12 @@ const router = createBrowserRouter([
 
       },
       {
-        path: "/editarusuario",
-        element: <EditarUsuario/>
+        path: "/editarusuario/:id",
+        element: (
+          <ProtectedRoute apenasAdmin={true}>
+            <EditarUsuario />
+          </ProtectedRoute>
+        )
       },
 
       // ADM

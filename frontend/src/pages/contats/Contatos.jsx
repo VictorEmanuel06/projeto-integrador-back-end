@@ -1,6 +1,68 @@
+import { useState } from "react";
 import "./Contatos.css";
+import { toast} from 'react-toastify';
+
+const API_URL = "http://localhost:7006/contato"; // porta do seu backend (do .env: PORT=7006)
 
 function Contatos() {
+  const [dadosContato, setDadosContato] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+    mensagem: "",
+  });
+
+  const [status, setStatus] = useState(null); // null | "enviando" | "sucesso" | "erro"
+
+  function handleChange(evento) {
+    const { name, value } = evento.target;
+    setDadosContato((anterior) => ({ ...anterior, [name]: value }));
+  }
+
+  function validar() {
+    if (
+      !dadosContato.nome.trim() ||
+      !dadosContato.email.trim() ||
+      !dadosContato.telefone.trim() ||
+      !dadosContato.mensagem.trim()
+    ) {
+      return "Preencha todos os campos.";
+    }
+    if (!/\S+@\S+\.\S+/.test(dadosContato.email)) {
+      return "Informe um e-mail válido.";
+    }
+    return "";
+  }
+async function handleSubmit(evento) {
+  evento.preventDefault();
+
+  const mensagemErro = validar();
+  if (mensagemErro) {
+    toast.error(mensagemErro);
+    return;
+  }
+
+  setStatus("enviando");
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dadosContato),
+    });
+
+    if (!response.ok) throw new Error("Falha ao enviar");
+
+    setStatus("sucesso");
+    setDadosContato({ nome: "", email: "", telefone: "", mensagem: "" });
+    toast.success("Mensagem enviada com sucesso!");
+  } catch (erro) {
+    console.error(erro);
+    setStatus("erro");
+    toast.error("Não foi possível enviar sua mensagem. Tente novamente.");
+  }
+}
+ 
   return (
     <main>
       <section id="contatos" className="contact-section">
@@ -8,7 +70,7 @@ function Contatos() {
           <br />
 
           <div className="contact-conentair">
-            <form id="fale-comigo" noValidate>
+            <form id="fale-comigo" noValidate onSubmit={handleSubmit}>
               <h2>Vamos Conversar?</h2>
 
               <p className="subtitle">
@@ -23,6 +85,8 @@ function Contatos() {
                 type="text"
                 name="nome"
                 placeholder="Seu nome"
+                value={dadosContato.nome}
+                onChange={handleChange}
               />
 
               <input
@@ -30,24 +94,32 @@ function Contatos() {
                 type="email"
                 name="email"
                 placeholder="Seu e-mail"
+                value={dadosContato.email}
+                onChange={handleChange}
               />
 
               <input
                 id="number"
-                type="tel"
+                type="number"
                 name="telefone"
                 placeholder="Seu telefone"
+                value={dadosContato.telefone}
+                onChange={handleChange}
               />
 
               <textarea
                 id="mensagem"
                 name="mensagem"
                 placeholder="Mensagem"
+                value={dadosContato.mensagem}
+                onChange={handleChange}
               ></textarea>
 
-              <p id="erro"></p>
 
-              <button type="submit">Enviar</button>
+              <button type="submit" disabled={status === "enviando"}>
+                {status === "enviando" ? "Enviando..." : "Enviar"}
+              </button>
+
 
               <div className="horario-atendimento">
                 <p>
