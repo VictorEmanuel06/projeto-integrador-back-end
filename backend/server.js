@@ -5,12 +5,10 @@ import dotenv from 'dotenv';
 import authRoutes from "./src/routes/authRoutes.js";
 import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
 import usuarioRoutes from "./src/routes/usuarioRoutes.js";
-<<<<<<< Updated upstream
 import contatoRoutes from "./src/routes/contatoRoutes.js";
-=======
 import recuperarSenhaRoutes from "./src/routes/recuperarSenhaRoutes.js";
 
->>>>>>> Stashed changes
+
 
 
 dotenv.config();
