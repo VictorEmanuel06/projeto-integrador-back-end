@@ -1,5 +1,5 @@
 /* =========================================================
-   RESET BÁSICO
+   RESET
 ========================================================= */
 
 * {
@@ -7,9 +7,20 @@
 }
 
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    overflow-x: hidden;
+}
+
+
 .container {
     width: 100%;
-    overflow-x: hidden;
 }
 
 
@@ -20,8 +31,11 @@
 
 .caixa-cuidado,
 .caixa-bem-vindo {
+
     display: flex;
+
     justify-content: center;
+
     max-width: 1000px;
 
     margin: 70px auto 60px;
@@ -44,12 +58,15 @@
 
 .caixa-cuidado .texto,
 .caixa-bem-vindo .texto {
+
     margin-top: 20px;
 }
 
 
 .texto {
+
     width: 500px;
+
     max-width: 100%;
 
     text-align: left;
@@ -57,32 +74,46 @@
 
 
 .texto h1 {
-    font-size: 42px;
 
     margin: 0 0 16px;
 
     color: #402722;
+
+    font-size: 42px;
+
+    line-height: 1.1;
 }
 
 
 .texto p {
+
+    margin: 0;
+
+    color: #555;
+
     font-size: 18px;
 
     line-height: 1.6;
-
-    color: #555;
 }
 
 
+
+/* =========================================================
+   IMAGENS
+========================================================= */
+
 .img-1,
 .img-2 {
+
     display: flex;
+
     justify-content: center;
 }
 
 
 .img-1 img,
 .img-2 img {
+
     width: 220px;
 
     height: auto;
@@ -97,6 +128,7 @@
 ========================================================= */
 
 .caixa-autoconhecimento {
+
     display: flex;
 
     justify-content: center;
@@ -108,12 +140,15 @@
 
 
 .autoconhecimento {
+
     width: 100%;
+
     max-width: 700px;
 }
 
 
 .titulo-autoconhecimento {
+
     display: flex;
 
     align-items: center;
@@ -127,6 +162,7 @@
 
 
 .titulo-autoconhecimento img {
+
     width: 80px;
 
     height: 80px;
@@ -135,142 +171,139 @@
 }
 
 
- .titulo-autoconhecimento h1 {
-    color: #402722;
+.titulo-autoconhecimento h1 {
 
     margin: 0;
 
-    .os-cinco-pilares {
-        font-size: 30px;
-    }
+    color: #402722;
+
+    font-size: 30px;
+}
 
 
-    .autoconhecimento p {
-        font-size: 18px;
+.autoconhecimento p {
 
-        line-height: 1.6;
+    margin: 0;
 
-        color: #555;
+    color: #555;
 
-        margin: 0;
-    }
+    font-size: 18px;
+
+    line-height: 1.6;
+}
 
 
-    /* =========================================================
-   TÍTULO DOS PILARES
+
+/* =========================================================
+   SEÇÃO DOS PILARES
 ========================================================= */
 
-    .caixa-pilares {
-        width: 100%;
+.caixa-pilares {
 
-        text-align: center;
+    width: 100%;
 
-        padding: 70px 20px 100px;
-    }
+    padding: 70px 20px 100px;
 
-
-    .os-cinco-pilares {
-        font-size: 30px;
-
-        font-weight: 400;
-
-        color: #402722;
-
-        margin: 0 0 50px;
-    }
+    text-align: center;
+}
 
 
+.os-cinco-pilares {
 
-    /* =========================================================
-   ÁREA DOS PILARES
+    margin: 0 0 50px;
+
+    color: #402722;
+
+    font-size: 30px;
+
+    font-weight: 400;
+}
+
+
+
+/* =========================================================
+   WRAPPER
 ========================================================= */
 
-    .pilares-wrapper {
-        position: relative;
+.pilares-wrapper {
 
-        width: 900px;
+    position: relative;
 
-        max-width: 100%;
+    width: 900px;
 
-        min-height: 520px;
+    max-width: 100%;
 
-        margin: 0 auto;
+    min-height: 520px;
 
-        display: grid;
+    margin: 0 auto;
 
-        grid-template-columns: 360px 1fr;
+    display: grid;
 
-        align-items: center;
+    grid-template-columns: 360px 1fr;
 
-        column-gap: 40px;
+    align-items: center;
 
-        text-align: left;
-    }
+    column-gap: 40px;
+
+    text-align: left;
+}
 
 
 
-    /* =========================================================
+/* =========================================================
    CÍRCULO
 ========================================================= */
 
-    /* ===== PILARES: Círculo + FAQ lado a lado ===== */
+.circulo {
 
-    .pilares-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 60px;
-        max-width: 1000px;
-        margin: 60px auto 0;
-    }
+    position: relative;
 
-    .circulo {
-        flex-shrink: 0;
-        width: 360px;
+    z-index: 1;
 
-        height: 360px;
+    width: 360px;
 
-        border-radius: 50%;
+    height: 360px;
 
-        background: #fff;
+    display: flex;
 
-        border: 4px solid #402722;
-        display: flex;
+    align-items: center;
 
-        align-items: center;
+    justify-content: center;
 
-        justify-content: center;
-         position: relative;
+    background: #fff;
 
-        z-index: 1;
-    }
+    border: 4px solid #402722;
 
-
-
-    /* =========================================================
-   LETRAS DENTRO DO CÍRCULO
-========================================================= */
-
+    border-radius: 50%;
 }
 
+
+
+/* =========================================================
+   LETRAS DO CÍRCULO
+========================================================= */
+
 .letras-perma {
-    list-style: none;
 
-    padding: 0;
-
-    margin: 0;
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
 
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
 }
 
+
 .letras-perma li {
+
     width: 48px;
+
     height: 48px;
-    border-radius: 50%;
 
     display: flex;
 
@@ -280,828 +313,782 @@
 
     margin: 5px 0;
 
-    margin: 8px auto;
-    font-weight: 700;
+    border-radius: 50%;
 
     font-size: 18px;
+
+    font-weight: 700;
 
     color: #000;
 }
 
+
 .letras-perma .p {
+
     background-color: #9b7a65;
 }
 
+
 .letras-perma .e {
+
     background-color: #0b5fa5;
+
     color: #fff;
 }
+
 
 .letras-perma .r {
+
     background-color: #7b5a48;
+
     color: #fff;
 }
 
+
 .letras-perma .m {
+
     background-color: #cfcfcf;
 }
 
+
 .letras-perma .a {
+
     background-color: #0b5fa5;
+
     color: #fff;
 }
 
 
-/* ===== PILARES - FAQ ===== */
 
-.pilares-faq {
+/* =========================================================
+   CONTAINER DAS CAIXAS
+========================================================= */
+
+.pilares-cards {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding: 10px 0;
+}
+
+
+
+/* =========================================================
+   CAIXA / CARD
+========================================================= */
+
+.pilar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 220px;
+
+    min-height: 38px;
+
+    display: grid;
+
+    grid-template-rows: auto 0fr;
+
+    padding: 5px 14px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: #fff;
+
+    border: 1.5px solid #402722;
+
+    border-radius: 6px;
+
+    transform: translateZ(0);
+
+    /*
+       Animação da caixa.
+
+       cubic-bezier deixa a entrada mais natural.
+    */
+
+    transition:
+
+        width 0.40s cubic-bezier(0.4, 0, 0.2, 1),
+
+        grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+
+        padding 0.40s cubic-bezier(0.4, 0, 0.2, 1),
+
+        box-shadow 0.30s ease,
+
+        background-color 0.25s ease;
+}
+
+
+
+/* =========================================================
+   FORMATO EM CURVA
+========================================================= */
+
+.pilar-1 {
+
+    margin-left: 0;
+}
+
+
+.pilar-2 {
+
+    margin-left: 30px;
+}
+
+
+.pilar-3 {
+
+    margin-left: 70px;
+}
+
+
+.pilar-4 {
+
+    margin-left: 30px;
+}
+
+
+.pilar-5 {
+
+    margin-left: 0;
+}
+
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.pilar-cabecalho {
+
+    width: 100%;
+
+    height: 28px;
+
+    min-height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+.pilar-cabecalho img {
+
+    width: 28px;
+
+    height: 28px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+
+.pilar-cabecalho span {
+
     flex: 1;
-    max-width: 420px;
+
+    overflow: hidden;
+
+    color: #402722;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+
+/* =========================================================
+   CONTEÚDO ESCONDIDO
+========================================================= */
+
+.pilar-conteudo {
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform: translateY(-6px);
+
+    /*
+       O conteúdo aparece um pouquinho depois
+       da caixa começar a abrir.
+    */
+
+    transition:
+
+        opacity 0.25s ease 0.05s,
+
+        transform 0.30s ease;
+}
+
+
+.pilar-conteudo.conteudo-aberto {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.pilar-texto {
+
+    margin: 10px 0 0;
+
+    padding: 0;
+
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
     text-align: left;
 }
 
- .letras-perma .e {
-    background-color: #0b5fa5;
-
-    color: #fff;
-}
 
 
-.letras-perma .r {
-    background-color: #7b5a48;
-
-    color: #fff;
-}
-
-
-.letras-perma .m {
-    background-color: #cfcfcf;
-}
-
-
-.letras-perma .a {
-    background-color: #0b5fa5;
-
-    color: #fff;
-
-    .pilar-faq-item {
-        border: 1.5px solid #402722;
-        border-radius: 8px;
-        margin-bottom: 14px;
-        overflow: hidden;
-    }
-
-    .pilar-faq-pergunta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 18px;
-        cursor: pointer;
-        background: #fff;
-        transition: background-color 0.25s ease;
-    }
-
-    .pilar-faq-pergunta:hover {
-        background-color: #f7f4f2;
-    }
-
-    .pilar-faq-pergunta img {
-        width: 34px;
-        height: 34px;
-        object-fit: contain;
-        flex-shrink: 0;
-    }
-
-    .pilar-faq-pergunta span:first-of-type {
-        flex: 1;
-        font-size: 15px;
-        font-weight: 600;
-        color: #333;
-    }
-
-    .pilar-faq-pergunta .seta {
-        font-size: 12px;
-        color: #402722;
-        transition: transform 0.3s ease;
-    }
-
-    .pilar-faq-item.active .pilar-faq-pergunta .seta {
-        transform: rotate(180deg);
-    }
-
-    .pilar-faq-resposta {
-        max-height: 0;
-        overflow: hidden;
-        background: #faf9f8;
-        transition: max-height 0.35s ease, padding 0.35s ease;
-        padding: 0 18px;
-    }
-
-    .pilar-faq-resposta p {
-        margin: 0;
-        padding: 14px 0;
-        font-size: 14px;
-        line-height: 1.6;
-        color: #555;
-    }
-
-    .pilar-faq-item.active .pilar-faq-resposta {
-        max-height: 300px;
-        padding: 0 18px;
-    }
-
-
-    /* =========================================================
-   ÁREA DOS CARDS
+/* =========================================================
+   CAIXA ABERTA
 ========================================================= */
 
-    .pilares-cards {
-        width: 100%;
+.pilar-expandido {
 
-        display: flex;
+    width: 300px;
 
-        flex-direction: column;
+    grid-template-rows: auto 1fr;
 
-        gap: 18px;
+    padding: 14px 20px;
 
-        padding: 10px 0;
+    z-index: 20;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.14);
+}
+
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.pilar:hover {
+
+    background-color: #fdfdfd;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+.pilar-expandido:hover {
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.14);
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .pilares-wrapper {
+
+        width: 760px;
+
+        grid-template-columns: 300px 1fr;
+
+        column-gap: 25px;
+
+        min-height: 500px;
     }
 
 
+    .circulo {
 
-    /* =========================================================
-   CARD
-========================================================= */
+        width: 300px;
+
+        height: 300px;
+
+        border-width: 3px;
+    }
+
+
+    .letras-perma li {
+
+        width: 40px;
+
+        height: 40px;
+
+        margin: 4px 0;
+
+        font-size: 16px;
+    }
+
 
     .pilar {
-        width: 220px;
 
-        min-height: 36px;
-
-        padding: 6px 14px;
-
-        background: #fff;
-
-        border: 1.5px solid #402722;
-
-        border-radius: 6px;
-
-        cursor: pointer;
-
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        align-items: flex-start;
-
-        transition:
-            width 0.3s ease,
-            min-height 0.3s ease,
-            box-shadow 0.3s ease,
-            background-color 0.3s ease,
-            transform 0.3s ease;
-
-        position: relative;
-
-        z-index: 2;
+        width: 200px;
     }
 
 
+    .pilar-expandido {
 
-    /* =========================================================
-   POSIÇÃO DOS CARDS
-========================================================= */
-
-    /*
-   Criamos o efeito de "curva"
-   usando diferentes margens.
-*/
-
-    .pilar-1 {
-        margin-left: 0;
+        width: 280px;
     }
 
 
     .pilar-2 {
-        margin-left: 30px;
+
+        margin-left: 20px;
     }
 
 
     .pilar-3 {
-        margin-left: 70px;
+
+        margin-left: 40px;
     }
 
 
     .pilar-4 {
-        margin-left: 30px;
+
+        margin-left: 20px;
     }
 
-
-    .pilar-5 {
-        margin-left: 0;
-    }
+}
 
 
 
-    /* =========================================================
-   CABEÇALHO DO CARD
+/* =========================================================
+   CELULAR
 ========================================================= */
 
-    .pilar-cabecalho {
-        width: 100%;
+@media (max-width: 768px) {
 
-        min-height: 30px;
+    .caixa-cuidado,
+    .caixa-bem-vindo {
 
-        display: flex;
+        flex-direction: row;
 
         align-items: center;
+
+        justify-content: center;
+
+        gap: 18px;
+
+        padding: 0 16px;
+    }
+
+
+    .caixa-cuidado .texto,
+    .caixa-bem-vindo .texto {
+
+        width: auto;
+
+        max-width: 260px;
+
+        margin-top: 0;
+
+        text-align: left;
+    }
+
+
+    .texto h1 {
+
+        font-size: 32px;
+    }
+
+
+    .texto p {
+
+        font-size: 16px;
+    }
+
+
+    .img-1 img,
+    .img-2 img {
+
+        width: 180px;
+
+        margin-top: 0;
+    }
+
+
+
+    /* AUTOCONHECIMENTO */
+
+    .caixa-autoconhecimento {
+
+        padding: 40px 20px;
+    }
+
+
+    .titulo-autoconhecimento {
+
+        flex-direction: column;
 
         gap: 10px;
     }
 
 
+    .titulo-autoconhecimento img {
+
+        width: 70px;
+
+        height: 70px;
+    }
+
+
+    .titulo-autoconhecimento h1 {
+
+        font-size: 25px;
+    }
+
+
+    .autoconhecimento p {
+
+        max-width: 500px;
+
+        margin: 0 auto;
+
+        font-size: 16px;
+    }
+
+
+
+    /* PILARES */
+
+    .caixa-pilares {
+
+        padding: 60px 12px 80px;
+    }
+
+
+    .os-cinco-pilares {
+
+        margin-bottom: 35px;
+
+        font-size: 25px;
+    }
+
+
+    .pilares-wrapper {
+
+        width: 100%;
+
+        min-height: 480px;
+
+        grid-template-columns: 42% 58%;
+
+        column-gap: 5px;
+
+        align-items: center;
+    }
+
+
+    .circulo {
+
+        width: 190px;
+
+        height: 190px;
+
+        border-width: 3px;
+
+        justify-self: center;
+    }
+
+
+    .letras-perma li {
+
+        width: 27px;
+
+        height: 27px;
+
+        margin: 3px 0;
+
+        font-size: 11px;
+    }
+
+
+    /* CAIXAS */
+
+    .pilares-cards {
+
+        width: 100%;
+
+        gap: 12px;
+
+        padding: 0;
+    }
+
+
+    .pilar {
+
+        width: 170px;
+
+        min-height: 32px;
+
+        padding: 4px 9px;
+    }
+
+
+    .pilar-1,
+    .pilar-2,
+    .pilar-3,
+    .pilar-4,
+    .pilar-5 {
+
+        margin-left: 0;
+    }
+
+
+    .pilar-2,
+    .pilar-4 {
+
+        margin-left: 8px;
+    }
+
+
+    .pilar-3 {
+
+        margin-left: 16px;
+    }
+
+
+    .pilar-cabecalho {
+
+        height: 22px;
+
+        min-height: 22px;
+
+        gap: 6px;
+    }
+
+
     .pilar-cabecalho img {
-        width: 28px;
 
-        height: 28px;
+        width: 22px;
 
-        object-fit: contain;
-
-        flex-shrink: 0;
+        height: 22px;
     }
 
 
     .pilar-cabecalho span {
-        flex: 1;
 
-        color: #402722;
-
-        font-size: 14px;
-
-        font-weight: 500;
-
-        text-align: left;
-
-        white-space: nowrap;
+        font-size: 11px;
     }
 
-
-
-    /* =========================================================
-   CARD ABERTO
-========================================================= */
 
     .pilar-expandido {
-        width: 300px;
 
-        min-height: 145px;
+        width: 220px;
 
-        padding: 14px 20px;
+        padding: 10px 14px;
 
-        background: #fff;
-
-        box-shadow:
-            0 8px 20px rgba(0, 0, 0, 0.15);
-
-        z-index: 20;
+        margin-left: 0 !important;
     }
 
 
+    .pilar-expandido .pilar-cabecalho span {
 
-    /* =========================================================
-   TEXTO DO CARD
-========================================================= */
+        font-size: 12px;
+    }
+
 
     .pilar-texto {
-        width: 100%;
 
-        margin: 12px 0 0;
+        margin-top: 8px;
 
-        padding: 0;
+        font-size: 11px;
 
-        font-size: 13px;
-
-        line-height: 1.5;
-
-        color: #555;
-
-        text-align: left;
+        line-height: 1.45;
     }
 
+}
 
 
-    /* =========================================================
-   EFEITO AO PASSAR O MOUSE
-========================================================= */
 
-    .pilar:hover {
-        box-shadow:
-            0 4px 12px rgba(0, 0, 0, 0.10);
-
-        background-color: #fdfdfd;
-    }
-
-
-    .pilar-expandido:hover {
-        box-shadow:
-            0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-
-
-    /* =========================================================
-   TABLET
-========================================================= */
-
-    @media (max-width: 900px) {
-
-        .pilares-wrapper {
-            width: 760px;
-
-            grid-template-columns: 300px 1fr;
-
-            column-gap: 25px;
-
-            min-height: 500px;
-        }
-
-
-        .circulo {
-            width: 300px;
-
-            height: 300px;
-
-            border-width: 3px;
-        }
-
-
-        .letras-perma li {
-            width: 40px;
-
-            height: 40px;
-
-            font-size: 16px;
-
-            margin: 4px 0;
-        }
-
-
-        .pilar {
-            width: 200px;
-        }
-
-
-        .pilar-expandido {
-            width: 280px;
-        }
-
-
-        .pilar-2 {
-            margin-left: 20px;
-        }
-
-
-        .pilar-3 {
-            margin-left: 40px;
-        }
-
-
-        .pilar-4 {
-            margin-left: 20px;
-        }
-
-    }
-
-
-
-    /* =========================================================
-   CELULAR
-========================================================= */
-
-    @media (max-width: 768px) {
-
-        .caixa-cuidado,
-        .caixa-bem-vindo {
-
-            flex-direction: row;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 18px;
-
-            padding: 0 16px;
-        }
-
-
-        .caixa-cuidado .texto,
-        .caixa-bem-vindo .texto {
-
-            margin-top: 0;
-
-            width: auto;
-
-            max-width: 260px;
-
-            text-align: left;
-        }
-
-
-        .texto h1 {
-            font-size: 32px;
-        }
-
-
-        .texto p {
-            font-size: 16px;
-        }
-
-
-        .img-1 img,
-        .img-2 img {
-            width: 180px;
-
-            margin-top: 0;
-        }
-
-
-
-        /* AUTOCONHECIMENTO */
-
-        .caixa-autoconhecimento {
-            padding: 40px 20px;
-        }
-
-
-        .titulo-autoconhecimento {
-            flex-direction: column;
-
-            gap: 10px;
-        }
-
-
-        .titulo-autoconhecimento img {
-            width: 70px;
-
-            height: 70px;
-        }
-
-
-        .titulo-autoconhecimento h1 {
-            font-size: 25px;
-        }
-
-
-        .autoconhecimento p {
-            font-size: 16px;
-
-            max-width: 500px;
-
-            margin: 0 auto;
-        }
-
-
-
-        /* PILARES */
-
-        .caixa-pilares {
-            padding: 60px 12px 80px;
-        }
-
-
-        .os-cinco-pilares {
-            font-size: 25px;
-
-            margin-bottom: 35px;
-        }
-
-        .pilares-content {
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .pilares-wrapper {
-
-            width: 100%;
-
-            min-height: 480px;
-
-            grid-template-columns: 42% 58%;
-
-            column-gap: 5px;
-
-            align-items: center;
-        }
-
-
-        .circulo {
-
-            width: 190px;
-
-            height: 190px;
-
-            border-width: 3px;
-
-            justify-self: center;
-        }
-
-
-        .letras-perma li {
-
-            width: 27px;
-
-            height: 27px;
-
-            font-size: 11px;
-
-            margin: 3px 0;
-        }
-
-
-        /* CARDS */
-
-        .pilares-cards {
-            width: 100%;
-
-            gap: 12px;
-
-            padding: 0;
-        }
-
-
-        .pilar {
-
-            width: 170px;
-
-            min-height: 32px;
-
-            padding: 5px 9px;
-
-            border-radius: 6px;
-        }
-
-
-        .pilar-1,
-        .pilar-2,
-        .pilar-3,
-        .pilar-4,
-        .pilar-5 {
-
-            margin-left: 0;
-        }
-
-
-        .pilar-2,
-        .pilar-4 {
-
-            margin-left: 8px;
-        }
-
-
-        .pilar-3 {
-
-            margin-left: 16px;
-        }
-
-
-        .pilar-cabecalho {
-
-            min-height: 22px;
-
-            gap: 6px;
-        }
-
-
-        .pilar-cabecalho img {
-
-            width: 22px;
-
-            height: 22px;
-        }
-
-
-        .pilar-cabecalho span {
-
-            font-size: 11px;
-        }
-
-
-        .pilar-expandido {
-
-            width: 220px;
-
-            min-height: 125px;
-
-            padding: 12px 14px;
-
-            margin-left: 0 !important;
-        }
-
-
-        .pilar-expandido .pilar-cabecalho span {
-
-            font-size: 12px;
-        }
-
-
-        .pilar-texto {
-
-            font-size: 11px;
-
-            line-height: 1.45;
-
-            margin-top: 8px;
-        }
-
-
-        .circulo {
-            width: 220px;
-            height: 220px;
-            border-width: 3px;
-        }
-
-        .letras-perma li {
-            width: 34px;
-            height: 34px;
-            font-size: 14px;
-            margin: 6px auto;
-        }
-
-        .pilares-faq {
-            max-width: 100%;
-            width: 100%;
-            padding: 0 16px;
-        }
-
-        .pilar-faq-pergunta span:first-of-type {
-            font-size: 14px;
-        }
-
-    }
-
-
-
-    /* =========================================================
+/* =========================================================
    CELULAR PEQUENO
 ========================================================= */
 
-    @media (max-width: 500px) {
+@media (max-width: 500px) {
 
-        .caixa-cuidado,
-        .caixa-bem-vindo {
+    .caixa-cuidado,
+    .caixa-bem-vindo {
 
-            gap: 10px;
+        gap: 10px;
 
-            padding: 0 10px;
-        }
-
-
-        .texto {
-
-            width: auto;
-        }
+        padding: 0 10px;
+    }
 
 
-        .texto h1 {
+    .texto h1 {
 
-            font-size: 27px;
-        }
-
-
-        .texto p {
-
-            font-size: 14px;
-        }
+        font-size: 27px;
+    }
 
 
-        .img-1 img,
-        .img-2 img {
+    .texto p {
 
-            width: 140px;
-        }
-
+        font-size: 14px;
+    }
 
 
-        /* PILARES */
+    .img-1 img,
+    .img-2 img {
 
-        .os-cinco-pilares {
-
-            font-size: 22px;
-        }
-
-
-        .pilares-wrapper {
-
-            grid-template-columns: 40% 60%;
-
-            min-height: 450px;
-        }
-
-
-        .circulo {
-
-            width: 150px;
-
-            height: 150px;
-        }
-
-
-        .letras-perma li {
-
-            width: 22px;
-
-            height: 22px;
-
-            font-size: 9px;
-
-            margin: 2px 0;
-        }
-
-
-        .pilar {
-
-            width: 155px;
-
-            min-height: 30px;
-
-            padding: 4px 7px;
-        }
-
-
-        .pilar-cabecalho img {
-
-            width: 19px;
-
-            height: 19px;
-        }
-
-
-        .pilar-cabecalho span {
-
-            font-size: 10px;
-        }
-
-
-        .pilar-expandido {
-
-            width: 190px;
-
-            min-height: 120px;
-
-            padding: 10px;
-        }
-
-
-        .pilar-texto {
-
-            font-size: 10px;
-        }
-
+        width: 140px;
     }
 
 
 
-    /* =========================================================
+    /* PILARES */
+
+    .os-cinco-pilares {
+
+        font-size: 22px;
+    }
+
+
+    .pilares-wrapper {
+
+        grid-template-columns: 40% 60%;
+
+        min-height: 450px;
+    }
+
+
+    .circulo {
+
+        width: 150px;
+
+        height: 150px;
+    }
+
+
+    .letras-perma li {
+
+        width: 22px;
+
+        height: 22px;
+
+        margin: 2px 0;
+
+        font-size: 9px;
+    }
+
+
+    .pilar {
+
+        width: 155px;
+
+        min-height: 30px;
+
+        padding: 4px 7px;
+    }
+
+
+    .pilar-cabecalho img {
+
+        width: 19px;
+
+        height: 19px;
+    }
+
+
+    .pilar-cabecalho span {
+
+        font-size: 10px;
+    }
+
+
+    .pilar-expandido {
+
+        width: 190px;
+
+        padding: 10px;
+    }
+
+
+    .pilar-texto {
+
+        font-size: 10px;
+    }
+
+}
+
+
+
+/* =========================================================
    CELULAR MUITO PEQUENO
 ========================================================= */
 
-    @media (max-width: 380px) {
+@media (max-width: 380px) {
 
-        .pilares-wrapper {
+    .pilares-wrapper {
 
-            grid-template-columns: 38% 62%;
-        }
-
-
-        .circulo {
-
-            width: 135px;
-
-            height: 135px;
-        }
-
-
-        .pilar {
-
-            width: 145px;
-        }
-
-
-        .pilar-expandido {
-
-            width: 175px;
-        }
-
-
-        .pilar-cabecalho span {
-
-            font-size: 9px;
-        }
-
+        grid-template-columns: 38% 62%;
     }
 
-    
+
+    .circulo {
+
+        width: 135px;
+
+        height: 135px;
+    }
+
+
+    .pilar {
+
+        width: 145px;
+    }
+
+
+    .pilar-expandido {
+
+        width: 175px;
+    }
+
+
+    .pilar-cabecalho span {
+
+        font-size: 9px;
+    }
+
 }
