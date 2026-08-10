@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "./VerificarCodigo.css";
+import "../pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.css";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { API_URL } from "../config";
 
 const VerificarCodigo = () => {
     const [codigo, setCodigo] = useState("");
@@ -9,8 +10,8 @@ const VerificarCodigo = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // recebe o e-mail que veio da tela anterior
     const email = location.state?.email;
+    const tipo = location.state?.tipo || "cliente"; // padrão cliente se não vier nada
 
     const handleVerificar = async () => {
         setErro("");
@@ -28,10 +29,10 @@ const VerificarCodigo = () => {
         setCarregando(true);
 
         try {
-            const res = await fetch("http://localhost:7006/api/verificar-codigo", {
+            const res = await fetch(`${API_URL}/api/verificar-codigo`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, codigo }),
+                body: JSON.stringify({ email, codigo, tipo }),
             });
 
             const data = await res.json();
@@ -40,7 +41,9 @@ const VerificarCodigo = () => {
                 throw new Error(data.message || "Código inválido");
             }
 
-            navigate("/AlterarSenhaUsuario", { state: { email } });
+            // decide pra qual tela ir, dependendo do tipo
+            const destino = tipo === "adm" ? "/alterarsenhaadm" : "/alterarsenhausuario";
+            navigate(destino, { state: { email, tipo } });
         } catch (err) {
             setErro(err.message);
         } finally {
@@ -50,13 +53,9 @@ const VerificarCodigo = () => {
 
     return (
         <div className="container">
-
             <div className="card-recuperar-usuario">
-
                 <div className="icon-usuario">✉</div>
-
                 <h1 className="title-recuperar-usuario">Verificar código</h1>
-
                 <p className="description">
                     Enviamos um código de 6 dígitos para <strong>{email}</strong>.
                     Digite abaixo para continuar.
@@ -85,8 +84,9 @@ const VerificarCodigo = () => {
 
                 <div className="divider"></div>
 
-                <NavLink to="/loginusuario" className="back-login"> ← Voltar ao login </NavLink>
-
+                <NavLink to={tipo === "adm" ? "/loginadm" : "/loginusuario"} className="back-login">
+                    ← Voltar ao login
+                </NavLink>
             </div>
 
             <div className="security-badge-user">
@@ -95,7 +95,6 @@ const VerificarCodigo = () => {
 
             <div className="info-user">
                 <h2>Privacidade e cuidado</h2>
-
                 <p>
                     Seus dados são protegidos por criptografia de ponta a ponta.
                     Priorizamos seu bem-estar em cada etapa da jornada.

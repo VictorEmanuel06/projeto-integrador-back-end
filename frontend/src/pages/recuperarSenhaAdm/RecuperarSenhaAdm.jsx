@@ -1,53 +1,101 @@
-import React from 'react'
+import { useState } from "react";
 import "./RecuperarSenhaAdm.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { API_URL } from "../../config"; // ajuste o caminho conforme sua pasta
 
 const RecuperarSenhaAdm = () => {
-  return (
-    <div class="container-rec">
+    const [email, setEmail] = useState("");
+    const [carregando, setCarregando] = useState(false);
+    const [erro, setErro] = useState("");
+    const navigate = useNavigate();
 
-        <div class="card-rec">
+    const handleEnviar = async () => {
+        setErro("");
 
-            <div class="icon">↺</div>
+        if (!email) {
+            setErro("Informe um e-mail válido.");
+            return;
+        }
 
-            <h1 class="title-rec">Recuperar senha</h1>
+        setCarregando(true);
 
-            <p class="description-rec">
-                Para sua segurança, informe o e-mail cadastrado.
-                Enviaremos um link seguro para a criação de uma nova senha.
-            </p>
+        try {
+            const res = await fetch(`${API_URL}/api/recuperar-senha`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, tipo: "adm" }),
+            });
 
-            <div class="form-group-adm">
-                <label>E-mail</label>
-                <input type="email" placeholder="exemplo@email.com">
-                </input>
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.message || "Erro ao enviar e-mail");
+            }
+
+            navigate("/verificar-codigo", { state: { email, tipo: "adm" } });
+        } catch (err) {
+            setErro(err.message);
+        } finally {
+            setCarregando(false);
+        }
+    };
+
+    return (
+        <div className="container-rec">
+
+            <div className="card-rec">
+
+                <div className="icon">↺</div>
+
+                <h1 className="title-rec">Recuperar senha</h1>
+
+                <p className="description-rec">
+                    Para sua segurança, informe o e-mail cadastrado.
+                    Enviaremos um link seguro para a criação de uma nova senha.
+                </p>
+
+                <div className="form-group-adm">
+                    <label>E-mail</label>
+                    <input
+                        type="email"
+                        placeholder="exemplo@email.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+
+                {erro && <p className="erro-mensagem">{erro}</p>}
+
+                <button
+                    className="btn"
+                    onClick={handleEnviar}
+                    disabled={carregando}
+                >
+                    {carregando ? "Enviando..." : "Enviar instruções →"}
+                </button>
+
+                <div className="divider"></div>
+
+                <NavLink to="/loginadm" className="back-login">
+                    ← Voltar ao login
+                </NavLink>
+
             </div>
 
-            <button class="btn">
-                Enviar instruções →
-            </button>
+            <div className="security-badge">
+                Ambiente Seguro
+            </div>
 
-            <div class="divider"></div>
+            <div className="info">
+                <h2>Privacidade e cuidado</h2>
 
-            <a href="/loginadm" class="back-login">
-                ← Voltar ao login
-            </a>
-
+                <p>
+                    Seus dados são protegidos por criptografia de ponta a ponta.
+                    Priorizamos seu bem-estar em cada etapa da jornada.
+                </p>
+            </div>
         </div>
-
-        <div class="security-badge">
-            Ambiente Seguro
-        </div>
-
-        <div class="info">
-            <h2>Privacidade e cuidado</h2>
-
-            <p>
-                Seus dados são protegidos por criptografia de ponta a ponta.
-                Priorizamos seu bem-estar em cada etapa da jornada.
-            </p>
-        </div>
-    </div>
-  )
+    )
 }
 
 export default RecuperarSenhaAdm;

@@ -86,6 +86,9 @@ const router = createBrowserRouter([
         )
       },
 
+
+
+
       {
         path: "/usuarioscadastrados",
         element: (
@@ -103,7 +106,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/paineldousuario",
-        element: <PainelDoUsuario />
+        element: (
+          <ProtectedRoute>
+            <PainelDoUsuario />
+          </ProtectedRoute>
+        )
       },
       {
         path: "/cadastrousuario",

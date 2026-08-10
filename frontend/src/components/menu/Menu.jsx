@@ -86,32 +86,42 @@ function Menu() {
                 onClick={() => setPopoverAberto(!popoverAberto)}
               />
 
-              {popoverAberto && (
-                <div className="admin-popover">
-                  {eAdmin && (
-                    <>
-                      <span className="popover-title">Painel ADM</span>
-                      <NavLink 
-                        to="/usuarioscadastrados" 
-                        onClick={() => { setPopoverAberto(false); setActive(false); }}
-                      >
-                        Usuários
-                      </NavLink>
-                      <NavLink 
-                        to="/listadeagendamento" 
-                        onClick={() => { setPopoverAberto(false); setActive(false); }}
-                      >
-                        Agendamentos
-                      </NavLink>
-                      <div className="popover-divider"></div>
-                    </>
-                  )}
+             {popoverAberto && (
+                  <div className="admin-popover">
+                    {eAdmin ? (
+                      <>
+                        <span className="popover-title">Painel ADM</span>
+                        <NavLink 
+                          to="/usuarioscadastrados" 
+                          onClick={() => { setPopoverAberto(false); setActive(false); }}
+                        >
+                          Usuários
+                        </NavLink>
+                        <NavLink 
+                          to="/listadeagendamento" 
+                          onClick={() => { setPopoverAberto(false); setActive(false); }}
+                        >
+                          Agendamentos
+                        </NavLink>
+                      </>
+                    ) : (
+                      <>
+                        <span className="popover-title">Minha Conta</span>
+                        <NavLink 
+                          to="/paineldousuario" 
+                          onClick={() => { setPopoverAberto(false); setActive(false); }}
+                        >
+                          Meu Painel
+                        </NavLink>
+                      </>
+                    )}
+                    <div className="popover-divider"></div>
 
-                  <button onClick={handleLogout} className="btn-popover-sair">
-                    Sair da conta
-                  </button>
-                </div>
-              )}
+                    <button onClick={handleLogout} className="btn-popover-sair">
+                      Sair da conta
+                    </button>
+                  </div>
+                )}
             </div>
           ) : (
             <NavLink to="/loginusuario" className="login-icon" onClick={() => setActive(false)}>

@@ -16,11 +16,14 @@ const Home = () => {
 
     const [pilarAberto, setPilarAberto] = useState(null);
 
-    // Referência da área dos pilares
+    // Referência SOMENTE para a área das caixas
     const pilaresRef = useRef(null);
 
 
-    // Lista dos pilares
+    // =========================================================
+    // PILARES
+    // =========================================================
+
     const pilares = [
         {
             id: 1,
@@ -64,17 +67,29 @@ const Home = () => {
     ];
 
 
-    // Abre ou fecha um pilar
+    // =========================================================
+    // ABRIR / FECHAR PILAR
+    // =========================================================
+
     const toggleExpandir = (id) => {
 
         setPilarAberto((atual) => {
-            return atual === id ? null : id;
+
+            if (atual === id) {
+                return null;
+            }
+
+            return id;
+
         });
 
     };
 
 
-    // Fecha o pilar quando clicar fora
+    // =========================================================
+    // CLICOU FORA DAS CAIXAS
+    // =========================================================
+
     useEffect(() => {
 
         const handleClickFora = (event) => {
@@ -83,7 +98,9 @@ const Home = () => {
                 pilaresRef.current &&
                 !pilaresRef.current.contains(event.target)
             ) {
+
                 setPilarAberto(null);
+
             }
 
         };
@@ -93,10 +110,12 @@ const Home = () => {
 
 
         return () => {
+
             document.removeEventListener(
                 'mousedown',
                 handleClickFora
             );
+
         };
 
     }, []);
@@ -221,12 +240,7 @@ const Home = () => {
                 </h1>
 
 
-                {/* Área completa dos pilares */}
-
-                <div
-                    ref={pilaresRef}
-                    className="pilares-wrapper"
-                >
+                <div className="pilares-wrapper">
 
 
                     {/* =================================================
@@ -264,11 +278,13 @@ const Home = () => {
 
 
                     {/* =================================================
-                        CARDS
+                        CAIXAS
                     ================================================== */}
 
-                    <div className="pilares-cards">
-
+                    <div
+                        ref={pilaresRef}
+                        className="pilares-cards"
+                    >
 
                         {pilares.map((pilar, index) => {
 
@@ -291,7 +307,7 @@ const Home = () => {
                                 >
 
 
-                                    {/* Cabeçalho */}
+                                    {/* CABEÇALHO */}
 
                                     <div className="pilar-cabecalho">
 
@@ -308,22 +324,26 @@ const Home = () => {
 
 
 
-                                    {/* Texto aparece somente quando aberto */}
+                                    {/* CONTEÚDO */}
 
-                                    {aberto && (
+                                    <div
+                                        className={`
+                                            pilar-conteudo
+                                            ${aberto ? 'conteudo-aberto' : ''}
+                                        `}
+                                    >
 
                                         <p className="pilar-texto">
                                             {pilar.texto}
                                         </p>
 
-                                    )}
+                                    </div>
 
                                 </div>
 
                             );
 
                         })}
-
 
                     </div>
 
@@ -334,6 +354,7 @@ const Home = () => {
         </main>
 
     );
+
 };
 
 

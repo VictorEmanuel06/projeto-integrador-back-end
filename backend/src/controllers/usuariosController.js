@@ -2,20 +2,29 @@ import db from "../../db.js";
 
 // LISTAR TODOS OS USUARIOS
 export const usuarios = async (req, res) => {
-  const sql = `SELECT id_cliente, nomecompleto, email FROM cadastro_cliente`;
+    const sql = `SELECT id_cliente, nomecompleto, email FROM cadastro_cliente`;
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json(err);
-    }
-    return res.json(result);
-  });
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        return res.json(result);
+    });
 };
+
 
 // BUSCAR USUARIO POR ID
 export const buscarPorId = async (req, res) => {
   const { id } = req.params;
+  const usuarioLogado = req.session.usuario;
+
+  // Cliente comum só pode ver o próprio cadastro. Admin pode ver qualquer um.
+  if (usuarioLogado.regra !== 'adm' && String(usuarioLogado.id) !== String(id)) {
+    return res.status(403).json({ erro: "Você não tem permissão para acessar este cadastro." });
+  }
+
   const sql = `SELECT id_cliente, nomecompleto, email FROM cadastro_cliente WHERE id_cliente = ?`;
 
   db.query(sql, [id], (err, result) => {
@@ -32,10 +41,18 @@ export const buscarPorId = async (req, res) => {
   });
 };
 
+
 // ATUALIZAR USUARIO
 export const atualizar = async (req, res) => {
   const { id } = req.params;
   const { nome, email } = req.body;
+  const usuarioLogado = req.session.usuario;
+
+  // Cliente comum só pode editar o próprio cadastro. Admin pode editar qualquer um.
+  if (usuarioLogado.regra !== 'adm' && String(usuarioLogado.id) !== String(id)) {
+    return res.status(403).json({ erro: "Você não tem permissão para editar este cadastro." });
+  }
+
   const sql = `UPDATE cadastro_cliente SET nomecompleto = ?, email = ? WHERE id_cliente = ?`;
 
   db.query(sql, [nome, email, id], (err, result) => {
@@ -51,6 +68,7 @@ export const atualizar = async (req, res) => {
     return res.status(200).json({ mensagem: "Usuário atualizado com sucesso!" });
   });
 };
+
 
 // EXCLUIR USUARIO
 export const excluirUsuario = async (req, res) => {

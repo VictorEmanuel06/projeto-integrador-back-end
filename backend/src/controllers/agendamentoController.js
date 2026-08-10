@@ -91,6 +91,9 @@ export const listarAgendamentosPorData = (req, res) => {
 // Listar todos os agendamentos
 export const listarAgendamentos = (req, res) => {
 
+    const usuarioLogado = req.session.usuario;
+    const params = [];
+
     const sql = `
         SELECT
             a.id_agendamento AS id,
@@ -101,20 +104,32 @@ export const listarAgendamentos = (req, res) => {
         FROM agendamento a
         LEFT JOIN cadastro_cliente c
             ON a.id_cliente = c.id_cliente
-        ORDER BY a.data_consulta, a.horario_consulta
     `;
 
-    db.query(sql, (err, result) => {
+    let sqlFinal = sql;
+
+    // Se for cliente comum, só vê os próprios agendamentos.
+    // Admin continua vendo todos.
+
+    if (usuarioLogado.regra === "user") {
+        sqlFinal += ` WHERE a.id_cliente = ? `;
+        params.push(usuarioLogado.id);
+    }
+
+    sqlFinal += ` ORDER BY a.data_consulta, a.horario_consulta `;
+
+    db.query(sqlFinal, params, (err, result) => {
 
         if (err) {
-            console.log(err);
-            return res.status(500).json(err);
+            console.log("Erro ao listar agendamentos:", err);
+
+            return res.status(500).json({
+                erro: "Erro ao buscar agendamentos."
+            });
         }
 
         return res.status(200).json(result);
-
     });
-
 };
 
 

@@ -6,6 +6,7 @@ import authRoutes from "./src/routes/authRoutes.js";
 import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
 import usuarioRoutes from "./src/routes/usuarioRoutes.js";
 import contatoRoutes from "./src/routes/contatoRoutes.js";
+import recuperarSenhaRoutes from "./src/routes/recuperarSenhaRoutes.js";
 
 
 dotenv.config();
@@ -32,10 +33,14 @@ app.use(session({
 }));
 
 
-
+// Verificar Login 
 app.get("/verificar-login", (req, res) => {
   if (req.session.username) {
-    return res.json({ logado: true });
+    return res.json({ 
+      logado: true,
+      id: req.session.usuario.id,
+      regra: req.session.usuario.regra
+     });
   }
   return res.json({ logado: false });
 });
@@ -60,6 +65,7 @@ app.use("/", authRoutes);
 app.use("/agendamentos", agendamentoRoutes);
 app.use(usuarioRoutes);
 app.use("/", contatoRoutes);
+app.use(recuperarSenhaRoutes);
 
 // Inicialização do Servidor
 const PORT = process.env.PORT || 3000;
