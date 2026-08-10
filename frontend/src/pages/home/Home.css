@@ -1,376 +1,1094 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    overflow-x: hidden;
+}
+
+
+.container {
+    width: 100%;
+}
+
+
+
+/* =========================================================
+   BEM-VINDO / CUIDADO
+========================================================= */
+
 .caixa-cuidado,
 .caixa-bem-vindo {
+
     display: flex;
+
     justify-content: center;
+
     max-width: 1000px;
+
     margin: 70px auto 60px;
+
     padding: 0 20px;
+
+    gap: 50px;
 }
+
 
 .caixa-cuidado {
     align-items: flex-start;
 }
 
+
 .caixa-bem-vindo {
     align-items: center;
 }
 
+
 .caixa-cuidado .texto,
 .caixa-bem-vindo .texto {
+
     margin-top: 20px;
 }
 
+
 .texto {
+
     width: 500px;
+
     max-width: 100%;
+
     text-align: left;
 }
 
+
 .texto h1 {
+
+    margin: 0 0 16px;
+
+    color: #402722;
+
     font-size: 42px;
-    margin-bottom: 16px;
+
+    line-height: 1.1;
 }
 
+
 .texto p {
+
+    margin: 0;
+
+    color: #555;
+
     font-size: 18px;
+
     line-height: 1.6;
 }
 
+
+
+/* =========================================================
+   IMAGENS
+========================================================= */
+
+.img-1,
+.img-2 {
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
 .img-1 img,
 .img-2 img {
+
     width: 220px;
+
     height: auto;
+
     margin-top: 30px;
 }
 
 
+
+/* =========================================================
+   AUTOCONHECIMENTO
+========================================================= */
+
 .caixa-autoconhecimento {
+
     display: flex;
+
     justify-content: center;
-    padding: 10px 20px;
+
+    padding: 40px 20px;
+
     text-align: center;
 }
 
+
 .autoconhecimento {
+
+    width: 100%;
+
     max-width: 700px;
 }
 
+
 .titulo-autoconhecimento {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 16px;
+
     margin-bottom: 24px;
 }
 
+
 .titulo-autoconhecimento img {
-    width: 120px;
+
+    width: 80px;
+
+    height: 80px;
+
+    object-fit: contain;
 }
 
-.autoconhecimento p {
-    font-size: 18px;
-    line-height: 1.6;
-}
 
-.os-cinco-pilares{
+.titulo-autoconhecimento h1 {
+
+    margin: 0;
+
+    color: #402722;
+
     font-size: 30px;
 }
 
-.caixa-pilares {
-    text-align: center;
-    padding: 80px 20px;
+
+.autoconhecimento p {
+
+    margin: 0;
+
+    color: #555;
+
+    font-size: 18px;
+
+    line-height: 1.6;
 }
+
+
+
+/* =========================================================
+   SEÇÃO DOS PILARES
+========================================================= */
+
+.caixa-pilares {
+
+    width: 100%;
+
+    padding: 70px 20px 100px;
+
+    text-align: center;
+}
+
+
+.os-cinco-pilares {
+
+    margin: 0 0 50px;
+
+    color: #402722;
+
+    font-size: 30px;
+
+    font-weight: 400;
+}
+
+
+
+/* =========================================================
+   WRAPPER
+========================================================= */
 
 .pilares-wrapper {
+
     position: relative;
-    width: 700px;
-    height: 500px;
-    margin: 60px auto;
-    padding-right: 100px;
+
+    width: 900px;
+
+    max-width: 100%;
+
+    min-height: 520px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 360px 1fr;
+
+    align-items: center;
+
+    column-gap: 40px;
+
+    text-align: left;
 }
 
 
+
+/* =========================================================
+   CÍRCULO
+========================================================= */
 
 .circulo {
+
+    position: relative;
+
+    z-index: 1;
+
     width: 360px;
+
     height: 360px;
-    border-radius: 50%;
-    background: #fff;
-    border: 4px solid #402722;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
 
-
-
-.letras {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.letras li {
-    margin: 12px 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    margin: 8px auto;
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    font-weight: 700;
-}
-
-.p { background: #9b7a65; }
-.e { background: #0b5fa5; color: #fff; }
-.r { background: #7b5a48; color: #fff; }
-.m { background: #cfcfcf; }
-.a { background: #0b5fa5; color: #fff; }
-
-
-.pilar {
-    position: absolute;
-    width: 220px;
-    height: 36px;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
 
     background: #fff;
-    border: 1.5px solid #402722;
-    border-radius: 6px;
 
-    font-size: 14px;
-    padding: 10px 20px;
+    border: 4px solid #402722;
 
-    transition:
-        0.35s cubic-bezier(.4,0,.2,1),
-        box-shadow 0.25s ease,
-        background-color 0.25s ease;
-}
-
-.pilar:hover {
-    transform: translateX(8px);
-    background-color: #fff;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
-
-.pilar img{
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    flex-shrink: 0;
+    border-radius: 50%;
 }
 
 
 
-.pilar-1 { top: 18%; left: 350px; }
-.pilar-2 { top: 30%; left: 380px; }
-.pilar-3 { top: 44%; left: 420px; }
-.pilar-4 { top: 56%; left: 380px; }
-.pilar-5 { top: 69%; left: 350px; }
-
-
-
+/* =========================================================
+   LETRAS DO CÍRCULO
+========================================================= */
 
 .letras-perma {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
     list-style: none;
-    padding: 0;
+
     margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+    padding: 0;
 }
 
 
 .letras-perma li {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+
+    width: 48px;
+
+    height: 48px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    margin: 10px auto;
-    font-weight: 700;
+
+    margin: 5px 0;
+
+    border-radius: 50%;
+
     font-size: 18px;
+
+    font-weight: 700;
+
     color: #000;
 }
 
 
 .letras-perma .p {
+
     background-color: #9b7a65;
 }
 
+
 .letras-perma .e {
+
     background-color: #0b5fa5;
+
+    color: #fff;
 }
+
 
 .letras-perma .r {
+
     background-color: #7b5a48;
+
+    color: #fff;
 }
 
+
 .letras-perma .m {
+
     background-color: #cfcfcf;
 }
 
+
 .letras-perma .a {
+
     background-color: #0b5fa5;
+
+    color: #fff;
 }
 
 
+
+/* =========================================================
+   CONTAINER DAS CAIXAS
+========================================================= */
+
+.pilares-cards {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding: 10px 0;
+}
+
+
+
+/* =========================================================
+   CAIXA / CARD
+========================================================= */
+
+.pilar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 220px;
+
+    min-height: 38px;
+
+    display: grid;
+
+    grid-template-rows: auto 0fr;
+
+    padding: 5px 14px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: #fff;
+
+    border: 1.5px solid #402722;
+
+    border-radius: 6px;
+
+    transform: translateZ(0);
+
+    /*
+       Animação da caixa.
+
+       cubic-bezier deixa a entrada mais natural.
+    */
+
+    transition:
+
+        width 0.40s cubic-bezier(0.4, 0, 0.2, 1),
+
+        grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+
+        padding 0.40s cubic-bezier(0.4, 0, 0.2, 1),
+
+        box-shadow 0.30s ease,
+
+        background-color 0.25s ease;
+}
+
+
+
+/* =========================================================
+   FORMATO EM CURVA
+========================================================= */
+
+.pilar-1 {
+
+    margin-left: 0;
+}
+
+
+.pilar-2 {
+
+    margin-left: 30px;
+}
+
+
+.pilar-3 {
+
+    margin-left: 70px;
+}
+
+
+.pilar-4 {
+
+    margin-left: 30px;
+}
+
+
+.pilar-5 {
+
+    margin-left: 0;
+}
+
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.pilar-cabecalho {
+
+    width: 100%;
+
+    height: 28px;
+
+    min-height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+.pilar-cabecalho img {
+
+    width: 28px;
+
+    height: 28px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+
+.pilar-cabecalho span {
+
+    flex: 1;
+
+    overflow: hidden;
+
+    color: #402722;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+
+/* =========================================================
+   CONTEÚDO ESCONDIDO
+========================================================= */
+
+.pilar-conteudo {
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform: translateY(-6px);
+
+    /*
+       O conteúdo aparece um pouquinho depois
+       da caixa começar a abrir.
+    */
+
+    transition:
+
+        opacity 0.25s ease 0.05s,
+
+        transform 0.30s ease;
+}
+
+
+.pilar-conteudo.conteudo-aberto {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.pilar-texto {
+
+    margin: 10px 0 0;
+
+    padding: 0;
+
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-align: left;
+}
+
+
+
+/* =========================================================
+   CAIXA ABERTA
+========================================================= */
+
+.pilar-expandido {
+
+    width: 300px;
+
+    grid-template-rows: auto 1fr;
+
+    padding: 14px 20px;
+
+    z-index: 20;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.14);
+}
+
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.pilar:hover {
+
+    background-color: #fdfdfd;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+.pilar-expandido:hover {
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.14);
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .pilares-wrapper {
+
+        width: 760px;
+
+        grid-template-columns: 300px 1fr;
+
+        column-gap: 25px;
+
+        min-height: 500px;
+    }
+
+
+    .circulo {
+
+        width: 300px;
+
+        height: 300px;
+
+        border-width: 3px;
+    }
+
+
+    .letras-perma li {
+
+        width: 40px;
+
+        height: 40px;
+
+        margin: 4px 0;
+
+        font-size: 16px;
+    }
+
+
+    .pilar {
+
+        width: 200px;
+    }
+
+
+    .pilar-expandido {
+
+        width: 280px;
+    }
+
+
+    .pilar-2 {
+
+        margin-left: 20px;
+    }
+
+
+    .pilar-3 {
+
+        margin-left: 40px;
+    }
+
+
+    .pilar-4 {
+
+        margin-left: 20px;
+    }
+
+}
+
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
 
 @media (max-width: 768px) {
 
     .caixa-cuidado,
     .caixa-bem-vindo {
+
         flex-direction: row;
+
         align-items: center;
-        text-align: center;
+
+        justify-content: center;
+
         gap: 18px;
+
         padding: 0 16px;
     }
 
+
     .caixa-cuidado .texto,
     .caixa-bem-vindo .texto {
-        margin-top: 0;
+
         width: auto;
+
         max-width: 260px;
+
+        margin-top: 0;
+
         text-align: left;
     }
 
 
-    .caixa-autoconhecimento {
-        padding: 40px 20px;
-    }
-
-    .autoconhecimento {
-        max-width: 100%;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .titulo-autoconhecimento {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .titulo-autoconhecimento img {
-        width: 72px;
-    }
-
-    .titulo-autoconhecimento h2 {
-        font-size: 24px;
-        line-height: 1.3;
-    }
-
-    .autoconhecimento p {
-        font-size: 16px;
-        line-height: 1.6;
-        max-width: 320px;
-        margin: 0 auto;
-    }
-
     .texto h1 {
-        font-size: 35px;
+
+        font-size: 32px;
     }
+
 
     .texto p {
+
         font-size: 16px;
     }
 
-    .img-1,
-    .img-2 {
-        display: flex;
-        justify-content: center;
-    }
 
     .img-1 img,
     .img-2 img {
-        margin: 0;
-        width: 220px;
+
+        width: 180px;
+
+        margin-top: 0;
+    }
+
+
+
+    /* AUTOCONHECIMENTO */
+
+    .caixa-autoconhecimento {
+
+        padding: 40px 20px;
+    }
+
+
+    .titulo-autoconhecimento {
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .titulo-autoconhecimento img {
+
+        width: 70px;
+
+        height: 70px;
+    }
+
+
+    .titulo-autoconhecimento h1 {
+
+        font-size: 25px;
+    }
+
+
+    .autoconhecimento p {
+
+        max-width: 500px;
+
+        margin: 0 auto;
+
+        font-size: 16px;
+    }
+
+
+
+    /* PILARES */
+
+    .caixa-pilares {
+
+        padding: 60px 12px 80px;
+    }
+
+
+    .os-cinco-pilares {
+
+        margin-bottom: 35px;
+
+        font-size: 25px;
     }
 
 
     .pilares-wrapper {
+
         width: 100%;
-        max-width: 700px;
-        height: clamp(360px, 55vw, 420px);
-        position: relative;
-        margin: 40px auto;
+
+        min-height: 480px;
+
+        grid-template-columns: 42% 58%;
+
+        column-gap: 5px;
+
+        align-items: center;
     }
-    
+
+
     .circulo {
-        width: clamp(180px, 30vw, 220px);
-        height: clamp(180px, 30vw, 220px);
+
+        width: 190px;
+
+        height: 190px;
+
         border-width: 3px;
-        position: absolute;
-        left: clamp(12%, 10vw, 20%);
-        top: 47%;
-        transform: translateY(-50%);
+
+        justify-self: center;
     }
-    
-    .letras li {
-        width: clamp(22px, 3vw, 26px);
-        height: clamp(22px, 3vw, 26px);
-        font-size: clamp(10px, 1.5vw, 12px);
-        margin: 6px auto;
+
+
+    .letras-perma li {
+
+        width: 27px;
+
+        height: 27px;
+
+        margin: 3px 0;
+
+        font-size: 11px;
     }
-    
+
+
+    /* CAIXAS */
+
+    .pilares-cards {
+
+        width: 100%;
+
+        gap: 12px;
+
+        padding: 0;
+    }
+
+
     .pilar {
-        position: absolute;
-        width: clamp(170px, 30vw, 200px);
-        height: clamp(30px, 5vw, 32px);
-        font-size: clamp(11px, 1.6vw, 13px);
-        padding: 6px 10px;
-        gap: 8px;
-    }
-    
-    .pilar img {
-        width: clamp(18px, 3vw, 22px);
-        height: clamp(18px, 3vw, 22px);
-        object-fit: contain;
-    }
-    
 
-    .pilar-1 { top: 22%; left: clamp(52%, 55%, 58%); }
-    .pilar-2 { top: 32%; left: clamp(54%, 58%, 61%); }
-    .pilar-3 { top: 42%; left: clamp(56%, 61%, 64%); }
-    .pilar-4 { top: 52%; left: clamp(54%, 58%, 61%); }
-    .pilar-5 { top: 62%; left: clamp(52%, 55%, 58%); }
+        width: 170px;
 
+        min-height: 32px;
+
+        padding: 4px 9px;
+    }
+
+
+    .pilar-1,
+    .pilar-2,
+    .pilar-3,
+    .pilar-4,
+    .pilar-5 {
+
+        margin-left: 0;
+    }
+
+
+    .pilar-2,
+    .pilar-4 {
+
+        margin-left: 8px;
+    }
+
+
+    .pilar-3 {
+
+        margin-left: 16px;
+    }
+
+
+    .pilar-cabecalho {
+
+        height: 22px;
+
+        min-height: 22px;
+
+        gap: 6px;
+    }
+
+
+    .pilar-cabecalho img {
+
+        width: 22px;
+
+        height: 22px;
+    }
+
+
+    .pilar-cabecalho span {
+
+        font-size: 11px;
+    }
+
+
+    .pilar-expandido {
+
+        width: 220px;
+
+        padding: 10px 14px;
+
+        margin-left: 0 !important;
+    }
+
+
+    .pilar-expandido .pilar-cabecalho span {
+
+        font-size: 12px;
+    }
+
+
+    .pilar-texto {
+
+        margin-top: 8px;
+
+        font-size: 11px;
+
+        line-height: 1.45;
+    }
 
 }
 
-@media (max-width: 600px) {
+
+
+/* =========================================================
+   CELULAR PEQUENO
+========================================================= */
+
+@media (max-width: 500px) {
+
     .caixa-cuidado,
     .caixa-bem-vindo {
-        margin-left: 18px;
+
+        gap: 10px;
+
+        padding: 0 10px;
     }
+
+
+    .texto h1 {
+
+        font-size: 27px;
+    }
+
+
+    .texto p {
+
+        font-size: 14px;
+    }
+
+
+    .img-1 img,
+    .img-2 img {
+
+        width: 140px;
+    }
+
+
+
+    /* PILARES */
+
+    .os-cinco-pilares {
+
+        font-size: 22px;
+    }
+
+
+    .pilares-wrapper {
+
+        grid-template-columns: 40% 60%;
+
+        min-height: 450px;
+    }
+
 
     .circulo {
-    width: clamp(180px, 30vw, 220px);
-    height: clamp(180px, 30vw, 220px);
-    border-width: 3px;
 
-    position: absolute;
-    left: 23%;
-    top: 48%;
+        width: 150px;
 
-    transform: translate(-50%, -50%);
+        height: 150px;
     }
 
 
-    .pilar-1 { left: 48%; }
-    .pilar-2 { left: 52%; }
-    .pilar-3 { left: 58%; }
-    .pilar-4 { left: 52%; }
-    .pilar-5 { left: 48%; }
+    .letras-perma li {
+
+        width: 22px;
+
+        height: 22px;
+
+        margin: 2px 0;
+
+        font-size: 9px;
+    }
+
+
+    .pilar {
+
+        width: 155px;
+
+        min-height: 30px;
+
+        padding: 4px 7px;
+    }
+
+
+    .pilar-cabecalho img {
+
+        width: 19px;
+
+        height: 19px;
+    }
+
+
+    .pilar-cabecalho span {
+
+        font-size: 10px;
+    }
+
+
+    .pilar-expandido {
+
+        width: 190px;
+
+        padding: 10px;
+    }
+
+
+    .pilar-texto {
+
+        font-size: 10px;
+    }
+
+}
+
+
+
+/* =========================================================
+   CELULAR MUITO PEQUENO
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .pilares-wrapper {
+
+        grid-template-columns: 38% 62%;
+    }
+
+
+    .circulo {
+
+        width: 135px;
+
+        height: 135px;
+    }
+
+
+    .pilar {
+
+        width: 145px;
+    }
+
+
+    .pilar-expandido {
+
+        width: 175px;
+    }
+
+
+    .pilar-cabecalho span {
+
+        font-size: 9px;
+    }
+
 }
