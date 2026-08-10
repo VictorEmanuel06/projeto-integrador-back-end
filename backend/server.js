@@ -7,8 +7,11 @@ import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
 import usuarioRoutes from "./src/routes/usuarioRoutes.js";
 import contatoRoutes from "./src/routes/contatoRoutes.js";
 import recuperarSenhaRoutes from "./src/routes/recuperarSenhaRoutes.js";
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 
 
 dotenv.config();
@@ -67,6 +70,7 @@ app.use("/", authRoutes);
 app.use("/agendamentos", agendamentoRoutes);
 app.use(usuarioRoutes);
 app.use("/", contatoRoutes);
+app.use(recuperarSenhaRoutes);
 
 // Inicialização do Servidor
 const PORT = process.env.PORT || 3000;
