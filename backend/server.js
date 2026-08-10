@@ -7,11 +7,6 @@ import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
 import usuarioRoutes from "./src/routes/usuarioRoutes.js";
 import contatoRoutes from "./src/routes/contatoRoutes.js";
 import recuperarSenhaRoutes from "./src/routes/recuperarSenhaRoutes.js";
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 
 
 dotenv.config();

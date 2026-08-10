@@ -1,20 +1,52 @@
 // components/protectedrouter/ProtectedRoute.jsx
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children, apenasAdmin = false }) => {
-  const usuario = JSON.parse(localStorage.getItem("usuario"));
+  const [status, setStatus] = useState('carregando');
+  const [ehAdmin, setEhAdmin] = useState(false);
 
-  // 1. Não está logado -> Redireciona para o login correto
-  if (!usuario) {
+  useEffect(() => {
+    const verificarSessao = async () => {
+      try {
+        const res = await fetch('http://localhost:7006/', {
+          credentials: 'include'
+        });
+        const dados = await res.json();
+
+        if (dados.valid) {
+          localStorage.setItem("usuario", JSON.stringify({
+            id: dados.id,
+            nomecompleto: dados.nomecompleto,
+            tipo: dados.tipo
+          }));
+          setEhAdmin(dados.tipo === 'adm');
+          setStatus('valido');
+        } else {
+          localStorage.removeItem("usuario");
+          setStatus('invalido');
+        }
+      } catch (err) {
+        localStorage.removeItem("usuario");
+        setStatus('invalido');
+      }
+    };
+
+    verificarSessao();
+  }, []);
+
+  if (status === 'carregando') {
+    return <div style={{ padding: '2rem', textAlign: 'center' }}>Verificando sessão...</div>;
+  }
+
+  if (status === 'invalido') {
     return <Navigate to={apenasAdmin ? "/loginadm" : "/loginusuario"} replace />;
   }
 
-  // 2. É rota de ADMIN, mas o usuário logado NÃO é "adm" -> Bloqueia e manda pra Home
-  if (apenasAdmin && usuario.tipo !== "adm") {
+  if (apenasAdmin && !ehAdmin) {
     return <Navigate to="/" replace />;
   }
 
-  // 3. Se passou nas validações, exibe a página
   return children;
 };
 
