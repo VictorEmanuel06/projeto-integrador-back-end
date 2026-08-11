@@ -3,251 +3,664 @@
 ========================================================= */
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-
-html,
-body {
-    margin: 0;
-    padding: 0;
+html {
+  scroll-behavior: smooth;
 }
-
 
 body {
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #fff;
+  color: #402722;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
 
 .container {
-    width: 100%;
+  width: 100%;
+  overflow: hidden;
 }
-
 
 
 /* =========================================================
-   BEM-VINDO / CUIDADO
+   HERO
 ========================================================= */
 
-.caixa-cuidado,
-.caixa-bem-vindo {
-
-    display: flex;
-
-    justify-content: center;
-
-    max-width: 1000px;
-
-    margin: 70px auto 60px;
-
-    padding: 0 20px;
-
-    gap: 50px;
+.hero {
+  width: 100%;
+  min-height: 640px;
+  background:
+    radial-gradient(
+      circle at 80% 35%,
+      rgba(188, 148, 108, 0.16),
+      transparent 32%
+    ),
+    #f8f0e8;
+  position: relative;
 }
 
+.hero-content {
+  width: min(1280px, 92%);
+  min-height: 640px;
+  margin: 0 auto;
 
-.caixa-cuidado {
-    align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
 }
-
-
-.caixa-bem-vindo {
-    align-items: center;
-}
-
-
-.caixa-cuidado .texto,
-.caixa-bem-vindo .texto {
-
-    margin-top: 20px;
-}
-
-
-.texto {
-
-    width: 500px;
-
-    max-width: 100%;
-
-    text-align: left;
-}
-
-
-.texto h1 {
-
-    margin: 0 0 16px;
-
-    color: #402722;
-
-    font-size: 42px;
-
-    line-height: 1.1;
-}
-
-
-.texto p {
-
-    margin: 0;
-
-    color: #555;
-
-    font-size: 18px;
-
-    line-height: 1.6;
-}
-
 
 
 /* =========================================================
-   IMAGENS
+   HERO TEXTO
 ========================================================= */
 
-.img-1,
-.img-2 {
-
-    display: flex;
-
-    justify-content: center;
+.hero-text {
+  padding: 70px 0;
+  position: relative;
+  z-index: 3;
 }
 
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 
-.img-1 img,
-.img-2 img {
-
-    width: 220px;
-
-    height: auto;
-
-    margin-top: 30px;
+  color: #8b6049;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 22px;
 }
 
+.eyebrow-line {
+  width: 40px;
+  height: 1px;
+  background: #8b6049;
+}
+
+.hero-text h1 {
+  margin: 0;
+
+  color: #3e2822;
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 1.04;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.hero-text > p {
+  max-width: 500px;
+  margin: 28px 0 0;
+
+  color: #62544e;
+  font-size: 17px;
+  line-height: 1.65;
+}
 
 
 /* =========================================================
-   AUTOCONHECIMENTO
+   BOTÕES
 ========================================================= */
 
-.caixa-autoconhecimento {
-
-    display: flex;
-
-    justify-content: center;
-
-    padding: 40px 20px;
-
-    text-align: center;
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
 }
 
+.btn {
+  min-height: 50px;
+  padding: 0 22px;
 
-.autoconhecimento {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
 
-    width: 100%;
+  border-radius: 9px;
 
-    max-width: 700px;
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
-
-.titulo-autoconhecimento {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 16px;
-
-    margin-bottom: 24px;
+.btn:hover {
+  transform: translateY(-2px);
 }
 
+.btn-primary {
+  color: #fff;
+  background: #54291c;
 
-.titulo-autoconhecimento img {
-
-    width: 80px;
-
-    height: 80px;
-
-    object-fit: contain;
+  box-shadow:
+    0 10px 25px rgba(84, 41, 28, 0.18);
 }
 
-
-.titulo-autoconhecimento h1 {
-
-    margin: 0;
-
-    color: #402722;
-
-    font-size: 30px;
+.btn-primary:hover {
+  background: #422017;
 }
 
-
-.autoconhecimento p {
-
-    margin: 0;
-
-    color: #555;
-
-    font-size: 18px;
-
-    line-height: 1.6;
+.btn-outline {
+  color: #54291c;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid #8b6049;
 }
 
+.btn-outline:hover {
+  background: #fff;
+}
 
 
 /* =========================================================
-   SEÇÃO DOS PILARES
+   HERO FEATURES
 ========================================================= */
 
-.caixa-pilares {
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 
-    width: 100%;
-
-    padding: 70px 20px 100px;
-
-    text-align: center;
+  margin-top: 38px;
 }
 
-
-.os-cinco-pilares {
-
-    margin: 0 0 50px;
-
-    color: #402722;
-
-    font-size: 30px;
-
-    font-weight: 400;
+.hero-feature {
+  display: flex;
+  align-items: center;
+  gap: 9px;
 }
 
+.feature-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #754d38;
+
+  border: 1px solid #b9957a;
+  border-radius: 50%;
+
+  font-size: 14px;
+}
+
+.hero-feature div {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-feature strong {
+  color: #4a342c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hero-feature small {
+  color: #756761;
+  font-size: 10px;
+  margin-top: 2px;
+}
 
 
 /* =========================================================
-   WRAPPER
+   HERO IMAGEM
 ========================================================= */
+
+.hero-visual {
+  min-height: 600px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-circle {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: #e7d0b8;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+
+  width: 430px;
+  height: 480px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 20px 20px rgba(67, 39, 28, 0.08)
+  );
+}
+
+.hero-decoration {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(117, 77, 56, 0.25);
+}
+
+.hero-decoration-one {
+  width: 460px;
+  height: 460px;
+}
+
+.hero-decoration-two {
+  width: 500px;
+  height: 500px;
+}
+
+
+/* =========================================================
+   SOBRE
+========================================================= */
+
+.sobre-section {
+  width: min(1180px, 92%);
+
+  margin: 0 auto;
+  padding: 100px 0;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+
+  align-items: center;
+  gap: 80px;
+}
+
+
+/* =========================================================
+   SOBRE IMAGEM
+========================================================= */
+
+.sobre-image {
+  height: 470px;
+
+  position: relative;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  background: #eadfd6;
+
+  box-shadow:
+    0 20px 50px rgba(64, 39, 34, 0.08);
+}
+
+.sobre-image > img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.sobre-badge {
+  position: absolute;
+
+  bottom: 22px;
+  right: 22px;
+
+  padding: 13px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border-radius: 12px;
+
+  color: #4b3229;
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-badge span {
+  color: #895d43;
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   SOBRE TEXTO
+========================================================= */
+
+.sobre-content {
+  max-width: 650px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 20px;
+
+  color: #865b43;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.section-label img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.sobre-content h2 {
+  margin: 0 0 20px;
+
+  color: #3e2822;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.sobre-content > p {
+  margin: 0 0 16px;
+
+  color: #655852;
+
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   CITAÇÃO
+========================================================= */
+
+.sobre-content blockquote {
+  margin: 28px 0 0;
+  padding: 22px 25px;
+
+  position: relative;
+
+  background: #f7f0ea;
+
+  border-radius: 14px;
+
+  border-left: 3px solid #a77b5e;
+}
+
+.sobre-content blockquote > span {
+  position: absolute;
+
+  top: 8px;
+  left: 15px;
+
+  color: #a77b5e;
+
+  font-family: Georgia, serif;
+  font-size: 40px;
+}
+
+.sobre-content blockquote p {
+  margin: 0 0 8px;
+  padding-left: 20px;
+
+  color: #503a31;
+
+  font-family: Georgia, serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sobre-content cite {
+  display: block;
+
+  text-align: right;
+
+  color: #80563f;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   BENEFÍCIOS
+========================================================= */
+
+.beneficios-section {
+  width: 100%;
+
+  padding: 90px 0 100px;
+
+  background: #f8f2ed;
+}
+
+.section-heading {
+  width: min(850px, 90%);
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+.heading-icon {
+  width: 50px;
+  height: 50px;
+
+  margin: 0 auto 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #704732;
+
+  border-radius: 50%;
+}
+
+.heading-icon img {
+  width: 31px;
+  height: 31px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  color: #402722;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 400;
+}
+
+.heading-line {
+  width: 45px;
+  height: 2px;
+
+  display: block;
+
+  margin: 16px auto 20px;
+
+  background: #9c7055;
+}
+
+.section-heading > p {
+  margin: 0;
+
+  color: #6b5c55;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   CARDS BENEFÍCIOS
+========================================================= */
+
+.beneficios-grid {
+  width: min(1120px, 90%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.beneficio-card {
+  min-height: 245px;
+
+  padding: 28px 22px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  background: #fff;
+
+  border: 1px solid rgba(117, 77, 56, 0.1);
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 8px 25px rgba(64, 39, 34, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.beneficio-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 18px 35px rgba(64, 39, 34, 0.1);
+}
+
+.beneficio-icon {
+  width: 60px;
+  height: 60px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f4e9df;
+}
+
+.beneficio-icon img {
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+}
+
+.beneficio-card h3 {
+  margin: 0 0 10px;
+
+  color: #493229;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.beneficio-card p {
+  margin: 0;
+
+  color: #746660;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   PILARES
+========================================================= */
+
+.pilares-section {
+  width: min(1180px, 92%);
+
+  margin: 0 auto;
+
+  padding: 100px 0 90px;
+}
+
+.pilares-heading {
+  margin-bottom: 65px;
+}
 
 .pilares-wrapper {
+  width: min(920px, 100%);
 
-    position: relative;
+  min-height: 470px;
 
-    width: 900px;
+  margin: 0 auto;
 
-    max-width: 100%;
+  display: grid;
 
-    min-height: 520px;
+  grid-template-columns: 390px 1fr;
 
-    margin: 0 auto;
+  align-items: center;
 
-    display: grid;
-
-    grid-template-columns: 360px 1fr;
-
-    align-items: center;
-
-    column-gap: 40px;
-
-    text-align: left;
+  gap: 70px;
 }
-
 
 
 /* =========================================================
@@ -255,840 +668,636 @@ body {
 ========================================================= */
 
 .circulo {
+  width: 370px;
+  height: 370px;
 
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    z-index: 1;
+  border: 2px solid #79523f;
 
-    width: 360px;
+  border-radius: 50%;
 
-    height: 360px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #fff;
-
-    border: 4px solid #402722;
-
-    border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      #fff 55%,
+      #fcf8f4 100%
+    );
 }
-
-
-
-/* =========================================================
-   LETRAS DO CÍRCULO
-========================================================= */
 
 .letras-perma {
+  margin: 0;
+  padding: 0;
 
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    flex-direction: column;
-
-    align-items: center;
-
-    list-style: none;
-
-    margin: 0;
-
-    padding: 0;
+  list-style: none;
 }
-
 
 .letras-perma li {
+  width: 48px;
+  height: 48px;
 
-    width: 48px;
+  margin: 4px 0;
 
-    height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
+  border-radius: 50%;
 
-    align-items: center;
+  color: #fff;
 
-    justify-content: center;
-
-    margin: 5px 0;
-
-    border-radius: 50%;
-
-    font-size: 18px;
-
-    font-weight: 700;
-
-    color: #000;
+  font-size: 17px;
+  font-weight: 700;
 }
 
-
-.letras-perma .p {
-
-    background-color: #9b7a65;
+.letra-t {
+  background: #a77c5e;
 }
 
-
-.letras-perma .e {
-
-    background-color: #0b5fa5;
-
-    color: #fff;
+.letra-a {
+  background: #633a29;
 }
 
-
-.letras-perma .r {
-
-    background-color: #7b5a48;
-
-    color: #fff;
+.letra-r {
+  background: #865b43;
 }
 
-
-.letras-perma .m {
-
-    background-color: #cfcfcf;
+.letra-e {
+  background: #d7c8bd;
+  color: #402722 !important;
 }
 
-
-.letras-perma .a {
-
-    background-color: #0b5fa5;
-
-    color: #fff;
+.letra-e2 {
+  background: #6f4935;
 }
-
 
 
 /* =========================================================
-   CONTAINER DAS CAIXAS
+   PILARES CARDS
 ========================================================= */
 
 .pilares-cards {
-
-    width: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-
-    padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-
-
-
-/* =========================================================
-   CAIXA / CARD
-========================================================= */
 
 .pilar {
+  width: 100%;
 
-    position: relative;
+  min-height: 60px;
 
-    z-index: 2;
+  padding: 12px 18px;
 
-    width: 220px;
+  position: relative;
 
-    min-height: 38px;
+  background: #fff;
 
-    display: grid;
+  border: 1px solid #c8b0a0;
 
-    grid-template-rows: auto 0fr;
+  border-radius: 8px;
 
-    padding: 5px 14px;
+  cursor: pointer;
 
-    overflow: hidden;
-
-    cursor: pointer;
-
-    background: #fff;
-
-    border: 1.5px solid #402722;
-
-    border-radius: 6px;
-
-    transform: translateZ(0);
-
-    /*
-       Animação da caixa.
-
-       cubic-bezier deixa a entrada mais natural.
-    */
-
-    transition:
-
-        width 0.40s cubic-bezier(0.4, 0, 0.2, 1),
-
-        grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-
-        padding 0.40s cubic-bezier(0.4, 0, 0.2, 1),
-
-        box-shadow 0.30s ease,
-
-        background-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
-
-
-/* =========================================================
-   FORMATO EM CURVA
-========================================================= */
-
-.pilar-1 {
-
-    margin-left: 0;
-}
-
-
-.pilar-2 {
-
-    margin-left: 30px;
-}
-
-
-.pilar-3 {
-
-    margin-left: 70px;
-}
-
-
-.pilar-4 {
-
-    margin-left: 30px;
-}
-
-
-.pilar-5 {
-
-    margin-left: 0;
-}
-
-
-
-/* =========================================================
-   CABEÇALHO
-========================================================= */
-
-.pilar-cabecalho {
-
-    width: 100%;
-
-    height: 28px;
-
-    min-height: 28px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    flex-shrink: 0;
-}
-
-
-.pilar-cabecalho img {
-
-    width: 28px;
-
-    height: 28px;
-
-    flex-shrink: 0;
-
-    object-fit: contain;
-}
-
-
-.pilar-cabecalho span {
-
-    flex: 1;
-
-    overflow: hidden;
-
-    color: #402722;
-
-    font-size: 14px;
-
-    font-weight: 500;
-
-    text-align: left;
-
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
-}
-
-
-
-/* =========================================================
-   CONTEÚDO ESCONDIDO
-========================================================= */
-
-.pilar-conteudo {
-
-    min-height: 0;
-
-    overflow: hidden;
-
-    opacity: 0;
-
-    transform: translateY(-6px);
-
-    /*
-       O conteúdo aparece um pouquinho depois
-       da caixa começar a abrir.
-    */
-
-    transition:
-
-        opacity 0.25s ease 0.05s,
-
-        transform 0.30s ease;
-}
-
-
-.pilar-conteudo.conteudo-aberto {
-
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-
-
-/* =========================================================
-   TEXTO
-========================================================= */
-
-.pilar-texto {
-
-    margin: 10px 0 0;
-
-    padding: 0;
-
-    color: #555;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    text-align: left;
-}
-
-
-
-/* =========================================================
-   CAIXA ABERTA
-========================================================= */
-
+.pilar:hover,
 .pilar-expandido {
+  background: #fbf7f3;
 
-    width: 300px;
-
-    grid-template-rows: auto 1fr;
-
-    padding: 14px 20px;
-
-    z-index: 20;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.14);
+  box-shadow:
+    0 8px 22px rgba(64, 39, 34, 0.08);
 }
-
-
-
-/* =========================================================
-   HOVER
-========================================================= */
 
 .pilar:hover {
+  transform: translateX(5px);
+}
 
-    background-color: #fdfdfd;
+.pilar-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
 
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.10);
+.pilar-cabecalho img {
+  width: 27px;
+  height: 27px;
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+.pilar-cabecalho div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pilar-cabecalho strong {
+  color: #4a3128;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pilar-cabecalho span {
+  color: #796b64;
+
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 
-.pilar-expandido:hover {
+/* Curva visual */
 
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.14);
+.pilar-1 {
+  margin-left: 0;
 }
 
+.pilar-2 {
+  margin-left: 28px;
+}
+
+.pilar-3 {
+  margin-left: 55px;
+}
+
+.pilar-4 {
+  margin-left: 28px;
+}
+
+.pilar-5 {
+  margin-left: 0;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section {
+  width: min(1120px, 92%);
+
+  min-height: 270px;
+
+  margin: 0 auto 90px;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(62, 31, 21, 0.98),
+      rgba(91, 47, 31, 0.92)
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  position: relative;
+}
+
+.cta-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  left: -80px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.cta-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  right: -100px;
+  top: -140px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 600px;
+
+  padding: 50px 20px;
+}
+
+.cta-content > span {
+  color: #d7b59d;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+.cta-content h2 {
+  margin: 10px 0 8px;
+
+  color: #fff;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 42px;
+  font-weight: 400;
+}
+
+.cta-content p {
+  margin: 0 0 25px;
+
+  color: #eadfd7;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.cta-button {
+  display: inline-flex;
+
+  min-height: 48px;
+
+  padding: 0 25px;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+
+  border: 1px solid rgba(255,255,255,0.7);
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: background 0.25s ease;
+}
+
+.cta-button:hover {
+  background: rgba(255,255,255,0.12);
+}
 
 
 /* =========================================================
    TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-    .pilares-wrapper {
+  .hero-content {
+    grid-template-columns: 1fr 0.85fr;
+    gap: 20px;
+  }
 
-        width: 760px;
+  .hero-text h1 {
+    font-size: 50px;
+  }
 
-        grid-template-columns: 300px 1fr;
+  .hero-circle {
+    width: 330px;
+    height: 330px;
+  }
 
-        column-gap: 25px;
+  .hero-decoration-one {
+    width: 370px;
+    height: 370px;
+  }
 
-        min-height: 500px;
-    }
+  .hero-decoration-two {
+    width: 410px;
+    height: 410px;
+  }
 
+  .sobre-section {
+    gap: 45px;
+  }
 
-    .circulo {
+  .beneficios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-        width: 300px;
+  .pilares-wrapper {
+    grid-template-columns: 320px 1fr;
+    gap: 45px;
+  }
 
-        height: 300px;
-
-        border-width: 3px;
-    }
-
-
-    .letras-perma li {
-
-        width: 40px;
-
-        height: 40px;
-
-        margin: 4px 0;
-
-        font-size: 16px;
-    }
-
-
-    .pilar {
-
-        width: 200px;
-    }
-
-
-    .pilar-expandido {
-
-        width: 280px;
-    }
-
-
-    .pilar-2 {
-
-        margin-left: 20px;
-    }
-
-
-    .pilar-3 {
-
-        margin-left: 40px;
-    }
-
-
-    .pilar-4 {
-
-        margin-left: 20px;
-    }
-
+  .circulo {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 
-
 /* =========================================================
-   CELULAR
+   MOBILE
 ========================================================= */
 
 @media (max-width: 768px) {
 
-    .caixa-cuidado,
-    .caixa-bem-vindo {
+  .hero {
+    min-height: auto;
+  }
 
-        flex-direction: row;
+  .hero-content {
+    min-height: auto;
 
-        align-items: center;
+    padding: 60px 0 70px;
 
-        justify-content: center;
+    grid-template-columns: 1fr;
 
-        gap: 18px;
+    text-align: center;
+  }
 
-        padding: 0 16px;
-    }
+  .hero-text {
+    padding: 0;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .caixa-cuidado .texto,
-    .caixa-bem-vindo .texto {
+  .eyebrow {
+    justify-content: center;
+  }
 
-        width: auto;
+  .hero-text h1 {
+    font-size: clamp(40px, 11vw, 56px);
+  }
 
-        max-width: 260px;
+  .hero-text > p {
+    max-width: 550px;
+  }
 
-        margin-top: 0;
+  .hero-buttons {
+    justify-content: center;
+  }
 
-        text-align: left;
-    }
+  .hero-features {
+    justify-content: center;
+  }
 
+  .hero-visual {
+    min-height: 380px;
+  }
 
-    .texto h1 {
+  .hero-circle {
+    width: 290px;
+    height: 290px;
+  }
 
-        font-size: 32px;
-    }
+  .hero-image {
+    width: 330px;
+    height: 380px;
+  }
 
+  .hero-decoration-one {
+    width: 320px;
+    height: 320px;
+  }
 
-    .texto p {
+  .hero-decoration-two {
+    width: 350px;
+    height: 350px;
+  }
 
-        font-size: 16px;
-    }
 
+  /* Sobre */
 
-    .img-1 img,
-    .img-2 img {
+  .sobre-section {
+    width: 90%;
 
-        width: 180px;
+    padding: 70px 0;
 
-        margin-top: 0;
-    }
+    grid-template-columns: 1fr;
 
+    gap: 45px;
+  }
 
+  .sobre-image {
+    height: 390px;
+  }
 
-    /* AUTOCONHECIMENTO */
+  .sobre-content h2 {
+    font-size: 38px;
+  }
 
-    .caixa-autoconhecimento {
 
-        padding: 40px 20px;
-    }
+  /* Benefícios */
 
+  .beneficios-section {
+    padding: 70px 0;
+  }
 
-    .titulo-autoconhecimento {
+  .beneficios-grid {
+    width: 90%;
 
-        flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
 
-        gap: 10px;
-    }
+    gap: 15px;
+  }
 
+  .beneficio-card {
+    min-height: 230px;
+    padding: 23px 15px;
+  }
 
-    .titulo-autoconhecimento img {
 
-        width: 70px;
+  /* Pilares */
 
-        height: 70px;
-    }
+  .pilares-section {
+    padding: 70px 0;
+  }
 
+  .pilares-wrapper {
+    grid-template-columns: 1fr;
 
-    .titulo-autoconhecimento h1 {
+    gap: 45px;
 
-        font-size: 25px;
-    }
+    min-height: auto;
+  }
 
+  .circulo {
+    width: 270px;
+    height: 270px;
 
-    .autoconhecimento p {
+    margin: 0 auto;
+  }
 
-        max-width: 500px;
+  .pilares-cards {
+    width: 100%;
+  }
 
-        margin: 0 auto;
+  .pilar-1,
+  .pilar-2,
+  .pilar-3,
+  .pilar-4,
+  .pilar-5 {
+    margin-left: 0;
+  }
 
-        font-size: 16px;
-    }
+  .pilar:hover {
+    transform: translateY(-2px);
+  }
 
 
+  /* CTA */
 
-    /* PILARES */
+  .cta-section {
+    margin-bottom: 60px;
+  }
 
-    .caixa-pilares {
-
-        padding: 60px 12px 80px;
-    }
-
-
-    .os-cinco-pilares {
-
-        margin-bottom: 35px;
-
-        font-size: 25px;
-    }
-
-
-    .pilares-wrapper {
-
-        width: 100%;
-
-        min-height: 480px;
-
-        grid-template-columns: 42% 58%;
-
-        column-gap: 5px;
-
-        align-items: center;
-    }
-
-
-    .circulo {
-
-        width: 190px;
-
-        height: 190px;
-
-        border-width: 3px;
-
-        justify-self: center;
-    }
-
-
-    .letras-perma li {
-
-        width: 27px;
-
-        height: 27px;
-
-        margin: 3px 0;
-
-        font-size: 11px;
-    }
-
-
-    /* CAIXAS */
-
-    .pilares-cards {
-
-        width: 100%;
-
-        gap: 12px;
-
-        padding: 0;
-    }
-
-
-    .pilar {
-
-        width: 170px;
-
-        min-height: 32px;
-
-        padding: 4px 9px;
-    }
-
-
-    .pilar-1,
-    .pilar-2,
-    .pilar-3,
-    .pilar-4,
-    .pilar-5 {
-
-        margin-left: 0;
-    }
-
-
-    .pilar-2,
-    .pilar-4 {
-
-        margin-left: 8px;
-    }
-
-
-    .pilar-3 {
-
-        margin-left: 16px;
-    }
-
-
-    .pilar-cabecalho {
-
-        height: 22px;
-
-        min-height: 22px;
-
-        gap: 6px;
-    }
-
-
-    .pilar-cabecalho img {
-
-        width: 22px;
-
-        height: 22px;
-    }
-
-
-    .pilar-cabecalho span {
-
-        font-size: 11px;
-    }
-
-
-    .pilar-expandido {
-
-        width: 220px;
-
-        padding: 10px 14px;
-
-        margin-left: 0 !important;
-    }
-
-
-    .pilar-expandido .pilar-cabecalho span {
-
-        font-size: 12px;
-    }
-
-
-    .pilar-texto {
-
-        margin-top: 8px;
-
-        font-size: 11px;
-
-        line-height: 1.45;
-    }
-
+  .cta-content h2 {
+    font-size: 35px;
+  }
 }
 
 
-
 /* =========================================================
-   CELULAR PEQUENO
+   MOBILE PEQUENO
 ========================================================= */
 
 @media (max-width: 500px) {
 
-    .caixa-cuidado,
-    .caixa-bem-vindo {
+  .hero-content {
+    width: 90%;
+    padding-top: 45px;
+  }
 
-        gap: 10px;
+  .hero-text h1 {
+    font-size: 38px;
+  }
 
-        padding: 0 10px;
-    }
+  .hero-text > p {
+    font-size: 15px;
+  }
 
+  .hero-buttons {
+    width: 100%;
 
-    .texto h1 {
+    flex-direction: column;
+  }
 
-        font-size: 27px;
-    }
+  .btn {
+    width: 100%;
+  }
 
+  .hero-features {
+    width: 100%;
 
-    .texto p {
+    display: grid;
+    grid-template-columns: 1fr;
 
-        font-size: 14px;
-    }
+    justify-items: start;
 
+    max-width: 240px;
+  }
 
-    .img-1 img,
-    .img-2 img {
+  .hero-visual {
+    min-height: 320px;
+  }
 
-        width: 140px;
-    }
+  .hero-image {
+    width: 280px;
+    height: 330px;
+  }
 
+  .hero-circle {
+    width: 245px;
+    height: 245px;
+  }
 
+  .hero-decoration-one {
+    width: 275px;
+    height: 275px;
+  }
 
-    /* PILARES */
+  .hero-decoration-two {
+    width: 305px;
+    height: 305px;
+  }
 
-    .os-cinco-pilares {
 
-        font-size: 22px;
-    }
+  .sobre-image {
+    height: 330px;
+  }
 
+  .sobre-content h2 {
+    font-size: 32px;
+  }
 
-    .pilares-wrapper {
+  .sobre-content h2 br {
+    display: none;
+  }
 
-        grid-template-columns: 40% 60%;
 
-        min-height: 450px;
-    }
+  .beneficios-grid {
+    grid-template-columns: 1fr;
+  }
 
+  .beneficio-card {
+    min-height: auto;
+  }
 
-    .circulo {
 
-        width: 150px;
+  .circulo {
+    width: 230px;
+    height: 230px;
+  }
 
-        height: 150px;
-    }
+  .letras-perma li {
+    width: 38px;
+    height: 38px;
 
+    font-size: 14px;
+  }
 
-    .letras-perma li {
 
-        width: 22px;
+  .pilar {
+    padding: 13px;
+  }
 
-        height: 22px;
 
-        margin: 2px 0;
-
-        font-size: 9px;
-    }
-
-
-    .pilar {
-
-        width: 155px;
-
-        min-height: 30px;
-
-        padding: 4px 7px;
-    }
-
-
-    .pilar-cabecalho img {
-
-        width: 19px;
-
-        height: 19px;
-    }
-
-
-    .pilar-cabecalho span {
-
-        font-size: 10px;
-    }
-
-
-    .pilar-expandido {
-
-        width: 190px;
-
-        padding: 10px;
-    }
-
-
-    .pilar-texto {
-
-        font-size: 10px;
-    }
-
-}
-
-
-
-/* =========================================================
-   CELULAR MUITO PEQUENO
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .pilares-wrapper {
-
-        grid-template-columns: 38% 62%;
-    }
-
-
-    .circulo {
-
-        width: 135px;
-
-        height: 135px;
-    }
-
-
-    .pilar {
-
-        width: 145px;
-    }
-
-
-    .pilar-expandido {
-
-        width: 175px;
-    }
-
-
-    .pilar-cabecalho span {
-
-        font-size: 9px;
-    }
-
+  .cta-section {
+    width: 92%;
+  }
+
+  .cta-content {
+    padding: 45px 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 32px;
+  }
 }
