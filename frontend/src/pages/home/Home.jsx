@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './Home.css';
+import { NavLink } from "react-router-dom";
 
 import cuidado from '../../assets/img_cuidado.png';
 import acolhimento from '../../assets/img_acolhimento.png';
@@ -443,15 +444,15 @@ const Home = () => {
             leveza, consciência e bem-estar.
           </p>
 
+        <NavLink to="/agendamento">
           <a
-            href="https://wa.me/5511992678813"
             target="_blank"
             rel="noreferrer"
             className="cta-button"
           >
             Agendar atendimento
           </a>
-
+        </NavLink>
         </div>
 
       </section>
