@@ -205,125 +205,383 @@ useEffect(() => {
 
 return (
   <section className="container-agendamento">
-    <div className="conteudo-agendamento">
-      <div className="coluna-esquerda">
-        <div className="caixa-psi">
-          <img src={doutor} className="foto_agendamento" alt="Doutor" />
-          <div className="info-psi">
-            <h1>Dr. Romulo</h1>
-            <p>
-              Sou psicólogo especializado em ajudar pessoas a lidarem com ansiedade, autoestima e conflitos
-              emocionais. Meu objetivo é oferecer um espaço seguro para você se expressar, compreender suas emoções e
-              construir novas possibilidades.
-            </p>
-          </div>
+
+    <div className="titulo-agendamento">
+      <span className="detalhe-titulo">✦</span>
+
+      <h1>Agende sua consulta</h1>
+
+      <p>
+        Escolha a data e o melhor horário para você.
+      </p>
+
+      <div className="etapas-agendamento">
+        <div className="etapa etapa-ativa">
+          <span>1</span>
+          <p>Data</p>
         </div>
 
-        <div className="calendario">
-          <Calendario 
-            value={dataSelecionada}
-            onChange={(novaData) => {
-              if (novaData) {
-                setDataSelecionada(novaData);
-                setHorarioSelecionado("");
-              }
-            }}
-          />
-        </div>
-      </div>
+        <div className="linha-etapa"></div>
 
-      <div className="horarios">
-        <h1>Horários Disponíveis</h1>
-        <p>{dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1)}</p>
-
-        {isAdmin && (
-          <div className="painel-adm-botoes" style={{ margin: "10px 0", padding: "10px", background: "#f0f0f0", borderRadius: "5px" }}>
-            <span style={{ fontWeight: "bold", display: "block", marginBottom: "5px" }}>Modo Admin:</span>
-            <label style={{ marginRight: "15px", cursor: "pointer" }}>
-              <input 
-                type="radio" 
-                name="acaoAdm" 
-                checked={tipoAcaoAdm === "agendar"} 
-                onChange={() => setTipoAcaoAdm("agendar")} 
-              /> Agendar Livre
-            </label>
-            <label style={{ cursor: "pointer" }}>
-              <input 
-                type="radio" 
-                name="acaoAdm" 
-                checked={tipoAcaoAdm === "bloquear"} 
-                onChange={() => setTipoAcaoAdm("bloquear")} 
-              /> Apenas Bloquear Horário
-            </label>
-          </div>
-        )}
-
-        <h2>Manhã</h2>
-        <div className="caixa-botoes">
-          {manha.map((horario) => {
-            const ocupado = verificarSeOcupado(horario);
-            return (
-              <button 
-                key={horario} 
-                disabled={ocupado}
-                onClick={() => selecionarHorario(horario)}
-                className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
-              >
-                {horario}
-              </button>
-            );
-          })}
+        <div className="etapa">
+          <span>2</span>
+          <p>Horário</p>
         </div>
 
-        <h2>Tarde</h2>
-        <div className="caixa-botoes">
-          {tarde.map((horario) => {
-            const ocupado = verificarSeOcupado(horario);
-            return (
-              <button 
-                key={horario} 
-                disabled={ocupado}
-                onClick={() => selecionarHorario(horario)}
-                className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
-              >
-                {horario}
-              </button>
-            );
-          })}
+        <div className="linha-etapa"></div>
+
+        <div className="etapa">
+          <span>3</span>
+          <p>Confirmação</p>
         </div>
-
-        <h2>Noite</h2>
-        <div className="caixa-botoes">
-          {noite.map((horario) => {
-            const ocupado = verificarSeOcupado(horario);
-            return (
-              <button 
-                key={horario} 
-                disabled={ocupado}
-                onClick={() => selecionarHorario(horario)}
-                className={`botoes ${ocupado ? "ocupado" : ""} ${horarioSelecionado === horario ? "selecionado" : ""} `}
-              >
-                {horario}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* CORREÇÃO: A mensagem de erro agora some se o Admin estiver autenticado via localStorage */}
-        {!isAuthenticated && (
-          <span className="erro-login">
-            Você precisa estar logado para realizar um agendamento.
-            <br />
-            <NavLink to="/loginusuario">Clique aqui para fazer login.</NavLink>
-          </span>
-        )}
-
-        {/* CORREÇÃO: O botão fica ativo se for Admin válido */}
-        <button onClick={handleSubmit} disabled={!isAuthenticated} className="agendamento">
-          {isAdmin && tipoAcaoAdm === "bloquear" ? "Confirmar Bloqueio do Horário →" : "Confirmar Agendamento →"}
-        </button>
       </div>
     </div>
+
+    <div className="conteudo-agendamento">
+
+      {/* COLUNA DO PROFISSIONAL */}
+      <div className="coluna-esquerda">
+
+        <div className="caixa-psi">
+
+          <img
+            src={doutor}
+            className="foto_agendamento"
+            alt="Dr. Romulo"
+          />
+
+          <div className="info-psi">
+
+            <h1>Dr. Romulo</h1>
+
+            <span className="cargo-psi">
+              Psicólogo
+            </span>
+
+            <div className="linha-decorativa">
+              ✦
+            </div>
+
+            <p>
+              Atendimento acolhedor e personalizado para
+              ajudar você a cuidar da sua saúde emocional.
+            </p>
+
+            <div className="info-extra-psi">
+              <span>◉</span>
+              <div>
+                <strong>Atendimento</strong>
+                <small>Presencial</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        {/* CALENDÁRIO */}
+        <div className="calendario-container">
+
+          <div className="titulo-calendario">
+            <span>Escolha uma data</span>
+          </div>
+
+          <div className="calendario">
+            <Calendario
+              value={dataSelecionada}
+              onChange={(novaData) => {
+                if (novaData) {
+                  setDataSelecionada(novaData);
+                  setHorarioSelecionado("");
+                }
+              }}
+            />
+          </div>
+
+          <div className="data-escolhida">
+
+            <span className="icone-data">▣</span>
+
+            <span>
+              {dataFormatada.charAt(0).toUpperCase() +
+                dataFormatada.slice(1)}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* HORÁRIOS */}
+      <div className="horarios">
+
+        <div className="titulo-horarios">
+
+          <h1>Escolha um horário disponível</h1>
+
+          <p>
+            Selecione um dos horários abaixo.
+          </p>
+
+        </div>
+
+
+        {/* ADMIN */}
+        {isAdmin && (
+          <div className="painel-adm-botoes">
+
+            <span className="titulo-admin">
+              Modo administrador
+            </span>
+
+            <div className="opcoes-admin">
+
+              <label className="opcao-admin">
+
+                <input
+                  type="radio"
+                  name="acaoAdm"
+                  checked={tipoAcaoAdm === "agendar"}
+                  onChange={() => setTipoAcaoAdm("agendar")}
+                />
+
+                <span>Agendar horário</span>
+
+              </label>
+
+              <label className="opcao-admin">
+
+                <input
+                  type="radio"
+                  name="acaoAdm"
+                  checked={tipoAcaoAdm === "bloquear"}
+                  onChange={() => setTipoAcaoAdm("bloquear")}
+                />
+
+                <span>Bloquear horário</span>
+
+              </label>
+
+            </div>
+
+          </div>
+        )}
+
+
+        {/* MANHÃ */}
+        <div className="grupo-horarios">
+
+          <div className="titulo-periodo">
+            <span className="icone-periodo">☀</span>
+            <h2>Manhã</h2>
+          </div>
+
+          <div className="caixa-botoes">
+
+            {manha.map((horario) => {
+
+              const ocupado = verificarSeOcupado(horario);
+              const selecionado = horarioSelecionado === horario;
+
+              return (
+                <button
+                  key={horario}
+                  disabled={ocupado}
+                  onClick={() => selecionarHorario(horario)}
+                  className={`botoes ${
+                    ocupado ? "ocupado" : ""
+                  } ${
+                    selecionado ? "selecionado" : ""
+                  }`}
+                >
+
+                  {selecionado && (
+                    <span className="check-selecionado">
+                      ✓
+                    </span>
+                  )}
+
+                  {horario.replace("H", "")}
+
+                </button>
+              );
+
+            })}
+
+          </div>
+
+        </div>
+
+
+        {/* TARDE */}
+        <div className="grupo-horarios">
+
+          <div className="titulo-periodo">
+            <span className="icone-periodo">☀</span>
+            <h2>Tarde</h2>
+          </div>
+
+          <div className="caixa-botoes">
+
+            {tarde.map((horario) => {
+
+              const ocupado = verificarSeOcupado(horario);
+              const selecionado = horarioSelecionado === horario;
+
+              return (
+                <button
+                  key={horario}
+                  disabled={ocupado}
+                  onClick={() => selecionarHorario(horario)}
+                  className={`botoes ${
+                    ocupado ? "ocupado" : ""
+                  } ${
+                    selecionado ? "selecionado" : ""
+                  }`}
+                >
+
+                  {selecionado && (
+                    <span className="check-selecionado">
+                      ✓
+                    </span>
+                  )}
+
+                  {horario.replace("H", "")}
+
+                </button>
+              );
+
+            })}
+
+          </div>
+
+        </div>
+
+
+        {/* NOITE */}
+        <div className="grupo-horarios">
+
+          <div className="titulo-periodo">
+            <span className="icone-periodo">☾</span>
+            <h2>Noite</h2>
+          </div>
+
+          <div className="caixa-botoes">
+
+            {noite.map((horario) => {
+
+              const ocupado = verificarSeOcupado(horario);
+              const selecionado = horarioSelecionado === horario;
+
+              return (
+                <button
+                  key={horario}
+                  disabled={ocupado}
+                  onClick={() => selecionarHorario(horario)}
+                  className={`botoes ${
+                    ocupado ? "ocupado" : ""
+                  } ${
+                    selecionado ? "selecionado" : ""
+                  }`}
+                >
+
+                  {selecionado && (
+                    <span className="check-selecionado">
+                      ✓
+                    </span>
+                  )}
+
+                  {horario.replace("H", "")}
+
+                </button>
+              );
+
+            })}
+
+          </div>
+
+        </div>
+
+
+        {/* LEGENDA */}
+        <div className="legenda-horarios">
+
+          <div>
+            <span className="bolinha disponivel"></span>
+            Disponível
+          </div>
+
+          <div>
+            <span className="bolinha indisponivel"></span>
+            Indisponível
+          </div>
+
+          <div>
+            <span className="bolinha selecionado-legenda"></span>
+            Selecionado
+          </div>
+
+        </div>
+
+
+        {/* RESUMO */}
+        {horarioSelecionado && (
+
+          <div className="resumo-agendamento">
+
+            <p>Horário selecionado</p>
+
+            <strong>
+              {dataFormatada.charAt(0).toUpperCase() +
+                dataFormatada.slice(1)}
+              {" "}às{" "}
+              {horarioSelecionado.replace("H", "")}
+            </strong>
+
+          </div>
+
+        )}
+
+
+        {/* ERRO LOGIN */}
+        {!isAuthenticated && (
+
+          <span className="erro-login">
+
+            Você precisa estar logado para realizar um agendamento.
+
+            <br />
+
+            <NavLink to="/loginusuario">
+              Clique aqui para fazer login.
+            </NavLink>
+
+          </span>
+
+        )}
+
+
+        {/* BOTÃO */}
+        <button
+          onClick={handleSubmit}
+          disabled={!isAuthenticated || !horarioSelecionado}
+          className="agendamento"
+        >
+
+          {isAdmin && tipoAcaoAdm === "bloquear"
+            ? "Confirmar bloqueio"
+            : "Confirmar agendamento"}
+
+          <span>→</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
   </section>
 );
 };

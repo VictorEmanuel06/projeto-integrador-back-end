@@ -83,11 +83,22 @@ a {
   align-items: center;
   gap: 14px;
 
+
   color: #8b6049;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
   margin-bottom: 22px;
+}
+
+.img-1 img,
+.img-2 img {
+    width: 220px;
+
+    height: auto;
+
+    margin-top: 30px;
+
 }
 
 .eyebrow-line {

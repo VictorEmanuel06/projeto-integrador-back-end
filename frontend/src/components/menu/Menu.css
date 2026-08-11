@@ -234,6 +234,48 @@
   .logo-menu {
     width: 33vw;
   }
+
+    .admin-popover {
+    position: fixed;
+    top: 85px;
+    right: 20px;
+    left: auto;
+    transform: none;
+    background-color: #2a0f0a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    z-index: 1020;
+  }
+
+  .admin-popover::before {
+    display: none;
+  }
+
+  .popover-title {
+    color: #f5d6c8;
+  }
+
+  .admin-popover a {
+    color: #f1e4df !important;
+  }
+
+  .admin-popover a:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #f5d6c8 !important;
+  }
+
+  .popover-divider {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-popover-sair {
+    color: #ff8a80;
+  }
+
+  .btn-popover-sair:hover {
+    background-color: rgba(255, 138, 128, 0.1);
+  }
+
 }
 
 .nav-list.active {

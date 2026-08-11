@@ -73,7 +73,9 @@ function Menu() {
         </li>
 
         {/* Ícone de Perfil com Menu Popover Flutuante */}
-                <li className="item-login">
+                <li className="item-login"
+                    style={{ animation: active ? `navLinkFade 0.5s ease forwards 0.7s` : ""}}
+                >
           {usuarioLogado ? (
             <div 
               className="user-popover-container"
