@@ -230,18 +230,8 @@ const Home = () => {
 
         <div className="sobre-content">
 
-          <div className="section-label">
-            <img
-              src={cuidado}
-              alt=""
-            />
-
-            <span>Psicólogo Psicanalista</span>
-          </div>
-
           <h2>
-            Um espaço seguro para
-            <br />
+            Um espaço seguro para 
             cuidar de você.
           </h2>
 

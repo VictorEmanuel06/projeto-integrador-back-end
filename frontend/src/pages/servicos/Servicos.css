@@ -1,66 +1,603 @@
+/* =====================================================
+   PÁGINA DE SERVIÇOS
+===================================================== */
 
-.servicos{
-    text-align: center;
-}
-
-.servicos_h1{
-    margin-top: 80px;
-    font-weight: 300;
-    font-size: 40px;
-    color: #0b3c8a;
+.servicos-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #faf8f5;
+    color: #24140f;
     font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
 }
 
-.services-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 100px; /*Espaço para a imagem não cortar no topo da página */
-    margin-bottom: 50px;
-    gap: 100px;
+
+/* =====================================================
+   HERO / TÍTULO
+===================================================== */
+
+.servicos-hero {
+    width: 100%;
+    text-align: center;
+    padding: 48px 20px 25px;
+    box-sizing: border-box;
 }
 
-/* A Bolha Azul */
-.bubble {
-    background-color: #0b4a8d; /* Azul escuro forçado */
-    color: white;
-    width: 320px; /* Largura fixa para manter o formato */
-    height: 450px; /* Altura para permitir o efeito de gota */
+.servicos-label {
     display: flex;
     align-items: center;
-    line-height: 1.3;
-    border-radius: 0px 180px 180px 180px; 
-    border: 3px solid #402722;
-    position: relative; /* Essencial para posicionar a imagem em relação ao balão */
-    padding: 5px;
-    margin-top: 30px;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 8px;
+}
+
+.servicos-label span {
+    width: 65px;
+    height: 1px;
+    background: #d9b9a8;
+}
+
+.servicos-label small {
+    color: #8c321f;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.servicos-hero h1 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: #35150e;
+}
+
+.servicos-hero p {
+    max-width: 650px;
+    margin: 10px auto 0;
+    color: #5d514d;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.servicos-cards {
+    width: 100%;
+    max-width: 720px;
+    margin: 10px auto 18px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+
+/* CARD */
+
+.servico-card {
+    background: #ffffff;
+    border-radius: 12px;
+
+    padding: 14px 28px 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 18px rgba(68, 37, 24, 0.08);
+
+    border: 1px solid rgba(120, 70, 45, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.servico-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(68, 37, 24, 0.13);
+}
+
+
+/* =====================================================
+   IMAGEM DOS CARDS
+===================================================== */
+
+.servico-imagem {
+    width: 160px;
+    height: 160px;
+
+    margin: 0 auto 8px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.servico-imagem img {
+    width: 155px;
+    height: 155px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+
+/* =====================================================
+   ÍCONE SOBRE A IMAGEM
+===================================================== */
+
+.servico-icone {
+    position: absolute;
+
+    bottom: -3px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #123c65;
+
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    border: 3px solid #ffffff;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================================
+   TÍTULO DO CARD
+===================================================== */
+
+.servico-card h2 {
+    margin: 12px 0 8px;
+
+    color: #17100d;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+}
+
+
+/* =====================================================
+   LINHA DECORATIVA
+===================================================== */
+
+.linha-decorativa {
+    width: 30px;
+    height: 2px;
+
+    background: #a64a31;
+
+    margin: 0 auto 10px;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   TEXTO DO CARD
+===================================================== */
+
+.servico-card p {
+    margin: 0;
+
+    color: #534843;
+
+    font-size: 11.5px;
+
+    line-height: 1.55;
+
     text-align: center;
 }
 
-.bubble-img {
-    position: absolute;
-    top: -65px; /* Move a imagem para cima, para fora do balão */
-    left: 15px;  /* Ajuste a posição lateral conforme desejar */
-    width: 100px; /* Ajuste o tamanho da imagem */
-    height: auto;
 
+/* =====================================================
+   DIFERENCIAIS
+===================================================== */
+
+.diferenciais {
+    width: 100%;
+    max-width: 810px;
+
+    margin: 0 auto;
+
+    padding: 12px 25px;
+
+    box-sizing: border-box;
+
+    background: #f4e5d8;
+
+    border-radius: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr
+        auto
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    box-shadow:
+        0 4px 15px rgba(100, 60, 40, 0.04);
 }
 
-.bubble p {
+
+/* =====================================================
+   CADA DIFERENCIAL
+===================================================== */
+
+.diferencial {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   ÍCONE DIFERENCIAL
+===================================================== */
+
+.diferencial-icone {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #9b3d24;
+
+    font-size: 25px;
+}
+
+
+/* =====================================================
+   TEXTO DIFERENCIAL
+===================================================== */
+
+.diferencial-texto h3 {
+    margin: 0 0 3px;
+
+    color: #21140f;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+.diferencial-texto p {
     margin: 0;
-    font-size: large;
+
+    color: #725f57;
+
+    font-size: 9px;
+
+    line-height: 1.35;
 }
 
-/* Responsividade para Celular */
-@media (max-width: 768px) {
-    .bubble {
-        width: 300px;
-        height: 480px;
-        border-radius: 0px 140px 140px 140px; /* Mantém a proporção no mobile */
-        padding: 40px 25px;
+
+/* =====================================================
+   DIVISÓRIAS
+===================================================== */
+
+.divisoria {
+    width: 1px;
+
+    height: 65px;
+
+    background: #d9bba9;
+}
+
+
+/* =====================================================
+   FRASE FINAL
+===================================================== */
+
+.servicos-final {
+    max-width: 810px;
+
+    margin: 28px auto 35px;
+
+    padding: 0 20px;
+
+    box-sizing: border-box;
+}
+
+.servicos-final h2 {
+    margin: 0 0 8px;
+
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+    color: #27140e;
+}
+
+.servicos-final p {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: #806d64;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .servicos-cards {
+        max-width: 700px;
     }
 
-    h1 {
-        font-size: 2.7em;
+    .diferenciais {
+        max-width: 700px;
+
+        grid-template-columns:
+            1fr
+            auto
+            1fr
+            auto
+            1fr
+            auto
+            1fr;
+
+        padding: 15px;
+    }
+
+    .diferencial {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 2px;
+    }
+
+    .diferencial-icone {
+        height: 32px;
+    }
+
+    .diferencial-texto h3 {
+        font-size: 10px;
+    }
+
+    .diferencial-texto p {
+        font-size: 8px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .servicos-hero {
+        padding: 35px 20px 20px;
+    }
+
+    .servicos-label span {
+        width: 35px;
+    }
+
+    .servicos-label small {
+        font-size: 9px;
+    }
+
+    .servicos-hero h1 {
+        font-size: 34px;
+    }
+
+    .servicos-hero p {
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+
+    /* CARDS UM EMBAIXO DO OUTRO */
+
+    .servicos-cards {
+        grid-template-columns: 1fr;
+
+        max-width: 390px;
+
+        gap: 18px;
+
+        margin-top: 10px;
+    }
+
+
+    .servico-card {
+        padding: 18px 25px 22px;
+    }
+
+
+    .servico-imagem {
+        width: 150px;
+        height: 150px;
+    }
+
+    .servico-imagem img {
+        width: 145px;
+        height: 145px;
+    }
+
+
+    .servico-card h2 {
+        font-size: 15px;
+    }
+
+    .servico-card p {
+        font-size: 11px;
+    }
+
+
+    /* =================================================
+       DIFERENCIAIS MOBILE
+    ================================================= */
+
+    .diferenciais {
+
+        width: calc(100% - 40px);
+
+        max-width: 390px;
+
+        margin-top: 22px;
+
+        padding: 10px 15px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        border-radius: 10px;
+    }
+
+
+    .diferencial {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: 40px 1fr;
+
+        align-items: center;
+
+        text-align: left;
+
+        padding: 9px 3px;
+
+        gap: 8px;
+    }
+
+
+    .diferencial-icone {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .diferencial-texto h3 {
+        font-size: 10px;
+    }
+
+
+    .diferencial-texto p {
+        font-size: 8px;
+    }
+
+
+    .divisoria {
+
+        width: 100%;
+
+        height: 1px;
+    }
+
+
+    /* =================================================
+       FRASE FINAL MOBILE
+    ================================================= */
+
+    .servicos-final {
+
+        margin-top: 25px;
+
+        margin-bottom: 30px;
+
+        text-align: center;
+    }
+
+    .servicos-final h2 {
+        font-size: 19px;
+    }
+
+    .servicos-final p {
+        font-size: 11px;
+    }
+}
+
+
+/* =====================================================
+   CELULARES PEQUENOS
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .servicos-hero h1 {
+        font-size: 31px;
+    }
+
+    .servicos-hero p br {
+        display: none;
+    }
+
+    .servico-card {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .servico-card p {
+        font-size: 10.5px;
+    }
+
+    .diferenciais {
+        width: calc(100% - 30px);
     }
 }
