@@ -3,8 +3,6 @@ import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ValidacaodeLoginAdm from "../../services/ValidacaodeLoginAdm";
-
-// 1. Importe o AuthContext
 import { useAuth } from "../../context/AuthContext";
 
 const LoginAdm = () => {
@@ -14,8 +12,6 @@ const LoginAdm = () => {
   });
 
   const navegacao = useNavigate();
-
-  // 2. Extraia o setUsuarioLogado do contexto
   const { setUsuarioLogado } = useAuth();
 
   const [errors, setErrors] = useState({
@@ -24,152 +20,189 @@ const LoginAdm = () => {
   });
 
   const handleInput = (event) => {
-    setValores(prev => ({...prev, [event.target.name]: event.target.value,}))
-  }
+    setValores((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get('http://localhost:7006')
-    .then( res => {
-      if(res.data.valid){
-        navegacao('/')
-      }
-    })
-    .catch(err => console.log(err))
-  }, []);
+    axios
+      .get("http://localhost:7006")
+      .then((res) => {
+        if (res.data.valid) {
+          navegacao("/");
+        }
+      })
+      .catch((err) => console.log(err));
+  }, [navegacao]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const validationErrors = ValidacaodeLoginAdm(valores);
     setErrors(validationErrors);
 
-    if(validationErrors.email === "" && validationErrors.password === ""){
-      axios.post('http://localhost:7006/loginadm', valores, { withCredentials: true })
-      .then(res => {
-        console.log("RESPOSTA:", res.data);
+    if (
+      validationErrors.email === "" &&
+      validationErrors.password === ""
+    ) {
+      axios
+        .post("http://localhost:7006/loginadm", valores, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log("RESPOSTA:", res.data);
 
-        if(res.data.success ) {
-          // 3. Salva no localStorage como tipo "adm"
-          localStorage.setItem(
-            "usuario",
-            JSON.stringify({
-              id: res.data.id || res.data.user?.id,
-              nomecompleto: res.data.nomecompleto || res.data.user?.nomecompleto,
-              tipo: "adm" // Identifica que é Admin
-            })
-          );
+          if (res.data.success) {
+            localStorage.setItem(
+              "usuario",
+              JSON.stringify({
+                id: res.data.id || res.data.user?.id,
+                nomecompleto:
+                  res.data.nomecompleto ||
+                  res.data.user?.nomecompleto,
+                tipo: "adm",
+              })
+            );
 
-          // 4. ATUALIZA O ESTADO DO CONTEXTO PARA TROCAR O ÍCONE NO MENU
-          setUsuarioLogado(true);
-
-          navegacao("/");
-        } else {
-          alert("Registro inexistente");
-        }
-      })
-      .catch(err => console.log(err));
+            setUsuarioLogado(true);
+            navegacao("/");
+          } else {
+            alert("Registro inexistente");
+          }
+        })
+        .catch((err) => console.log(err));
     }
-  }
+  };
 
   return (
-    <div className="card-loginAdm">
-      <h1 className="title-loginAdm">Login</h1>
+    <main className="login-adm-page">
+      <section className="login-adm-section">
 
-      <p className="subtitle-adm">
-        Faça o login para acessar o site.
-      </p>
+        {/* Elementos decorativos */}
+        <div className="folha folha-esquerda"></div>
+        <div className="folha folha-direita"></div>
 
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="form-adm">
-          <label htmlFor="email">E-mail</label>
+        <div className="card-loginAdm">
 
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email@email.com"
-            autoComplete="email"
-            value={valores.email}
-            onChange={handleInput}
-          />
+          {/* Ícone */}
+          <div className="icone-adm">
+            <i className="fa-solid fa-shield-halved"></i>
+          </div>
 
-          {errors.email && (
-            <span className="erro">{errors.email}</span>
-          )}
+          <div className="titulo-area-adm">
+            <span>ÁREA ADMINISTRATIVA</span>
+          </div>
+
+          <h1 className="title-loginAdm">
+            Acesso Administrativo
+          </h1>
+
+          <p className="subtitle-adm">
+            Faça o login para acessar o painel administrativo.
+          </p>
+
+          <div className="linha-decorativa">
+            <span>♧</span>
+          </div>
+
+          <form onSubmit={handleSubmit} noValidate>
+
+            {/* E-mail */}
+            <div className="form-adm">
+              <label htmlFor="email">E-mail</label>
+
+              <div className="input-adm-wrapper">
+                <i className="fa-regular fa-envelope"></i>
+
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Digite seu e-mail"
+                  autoComplete="email"
+                  value={valores.email}
+                  onChange={handleInput}
+                />
+              </div>
+
+              {errors.email && (
+                <span className="erro">
+                  {errors.email}
+                </span>
+              )}
+            </div>
+
+            {/* Senha */}
+            <div className="form-adm">
+              <label htmlFor="password">Senha</label>
+
+              <div className="input-adm-wrapper">
+                <i className="fa-solid fa-lock"></i>
+
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Digite sua senha"
+                  autoComplete="current-password"
+                  value={valores.password}
+                  onChange={handleInput}
+                />
+              </div>
+
+              {errors.password && (
+                <span className="erro">
+                  {errors.password}
+                </span>
+              )}
+
+              <NavLink
+                to="/recuperarsenhaadm"
+                className="esquecisenhaadm"
+              >
+                Esqueci minha senha
+              </NavLink>
+            </div>
+
+            {/* Aviso de segurança */}
+            <div className="info-adm">
+              <div className="info-adm-icon">
+                <i className="fa-solid fa-shield-halved"></i>
+              </div>
+
+              <p>
+                Esta área é restrita. Acesso permitido apenas
+                para administradores e equipe autorizada.
+              </p>
+            </div>
+
+            {/* Botão */}
+            <button
+              type="submit"
+              className="btn-loginAdm"
+            >
+              Entrar na administração
+              <span>→</span>
+            </button>
+
+            {/* Voltar para login */}
+            <NavLink
+              to="/loginusuario"
+              className="voltar-login-cliente"
+            >
+              <i className="fa-regular fa-user"></i>
+              Voltar para Login de Cliente
+            </NavLink>
+
+          </form>
         </div>
-
-        <div className="form-adm">
-          <label htmlFor="password">Senha</label>
-
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="*************"
-            autoComplete="current-password"
-            value={valores.password}
-            onChange={handleInput}
-          />
-
-          {errors.password && (
-            <span className="erro">{errors.password}</span>
-          )}
-
-          <NavLink
-            to="/recuperarsenhaadm"
-            className="esquecisenhaadm"
-          >
-            Esqueci minha senha
-          </NavLink>
-        </div>
-
-        <div className="info-adm">
-          Seus dados são protegidos por protocolos de segurança.
-          Não compartilhamos informações pessoais com terceiros.
-        </div>
-
-        <button type="submit" className="btn-loginAdm">
-          Logar →
-        </button>
-
-        <NavLink to="/" className="cancelar-adm"> 
-          Cancelar
-        </NavLink>
-
-        <div className="login-adm">
-          Não possui uma conta?
-          <NavLink
-            to="/cadastroadm"
-            className="redi-cad-adm"
-          >
-            Clique aqui para fazer o cadastro
-          </NavLink>
-        </div>
-        {/* Coloque no final do form no LoginAdm.jsx */}
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <NavLink 
-            to="/loginusuario" 
-            style={{
-              padding: "8px 16px",
-              borderRadius: "20px",
-              border: "1px solid #cbd5e1",
-              backgroundColor: "#f8fafc",
-              color: "#475569",
-              fontSize: "0.85rem",
-              fontWeight: "500",
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px"
-            }}
-          >
-            <i className="fa-solid fa-user"></i> Voltar para Login de Cliente
-          </NavLink>
-        </div>
-      </form>
-    </div>
-  )
-}
+      </section>
+    </main>
+  );
+};
 
 export default LoginAdm;

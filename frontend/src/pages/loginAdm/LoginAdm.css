@@ -1,114 +1,592 @@
+/* ================================
+   PÁGINA DE LOGIN ADMINISTRATIVO
+================================ */
+
+.login-adm-page {
+  min-height: calc(100vh - 70px);
+  background: #faf7f3;
+}
+
+.login-adm-section {
+  min-height: 760px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 55px 20px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 35%,
+      rgba(185, 116, 73, 0.07),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(185, 116, 73, 0.06),
+      transparent 25%
+    ),
+    #faf7f3;
+}
+
+
+/* ================================
+   FOLHAS DECORATIVAS
+================================ */
+
+.folha {
+  position: absolute;
+  width: 190px;
+  height: 330px;
+  opacity: 0.20;
+  pointer-events: none;
+}
+
+.folha::before,
+.folha::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #c98d63;
+  border-radius: 100% 0 100% 0;
+}
+
+.folha::before {
+  width: 85px;
+  height: 145px;
+  transform: rotate(35deg);
+}
+
+.folha::after {
+  width: 65px;
+  height: 110px;
+  transform: rotate(-20deg);
+  top: 105px;
+  left: 55px;
+}
+
+.folha-esquerda {
+  left: 45px;
+  top: 120px;
+  transform: rotate(-15deg);
+}
+
+.folha-direita {
+  right: 40px;
+  bottom: 90px;
+  transform: rotate(150deg);
+}
+
+
+/* ================================
+   CARD
+================================ */
+
 .card-loginAdm {
-    width: 420px;
-    background: #0f3f97;
-    border-radius: 14px;
-    padding: 30px 28px;
-    margin: 80px auto;
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 550px;
+
+  background: rgba(255, 253, 250, 0.97);
+
+  border-radius: 16px;
+
+  padding: 34px 36px 30px;
+
+  box-shadow:
+    0 10px 35px rgba(67, 30, 19, 0.10),
+    0 2px 8px rgba(67, 30, 19, 0.05);
+
+  border: 1px solid rgba(125, 28, 9, 0.08);
 }
- 
+
+
+/* ================================
+   ÍCONE
+================================ */
+
+.icone-adm {
+  width: 76px;
+  height: 76px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: #f6e5d5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #8b2d17;
+
+  font-size: 30px;
+}
+
+
+/* ================================
+   ÁREA ADMINISTRATIVA
+================================ */
+
+.titulo-area-adm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-bottom: 10px;
+}
+
+.titulo-area-adm::before,
+.titulo-area-adm::after {
+  content: "";
+
+  width: 90px;
+  height: 1px;
+
+  background: #cda58f;
+}
+
+.titulo-area-adm span {
+  color: #7d1c09;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* ================================
+   TÍTULO
+================================ */
+
 .title-loginAdm {
-    color: #fff;
-    font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    text-align: center;
+  color: #4b1d13;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 38px;
+
+  font-weight: 500;
+
+  text-align: center;
+
+  margin: 8px 0 8px;
 }
- 
+
+
+/* ================================
+   SUBTÍTULO
+================================ */
+
 .subtitle-adm {
-    font-size: 14px;
-    color: #fff;
-    line-height: 1.5;
-    margin-bottom: 22px;
-    width: 100%;
+  color: #5f504a;
+
+  font-size: 16px;
+
+  line-height: 1.6;
+
+  text-align: center;
+
+  margin: 0;
 }
- 
+
+
+/* ================================
+   LINHA DECORATIVA
+================================ */
+
+.linha-decorativa {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 20px 0 25px;
+
+  color: #9c351d;
+
+  font-size: 23px;
+}
+
+.linha-decorativa::before,
+.linha-decorativa::after {
+  content: "";
+
+  width: 70px;
+
+  height: 1px;
+
+  background: #d8b7a5;
+}
+
+
+/* ================================
+   FORMULÁRIO
+================================ */
+
 .form-adm {
-    margin-bottom: 16px;
+  margin-bottom: 19px;
 }
- 
+
 .form-adm label {
-    display: block;
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 6px;
-}
- 
-.form-adm input {
-    width: 100%;
-    height: 40px;
-    border: none;
-    border-radius: 6px;
-    background: #dddddd;
-    padding: 0 12px;
-    outline: none;
-    font-size: 14px;
-}
- 
-.info-adm {
-    background: #fff;
-    padding: 18px;
-    border-radius: 10px;
-    font-size: 14px;
-    color: #0f3f97;
-    margin: 10px 0 30px;
-}
- 
-.btn-loginAdm {
-    width: 100%;
-    height: 48px;
-    border: none;
-    border-radius: 24px;
-    background-image: linear-gradient(to right, #791B09, #821E09, #BD2B0E);
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 15px;
-    transition: 0.2s;
-}
- 
-.btn:hover {
-    background-image: linear-gradient(to right, #651608, #6D1908,  #9F240C);
-}
- 
-.esquecisenhaadm {
-    color: skyblue;
-    text-decoration: none;
-}
- 
-.login-adm {
-    text-align: center;
-    margin-top: 18px;
-    font-size: 12px;
-    color: #fff;
-}
- 
-.login .redi-cad-adm {
-    color: cornflowerblue;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.cancelar-adm{
-    margin-top: 40px;
-    margin-left: 140px; 
-    color: #fff;
-    text-decoration: none;
-}
-
-/* .btn-voltar-login{
-    text-decoration: none;
-    font-weight: 600;
-} */
- 
-.erro {
-  color: red;
-  font-size: 12px;
   display: block;
-  margin-top: 5px;
+
+  color: #321b15;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  margin-bottom: 8px;
 }
- 
- 
+
+
+/* ================================
+   INPUT
+================================ */
+
+.input-adm-wrapper {
+  width: 100%;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  border: 1px solid #d8c9c0;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  transition: 0.2s;
+}
+
+.input-adm-wrapper:focus-within {
+  border-color: #8b2d17;
+
+  box-shadow:
+    0 0 0 3px rgba(139, 45, 23, 0.08);
+}
+
+.input-adm-wrapper i {
+  width: 48px;
+
+  text-align: center;
+
+  color: #8b2d17;
+
+  font-size: 17px;
+}
+
+.input-adm-wrapper input {
+  flex: 1;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  padding: 0 12px 0 0;
+
+  color: #3c2923;
+
+  font-size: 15px;
+}
+
+.input-adm-wrapper input::placeholder {
+  color: #8b817c;
+}
+
+
+/* ================================
+   ESQUECI SENHA
+================================ */
+
+.esquecisenhaadm {
+  display: inline-block;
+
+  margin-top: 9px;
+
+  color: #7d1c09;
+
+  font-size: 14px;
+
+  text-decoration: underline;
+
+  transition: 0.2s;
+}
+
+.esquecisenhaadm:hover {
+  color: #b12e13;
+}
+
+
+/* ================================
+   ERROS
+================================ */
+
+.erro {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #b42318;
+
+  font-size: 12px;
+}
+
+
+/* ================================
+   AVISO
+================================ */
+
+.info-adm {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  background: #f8e8d8;
+
+  border-radius: 9px;
+
+  padding: 14px 16px;
+
+  margin: 23px 0 20px;
+
+  color: #4d3930;
+}
+
+.info-adm-icon {
+  flex-shrink: 0;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  background: #f3dbc5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #8b2d17;
+
+  font-size: 19px;
+}
+
+.info-adm p {
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* ================================
+   BOTÃO LOGIN
+================================ */
+
+.btn-loginAdm {
+  width: 100%;
+
+  height: 50px;
+
+  border: none;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      to right,
+      #751d0c,
+      #9d2b13,
+      #b73517
+    );
+
+  color: #fff;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  transition: 0.25s;
+
+  box-shadow:
+    0 5px 14px rgba(125, 28, 9, 0.18);
+}
+
+.btn-loginAdm span {
+  font-size: 21px;
+
+  transition: transform 0.2s;
+}
+
+.btn-loginAdm:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(125, 28, 9, 0.25);
+}
+
+.btn-loginAdm:hover span {
+  transform: translateX(4px);
+}
+
+
+/* ================================
+   VOLTAR PARA LOGIN CLIENTE
+================================ */
+
+.voltar-login-cliente {
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 14px;
+
+  border: 1px solid #9b3b26;
+
+  border-radius: 25px;
+
+  background: transparent;
+
+  color: #7d1c09;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  transition: 0.2s;
+}
+
+.voltar-login-cliente:hover {
+  background: #f8ece5;
+
+  border-color: #7d1c09;
+}
+
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 768px) {
+
+  .login-adm-section {
+    min-height: auto;
+
+    padding: 35px 18px;
+  }
+
+  .card-loginAdm {
+    max-width: 500px;
+
+    padding: 30px 24px;
+  }
+
+  .folha {
+    opacity: 0.10;
+  }
+
+  .folha-esquerda {
+    left: -80px;
+  }
+
+  .folha-direita {
+    right: -80px;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .login-adm-section {
+    padding: 25px 14px;
+  }
+
+  .card-loginAdm {
+    padding: 27px 18px;
+
+    border-radius: 14px;
+  }
+
+  .icone-adm {
+    width: 64px;
+    height: 64px;
+
+    font-size: 25px;
+  }
+
+  .titulo-area-adm {
+    gap: 8px;
+  }
+
+  .titulo-area-adm::before,
+  .titulo-area-adm::after {
+    width: 35px;
+  }
+
+  .titulo-area-adm span {
+    font-size: 11px;
+  }
+
+  .title-loginAdm {
+    font-size: 30px;
+  }
+
+  .subtitle-adm {
+    font-size: 14px;
+  }
+
+  .info-adm {
+    align-items: flex-start;
+  }
+
+  .info-adm p {
+    font-size: 13px;
+  }
+
+  .btn-loginAdm,
+  .voltar-login-cliente {
+    font-size: 14px;
+  }
+}
