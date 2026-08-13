@@ -1,5 +1,5 @@
 import "./SobreMim.css";
-import doutor from '../../assets/doutor.jpg';
+import doutor from '../../assets/doutor - sobremim.jpg';
 import { NavLink } from "react-router-dom";
 
 const SobreMim = () => {
