@@ -1,196 +1,541 @@
-
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: #fff;
+  margin: 0;
+  padding: 0;
+  background: #faf8f5;
 }
 
-/* Tipografia */
-.subtitle,
-h2 {
+/* =====================================
+   PÁGINA
+===================================== */
 
-    text-align: center;
-    margin-top: 20px;
+.contatos-page {
+  width: 100%;
+  background: #faf8f5;
 }
 
-h1,
-h2,
-h3,
-h4 {
-    font-weight: 100;
+.contact-section {
+  width: 100%;
+  padding: 18px 0 25px;
 }
 
-p,
-li,
-span {
-    font-weight: 400;
+.contact-wrapper {
+  width: 90%;
+  max-width: 1380px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.85fr 1.25fr;
+  gap: 60px;
+
+  align-items: start;
 }
 
 
+/* =====================================
+   LADO ESQUERDO
+===================================== */
 
-/* Formulario de contato */
-
-.contact-section{
-    margin-bottom: 40px;
+.contact-form-area {
+  padding-top: 35px;
 }
+
+.contact-title {
+  text-align: center;
+}
+
+.contact-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  color: #8f2c18;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+}
+
+.contact-label::before,
+.contact-label::after {
+  content: "";
+
+  width: 45px;
+  height: 1px;
+
+  background: #cdb7aa;
+}
+
+.contact-title h1 {
+  margin: 15px 0 12px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 44px;
+  font-weight: 400;
+
+  color: #3c1811;
+}
+
+.contact-title p {
+  max-width: 500px;
+  margin: 0 auto 28px;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: #765e54;
+}
+
+
+/* =====================================
+   FORMULÁRIO
+===================================== */
 
 #fale-comigo {
-    width: 95%;
-    margin: 0 auto;
-    /* centraliza na tela */
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid #402722;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-image:url("../../assets/escritorio.jpg");
-    margin-top: 20px;
-    padding-top: 10px;
-    background-size: cover;
-    align-items: flex-start;
-    align-items: center;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
 }
 
-/* Título e subtítulo */
-#fale-comigo h2 {
-    text-align: center;
-    font-size:30px;
-    color: #fff;
+
+/* CAMPOS */
+
+.input-group,
+.textarea-group {
+  position: relative;
+
+  width: 100%;
 }
 
-#fale-comigo .subtitle {
-    text-align: center;
-    font-size:20px;
-    color: #fff;
-    margin-bottom: 1rem;
+.input-group input,
+.textarea-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid #d8c9c0;
+  border-radius: 9px;
+
+  background: #fffdfb;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+
+  color: #543b32;
+
+  outline: none;
+
+  transition: 0.2s ease;
 }
 
-/* Campos */
-#fale-comigo input,
-#fale-comigo textarea {
-    width: 550px;
-    max-width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #402722;
-    border-radius: 6px;
-    font-size: 1rem;
-    box-sizing: border-box;
+.input-group input {
+  height: 48px;
 
-
+  padding: 0 18px 0 53px;
 }
 
-/* Botão */
+.textarea-group textarea {
+  height: 102px;
+
+  padding: 16px 18px 16px 53px;
+
+  resize: none;
+}
+
+.input-group input:focus,
+.textarea-group textarea:focus {
+  border-color: #9f321b;
+
+  box-shadow:
+    0 0 0 3px rgba(159, 50, 27, 0.08);
+}
+
+.input-group input::placeholder,
+.textarea-group textarea::placeholder {
+  color: #806e66;
+}
+
+
+/* ÍCONES */
+
+.input-icon,
+.textarea-icon {
+  position: absolute;
+
+  left: 18px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #7d321f;
+
+  font-size: 21px;
+
+  z-index: 2;
+}
+
+.textarea-icon {
+  top: 23px;
+  transform: none;
+}
+
+
+/* =====================================
+   BOTÃO
+===================================== */
+
 #fale-comigo button {
-    background-color: #7D1C09;
-    color: #fff;
-    border: none;
-    padding: 1rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 550px;
-    max-width: 100%;
+  width: 100%;
+  height: 50px;
+
+  margin-top: 2px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #a72c12;
+
+  color: #fff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
 }
 
 #fale-comigo button:hover {
-    background-color: #561406;
+  background: #7d1c09;
 
+  transform: translateY(-1px);
 }
 
-.horario-atendimento {
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    padding-bottom: 20px;
+#fale-comigo button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
+
+
+/* =====================================
+   SIGILO
+===================================== */
+
+.privacy-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-top: 22px;
+}
+
+.privacy-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f1e4d8;
+
+  font-size: 19px;
+}
+
+.privacy-message p {
+  margin: 0;
+
+  padding-left: 18px;
+
+  border-left: 1px solid #cdb7aa;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #806e66;
+}
+
+
+/* =====================================
+   LADO DIREITO
+===================================== */
+
+.contact-info-area {
+  width: 100%;
+}
+
+
+/* =====================================
+   IMAGEM
+===================================== */
+
+.office-image {
+  width: 100%;
+  height: 390px;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(70, 35, 20, 0.10);
+}
+
+.office-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =====================================
+   INFORMAÇÕES
+===================================== */
+
+.contact-info {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-top: 16px;
+
+  background: transparent;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 10px 18px;
+
+  border-right: 1px solid #d6c6bc;
+}
+
+.info-item:last-child {
+  border-right: none;
+}
+
+.info-icon {
+  min-width: 43px;
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f2e6db;
+
+  color: #9a321b;
+
+  font-size: 21px;
+}
+
+.info-item strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 13px;
+
+  color: #3d2119;
+}
+
+.info-item p {
+  margin: 0;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: #735d53;
+}
+
+
+/* =====================================
+   MAPA
+===================================== */
+
 .frame {
-  width: 600px;
-  height: 400px;
+  width: 100%;
+  height: 225px;
+
+  margin-top: 10px;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 6px 20px rgba(70, 35, 20, 0.08);
 }
 
 .frame iframe {
   width: 100%;
   height: 100%;
+
+  display: block;
+
   border: 0;
 }
 
-/* Responsividade Fale comigo */
-@media (max-width: 480px) {
-    #fale-comigo {
-        padding: 1rem;
-    }
 
-    #fale-comigo h2 {
-        font-size: 1.3rem;
-    }
+/* =====================================
+   TABLET
+===================================== */
 
-    #fale-comigo button {
-        font-size: 0.9rem;
-        padding: 0.8rem;
-    }
-    
-}
+@media (max-width: 1000px) {
 
-@media (max-width: 768px) {
-  .frame {
-    width: 100%;
-    height: 300px; /* ajusta a altura no celular */
+  .contact-wrapper {
+    width: 92%;
+
+    grid-template-columns: 1fr;
+
+    gap: 35px;
   }
+
+  .contact-form-area {
+    padding-top: 10px;
+  }
+
+  .contact-info-area {
+    width: 100%;
+  }
+
+  .office-image {
+    height: 350px;
+  }
+
 }
 
 
+/* =====================================
+   CELULAR
+===================================== */
 
+@media (max-width: 650px) {
 
+  .contact-section {
+    padding: 25px 0 20px;
+  }
 
-.nav-list.active {
-    transform: translateX(0);
+  .contact-wrapper {
+    width: 90%;
+
+    gap: 30px;
+  }
+
+  .contact-title h1 {
+    font-size: 34px;
+  }
+
+  .contact-title p {
+    font-size: 13px;
+  }
+
+  .contact-label {
+    font-size: 12px;
+  }
+
+  .contact-label::before,
+  .contact-label::after {
+    width: 30px;
+  }
+
+  .office-image {
+    height: 250px;
+
+    border-radius: 12px;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+
+    margin-top: 12px;
+  }
+
+  .info-item {
+    padding: 13px 5px;
+
+    border-right: none;
+    border-bottom: 1px solid #d6c6bc;
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+  }
+
+  .frame {
+    height: 230px;
+
+    margin-top: 15px;
+
+    border-radius: 12px;
+  }
+
+  .privacy-message {
+    margin-top: 18px;
+  }
+
+  .privacy-message p {
+    font-size: 11px;
+  }
+
 }
 
-@keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+/* =====================================
+   CELULAR PEQUENO
+===================================== */
 
-.mobile-menu.active .line1 {
-    transform: rotate(-45deg) translate(-8px, 8px);
-}
+@media (max-width: 400px) {
 
-.mobile-menu.active .line2 {
-    opacity: 0;
-}
+  .contact-title h1 {
+    font-size: 30px;
+  }
 
-.mobile-menu.active .line3 {
-    transform: rotate(45deg) translate(-5px, -7px);
-}
+  .input-group input,
+  .textarea-group textarea {
+    font-size: 13px;
+  }
 
-.social-links {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-}
+  .office-image {
+    height: 220px;
+  }
 
-/* Responsividade social-links */
+  .frame {
+    height: 210px;
+  }
 
-@media (max-width: 768px) {
-    .social-links {
-        justify-content: center;
-
-    }
-}
-
-small {
-    font-weight: 300;
 }
