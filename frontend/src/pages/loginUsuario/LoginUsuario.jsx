@@ -20,20 +20,24 @@ function LoginUsuario() {
   });
 
   const handleInput = (event) => {
-    setValores(prev => ({ ...prev, [event.target.name]: event.target.value }));
+    setValores((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value
+    }));
   };
 
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get('http://localhost:7006', { withCredentials: true })
-      .then(res => {
+    axios
+      .get("http://localhost:7006", { withCredentials: true })
+      .then((res) => {
         if (res.data.success) {
-          navegacao('/');
+          navegacao("/");
           window.location.reload();
         }
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, [navegacao]);
 
   const handleSubimt = async (event) => {
@@ -43,8 +47,13 @@ function LoginUsuario() {
     setErrors(validacao);
 
     if (validacao.email === "" && validacao.password === "") {
-      axios.post('http://localhost:7006/loginusuario', valores, { withCredentials: true })
-        .then(res => {
+      axios
+        .post(
+          "http://localhost:7006/loginusuario",
+          valores,
+          { withCredentials: true }
+        )
+        .then((res) => {
           console.log("LOGIN:", res.data);
 
           localStorage.setItem(
@@ -58,7 +67,7 @@ function LoginUsuario() {
           setUsuarioLogado(true);
           navegacao("/");
         })
-        .catch(err => {
+        .catch((err) => {
           if (err.response && err.response.status === 401) {
             alert("Email ou senha inválidos");
           } else {
@@ -69,92 +78,184 @@ function LoginUsuario() {
   };
 
   return (
-      <div className="card-loginusuario">
-        <h1 className="title-loginusuario">Login</h1>
+    <main className="login-page">
+
+      {/* Elementos decorativos */}
+      <div className="login-decoration login-decoration-left">
+        <span>❧</span>
+        <span>❧</span>
+      </div>
+
+      <div className="login-decoration login-decoration-right">
+        <span>❧</span>
+        <span>❧</span>
+      </div>
+
+      <section className="card-loginusuario">
+
+        {/* Ícone */}
+        <div className="login-icon">
+          <i className="fa-regular fa-user"></i>
+        </div>
+
+        <h1 className="title-loginusuario">
+          Login
+        </h1>
 
         <p className="subtitle-usuario">
-          Realize o Login para acessar a agenda
+          Realize o login para acessar a agenda
         </p>
+
+        <div className="login-divider">
+          <span></span>
+          <i>♧</i>
+          <span></span>
+        </div>
 
         <form onSubmit={handleSubimt} noValidate>
 
+          {/* EMAIL */}
           <div className="form-usuario">
-            <label htmlFor="email">Email</label>
 
-            <input 
-            type="text"
-            placeholder="exemplo@email.com"
-            name="email"
-            id="email"
-            autoComplete="email"
-            onChange={handleInput} />
+            <label htmlFor="email">
+              E-mail
+            </label>
 
-            <span>{errors.email}</span>
+            <div className="input-wrapper">
+              <i className="fa-regular fa-envelope"></i>
+
+              <input
+                type="email"
+                placeholder="seuemail@email.com"
+                name="email"
+                id="email"
+                autoComplete="email"
+                value={valores.email}
+                onChange={handleInput}
+              />
+            </div>
+
+            {errors.email && (
+              <span className="error-message">
+                {errors.email}
+              </span>
+            )}
+
           </div>
 
+          {/* SENHA */}
           <div className="form-usuario">
-            <label htmlFor="password">Senha</label>
 
-            <input
-            className="password-usuario"
-            type="password" name="password"
-            id="password"
-             placeholder="***********"
-            autoComplete="current-password"
-            onChange={handleInput} />
-            
-            <span>{errors.password}</span>
-            <NavLink to="/recuperarsenhausuario" className="esqueci-senha-usuario">Esqueci minha senha!</NavLink>
+            <label htmlFor="password">
+              Senha
+            </label>
+
+            <div className="input-wrapper">
+
+              <i className="fa-solid fa-lock"></i>
+
+              <input
+                className="password-usuario"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="••••••••••"
+                autoComplete="current-password"
+                value={valores.password}
+                onChange={handleInput}
+              />
+
+              <i className="fa-regular fa-eye password-eye"></i>
+
+            </div>
+
+            {errors.password && (
+              <span className="error-message">
+                {errors.password}
+              </span>
+            )}
+
+            <NavLink
+              to="/recuperarsenhausuario"
+              className="esqueci-senha-usuario"
+            >
+              Esqueci minha senha!
+            </NavLink>
+
           </div>
 
+          {/* AVISO */}
           <div className="alerta">
-            Nunca compartilhamos seus
-            dados de acesso e sua privacidade é nossa prioridade absoluta.
+
+            <div className="alerta-icon">
+              <i className="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <p>
+              Nunca compartilhamos seus dados de acesso
+              e sua privacidade é nossa prioridade absoluta.
+            </p>
+
           </div>
 
-          <button className="btn-loginusuario" type="submit">
-            Logar →
+          {/* BOTÃO LOGIN */}
+          <button
+            className="btn-loginusuario"
+            type="submit"
+          >
+            Entrar
+            <span>→</span>
           </button>
 
-          <NavLink to="/" className="cancelar"> 
+          {/* OU */}
+          <div className="login-ou">
+            <span></span>
+            <p>OU</p>
+            <span></span>
+          </div>
+
+          {/* CANCELAR */}
+          <NavLink
+            to="/"
+            className="cancelar"
+          >
             Cancelar
           </NavLink>
 
+          {/* CADASTRO */}
           <div className="login-usuario">
-            Não possui uma conta?
+
+            <span>
+              Não possui uma conta?
+            </span>
+
             <NavLink
               to="/cadastrousuario"
               className="redi-cad-usuario"
-              >
-                Clique aqui para fazer o cadastro
-              </NavLink>
-          </div>
-          {/* Coloque logo abaixo do link de cadastro ou antes de fechar a tag </form> */}
-          <div style={{ marginTop: "20px", textAlign: "center" }}>
-            <NavLink 
-              to="/loginadm" 
-              style={{
-                padding: "8px 16px",
-                borderRadius: "20px",
-                border: "1px solid #cbd5e1",
-                backgroundColor: "#f8fafc",
-                color: "#475569",
-                fontSize: "0.85rem",
-                fontWeight: "500",
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px"
-              }}
             >
-              <i className="fa-solid fa-shield-halved"></i> Acesso da Equipe / ADM
+              Clique aqui para fazer o cadastro
             </NavLink>
+
           </div>
 
-          {/* <NavLink to="/loginadm" className="btn-login-adm">Login Adiministrativo</NavLink> */}
+          {/* ADMIN */}
+          <div className="adm-container">
+
+            <NavLink
+              to="/loginadm"
+              className="btn-login-adm"
+            >
+              <i className="fa-solid fa-shield-halved"></i>
+              Acesso da Equipe / ADM
+            </NavLink>
+
+          </div>
 
         </form>
-      </div>
+
+      </section>
+
+    </main>
   );
 }
 
