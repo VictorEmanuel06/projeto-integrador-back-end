@@ -63,7 +63,7 @@
    ÍCONE DO LOGIN
 ========================================= */
 
-.login-icon {
+.login-iconp {
     width: 52px;
     height: 52px;
 
@@ -680,7 +680,7 @@
         border-radius: 9px;
     }
 
-    .login-icon {
+    .login-iconp {
         width: 46px;
         height: 46px;
 

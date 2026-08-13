@@ -94,7 +94,7 @@ function LoginUsuario() {
       <section className="card-loginusuario">
 
         {/* Ícone */}
-        <div className="login-icon">
+        <div className="login-iconp">
           <i className="fa-regular fa-user"></i>
         </div>
 
