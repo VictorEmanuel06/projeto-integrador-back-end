@@ -355,6 +355,8 @@
 
     font-size: 22px;
 
+    margin-left: 150px;
+
     font-weight: 500;
 
     color: #27140e;
@@ -363,7 +365,7 @@
 .servicos-final p {
     max-width: 650px;
 
-    margin-left: 40px;
+    margin-left: 70px;
 
     color: #806d64;
 
