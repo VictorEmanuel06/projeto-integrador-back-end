@@ -1,78 +1,655 @@
-.form-cad-user{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding: 20px;
+/* =========================================
+   PÁGINA DE CADASTRO
+========================================= */
+
+.cadastro-page {
+    position: relative;
+    min-height: calc(100vh - 130px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 55px 20px;
+
+    background:
+        radial-gradient(
+            circle at 15% 45%,
+            rgba(243, 226, 211, 0.45),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 55%,
+            rgba(243, 226, 211, 0.45),
+            transparent 30%
+        ),
+        #fcfaf7;
+
+    overflow: hidden;
 }
 
-.caixa-usuario{
-    width:420px;
-    background:#d9d9d9;
-    color: #000;
-    padding:40px;
-    border-radius:30px;
-    text-align:center;
-    margin: 30px;
+
+/* =========================================
+   CARD
+========================================= */
+
+.form-cad-user {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
 }
 
-.title-usuario{
-    font-size: 40px;
-    font-weight: 200;
+
+.caixa-usuario {
+    width: 520px;
+    max-width: 100%;
+
+    background: rgba(255, 253, 250, 0.96);
+
+    padding: 38px 42px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(126, 45, 25, 0.08);
+
+    box-shadow:
+        0 18px 50px rgba(74, 28, 15, 0.08),
+        0 4px 15px rgba(74, 28, 15, 0.04);
+
+    text-align: left;
 }
 
-.subtitle-usuario{
-    color:#000;
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 15px;
+
+/* =========================================
+   ÍCONE DO TOPO
+========================================= */
+
+.cadastro-icon {
+    width: 62px;
+    height: 62px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #f5e6d8;
+
+    color: #8c2c16;
+
+    font-size: 27px;
 }
 
+
+/* =========================================
+   PEQUENO TÍTULO
+========================================= */
+
+.cadastro-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 5px;
+}
+
+.cadastro-label span {
+    width: 50px;
+    height: 1px;
+
+    background: #d8b9a7;
+}
+
+.cadastro-label p {
+    margin: 0;
+
+    color: #8c2c16;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.title-usuario {
+    margin: 0;
+
+    text-align: center;
+
+    color: #35130d;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 46px;
+
+    font-weight: 400;
+
+    line-height: 1.1;
+}
+
+
+/* =========================================
+   SUBTÍTULO
+========================================= */
+
+.subtitle-cadastro {
+    margin: 12px 0 10px;
+
+    text-align: center;
+
+    color: #6f5a51;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   DIVISOR
+========================================= */
+
+.cadastro-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 10px auto 25px;
+}
+
+.cadastro-divider span {
+    width: 55px;
+    height: 1px;
+
+    background: #d9b9a7;
+}
+
+.cadastro-divider i {
+    color: #8c2c16;
+
+    font-size: 20px;
+
+    font-style: normal;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
 
 .form-usuario {
-    margin-bottom: 10px;
+    margin-bottom: 17px;
 }
- 
+
 .form-usuario label {
     display: block;
+
+    margin-bottom: 7px;
+
+    color: #35130d;
+
     font-size: 14px;
-    color: #000;
-    margin-bottom: 6px;
+
+    font-weight: 600;
 }
- 
-.form-usuario input {
+
+
+/* Container do input */
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+
     width: 100%;
-    height: 36px;
+    height: 50px;
+
+    background: #fffdfa;
+
+    border: 1px solid #dfcec3;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    transition: all 0.25s ease;
+}
+
+
+/* Ícone */
+
+.input-wrapper i {
+    width: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #8c2c16;
+
+    font-size: 17px;
+}
+
+
+/* Linha entre ícone e input */
+
+.input-wrapper i::after {
+    content: "";
+
+    width: 1px;
+    height: 25px;
+
+    background: #e5d7cf;
+
+    position: absolute;
+
+    margin-left: 48px;
+}
+
+
+/* Input */
+
+.form-usuario input {
+    flex: 1;
+
+    height: 100%;
+
     border: none;
-    border-radius: 6px;
-    background: #fff;
-    padding: 0 12px;
+
     outline: none;
+
+    background: transparent;
+
+    padding: 0 15px;
+
+    color: #3c2822;
+
+    font-family: inherit;
+
     font-size: 14px;
 }
 
-.btn-usuario{
-  width: 100%;
-  height: 52px;
-  border: none;
-  border-radius: 30px;
-  background: #0b4aa6;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: 0.3s;
-
-  margin-bottom: 20px;
+.form-usuario input::placeholder {
+    color: #9b8980;
 }
 
-.voltar_login{
-    margin-top: 40px;
-    color: #000;
-    text-decoration: none;
-    font-size: 15px;
+
+/* Foco */
+
+.input-wrapper:focus-within {
+    border-color: #9a381d;
+
+    box-shadow:
+        0 0 0 3px rgba(154, 56, 29, 0.08);
 }
-.voltar-link{
+
+
+/* Erros */
+
+.error-message {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #b42318;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   AVISO DE SEGURANÇA
+========================================= */
+
+.alerta-cadastro {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin: 22px 0;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    background: #f8ebdf;
+
+    border: 1px solid #f0dfd1;
+}
+
+.alerta-icon {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #f3e1d1;
+
+    color: #8c2c16;
+
+    font-size: 17px;
+}
+
+.alerta-cadastro p {
+    margin: 0;
+
+    color: #6e564b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.btn-usuario {
+    width: 100%;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 28px;
+
+    background: linear-gradient(
+        90deg,
+        #641b0b,
+        #8d250d
+    );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.btn-usuario span {
+    font-size: 21px;
+
+    line-height: 1;
+}
+
+.btn-usuario:hover {
+    transform: translateY(-1px);
+
+    background: linear-gradient(
+        90deg,
+        #7b210c,
+        #a42d10
+    );
+
+    box-shadow:
+        0 8px 20px rgba(111, 31, 12, 0.20);
+}
+
+.btn-usuario:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   LINK PARA LOGIN
+========================================= */
+
+.voltar-login {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 4px;
+
+    margin-top: 21px;
+
+    color: #6f5a51;
+
+    font-size: 14px;
+}
+
+.voltar-link {
+    color: #7d2612;
+
     text-decoration: none;
-    color: #0b4aa6;
-    font-size: 15px;
+
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+.voltar-link:hover {
+    color: #b23a1a;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   DECORAÇÃO LATERAL
+========================================= */
+
+.cadastro-decoration {
+    position: absolute;
+
+    width: 180px;
+    height: 260px;
+
+    opacity: 0.55;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* Hastes */
+
+.cadastro-decoration::before {
+    content: "";
+
+    position: absolute;
+
+    width: 2px;
+    height: 230px;
+
+    background: #ead8c9;
+
+    transform: rotate(25deg);
+
+    border-radius: 100%;
+}
+
+
+/* Folhas */
+
+.cadastro-decoration span {
+    position: absolute;
+
+    width: 70px;
+    height: 32px;
+
+    border: 2px solid #ead8c9;
+
+    border-radius: 100% 0 100% 0;
+
+    transform: rotate(-30deg);
+}
+
+
+/* Folha 1 */
+
+.cadastro-decoration span:nth-child(1) {
+    top: 35px;
+    left: 65px;
+
+    transform: rotate(-30deg);
+}
+
+
+/* Folha 2 */
+
+.cadastro-decoration span:nth-child(2) {
+    top: 100px;
+    left: 25px;
+
+    transform: rotate(25deg);
+}
+
+
+/* Folha 3 */
+
+.cadastro-decoration span:nth-child(3) {
+    top: 155px;
+    left: 75px;
+
+    transform: rotate(-25deg);
+}
+
+
+/* Esquerda */
+
+.cadastro-decoration-left {
+    left: 10px;
+    top: 120px;
+}
+
+
+/* Direita */
+
+.cadastro-decoration-right {
+    right: 15px;
+    bottom: 100px;
+
+    transform: scaleX(-1);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .cadastro-page {
+        padding: 40px 20px;
+    }
+
+    .cadastro-decoration {
+        opacity: 0.3;
+    }
+
+    .caixa-usuario {
+        width: 500px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .cadastro-page {
+        min-height: auto;
+
+        padding: 35px 15px;
+    }
+
+    .caixa-usuario {
+        padding: 30px 22px;
+
+        border-radius: 16px;
+    }
+
+    .title-usuario {
+        font-size: 38px;
+    }
+
+    .subtitle-cadastro {
+        font-size: 15px;
+    }
+
+    .cadastro-decoration {
+        display: none;
+    }
+
+    .alerta-cadastro {
+        align-items: flex-start;
+    }
+
+    .alerta-cadastro p {
+        font-size: 11px;
+    }
+
+    .voltar-login {
+        font-size: 13px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .caixa-usuario {
+        padding: 25px 17px;
+    }
+
+    .title-usuario {
+        font-size: 34px;
+    }
+
+    .cadastro-icon {
+        width: 55px;
+        height: 55px;
+
+        font-size: 23px;
+    }
+
+    .input-wrapper {
+        height: 48px;
+    }
+
+    .btn-usuario {
+        height: 50px;
+    }
 }
