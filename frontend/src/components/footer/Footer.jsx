@@ -36,23 +36,23 @@ const Footer = () => {
                         para uma vida mais consciente.
                     </p>
 
-                     <div className="footer-social">
+                    <div className="footer-social">
 
-                                <a
-                                    href="https://wa.me/5511992678813"
-                                    aria-label="WhatsApp"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <i className="fa-brands fa-whatsapp"></i>
-                                </a>
+                        <a
+                            href="https://wa.me/5511992678813"
+                            aria-label="WhatsApp"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <i className="fa-brands fa-whatsapp"></i>
+                        </a>
 
-                                <a
-                                    href="mailto:neves.romulo@yahoo.com"
-                                    aria-label="E-mail"
-                                >
-                                <i className="fa-regular fa-envelope"></i>
-                            </a>
+                        <a
+                            href="mailto:neves.romulo@yahoo.com"
+                            aria-label="E-mail"
+                        >
+                            <i className="fa-regular fa-envelope"></i>
+                        </a>
 
                     </div>
 
@@ -184,13 +184,40 @@ const Footer = () => {
 
 
             {/* =================================================
-                RODAPÉ / COPYRIGHT
+                PROJETO INTEGRADOR
+            ================================================= */}
+
+            <div className="footer-project">
+
+                <h4>PROJETO INTEGRADOR</h4>
+
+                <p>
+                    Site desenvolvido em sala de aula pela equipe
+                </p>
+
+                <div className="team-members">
+
+                    <span>Leonardo</span>
+
+                    <span>Wecton</span>
+
+                    <span>Graziele</span>
+
+                    <span>Victor</span>
+
+                </div>
+
+            </div>
+
+
+            {/* =================================================
+                COPYRIGHT
             ================================================= */}
 
             <div className="footer-bottom">
 
                 <p>
-                    © 2024 RNR Psicólogo. Todos os direitos reservados.
+                    © 2026 RNR Psicólogo. Todos os direitos reservados.
                 </p>
 
             </div>

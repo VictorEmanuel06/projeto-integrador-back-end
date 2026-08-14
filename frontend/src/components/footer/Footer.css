@@ -225,20 +225,100 @@
 
 
 /* =========================================================
-   LINHA INFERIOR
+   PROJETO INTEGRADOR
+========================================================= */
+
+.footer-project {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 30px auto 0;
+
+    padding: 18px 20px;
+
+    box-sizing: border-box;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    text-align: center;
+}
+
+
+/* TÍTULO */
+
+.footer-project h4 {
+    margin: 0 0 7px;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* DESCRIÇÃO */
+
+.footer-project p {
+    margin: 0 0 10px;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* INTEGRANTES */
+
+.team-members {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.team-members span {
+    color: rgba(255, 255, 255, 0.95);
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+
+/* SEPARADOR ENTRE NOMES */
+
+.team-members span:not(:last-child)::after {
+    content: "•";
+
+    margin-left: 8px;
+
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================================================
+   LINHA INFERIOR / COPYRIGHT
 ========================================================= */
 
 .footer-bottom {
     width: 100%;
     max-width: 1450px;
 
-    margin: 25px auto 0;
+    margin: 0 auto;
 
-    padding-top: 14px;
-
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.15);
+    padding-top: 13px;
 
     display: flex;
 
@@ -289,6 +369,10 @@
     .footer-contact {
         grid-column: 2 / 4;
     }
+
+    .footer-project {
+        margin-top: 30px;
+    }
 }
 
 
@@ -315,7 +399,9 @@
     }
 
 
-    /* LOGO */
+    /* =====================================================
+       LOGO
+    ===================================================== */
 
     .footer-brand {
         align-items: center;
@@ -332,7 +418,9 @@
     }
 
 
-    /* REDES */
+    /* =====================================================
+       REDES
+    ===================================================== */
 
     .footer-social {
         justify-content: center;
@@ -341,7 +429,9 @@
     }
 
 
-    /* COLUNAS */
+    /* =====================================================
+       COLUNAS
+    ===================================================== */
 
     .footer-column {
         align-items: center;
@@ -356,7 +446,9 @@
     }
 
 
-    /* CONTATO */
+    /* =====================================================
+       CONTATO
+    ===================================================== */
 
     .footer-contact {
         width: 100%;
@@ -369,16 +461,53 @@
     }
 
 
-    /* COPYRIGHT */
+    /* =====================================================
+       PROJETO INTEGRADOR
+    ===================================================== */
+
+    .footer-project {
+        margin-top: 5px;
+
+        padding: 18px 10px;
+    }
+
+    .footer-project h4 {
+        font-size: 10px;
+
+        letter-spacing: 1.2px;
+    }
+
+    .footer-project p {
+        font-size: 10px;
+
+        margin-bottom: 10px;
+    }
+
+    .team-members {
+        gap: 6px 8px;
+
+        line-height: 1.5;
+    }
+
+    .team-members span {
+        font-size: 11px;
+    }
+
+
+    /* =====================================================
+       COPYRIGHT
+    ===================================================== */
 
     .footer-bottom {
-        margin-top: 10px;
+        margin-top: 0;
 
-        padding-top: 15px;
+        padding-top: 14px;
     }
 
     .footer-bottom p {
         font-size: 10px;
+
+        line-height: 1.5;
     }
 }
 
@@ -405,5 +534,18 @@
     .footer-column a,
     .footer-column span {
         font-size: 12px;
+    }
+
+    .footer-project {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .team-members span {
+        font-size: 10px;
+    }
+
+    .footer-bottom p {
+        font-size: 9px;
     }
 }

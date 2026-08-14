@@ -1,21 +1,23 @@
 import { useState } from "react";
 import "./AlterarSenhaAdm.css";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import { API_URL } from "../../config"; // ajuste o caminho conforme sua pasta
 
 const AlterarSenhaAdm = () => {
     const [novaSenha, setNovaSenha] = useState("");
     const [confirmarSenha, setConfirmarSenha] = useState("");
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState("");
+
+    const [mostrarNovaSenha, setMostrarNovaSenha] = useState(false);
+    const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false);
+
     const navigate = useNavigate();
     const location = useLocation();
 
     const email = location.state?.email;
-    const tipo = location.state?.tipo || "adm";
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // evita recarregar a página
 
         setErro("");
 
@@ -42,10 +44,10 @@ const AlterarSenhaAdm = () => {
         setCarregando(true);
 
         try {
-            const res = await fetch(`${API_URL}/api/alterar-senha`, {
+            const res = await fetch("http://localhost:7006/api/alterar-senha-adm", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, novaSenha, tipo }),
+                body: JSON.stringify({ email, novaSenha }),
             });
 
             const data = await res.json();
@@ -66,7 +68,7 @@ const AlterarSenhaAdm = () => {
         <div className="container-alt-adm">
             <div className="card-alt-adm">
 
-                <h1 className="user-h1">Alterar senha</h1>
+                <h1 className="adm-h1">Alterar senha</h1>
 
                 <p className="subtitle-adm">
                     Atualize suas crendenciais de acesso com segurança.
@@ -76,20 +78,32 @@ const AlterarSenhaAdm = () => {
 
                     <div className="input-group-adm">
                         <label>Nova senha</label>
-                        <input
-                            type="password"
-                            value={novaSenha}
-                            onChange={(e) => setNovaSenha(e.target.value)}
-                        />
+                        <div className="password-wrapper-adm">
+                            <input
+                                type={mostrarNovaSenha ? "text" : "password"}
+                                value={novaSenha}
+                                onChange={(e) => setNovaSenha(e.target.value)}
+                            />
+                            <i
+                                className={`fa-solid ${mostrarNovaSenha ? "fa-eye-slash" : "fa-eye"} toggle-senha-adm`}
+                                onClick={() => setMostrarNovaSenha((prev) => !prev)}
+                            ></i>
+                        </div>
                     </div>
 
                     <div className="input-group-adm">
                         <label>Confirmar nova senha</label>
-                        <input
-                            type="password"
-                            value={confirmarSenha}
-                            onChange={(e) => setConfirmarSenha(e.target.value)}
-                        />
+                        <div className="password-wrapper-adm">
+                            <input
+                                type={mostrarConfirmarSenha ? "text" : "password"}
+                                value={confirmarSenha}
+                                onChange={(e) => setConfirmarSenha(e.target.value)}
+                            />
+                            <i
+                                className={`fa-solid ${mostrarConfirmarSenha ? "fa-eye-slash" : "fa-eye"} toggle-senha-adm`}
+                                onClick={() => setMostrarConfirmarSenha((prev) => !prev)}
+                            ></i>
+                        </div>
                     </div>
 
                     {erro && <p className="erro-mensagem">{erro}</p>}

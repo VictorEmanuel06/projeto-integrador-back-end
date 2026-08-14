@@ -7,6 +7,10 @@ const AlterarSenhaUsuario = () => {
     const [confirmarSenha, setConfirmarSenha] = useState("");
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState("");
+
+    const [mostrarNovaSenha, setMostrarNovaSenha] = useState(false); // <-- NOVO
+    const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false); // <-- NOVO
+
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -74,20 +78,32 @@ const AlterarSenhaUsuario = () => {
 
                     <div className="input-group-user">
                         <label>Nova senha</label>
-                        <input
-                            type="password"
-                            value={novaSenha}
-                            onChange={(e) => setNovaSenha(e.target.value)}
-                        />
+                        <div className="password-wrapper-user">
+                            <input
+                                type={mostrarNovaSenha ? "text" : "password"}
+                                value={novaSenha}
+                                onChange={(e) => setNovaSenha(e.target.value)}
+                            />
+                            <i
+                                className={`fa-solid ${mostrarNovaSenha ? "fa-eye-slash" : "fa-eye"} toggle-senha-user`}
+                                onClick={() => setMostrarNovaSenha((prev) => !prev)}
+                            ></i>
+                        </div>
                     </div>
 
                     <div className="input-group-user">
                         <label>Confirmar nova senha</label>
-                        <input
-                            type="password"
-                            value={confirmarSenha}
-                            onChange={(e) => setConfirmarSenha(e.target.value)}
-                        />
+                        <div className="password-wrapper-user">
+                            <input
+                                type={mostrarConfirmarSenha ? "text" : "password"}
+                                value={confirmarSenha}
+                                onChange={(e) => setConfirmarSenha(e.target.value)}
+                            />
+                            <i
+                                className={`fa-solid ${mostrarConfirmarSenha ? "fa-eye-slash" : "fa-eye"} toggle-senha-user`}
+                                onClick={() => setMostrarConfirmarSenha((prev) => !prev)}
+                            ></i>
+                        </div>
                     </div>
 
                     {erro && <p className="erro-mensagem">{erro}</p>}

@@ -11,6 +11,8 @@ const CadastroAdm = () => {
     password: "",
   });
 
+  const [mostrarSenha, setMostrarSenha] = useState(false); // <-- NOVO
+
   const navegacao = useNavigate();
  
   const [errors, setErrors] = useState({})
@@ -53,7 +55,7 @@ const CadastroAdm = () => {
             name="name"
             id="name"
             placeholder="Digite seu nome"
-            value={valores.name} // <-- ADICIONADO: Controla o input
+            value={valores.name}
             onChange={handleInput}
           />
           {errors.name && <span className="erro">{errors.name}</span>}
@@ -66,7 +68,7 @@ const CadastroAdm = () => {
             name="email"
             id="email"
             placeholder="Digite seu email"
-            value={valores.email} // <-- ADICIONADO: Controla o input
+            value={valores.email}
             onChange={handleInput}
           />
           {errors.email && <span className="erro">{errors.email}</span>}
@@ -74,15 +76,24 @@ const CadastroAdm = () => {
  
         <div className="form-group">
           <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Digite sua senha"
-            autoComplete="new-password"
-            value={valores.password} // <-- ADICIONADO: Controla o input
-            onChange={handleInput}
-          />
+
+          {/* NOVO: wrapper para posicionar o ícone dentro do input */}
+          <div className="password-wrapper">
+            <input
+              type={mostrarSenha ? "text" : "password"} // <-- ALTERADO
+              name="password"
+              id="password"
+              placeholder="Digite sua senha"
+              autoComplete="new-password"
+              value={valores.password}
+              onChange={handleInput}
+            />
+            <i
+              className={`fa-solid ${mostrarSenha ? "fa-eye-slash" : "fa-eye"} toggle-senha`}
+              onClick={() => setMostrarSenha((prev) => !prev)}
+            ></i>
+          </div>
+
           {errors.password && (
             <span className="erro">{errors.password}</span>
           )}
@@ -107,4 +118,3 @@ const CadastroAdm = () => {
 }
  
 export default CadastroAdm;
- 

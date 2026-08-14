@@ -68,3 +68,31 @@
     text-decoration: none;
     font-size: 20px;
 }
+
+/* ========================================
+   WRAPPER DO CAMPO DE SENHA (mostrar/ocultar)
+======================================== */
+
+.password-wrapper-user {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper-user input {
+    padding-right: 38px; /* espaço para o ícone não sobrepor o texto */
+}
+
+.toggle-senha-user {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 15px;
+    user-select: none;
+}
+
+.toggle-senha-user:hover {
+    color: #222;
+}
