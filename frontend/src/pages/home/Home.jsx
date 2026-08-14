@@ -443,14 +443,8 @@ const Home = () => {
             leveza, consciência e bem-estar.
           </p>
 
-        <NavLink to="/agendamento">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            className="cta-button"
-          >
+        <NavLink to="/agendamento" className="cta-button">
             Agendar atendimento
-          </a>
         </NavLink>
         </div>
 
