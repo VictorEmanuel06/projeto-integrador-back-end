@@ -230,6 +230,15 @@ const Home = () => {
 
         <div className="sobre-content">
 
+
+          <div className="section-label">
+            
+              
+            
+
+          </div>
+
+
           <h2>
             Um espaço seguro para 
             cuidar de você.

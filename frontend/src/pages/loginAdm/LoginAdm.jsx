@@ -11,6 +11,9 @@ const LoginAdm = () => {
     password: "",
   });
 
+  // Controla se a senha está visível
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
   const navegacao = useNavigate();
   const { setUsuarioLogado } = useAuth();
 
@@ -80,6 +83,7 @@ const LoginAdm = () => {
 
   return (
     <main className="login-adm-page">
+
       <section className="login-adm-section">
 
         {/* Elementos decorativos */}
@@ -111,11 +115,17 @@ const LoginAdm = () => {
 
           <form onSubmit={handleSubmit} noValidate>
 
-            {/* E-mail */}
+            {/* =========================================
+                E-MAIL
+            ========================================= */}
             <div className="form-adm">
-              <label htmlFor="email">E-mail</label>
+
+              <label htmlFor="email">
+                E-mail
+              </label>
 
               <div className="input-adm-wrapper">
+
                 <i className="fa-regular fa-envelope"></i>
 
                 <input
@@ -127,6 +137,7 @@ const LoginAdm = () => {
                   value={valores.email}
                   onChange={handleInput}
                 />
+
               </div>
 
               {errors.email && (
@@ -134,17 +145,26 @@ const LoginAdm = () => {
                   {errors.email}
                 </span>
               )}
+
             </div>
 
-            {/* Senha */}
+            {/* =========================================
+                SENHA
+            ========================================= */}
             <div className="form-adm">
-              <label htmlFor="password">Senha</label>
+
+              <label htmlFor="password">
+                Senha
+              </label>
 
               <div className="input-adm-wrapper">
+
+                {/* Cadeado */}
                 <i className="fa-solid fa-lock"></i>
 
+                {/* Campo de senha */}
                 <input
-                  type="password"
+                  type={mostrarSenha ? "text" : "password"}
                   name="password"
                   id="password"
                   placeholder="Digite sua senha"
@@ -152,6 +172,27 @@ const LoginAdm = () => {
                   value={valores.password}
                   onChange={handleInput}
                 />
+
+                {/* Olho */}
+                <button
+                  type="button"
+                  className="password-eye-adm"
+                  onClick={() => setMostrarSenha(!mostrarSenha)}
+                  aria-label={
+                    mostrarSenha
+                      ? "Ocultar senha"
+                      : "Mostrar senha"
+                  }
+                >
+                  <i
+                    className={
+                      mostrarSenha
+                        ? "fa-regular fa-eye-slash"
+                        : "fa-regular fa-eye"
+                    }
+                  ></i>
+                </button>
+
               </div>
 
               {errors.password && (
@@ -166,10 +207,14 @@ const LoginAdm = () => {
               >
                 Esqueci minha senha
               </NavLink>
+
             </div>
 
-            {/* Aviso de segurança */}
+            {/* =========================================
+                AVISO DE SEGURANÇA
+            ========================================= */}
             <div className="info-adm">
+
               <div className="info-adm-icon">
                 <i className="fa-solid fa-shield-halved"></i>
               </div>
@@ -178,9 +223,12 @@ const LoginAdm = () => {
                 Esta área é restrita. Acesso permitido apenas
                 para administradores e equipe autorizada.
               </p>
+
             </div>
 
-            {/* Botão */}
+            {/* =========================================
+                BOTÃO
+            ========================================= */}
             <button
               type="submit"
               className="btn-loginAdm"
@@ -189,7 +237,9 @@ const LoginAdm = () => {
               <span>→</span>
             </button>
 
-            {/* Voltar para login */}
+            {/* =========================================
+                VOLTAR PARA LOGIN CLIENTE
+            ========================================= */}
             <NavLink
               to="/loginusuario"
               className="voltar-login-cliente"
@@ -199,8 +249,11 @@ const LoginAdm = () => {
             </NavLink>
 
           </form>
+
         </div>
+
       </section>
+
     </main>
   );
 };

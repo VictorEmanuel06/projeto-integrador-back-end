@@ -6,10 +6,13 @@ import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 
 function LoginUsuario() {
+  
   const [valores, setValores] = useState({
-    email: "",
-    password: ""
-  });
+  email: "",
+  password: ""
+});
+
+const [mostrarSenha, setMostrarSenha] = useState(false);
 
   const navegacao = useNavigate();
   const { setUsuarioLogado } = useAuth();
@@ -150,24 +153,37 @@ function LoginUsuario() {
               Senha
             </label>
 
-            <div className="input-wrapper">
+       <div className="input-wrapper">
 
-              <i className="fa-solid fa-lock"></i>
+  <i className="fa-solid fa-lock"></i>
 
-              <input
-                className="password-usuario"
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••••"
-                autoComplete="current-password"
-                value={valores.password}
-                onChange={handleInput}
-              />
+  <input
+    className="password-usuario"
+    type={mostrarSenha ? "text" : "password"}
+    name="password"
+    id="password"
+    placeholder="••••••••••"
+    autoComplete="current-password"
+    value={valores.password}
+    onChange={handleInput}
+  />
 
-              <i className="fa-regular fa-eye password-eye"></i>
+  <button
+  type="button"
+  className="password-eye"
+  onClick={() => setMostrarSenha(!mostrarSenha)}
+  aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+>
+  <i
+    className={
+      mostrarSenha
+        ? "fa-regular fa-eye-slash"
+        : "fa-regular fa-eye"
+    }
+  ></i>
+</button>
 
-            </div>
+</div>
 
             {errors.password && (
               <span className="error-message">

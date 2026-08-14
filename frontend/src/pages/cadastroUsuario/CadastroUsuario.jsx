@@ -11,6 +11,9 @@ const CadastroUsuario = () => {
     password: "",
   });
 
+  // Controla se a senha está visível
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
   const navegacao = useNavigate();
 
   const [validationErrors, setValidationErrors] = useState({
@@ -37,7 +40,7 @@ const CadastroUsuario = () => {
     // Atualiza os erros na tela
     setValidationErrors(erros);
 
-    // Verifica os erros atuais, e não o estado anterior
+    // Verifica se não existem erros
     if (
       erros.name === "" &&
       erros.email === "" &&
@@ -61,6 +64,7 @@ const CadastroUsuario = () => {
 
   return (
     <main className="cadastro-page">
+
       {/* Decoração lateral */}
       <div className="cadastro-decoration cadastro-decoration-left">
         <span></span>
@@ -86,33 +90,41 @@ const CadastroUsuario = () => {
             <i className="fa-regular fa-user"></i>
           </div>
 
+          {/* Título pequeno */}
           <div className="cadastro-label">
             <span></span>
             <p>CADASTRO</p>
             <span></span>
           </div>
 
+          {/* Título */}
           <h1 className="title-usuario">
             Cadastro
           </h1>
 
+          {/* Subtítulo */}
           <p className="subtitle-cadastro">
             Cadastre-se para acessar o site.
           </p>
 
+          {/* Divisor */}
           <div className="cadastro-divider">
             <span></span>
             <i>♧</i>
             <span></span>
           </div>
 
-          {/* Nome */}
+          {/* =========================================
+              NOME COMPLETO
+          ========================================= */}
           <div className="form-usuario">
+
             <label htmlFor="name">
               Nome Completo
             </label>
 
             <div className="input-wrapper">
+
               <i className="fa-regular fa-user"></i>
 
               <input
@@ -124,6 +136,7 @@ const CadastroUsuario = () => {
                 value={valores.name}
                 onChange={handleInput}
               />
+
             </div>
 
             {validationErrors.name && (
@@ -131,15 +144,20 @@ const CadastroUsuario = () => {
                 {validationErrors.name}
               </span>
             )}
+
           </div>
 
-          {/* E-mail */}
+          {/* =========================================
+              E-MAIL
+          ========================================= */}
           <div className="form-usuario">
+
             <label htmlFor="email">
               E-mail
             </label>
 
             <div className="input-wrapper">
+
               <i className="fa-regular fa-envelope"></i>
 
               <input
@@ -151,6 +169,7 @@ const CadastroUsuario = () => {
                 value={valores.email}
                 onChange={handleInput}
               />
+
             </div>
 
             {validationErrors.email && (
@@ -158,19 +177,26 @@ const CadastroUsuario = () => {
                 {validationErrors.email}
               </span>
             )}
+
           </div>
 
-          {/* Senha */}
+          {/* =========================================
+              SENHA
+          ========================================= */}
           <div className="form-usuario">
+
             <label htmlFor="password">
               Senha
             </label>
 
             <div className="input-wrapper">
+
+              {/* Cadeado */}
               <i className="fa-solid fa-lock"></i>
 
+              {/* Campo de senha */}
               <input
-                type="password"
+                type={mostrarSenha ? "text" : "password"}
                 name="password"
                 id="password"
                 autoComplete="new-password"
@@ -178,6 +204,27 @@ const CadastroUsuario = () => {
                 value={valores.password}
                 onChange={handleInput}
               />
+
+              {/* Olho */}
+              <button
+                type="button"
+                className="password-eye"
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+                aria-label={
+                  mostrarSenha
+                    ? "Ocultar senha"
+                    : "Mostrar senha"
+                }
+              >
+                <i
+                  className={
+                    mostrarSenha
+                      ? "fa-regular fa-eye-slash"
+                      : "fa-regular fa-eye"
+                  }
+                ></i>
+              </button>
+
             </div>
 
             {validationErrors.password && (
@@ -185,10 +232,14 @@ const CadastroUsuario = () => {
                 {validationErrors.password}
               </span>
             )}
+
           </div>
 
-          {/* Aviso de segurança */}
+          {/* =========================================
+              AVISO DE SEGURANÇA
+          ========================================= */}
           <div className="alerta-cadastro">
+
             <div className="alerta-icon">
               <i className="fa-solid fa-shield-halved"></i>
             </div>
@@ -198,9 +249,12 @@ const CadastroUsuario = () => {
               <br />
               Não compartilhamos informações pessoais com terceiros.
             </p>
+
           </div>
 
-          {/* Botão */}
+          {/* =========================================
+              BOTÃO
+          ========================================= */}
           <button
             type="submit"
             className="btn-usuario"
@@ -209,9 +263,14 @@ const CadastroUsuario = () => {
             <span>→</span>
           </button>
 
-          {/* Login */}
+          {/* =========================================
+              LOGIN
+          ========================================= */}
           <div className="voltar-login">
-            <span>Já possui uma conta?</span>
+
+            <span>
+              Já possui uma conta?
+            </span>
 
             <NavLink
               to="/loginusuario"
@@ -219,10 +278,12 @@ const CadastroUsuario = () => {
             >
               Clique para fazer login
             </NavLink>
+
           </div>
 
         </div>
       </form>
+
     </main>
   );
 };
