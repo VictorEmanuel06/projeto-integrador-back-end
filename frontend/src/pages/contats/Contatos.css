@@ -478,6 +478,9 @@ body {
   }
 
   .contact-info {
+    width: 100%;
+
+    display: grid;
     grid-template-columns: 1fr;
 
     gap: 0;
@@ -486,10 +489,18 @@ body {
   }
 
   .info-item {
-    padding: 13px 5px;
+    display: grid;
+
+    grid-template-columns: 40% 60%;
+
+    align-items: center;
+
+    padding: 14px 5px;
 
     border-right: none;
     border-bottom: 1px solid #d6c6bc;
+
+    box-sizing: border-box;
   }
 
   .info-item:last-child {
