@@ -198,11 +198,43 @@
 }
 
 
+/* =========================================
+   DIVISOR
+========================================= */
+
+.login-divider-adm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 8px auto 25px;
+
+    width: 145px;
+}
+
+.login-divider-adm span {
+    height: 1px;
+
+    flex: 1;
+
+    background: #dfc8b9;
+}
+
+.login-divider-adm i {
+    color: #a43b20;
+
+    font-size: 17px;
+
+    font-style: normal;
+}
+
 /* ================================
    LINHA DECORATIVA
 ================================ */
 
-.linha-decorativa {
+/* .linha-decorativa {
   display: flex;
 
   justify-content: center;
@@ -227,7 +259,7 @@
   height: 1px;
 
   background: #d8b7a5;
-}
+} */
 
 
 /* ================================

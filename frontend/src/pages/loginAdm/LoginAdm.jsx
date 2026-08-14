@@ -109,9 +109,11 @@ const LoginAdm = () => {
             Faça o login para acessar o painel administrativo.
           </p>
 
-          <div className="linha-decorativa">
-            <span>♧</span>
-          </div>
+        <div className="login-divider-adm">
+          <span></span>
+          <i>♧</i>
+          <span></span>
+        </div>
 
           <form onSubmit={handleSubmit} noValidate>
 
