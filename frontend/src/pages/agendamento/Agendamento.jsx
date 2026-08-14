@@ -47,6 +47,16 @@ const handleSubmit = async (e) => {
     return;
   }
 
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+  const dataEscolhida = new Date(dataSelecionada);
+  dataEscolhida.setHours(0, 0, 0, 0);
+
+  if (dataEscolhida < hoje) {
+    alert ("Não é possível agendar em uma data passada.");
+    return;
+  }
+
   if (!horarioSelecionado) {
     alert("Escolha um horário antes de continuar.");
     return;
@@ -258,7 +268,7 @@ return (
               Psicólogo
             </span>
 
-            <div className="linha-decorativa">
+            <div className="linha-decorativa-agdm">
               ✦
             </div>
 

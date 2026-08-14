@@ -14,6 +14,7 @@ const Calendario = ({ value, onChange }) => {
       <DateCalendar
         value={value}
         onChange={onChange}
+        disablePast
       />
     </LocalizationProvider>
   );
