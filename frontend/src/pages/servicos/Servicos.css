@@ -346,6 +346,8 @@
     padding: 0 20px;
 
     box-sizing: border-box;
+
+    text-align: center;
 }
 
 .servicos-final h2 {
@@ -355,17 +357,19 @@
 
     font-size: 22px;
 
-    margin-left: 150px;
+    margin-left: 10px;
 
     font-weight: 500;
 
     color: #27140e;
+
+    text-align: center;
 }
 
 .servicos-final p {
     max-width: 650px;
 
-    margin-left: 70px;
+    margin: 0 auto;
 
     color: #806d64;
 
@@ -544,7 +548,7 @@
 
 
     .diferencial-texto p {
-        font-size: 8px;
+        font-size: 11px;
     }
 
 
