@@ -151,6 +151,7 @@ function Contatos() {
                   id="email"
                   type="email"
                   name="email"
+                  autoComplete="email"
                   placeholder="Seu e-mail"
                   value={dadosContato.email}
                   onChange={handleChange}
