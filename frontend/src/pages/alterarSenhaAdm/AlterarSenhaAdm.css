@@ -1,113 +1,572 @@
-.container-alt-adm{
-    width:100%;
-    max-width:320px;
-    margin: 0 auto;
+/* ========================================
+   CONTAINER PRINCIPAL
+======================================== */
+
+.container-alt-adm {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 55px 20px;
+
+    box-sizing: border-box;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 8% 40%,
+            rgba(185, 116, 73, 0.07),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 92% 40%,
+            rgba(185, 116, 73, 0.06),
+            transparent 20%
+        ),
+        #faf7f3;
 }
 
-.card-alt-adm{
-    background-image: linear-gradient(to right, #791B09, #821E09, #BD2B0E);
-    border-radius:20px;
-    padding:35px 25px;
-    margin: 80px auto;
-}
-
-.adm-h1{
-    text-align:center;
-    color: cornflowerblue;
-    font-size:36px;
-    font-weight:700;
-    margin-bottom:10px;
-}
-
-.subtitle-adm{
-    text-align:center;
-    font-size:15px;
-    color:#fff;
-    margin-bottom:30px;
-    line-height:1.4;
-}
-
-.input-group-adm{
-    margin-bottom:15px;
-}
-
-.input-group-adm label{
-    display:block;
-    font-size:13px;
-    color:#fff;
-    margin-bottom:6px;
-}
-
-.input-group-adm input{
-    width:100%;
-    height:38px;
-    border:none;
-    border-radius:5px;
-    background:#fff;
-    padding:0 12px;
-    outline:none;
-}
-
-.info-box-adm{
-    background:#a8bddc;
-    color:#2f4f7f;
-    font-size:10px;
-    line-height:1.4;
-    padding:12px;
-    border-radius:8px;
-    margin:25px auto;
-}
-
-.btn{
-    width:100%;
-    height:42px;
-    border:none;
-    border-radius:25px;
-    background:#0047a8;
-    color:#fff;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.btn:hover{
-    opacity:.9;
-}
-
-.back-login-adm{
-    display:block;
-    text-align:center;
-    margin-top:25px;
-    color: cornflowerblue;
-    text-decoration:none;
-    font-size:14px;
-}
 
 /* ========================================
-   WRAPPER DO CAMPO DE SENHA (mostrar/ocultar)
+   ELEMENTOS DECORATIVOS DO FUNDO
+======================================== */
+
+.container-alt-adm::before,
+.container-alt-adm::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(125, 28, 9, 0.035),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+.container-alt-adm::before {
+    left: -80px;
+    top: 25%;
+}
+
+.container-alt-adm::after {
+    right: -80px;
+    top: 40%;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.card-alt-adm {
+    width: 100%;
+    max-width: 450px;
+
+    background: rgba(255, 253, 250, 0.98);
+
+    border-radius: 16px;
+
+    padding: 34px 42px 30px;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(125, 28, 9, 0.08);
+
+    box-shadow:
+        0 12px 35px rgba(67, 30, 19, 0.10),
+        0 3px 10px rgba(67, 30, 19, 0.05);
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ========================================
+   ÍCONE DO TOPO
+======================================== */
+
+.icon-alt-adm {
+    width: 62px;
+    height: 62px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 50%;
+
+    background: #f6e5d5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #8b2d17;
+
+    font-size: 25px;
+}
+
+
+/* ========================================
+   TÍTULO
+======================================== */
+
+.adm-h1 {
+    margin: 0;
+
+    text-align: center;
+
+    color: #4b1d13;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 34px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+
+/* ========================================
+   DECORAÇÃO
+======================================== */
+
+.decoracao-alt-adm {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 10px auto 14px;
+}
+
+.decoracao-alt-adm span {
+    width: 48px;
+    height: 1px;
+
+    background: #c98d73;
+}
+
+.decoracao-alt-adm i {
+    color: #a3472c;
+
+    font-size: 10px;
+}
+
+
+/* ========================================
+   SUBTÍTULO
+======================================== */
+
+.subtitle-adm {
+    margin: 0 auto 28px;
+
+    text-align: center;
+
+    color: #6d605a;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* ========================================
+   GRUPO DOS INPUTS
+======================================== */
+
+.input-group-adm {
+    width: 100%;
+
+    margin-bottom: 18px;
+}
+
+.input-group-adm label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #321b15;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* ========================================
+   WRAPPER DA SENHA
 ======================================== */
 
 .password-wrapper-adm {
-    position: relative;
     width: 100%;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    background: #fff;
+
+    border: 1px solid #d8c9c0;
+
+    border-radius: 8px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 }
+
+.password-wrapper-adm:focus-within {
+    border-color: #8b2d17;
+
+    box-shadow:
+        0 0 0 3px rgba(139, 45, 23, 0.08);
+}
+
+
+/* ========================================
+   ÍCONE DE CADEADO
+======================================== */
+
+.password-icon-adm {
+    width: 42px;
+
+    flex-shrink: 0;
+
+    text-align: center;
+
+    color: #8b2d17;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   INPUT
+======================================== */
 
 .password-wrapper-adm input {
-    padding-right: 38px; /* espaço para o ícone não sobrepor o texto */
+    width: 100%;
+    height: 100%;
+
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    padding: 0 8px 0 0;
+
+    box-sizing: border-box;
+
+    color: #3c2923;
+
+    font-size: 14px;
 }
 
+.password-wrapper-adm input::placeholder {
+    color: #9a8c85;
+}
+
+
+/* ========================================
+   MOSTRAR / OCULTAR SENHA
+======================================== */
+
 .toggle-senha-adm {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 40px;
+
+    flex-shrink: 0;
+
+    text-align: center;
+
     cursor: pointer;
-    color: #555;
-    font-size: 15px;
+
+    color: #8b2d17;
+
+    font-size: 14px;
+
     user-select: none;
+
+    transition: color 0.2s;
 }
 
 .toggle-senha-adm:hover {
-    color: #222;
+    color: #5f1c0d;
+}
+
+
+/* ========================================
+   DICA DA SENHA
+======================================== */
+
+.password-hint-adm {
+    margin: 6px 0 0;
+
+    color: #7b6b63;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* ========================================
+   ERRO
+======================================== */
+
+.erro-mensagem-adm {
+    margin: 10px 0;
+
+    padding: 9px 12px;
+
+    border-radius: 7px;
+
+    background: #f8e4e0;
+
+    color: #a32616;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    text-align: center;
+}
+
+
+/* ========================================
+   AVISO DE SEGURANÇA
+======================================== */
+
+.info-box-adm {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    box-sizing: border-box;
+
+    margin: 22px 0;
+
+    padding: 12px 13px;
+
+    border-radius: 8px;
+
+    background: #f6e9dd;
+
+    color: #6d5145;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+}
+
+.info-box-adm p {
+    margin: 0;
+}
+
+
+/* ========================================
+   ÍCONE DO AVISO
+======================================== */
+
+.info-icon-alt-adm {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f1d9c7;
+
+    color: #8b2d17;
+
+    font-size: 15px;
+}
+
+
+/* ========================================
+   BOTÃO
+======================================== */
+
+.btn-alt-adm {
+    width: 100%;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #8b2d17;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
+
+    box-shadow:
+        0 5px 14px rgba(125, 28, 9, 0.18);
+}
+
+.btn-alt-adm:hover:not(:disabled) {
+    background: #76230f;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(125, 28, 9, 0.25);
+}
+
+.btn-alt-adm:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-alt-adm:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* ========================================
+   VOLTAR AO LOGIN
+======================================== */
+
+.back-login-adm {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 21px;
+
+    color: #8b2d17;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition: color 0.2s;
+}
+
+.back-login-adm:hover {
+    color: #5f1c0d;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 768px) {
+
+    .container-alt-adm {
+        min-height: calc(100vh - 60px);
+
+        padding: 40px 18px;
+    }
+
+    .card-alt-adm {
+        max-width: 430px;
+
+        padding: 30px 28px 27px;
+    }
+
+    .adm-h1 {
+        font-size: 31px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .container-alt-adm {
+        padding: 30px 14px;
+    }
+
+    .card-alt-adm {
+        padding: 28px 20px 25px;
+
+        border-radius: 14px;
+    }
+
+    .icon-alt-adm {
+        width: 56px;
+        height: 56px;
+
+        font-size: 22px;
+
+        margin-bottom: 14px;
+    }
+
+    .adm-h1 {
+        font-size: 28px;
+    }
+
+    .subtitle-adm {
+        font-size: 13px;
+
+        margin-bottom: 24px;
+    }
+
+    .password-wrapper-adm {
+        height: 45px;
+    }
+
+    .info-box-adm {
+        font-size: 10px;
+    }
+
+    .btn-alt-adm {
+        height: 45px;
+    }
+
+    .back-login-adm {
+        font-size: 14px;
+    }
 }

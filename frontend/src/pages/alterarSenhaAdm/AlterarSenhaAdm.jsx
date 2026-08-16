@@ -17,7 +17,7 @@ const AlterarSenhaAdm = () => {
     const email = location.state?.email;
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // evita recarregar a página
+        e.preventDefault();
 
         setErro("");
 
@@ -44,21 +44,33 @@ const AlterarSenhaAdm = () => {
         setCarregando(true);
 
         try {
-            const res = await fetch("http://localhost:7006/api/alterar-senha-adm", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, novaSenha }),
-            });
+            const res = await fetch(
+                "http://localhost:7006/api/alterar-senha-adm",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email,
+                        novaSenha,
+                    }),
+                }
+            );
 
             const data = await res.json();
 
             if (!res.ok) {
-                throw new Error(data.message || "Erro ao alterar senha");
+                throw new Error(
+                    data.message || "Erro ao alterar senha"
+                );
             }
 
             navigate("/loginadm");
+
         } catch (err) {
             setErro(err.message);
+
         } finally {
             setCarregando(false);
         }
@@ -66,66 +78,181 @@ const AlterarSenhaAdm = () => {
 
     return (
         <div className="container-alt-adm">
+
             <div className="card-alt-adm">
 
-                <h1 className="adm-h1">Alterar senha</h1>
+                {/* ÍCONE */}
+                <div className="icon-alt-adm">
+                    <i className="fa-solid fa-lock"></i>
+                </div>
 
+                {/* TÍTULO */}
+                <h1 className="adm-h1">
+                    Alterar senha
+                </h1>
+
+                {/* DECORAÇÃO */}
+                <div className="decoracao-alt-adm">
+                    <span></span>
+                    <i className="fa-solid fa-spa"></i>
+                    <span></span>
+                </div>
+
+                {/* SUBTÍTULO */}
                 <p className="subtitle-adm">
-                    Atualize suas crendenciais de acesso com segurança.
+                    Atualize suas credenciais de acesso
+                    <br />
+                    com segurança.
                 </p>
 
                 <form onSubmit={handleSubmit}>
 
+                    {/* NOVA SENHA */}
                     <div className="input-group-adm">
-                        <label>Nova senha</label>
+
+                        <label>
+                            Nova senha
+                        </label>
+
                         <div className="password-wrapper-adm">
+
+                            <i className="fa-solid fa-lock password-icon-adm"></i>
+
                             <input
-                                type={mostrarNovaSenha ? "text" : "password"}
+                                type={
+                                    mostrarNovaSenha
+                                        ? "text"
+                                        : "password"
+                                }
+                                placeholder="Digite sua nova senha"
                                 value={novaSenha}
-                                onChange={(e) => setNovaSenha(e.target.value)}
+                                onChange={(e) =>
+                                    setNovaSenha(e.target.value)
+                                }
                             />
+
                             <i
-                                className={`fa-solid ${mostrarNovaSenha ? "fa-eye-slash" : "fa-eye"} toggle-senha-adm`}
-                                onClick={() => setMostrarNovaSenha((prev) => !prev)}
+                                className={`fa-solid ${
+                                    mostrarNovaSenha
+                                        ? "fa-eye-slash"
+                                        : "fa-eye"
+                                } toggle-senha-adm`}
+                                onClick={() =>
+                                    setMostrarNovaSenha(
+                                        (prev) => !prev
+                                    )
+                                }
                             ></i>
+
                         </div>
+
+                        <p className="password-hint-adm">
+                            Use pelo menos 6 caracteres com letras,
+                            números e símbolos.
+                        </p>
+
                     </div>
 
+
+                    {/* CONFIRMAR SENHA */}
                     <div className="input-group-adm">
-                        <label>Confirmar nova senha</label>
+
+                        <label>
+                            Confirmar nova senha
+                        </label>
+
                         <div className="password-wrapper-adm">
+
+                            <i className="fa-solid fa-lock password-icon-adm"></i>
+
                             <input
-                                type={mostrarConfirmarSenha ? "text" : "password"}
+                                type={
+                                    mostrarConfirmarSenha
+                                        ? "text"
+                                        : "password"
+                                }
+                                placeholder="Confirme sua nova senha"
                                 value={confirmarSenha}
-                                onChange={(e) => setConfirmarSenha(e.target.value)}
+                                onChange={(e) =>
+                                    setConfirmarSenha(e.target.value)
+                                }
                             />
+
                             <i
-                                className={`fa-solid ${mostrarConfirmarSenha ? "fa-eye-slash" : "fa-eye"} toggle-senha-adm`}
-                                onClick={() => setMostrarConfirmarSenha((prev) => !prev)}
+                                className={`fa-solid ${
+                                    mostrarConfirmarSenha
+                                        ? "fa-eye-slash"
+                                        : "fa-eye"
+                                } toggle-senha-adm`}
+                                onClick={() =>
+                                    setMostrarConfirmarSenha(
+                                        (prev) => !prev
+                                    )
+                                }
                             ></i>
+
                         </div>
+
                     </div>
 
-                    {erro && <p className="erro-mensagem">{erro}</p>}
 
+                    {/* ERRO */}
+                    {erro && (
+                        <p className="erro-mensagem-adm">
+                            {erro}
+                        </p>
+                    )}
+
+
+                    {/* AVISO DE SEGURANÇA */}
                     <div className="info-box-adm">
-                        Certifique-se de que sua senha contenha letras,
-                        números e símbolos. Nunca compartilhe seus dados
-                        de acesso e sua privacidade é nossa prioridade absoluta.
+
+                        <div className="info-icon-alt-adm">
+                            <i className="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <p>
+                            Certifique-se de que sua senha contenha
+                            letras, números e símbolos. Nunca compartilhe
+                            seus dados de acesso e sua privacidade é nossa
+                            prioridade absoluta.
+                        </p>
+
                     </div>
 
-                    <button type="submit" className="btn" disabled={carregando}>
-                        {carregando ? "Salvando..." : "Salvar nova senha"}
+
+                    {/* BOTÃO */}
+                    <button
+                        type="submit"
+                        className="btn-alt-adm"
+                        disabled={carregando}
+                    >
+
+                        <i className="fa-solid fa-lock"></i>
+
+                        {carregando
+                            ? "Salvando..."
+                            : "Salvar nova senha"
+                        }
+
                     </button>
 
-                    <NavLink to="/loginadm" className="back-login-adm">
-                        ← Voltar ao login
+
+                    {/* VOLTAR */}
+                    <NavLink
+                        to="/loginadm"
+                        className="back-login-adm"
+                    >
+                        <i className="fa-solid fa-arrow-left"></i>
+                        Voltar ao login
                     </NavLink>
+
                 </form>
 
             </div>
+
         </div>
-    )
-}
+    );
+};
 
 export default AlterarSenhaAdm;
