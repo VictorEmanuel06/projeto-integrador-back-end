@@ -128,7 +128,7 @@ const RecuperarSenhaAdm = () => {
                     {/* Botão */}
                     <button
                         type="submit"
-                        className="btn"
+                        className="btn-adm-rec"
                         disabled={carregando}
                     >
                         {carregando

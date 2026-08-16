@@ -242,7 +242,7 @@
    BOTÃO
 ======================================== */
 
-.btn {
+.btn-adm-rec {
     width: 100%;
     height: 50px;
 
@@ -277,7 +277,7 @@
 }
 
 
-.btn:hover:not(:disabled) {
+.btn-adm-rec:hover:not(:disabled) {
     transform: translateY(-1px);
 
     box-shadow:
@@ -285,7 +285,7 @@
 }
 
 
-.btn:disabled {
+.btn-adm-rec:disabled {
     opacity: 0.65;
 
     cursor: not-allowed;

@@ -42,11 +42,13 @@ const RecuperarSenhaUsuario = () => {
     };
 
     return (
-        <div className="container">
+        <main className="container">
 
             <div className="card-recuperar-usuario">
 
-                <div className="icon-usuario">↺</div>
+                <div className="icon-usuario">
+                    <i className="fa-solid fa-lock"></i>
+                </div>
 
                 <h1 className="title-recuperar-usuario">Recuperar senha</h1>
 
@@ -56,13 +58,22 @@ const RecuperarSenhaUsuario = () => {
                 </p>
 
                 <div className="form-group-user">
+
                     <label>E-mail</label>
-                    <input
-                        type="email"
-                        placeholder="exemplo@email.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+
+                    <div className="input-rec-wrapper-user">
+
+                        <i className="fa-regular fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            placeholder="exemplo@email.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+
+                    </div>
+
                 </div>
 
                 {erro && <p className="erro-mensagem">{erro}</p>}
@@ -82,6 +93,7 @@ const RecuperarSenhaUsuario = () => {
             </div>
 
             <div className="security-badge-user">
+                <i className="fa-solid fa-shield-halved"></i>
                 Ambiente Seguro
             </div>
 
@@ -93,7 +105,7 @@ const RecuperarSenhaUsuario = () => {
                     Priorizamos seu bem-estar em cada etapa da jornada.
                 </p>
             </div>
-        </div>
+        </main>
     )
 }
 
