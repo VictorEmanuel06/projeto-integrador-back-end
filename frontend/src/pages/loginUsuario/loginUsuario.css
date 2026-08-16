@@ -277,18 +277,6 @@
     pointer-events: none;
 }
 
-.password-eye:hover {
-    color: #8d2d18;
-}
-
-.password-eye:focus {
-    outline: none;
-}
-
-.password-eye i {
-    pointer-events: none;
-}
-
 
 /* =========================================
    ERROS
@@ -328,7 +316,7 @@
 .esqueci-senha-usuario:hover {
     color: #5d180c;
 
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 

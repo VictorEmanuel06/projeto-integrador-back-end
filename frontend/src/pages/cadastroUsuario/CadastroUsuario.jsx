@@ -117,7 +117,7 @@ const CadastroUsuario = () => {
           {/* =========================================
               NOME COMPLETO
           ========================================= */}
-          <div className="form-usuario">
+          <div className="form-cad-usuario">
 
             <label htmlFor="name">
               Nome Completo

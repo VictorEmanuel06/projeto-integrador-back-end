@@ -84,28 +84,29 @@ const LoginAdm = () => {
   return (
     <main className="login-adm-page">
 
-      <section className="login-adm-section">
+      {/* Elementos decorativos */}
+          <div className="login-decoration login-decoration-left">
+            <span>𓆰</span>
+            <span>❧</span>
+          </div>
 
-        {/* Elementos decorativos */}
-        <div className="folha folha-esquerda"></div>
-        <div className="folha folha-direita"></div>
+          <div className="login-decoration login-decoration-right">
+            <span>❧</span>
+            <span>❧</span>
+          </div>
 
-        <div className="card-loginAdm">
+      <section className="card-loginadm">
 
           {/* Ícone */}
           <div className="icone-adm">
-            <i className="fa-solid fa-shield-halved"></i>
-          </div>
-
-          <div className="titulo-area-adm">
-            <span>ÁREA ADMINISTRATIVA</span>
+            <i className="fa-regular fa-user"></i>
           </div>
 
           <h1 className="title-loginAdm">
-            Acesso Administrativo
+            Administrador
           </h1>
 
-          <p className="subtitle-adm">
+          <p className="subtitle-admm">
             Faça o login para acessar o painel administrativo.
           </p>
 
@@ -126,7 +127,7 @@ const LoginAdm = () => {
                 E-mail
               </label>
 
-              <div className="input-adm-wrapper">
+              <div className="input-wrapper">
 
                 <i className="fa-regular fa-envelope"></i>
 
@@ -159,13 +160,14 @@ const LoginAdm = () => {
                 Senha
               </label>
 
-              <div className="input-adm-wrapper">
+              <div className="input-wrapper">
 
                 {/* Cadeado */}
                 <i className="fa-solid fa-lock"></i>
 
                 {/* Campo de senha */}
                 <input
+                  
                   type={mostrarSenha ? "text" : "password"}
                   name="password"
                   id="password"
@@ -235,24 +237,41 @@ const LoginAdm = () => {
               type="submit"
               className="btn-loginAdm"
             >
-              Entrar na administração
+              Entrar
               <span>→</span>
             </button>
+
+            {/* OU */}
+          <div className="login-ou">
+            <span></span>
+            <p>OU</p>
+            <span></span>
+          </div>
+
+
+          {/* CANCELAR */}
+          <NavLink
+            to="/"
+            className="cancelar"
+          >
+            Cancelar
+          </NavLink>
 
             {/* =========================================
                 VOLTAR PARA LOGIN CLIENTE
             ========================================= */}
+
+            <div className="adm-container">
             <NavLink
               to="/loginusuario"
               className="voltar-login-cliente"
             >
-              <i className="fa-regular fa-user"></i>
+              <i className="fa-solid fa-shield-halved"></i>
               Voltar para Login de Cliente
             </NavLink>
+            </div>
 
           </form>
-
-        </div>
 
       </section>
 

@@ -85,7 +85,7 @@ const [mostrarSenha, setMostrarSenha] = useState(false);
 
       {/* Elementos decorativos */}
       <div className="login-decoration login-decoration-left">
-        <span>❧</span>
+        <span></span>
         <span>❧</span>
       </div>
 
@@ -129,7 +129,7 @@ const [mostrarSenha, setMostrarSenha] = useState(false);
 
               <input
                 type="email"
-                placeholder="seuemail@email.com"
+                placeholder="Digite seu e-mail"
                 name="email"
                 id="email"
                 autoComplete="email"
@@ -155,35 +155,35 @@ const [mostrarSenha, setMostrarSenha] = useState(false);
 
        <div className="input-wrapper">
 
-  <i className="fa-solid fa-lock"></i>
+                <i className="fa-solid fa-lock"></i>
 
-  <input
-    className="password-usuario"
-    type={mostrarSenha ? "text" : "password"}
-    name="password"
-    id="password"
-    placeholder="••••••••••"
-    autoComplete="current-password"
-    value={valores.password}
-    onChange={handleInput}
-  />
+                <input
+                  className="password-usuario"
+                  type={mostrarSenha ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  placeholder="Digite sua senha"
+                  autoComplete="current-password"
+                  value={valores.password}
+                  onChange={handleInput}
+                />
 
-  <button
-  type="button"
-  className="password-eye"
-  onClick={() => setMostrarSenha(!mostrarSenha)}
-  aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
->
-  <i
-    className={
-      mostrarSenha
-        ? "fa-regular fa-eye-slash"
-        : "fa-regular fa-eye"
-    }
-  ></i>
-</button>
-
-</div>
+                <button
+                type="button"
+                className="password-eye"
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+                aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+              >
+                <i
+                  className={
+                    mostrarSenha
+                      ? "fa-regular fa-eye-slash"
+                      : "fa-regular fa-eye"
+                  }
+                ></i>
+            </button>
+            
+      </div>
 
             {errors.password && (
               <span className="error-message">

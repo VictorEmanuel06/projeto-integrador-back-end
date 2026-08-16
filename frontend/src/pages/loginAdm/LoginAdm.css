@@ -3,78 +3,32 @@
 ================================ */
 
 .login-adm-page {
-  min-height: calc(100vh - 70px);
-  background: #faf7f3;
-}
+ min-height: calc(100vh - 70px);
+    width: 100%;
+    position: relative;
 
-.login-adm-section {
-  min-height: 760px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 55px 20px;
-  overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  background:
-    radial-gradient(
-      circle at 15% 35%,
-      rgba(185, 116, 73, 0.07),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 85% 35%,
-      rgba(185, 116, 73, 0.06),
-      transparent 25%
-    ),
-    #faf7f3;
-}
+    padding: 55px 20px;
 
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(239, 221, 207, 0.55),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 45%,
+            rgba(239, 221, 207, 0.45),
+            transparent 28%
+        ),
+        #faf7f3;
 
-/* ================================
-   FOLHAS DECORATIVAS
-================================ */
+    box-sizing: border-box;
 
-.folha {
-  position: absolute;
-  width: 190px;
-  height: 330px;
-  opacity: 0.20;
-  pointer-events: none;
-}
-
-.folha::before,
-.folha::after {
-  content: "";
-  position: absolute;
-  border: 2px solid #c98d63;
-  border-radius: 100% 0 100% 0;
-}
-
-.folha::before {
-  width: 85px;
-  height: 145px;
-  transform: rotate(35deg);
-}
-
-.folha::after {
-  width: 65px;
-  height: 110px;
-  transform: rotate(-20deg);
-  top: 105px;
-  left: 55px;
-}
-
-.folha-esquerda {
-  left: 45px;
-  top: 120px;
-  transform: rotate(-15deg);
-}
-
-.folha-direita {
-  right: 40px;
-  bottom: 90px;
-  transform: rotate(150deg);
+    overflow: hidden;
 }
 
 
@@ -82,24 +36,26 @@
    CARD
 ================================ */
 
-.card-loginAdm {
-  position: relative;
-  z-index: 2;
+.card-loginadm {
+    width: 100%;
+    max-width: 480px;
 
-  width: 100%;
-  max-width: 550px;
+    background: rgba(255, 255, 255, 0.96);
 
-  background: rgba(255, 253, 250, 0.97);
+    border-radius: 10px;
 
-  border-radius: 16px;
+    padding: 32px 28px 26px;
 
-  padding: 34px 36px 30px;
+    box-sizing: border-box;
 
-  box-shadow:
-    0 10px 35px rgba(67, 30, 19, 0.10),
-    0 2px 8px rgba(67, 30, 19, 0.05);
+    box-shadow:
+        0 10px 35px rgba(64, 39, 34, 0.08),
+        0 2px 8px rgba(64, 39, 34, 0.04);
 
-  border: 1px solid rgba(125, 28, 9, 0.08);
+    border: 1px solid rgba(125, 28, 9, 0.06);
+
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -108,58 +64,25 @@
 ================================ */
 
 .icone-adm {
-  width: 76px;
-  height: 76px;
+  width: 52px;
+    height: 52px;
 
-  margin: 0 auto 18px;
+    margin: 0 auto 14px;
 
-  border-radius: 50%;
+    border-radius: 50%;
 
-  background: #f6e5d5;
+    background: #f5e8dc;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  color: #8b2d17;
+    color: #8b2c16;
 
-  font-size: 30px;
+    font-size: 23px;
 }
 
 
-/* ================================
-   ÁREA ADMINISTRATIVA
-================================ */
-
-.titulo-area-adm {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 14px;
-
-  margin-bottom: 10px;
-}
-
-.titulo-area-adm::before,
-.titulo-area-adm::after {
-  content: "";
-
-  width: 90px;
-  height: 1px;
-
-  background: #cda58f;
-}
-
-.titulo-area-adm span {
-  color: #7d1c09;
-
-  font-size: 14px;
-
-  font-weight: 600;
-
-  letter-spacing: 1.5px;
-}
 
 
 /* ================================
@@ -167,17 +90,19 @@
 ================================ */
 
 .title-loginAdm {
-  color: #4b1d13;
+  margin: 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+    text-align: center;
 
-  font-size: 38px;
+    font-family: "Georgia", "Times New Roman", serif;
 
-  font-weight: 500;
+    font-size: 30px;
 
-  text-align: center;
+    font-weight: 600;
 
-  margin: 8px 0 8px;
+    color: #3f1b15;
+
+    letter-spacing: -0.5px;
 }
 
 
@@ -185,16 +110,18 @@
    SUBTÍTULO
 ================================ */
 
-.subtitle-adm {
-  color: #5f504a;
+.subtitle-admm {
+  margin: 8px 0 12px;
 
-  font-size: 16px;
+    text-align: center;
 
-  line-height: 1.6;
+    font-family: "Montserrat", sans-serif;
 
-  text-align: center;
+    font-size: 14px;
 
-  margin: 0;
+    line-height: 1.6;
+
+    color: #765b50;
 }
 
 
@@ -231,55 +158,25 @@
 }
 
 /* ================================
-   LINHA DECORATIVA
-================================ */
-
-/* .linha-decorativa {
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  gap: 12px;
-
-  margin: 20px 0 25px;
-
-  color: #9c351d;
-
-  font-size: 23px;
-}
-
-.linha-decorativa::before,
-.linha-decorativa::after {
-  content: "";
-
-  width: 70px;
-
-  height: 1px;
-
-  background: #d8b7a5;
-} */
-
-
-/* ================================
    FORMULÁRIO
 ================================ */
 
 .form-adm {
-  margin-bottom: 19px;
+  margin-bottom: 17px;
 }
 
 .form-adm label {
   display: block;
 
-  color: #321b15;
+    margin-bottom: 7px;
 
-  font-size: 14px;
+    color: #44251e;
 
-  font-weight: 600;
+    font-family: "Montserrat", sans-serif;
 
-  margin-bottom: 8px;
+    font-size: 13px;
+
+    font-weight: 600;
 }
 
 
@@ -288,21 +185,22 @@
 ================================ */
 
 .input-adm-wrapper {
-  width: 100%;
+   width: 100%;
 
-  height: 48px;
+    height: 45px;
 
-  display: flex;
+    display: flex;
+    align-items: center;
 
-  align-items: center;
+    border: 1px solid #ddc9bc;
 
-  border: 1px solid #d8c9c0;
+    border-radius: 8px;
 
-  border-radius: 8px;
+    background: #fff;
 
-  background: #fff;
+    box-sizing: border-box;
 
-  transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
 .input-adm-wrapper:focus-within {
@@ -312,36 +210,79 @@
     0 0 0 3px rgba(139, 45, 23, 0.08);
 }
 
-.input-adm-wrapper i {
-  width: 48px;
+.input-adm-wrapper > i:first-child {
+  width: 44px;
 
   text-align: center;
 
-  color: #8b2d17;
+  color: #7e3825;
 
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .input-adm-wrapper input {
   flex: 1;
 
-  height: 100%;
+    width: 100%;
 
-  border: none;
+    height: 100%;
 
-  outline: none;
+    border: none;
 
-  background: transparent;
+    outline: none;
 
-  padding: 0 12px 0 0;
+    background: transparent;
 
-  color: #3c2923;
+    color: #3f2a24;
 
-  font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 13px;
+
+    padding: 0 8px;
 }
 
 .input-adm-wrapper input::placeholder {
-  color: #8b817c;
+  color: #9b8176;
+}
+
+
+/* ================================
+   OLHO - MOSTRAR / OCULTAR SENHA
+================================ */
+
+.password-eye-adm {
+  border: none;
+
+  background: transparent;
+
+  margin-right: 10px;
+
+  padding: 5px;
+
+  color: #9b7768;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 16px;
+}
+
+.password-eye-adm:hover {
+  color: #8b2d17;
+}
+
+.password-eye-adm:focus {
+  outline: none;
+}
+
+.password-eye-adm i {
+  pointer-events: none;
 }
 
 
@@ -358,7 +299,7 @@
 
   font-size: 14px;
 
-  text-decoration: underline;
+  text-decoration: none;
 
   transition: 0.2s;
 }
@@ -442,40 +383,37 @@
 .btn-loginAdm {
   width: 100%;
 
-  height: 50px;
+    height: 45px;
 
-  border: none;
+    border: none;
 
-  border-radius: 26px;
+    border-radius: 7px;
 
-  background:
-    linear-gradient(
-      to right,
-      #751d0c,
-      #9d2b13,
-      #b73517
+    background: linear-gradient(
+        90deg,
+        #571406,
+        #8d220d
     );
 
-  color: #fff;
+    color: #fff;
 
-  font-size: 16px;
+    font-family: "Montserrat", sans-serif;
 
-  font-weight: 600;
+    font-size: 14px;
 
-  cursor: pointer;
+    font-weight: 600;
 
-  display: flex;
+    cursor: pointer;
 
-  align-items: center;
+    display: flex;
 
-  justify-content: center;
+    align-items: center;
 
-  gap: 12px;
+    justify-content: center;
 
-  transition: 0.25s;
+    gap: 8px;
 
-  box-shadow:
-    0 5px 14px rgba(125, 28, 9, 0.18);
+    transition: all 0.25s ease;
 }
 
 .btn-loginAdm span {
@@ -501,39 +439,41 @@
 ================================ */
 
 .voltar-login-cliente {
-  width: 100%;
+ display: inline-flex;
 
-  height: 48px;
+    align-items: center;
 
-  margin-top: 14px;
+    justify-content: center;
 
-  border: 1px solid #9b3b26;
+    gap: 7px;
 
-  border-radius: 25px;
+    padding: 8px 16px;
 
-  background: transparent;
+    border-radius: 20px;
 
-  color: #7d1c09;
+    border: 1px solid #dbc9be;
 
-  text-decoration: none;
+    background: #fff;
 
-  font-size: 15px;
+    color: #66483e;
 
-  display: flex;
+    font-family: "Montserrat", sans-serif;
 
-  align-items: center;
+    font-size: 11px;
 
-  justify-content: center;
+    text-decoration: none;
 
-  gap: 9px;
+    transition: all 0.2s ease;
+}
 
-  transition: 0.2s;
+.voltar-login-cliente i {
+  color: #87301b;
 }
 
 .voltar-login-cliente:hover {
-  background: #f8ece5;
+  background: #f8eee7;
 
-  border-color: #7d1c09;
+    border-color: #b98c78;
 }
 
 
@@ -621,44 +561,4 @@
   .voltar-login-cliente {
     font-size: 14px;
   }
-}
-
-/* ================================
-   OLHO - MOSTRAR / OCULTAR SENHA
-================================ */
-
-.password-eye-adm {
-  border: none;
-
-  background: transparent;
-
-  margin-right: 10px;
-
-  padding: 5px;
-
-  color: #9b7768;
-
-  cursor: pointer;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 16px;
-}
-
-.password-eye-adm:hover {
-  color: #8b2d17;
-}
-
-.password-eye-adm:focus {
-  outline: none;
-}
-
-.password-eye-adm i {
-  pointer-events: none;
-
-  width: auto;
 }
