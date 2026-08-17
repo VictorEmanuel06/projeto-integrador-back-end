@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../pages/RecuperarSenhaUsuario/RecuperarSenhaUsuario.css";
+import "./VerificarCodigo.css";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { API_URL } from "../config";
 
@@ -61,14 +61,20 @@ const VerificarCodigo = () => {
                     Digite abaixo para continuar.
                 </p>
 
-                <div className="form-group-user">
-                    <label>Código</label>
+                <div className="codigo-form">
+                    <label htmlFor="codigo">Código</label>
+
                     <input
+                        id="codigo"
                         type="text"
+                        inputMode="numeric"
                         placeholder="000000"
                         maxLength={6}
                         value={codigo}
-                        onChange={(e) => setCodigo(e.target.value)}
+                        onChange={(e) => {
+                            const valor = e.target.value.replace(/\D/g, "");
+                            setCodigo(valor);
+                        }}
                     />
                 </div>
 

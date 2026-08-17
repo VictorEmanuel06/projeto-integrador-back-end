@@ -1,149 +1,457 @@
-.container{
-  width: 100%;
-  min-height: 90vh;
+/* =========================================
+   CONTAINER
+========================================= */
 
-  display: flex;
-  flex-direction: column;
+.container {
+    width: 100%;
+    min-height: 90vh;
 
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
 
-  padding: 20px;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    box-sizing: border-box;
+
+    background: #faf7f3;
 }
 
-.card-recuperar-usuario{
-  width: 100%;
-  max-width: 380px;
 
-  background: #dcdcdc;
-  border-radius: 14px;
-  padding: 22px;
+/* =========================================
+   CARD DE RECUPERAÇÃO
+========================================= */
+
+.card-recuperar-usuario {
+    width: 100%;
+    max-width: 380px;
+
+    background: #fffdfb;
+
+    border-radius: 14px;
+
+    padding: 32px;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 8px 25px rgba(70, 35, 20, 0.10);
 }
+
+
+/* =========================================
+   ÍCONE
+========================================= */
 
 .icon-usuario {
-  width: 26px;
-  height: 26px;
-  background: #ffffff;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #0b4aa6;
-  font-size: 14px;
-  margin-bottom: 10px;
+    width: 62px;
+    height: 62px;
+
+    background: #f8e6d3;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #9a321b;
+
+    font-size: 25px;
+
+    margin: 0 auto 18px;
 }
+
+
+/* =========================================
+   TÍTULO
+========================================= */
 
 .title-recuperar-usuario {
-  color: #0b4aa6;
-  font-size: 2rem;
-  margin-bottom: 12px;
-  font-weight: 500;
+    color: #4b160c;
+
+    font-size: 30px;
+
+    margin: 0 0 10px;
+
+    font-weight: 500;
+
+    text-align: center;
+
+    font-family: Georgia, "Times New Roman", serif;
 }
+
+
+/* =========================================
+   DESCRIÇÃO
+========================================= */
 
 .description {
-  color: #7a7a7a;
-  font-size: 1rem;
-  line-height: 1.4;
-  margin-bottom: 22px;
+    color: #927b70;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin: 0 0 24px;
+
+    text-align: center;
 }
 
-.form-group-user {
-  margin-bottom: 20px;
+.description strong {
+    font-weight: 500;
 }
 
-.form-group-user label {
-  display: block;
-  margin-bottom: 8px;
-  color: #7a7a7a;
-  font-size: 1rem;
+
+/* =========================================
+   CAMPO DO CÓDIGO
+========================================= */
+
+.codigo-form {
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
-.form-group-user input {
-  width: 100%;
-  height: 48px;
-  border: none;
-  border-radius: 8px;
-  padding: 0 16px;
-  font-size: 1rem;
-  outline: none;
-  background: #f7f7f7;
+.codigo-form label {
+    display: block;
+    width: 100%;
+
+    margin-bottom: 8px;
+
+    color: #3f302a;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.2;
 }
 
-.btn-instrucoes{
-  width: 100%;
-  height: 52px;
-  border: none;
-  border-radius: 30px;
-  background: #0b4aa6;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: 0.3s;
+
+/* =========================================
+   INPUT
+========================================= */
+
+.codigo-form input {
+    display: block;
+
+    width: 100%;
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding: 0 14px;
+
+    border: 1px solid #d8c8bf;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #4b160c;
+
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+
+    letter-spacing: 4px;
+
+    text-align: center;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
-.btn:hover {
-  background: #083b85;
+.codigo-form input::placeholder {
+    color: #aaa;
+
+    opacity: 1;
+
+    letter-spacing: 3px;
 }
+
+.codigo-form input:focus {
+    border-color: #9a321b;
+
+    background: #fffdfb;
+
+    box-shadow: 0 0 0 3px rgba(154, 50, 27, 0.10);
+}
+
+
+/* =========================================
+   MENSAGEM DE ERRO
+========================================= */
+
+.erro-mensagem {
+    margin: -4px 0 14px;
+
+    color: #b3261e;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   BOTÃO VERIFICAR
+========================================= */
+
+.btn-instrucoes {
+    display: block;
+
+    width: 100%;
+    height: 48px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #9a321b;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Hover */
+
+.btn-instrucoes:hover {
+    background: #7d1c09;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 5px 15px rgba(125, 28, 9, 0.18);
+}
+
+
+/* Botão desabilitado */
+
+.btn-instrucoes:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   DIVISOR
+========================================= */
 
 .divider {
-  width: 100%;
-  height: 1px;
-  background: #bdbdbd;
-  margin: 22px 0;
+    width: 100%;
+
+    height: 1px;
+
+    background: #e2d7d0;
+
+    margin: 22px 0;
 }
+
+
+/* =========================================
+   VOLTAR PARA LOGIN
+========================================= */
 
 .back-login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #0b4aa6;
-  font-size: 1.1rem;
-  font-weight: 500;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    text-decoration: none;
+
+    color: #9a321b;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: color 0.2s ease;
 }
+
+
+/* Hover */
+
+.back-login:hover {
+    color: #7d1c09;
+}
+
+
+/* =========================================
+   SELO DE SEGURANÇA
+========================================= */
 
 .security-badge-user {
-  display: inline-block;
-  margin-top: 26px;
-  padding: 10px 24px;
-  border-radius: 30px;
-  border: 1px solid #d7d7d7;
-  background: #fff;
-  color: #4c72c2;
-  font-size: 0.85rem;
+    display: inline-block;
+
+    margin-top: 16px;
+
+    padding: 8px 18px;
+
+    border-radius: 30px;
+
+    border: 1px solid #e3d5cc;
+
+    background: #ffffff;
+
+    color: #9a321b;
+
+    font-size: 12px;
 }
 
-.info-user{
-  margin-top: 10px;
-  max-width: 380px;
-  text-align: left;
+
+/* =========================================
+   INFORMAÇÕES DE PRIVACIDADE
+========================================= */
+
+.info-user {
+    width: 100%;
+
+    max-width: 380px;
+
+    margin-top: 18px;
+
+    text-align: center;
 }
+
 
 .info-user h2 {
-  color: #0b4aa6;
-  font-size: 2rem;
-  margin-bottom: 14px;
-  font-weight: 500;
+    color: #4b160c;
+
+    font-size: 22px;
+
+    margin: 0 0 8px;
+
+    font-weight: 500;
+
+    font-family: Georgia, "Times New Roman", serif;
 }
+
 
 .info-user p {
-  color: #777;
-  font-size: 1rem;
-  line-height: 1.4;
+    color: #927b70;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin: 0;
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 768px){
 
-  .container{
-    flex-direction: column;
-    align-items: center;
-  }
+/* =========================================
+   RESPONSIVIDADE - TABLET
+========================================= */
 
-  .info{
-    margin-top: 20px;
-    text-align: center;
-  }
+@media (max-width: 768px) {
 
+    .container {
+        min-height: calc(100vh - 70px);
+
+        padding: 30px 16px;
+    }
+
+
+    .card-recuperar-usuario {
+        max-width: 400px;
+
+        padding: 28px 22px;
+    }
+
+
+    .title-recuperar-usuario {
+        font-size: 27px;
+    }
+
+
+    .description {
+        font-size: 13px;
+    }
+
+
+    .info-user {
+        max-width: 400px;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVIDADE - CELULAR
+========================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        padding: 25px 14px;
+    }
+
+
+    .card-recuperar-usuario {
+        padding: 25px 18px;
+
+        border-radius: 12px;
+    }
+
+
+    .icon-usuario {
+        width: 56px;
+        height: 56px;
+
+        font-size: 22px;
+    }
+
+
+    .title-recuperar-usuario {
+        font-size: 25px;
+    }
+
+
+    .description {
+        font-size: 13px;
+    }
+
+
+    .codigo-form input {
+        height: 46px;
+
+        font-size: 17px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .btn-instrucoes {
+        height: 46px;
+    }
+
+
+    .info-user h2 {
+        font-size: 20px;
+    }
+
+
+    .info-user p {
+        font-size: 12px;
+    }
 }
